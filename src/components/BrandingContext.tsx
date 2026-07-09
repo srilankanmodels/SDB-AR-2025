@@ -4,6 +4,8 @@
  */
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db, handleFirestoreError, OperationType } from "../firebase";
 
 export interface BrandingConfig {
   logoTextSDB: string;
@@ -20,6 +22,7 @@ export interface BrandingConfig {
   ceoImage?: string;
   boardImages?: Record<string, string>;
   managementImages?: Record<string, string>;
+  updatedAt?: string;
 }
 
 interface BrandingContextType {
@@ -62,25 +65,75 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
     async function init() {
       try {
         setLoading(true);
-        const res = await fetch("/api/admin/config");
-        if (res.ok) {
-          const data = await res.json();
-          setBranding(data);
+
+        // Try reading from Firestore
+        const docRef = doc(db, "branding", "global");
+        const docSnap = await getDoc(docRef).catch(err => {
+          console.warn("Firestore branding fetch failed (perhaps rules not deployed yet or offline):", err);
+          return null;
+        });
+
+        let firestoreConfig: BrandingConfig | null = null;
+        if (docSnap && docSnap.exists()) {
+          firestoreConfig = docSnap.data() as BrandingConfig;
+        }
+
+        // Fetch local server config
+        let localConfig: BrandingConfig | null = null;
+        try {
+          const res = await fetch("/api/admin/config");
+          if (res.ok) {
+            localConfig = await res.json();
+          }
+        } catch (e) {
+          console.warn("Local config fetch failed:", e);
+        }
+
+        if (firestoreConfig && localConfig) {
+          // Compare updatedAt timestamps to use the newest configuration
+          const fsTime = firestoreConfig.updatedAt ? new Date(firestoreConfig.updatedAt).getTime() : 0;
+          const localTime = localConfig.updatedAt ? new Date(localConfig.updatedAt).getTime() : 0;
+          
+          if (localTime > fsTime) {
+            setBranding(localConfig);
+          } else {
+            setBranding(firestoreConfig);
+          }
+        } else if (firestoreConfig) {
+          setBranding(firestoreConfig);
+        } else if (localConfig) {
+          setBranding(localConfig);
+        } else {
+          setBranding(DEFAULT_BRANDING);
         }
 
         // Check if token already exists in localStorage
         const token = localStorage.getItem("sdb_admin_token");
-        if (token === "sdb_admin_auth_token_2025") {
+        if (token === "sdb_admin_auth_token_2025" || (auth.currentUser?.email === "srilankanmodels@gmail.com")) {
           setIsAdmin(true);
         }
       } catch (err) {
         console.error("Failed to load branding config:", err);
-        setError("Could not load dynamic branding config from the server. Using default branding.");
+        setError("Could not load dynamic branding config. Using default branding.");
       } finally {
         setLoading(false);
       }
     }
     init();
+
+    // Set up auth observer for Google login as admin
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user && user.email === "srilankanmodels@gmail.com") {
+        setIsAdmin(true);
+      } else {
+        const token = localStorage.getItem("sdb_admin_token");
+        if (!token) {
+          setIsAdmin(false);
+        }
+      }
+    });
+
+    return unsubscribe;
   }, []);
 
   // Admin login function
@@ -118,32 +171,45 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
   // Save changes back to server
   const saveBranding = async (newConfig: BrandingConfig): Promise<boolean> => {
     const token = localStorage.getItem("sdb_admin_token");
-    if (!token) {
+    const isFirebaseAdmin = auth.currentUser?.email === "srilankanmodels@gmail.com";
+
+    if (!token && !isFirebaseAdmin) {
       setError("Unauthorized operation. Log in as administrator first.");
       return false;
     }
 
     try {
-      const res = await fetch("/api/admin/config", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify(newConfig)
-      });
+      const configWithTimestamp = {
+        ...newConfig,
+        updatedAt: new Date().toISOString()
+      };
 
-      if (res.ok) {
-        setBranding(newConfig);
-        setError(null);
-        return true;
-      } else {
-        const data = await res.json();
-        setError(data.error || "Failed to save configuration.");
-        return false;
+      // 1. Write to Firestore branding/global only if the current user is a verified Firebase Admin
+      if (isFirebaseAdmin) {
+        const docRef = doc(db, "branding", "global");
+        await setDoc(docRef, configWithTimestamp).catch(err => {
+          handleFirestoreError(err, OperationType.WRITE, "branding/global");
+        });
       }
+
+      // 2. Also write to local server API for fallback stability if local token is available
+      if (token) {
+        await fetch("/api/admin/config", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(configWithTimestamp)
+        });
+      }
+
+      setBranding(configWithTimestamp);
+      setError(null);
+      return true;
     } catch (err) {
-      setError("Network error. Please verify the backend is running.");
+      console.error("Save config error:", err);
+      setError("Failed to save configuration.");
       return false;
     }
   };

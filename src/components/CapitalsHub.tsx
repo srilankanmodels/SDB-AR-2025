@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { CAPITALS_DATA } from "../data/reportData";
 import { Coins, Home, Brain, Users, Handshake, Leaf, ArrowRight, CheckCircle2, ShieldAlert } from "lucide-react";
@@ -14,6 +14,19 @@ const ICON_MAP: Record<string, any> = {
 
 export default function CapitalsHub() {
   const [selectedCapitalIndex, setSelectedCapitalIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const handleSetIndex = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (typeof detail === "number" && detail >= 0 && detail < CAPITALS_DATA.length) {
+        setSelectedCapitalIndex(detail);
+      }
+    };
+    window.addEventListener("set-capitals-index", handleSetIndex);
+    return () => {
+      window.removeEventListener("set-capitals-index", handleSetIndex);
+    };
+  }, []);
 
   const activeCapital = CAPITALS_DATA[selectedCapitalIndex];
   const IconComponent = ICON_MAP[activeCapital.icon] || Coins;

@@ -1,0 +1,86 @@
+{
+  "entities": {
+    "BrandingConfig": {
+      "title": "BrandingConfig",
+      "description": "Custom visual theme configuration for the SDB Bank Annual Report",
+      "type": "object",
+      "properties": {
+        "logoTextSDB": { "type": "string", "description": "Abbreviated bank name text" },
+        "logoTextBank": { "type": "string", "description": "Secondary bank name text" },
+        "logoColor": { "type": "string", "description": "Primary theme hexadecimal color code" },
+        "logoTextColorBank": { "type": "string", "description": "Secondary theme text color code" },
+        "headOfficeImage": { "type": "string", "description": "Url of head office cover image" },
+        "cooperativeFarmingImage": { "type": "string", "description": "Url of cooperative farming cover image" },
+        "digitalBankingImage": { "type": "string", "description": "Url of digital banking image" },
+        "boardroomLeadershipImage": { "type": "string", "description": "Url of boardroom leadership image" },
+        "logoImage": { "type": "string", "description": "Url of uploaded corporate logo" },
+        "coverImage": { "type": "string", "description": "Url of cover illustration" },
+        "chairpersonImage": { "type": "string", "description": "Url of chairperson profile image" },
+        "ceoImage": { "type": "string", "description": "Url of CEO profile image" },
+        "boardImages": { "type": "object", "description": "Key-value map of board member custom photos" },
+        "managementImages": { "type": "object", "description": "Key-value map of management team custom photos" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp when configuration was saved" }
+      },
+      "required": ["logoColor", "updatedAt"]
+    },
+    "UserFeedback": {
+      "title": "UserFeedback",
+      "description": "User-submitted comments, ratings, and feedback on annual report sections",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Unique identifier of the submitting user (or 'anonymous')" },
+        "userName": { "type": "string", "description": "Name of the user" },
+        "userEmail": { "type": "string", "description": "Email of the user" },
+        "sectionId": { "type": "string", "description": "ID of the annual report section commented on" },
+        "comment": { "type": "string", "description": "Written feedback comment text" },
+        "rating": { "type": "number", "description": "Strategic alignment rating (1-5)" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation" }
+      },
+      "required": ["userId", "sectionId", "comment", "createdAt"]
+    },
+    "ReportBookmark": {
+      "title": "ReportBookmark",
+      "description": "A user-saved bookmark pointing to specific report sections or financial statement notes",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID of the owning user" },
+        "sectionId": { "type": "string", "description": "Primary report chapter or section ID" },
+        "noteNumber": { "type": "number", "description": "Explanatory financial note number (optional)" },
+        "noteTitle": { "type": "string", "description": "Title of the explanation note" },
+        "personalNotes": { "type": "string", "description": "Personal annotations written by the user" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp when bookmarked" }
+      },
+      "required": ["userId", "sectionId", "createdAt"]
+    },
+    "ChatSession": {
+      "title": "ChatSession",
+      "description": "A persisted SDB Bank AI Annual Report Assistant conversation history",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID of the session owner" },
+        "title": { "type": "string", "description": "Auto-generated brief topic of conversation" },
+        "messages": { "type": "array", "description": "Structured message records exchanged in session" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of latest activity" }
+      },
+      "required": ["userId", "title", "messages", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/branding/{docId}": {
+      "schema": "BrandingConfig",
+      "description": "Collection containing the global visual customization settings document (typically docId='global')"
+    },
+    "/feedback/{feedbackId}": {
+      "schema": "UserFeedback",
+      "description": "Collection of strategic feedback submissions from readers"
+    },
+    "/bookmarks/{bookmarkId}": {
+      "schema": "ReportBookmark",
+      "description": "Reader personal bookmarks and annotations on financial statement disclosures"
+    },
+    "/chats/{chatId}": {
+      "schema": "ChatSession",
+      "description": "Durable storage of user conversation logs with the SDB Assistant chatbot"
+    }
+  }
+}

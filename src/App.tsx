@@ -17,6 +17,9 @@ import SDBAssistant from "./components/SDBAssistant";
 import SDBLogo from "./components/SDBLogo";
 import AdminPortal from "./components/AdminPortal";
 import { BrandingProvider } from "./components/BrandingContext";
+import { AuthProvider } from "./components/AuthContext";
+import TableOfContents from "./components/TableOfContents";
+import FeedbackSection from "./components/FeedbackSection";
 import { BookOpen, TrendingUp, Calendar, Handshake, ShieldAlert, Award, ArrowLeft, FileText, ShieldCheck } from "lucide-react";
 
 type ActiveSection = "overview" | "leadership" | "timeline" | "strategy" | "capitals" | "governance" | "financials";
@@ -133,7 +136,12 @@ function AppContent() {
                     transition={{ duration: 0.35, ease: "easeInOut" }}
                     className="relative"
                   >
-                    {activeSection === "overview" && <FinancialCharts />}
+                    {activeSection === "overview" && (
+                      <div className="space-y-12">
+                        <FinancialCharts />
+                        <FeedbackSection />
+                      </div>
+                    )}
                     {activeSection === "leadership" && <LeadershipSection />}
                     {activeSection === "timeline" && <TimelineSection />}
                     {activeSection === "strategy" && <StrategySection />}
@@ -167,6 +175,8 @@ function AppContent() {
             </footer>
             {/* SDB Bank AI Annual Report Copilot */}
             <SDBAssistant />
+            {/* Table of Contents Overlay and Quick Nav Links */}
+            <TableOfContents activeSection={activeSection} onNavigate={(section) => setActiveSection(section)} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -177,7 +187,9 @@ function AppContent() {
 export default function App() {
   return (
     <BrandingProvider>
-      <AppContent />
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </BrandingProvider>
   );
 }

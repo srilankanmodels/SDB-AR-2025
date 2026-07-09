@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { BOARD_MEMBERS, EXECUTIVE_MANAGEMENT } from "../data/reportData";
 import { Award, User, Quote, BookOpen, UserCheck, ChevronRight, X, Sparkles } from "lucide-react";
@@ -11,6 +11,19 @@ export default function LeadershipSection() {
   const boardroomLeadershipImage = branding?.boardroomLeadershipImage || "/src/assets/images/boardroom_leadership_1783367647402.jpg";
 
   const [activeTab, setActiveTab] = useState<SubSection>("chairperson");
+
+  useEffect(() => {
+    const handleSetTab = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && ["chairperson", "ceo", "board", "management"].includes(detail)) {
+        setActiveTab(detail as SubSection);
+      }
+    };
+    window.addEventListener("set-leadership-tab", handleSetTab);
+    return () => {
+      window.removeEventListener("set-leadership-tab", handleSetTab);
+    };
+  }, []);
   const [selectedDirectorId, setSelectedDirectorId] = useState<string | null>(null);
 
   const selectedDirector = BOARD_MEMBERS.find((d) => d.id === selectedDirectorId);

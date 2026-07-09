@@ -6,8 +6,11 @@
 import { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  MessageSquare, Send, X, Bot, User, Sparkles, Loader2, HelpCircle, ArrowRight, Trash2, ShieldAlert
+  MessageSquare, Send, X, Bot, User, Sparkles, Loader2, HelpCircle, ArrowRight, Trash2, ShieldAlert, LogIn, LogOut
 } from "lucide-react";
+import { useAuth } from "./AuthContext";
+import { db, handleFirestoreError, OperationType } from "../firebase";
+import { doc, setDoc, collection, query, where, getDocs, limit, orderBy } from "firebase/firestore";
 
 interface ChatMessage {
   id: string;
@@ -25,8 +28,10 @@ const STARTER_QUESTIONS = [
 ];
 
 export default function SDBAssistant() {
+  const { user, signInWithGoogle, signOut } = useAuth();
+  const [chatDocId, setChatDocId] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [inputMessage, setInputMessage] = useState<string>("");
+  const [inputMessage, setInputMessage] = useState<string>(" ");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "welcome",
@@ -39,6 +44,107 @@ export default function SDBAssistant() {
   const [errorText, setErrorText] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  // Load user's latest chat log from Firestore upon signing in
+  useEffect(() => {
+    if (!user) {
+      setChatDocId(null);
+      // Reset to welcome message when user logs out
+      setMessages([
+        {
+          id: "welcome",
+          role: "model",
+          message: "Hello! I am your SDB Bank AI Assistant. I have read the complete audited **SDB 2025 Annual Report**, including all **20 Notes to the Financial Statements**. \n\nFeel free to ask me anything about our financial performance, strategic pillars, agricultural cooperative networks, digital transformation, or board of directors. How can I assist you today?",
+          timestamp: new Date()
+        }
+      ]);
+      return;
+    }
+
+    async function loadLatestChat() {
+      try {
+        const chatsRef = collection(db, "chats");
+        const q = query(
+          chatsRef,
+          where("userId", "==", user.uid),
+          orderBy("updatedAt", "desc"),
+          limit(1)
+        );
+        const snap = await getDocs(q);
+        if (!snap.empty) {
+          const docSnap = snap.docs[0];
+          const chatData = docSnap.data();
+          setChatDocId(docSnap.id);
+          if (chatData.messages && Array.isArray(chatData.messages)) {
+            setMessages(chatData.messages.map((m: any, index: number) => ({
+              id: m.id || `msg-${index}`,
+              role: m.role,
+              message: m.message,
+              timestamp: m.timestamp ? new Date(m.timestamp) : new Date()
+            })));
+          }
+        } else {
+          // Create fresh session in Firestore
+          const newId = `chat-${user.uid}-${Date.now()}`;
+          setChatDocId(newId);
+          const initialMsgs = [
+            {
+              id: "welcome",
+              role: "model" as const,
+              message: "Hello! I am your SDB Bank AI Assistant. I have read the complete audited **SDB 2025 Annual Report**, including all **20 Notes to the Financial Statements**. \n\nFeel free to ask me anything about our financial performance, strategic pillars, agricultural cooperative networks, digital transformation, or board of directors. How can I assist you today?",
+              timestamp: new Date().toISOString()
+            }
+          ];
+          await setDoc(doc(db, "chats", newId), {
+            userId: user.uid,
+            title: "SDB Annual Report Assistant Chat",
+            messages: initialMsgs,
+            updatedAt: new Date().toISOString()
+          }).catch(err => {
+            handleFirestoreError(err, OperationType.CREATE, `chats/${newId}`);
+          });
+        }
+      } catch (e) {
+        console.error("Error loading chat session from Firestore:", e);
+      }
+    }
+
+    loadLatestChat();
+  }, [user]);
+
+  // Sync current chat state to Firestore
+  const syncChatToFirestore = async (updatedMsgs: ChatMessage[]) => {
+    if (!user) return;
+    let currentId = chatDocId;
+    if (!currentId) {
+      currentId = `chat-${user.uid}-${Date.now()}`;
+      setChatDocId(currentId);
+    }
+
+    try {
+      const serializedMessages = updatedMsgs.map(m => ({
+        id: m.id,
+        role: m.role,
+        message: m.message,
+        timestamp: m.timestamp.toISOString()
+      }));
+
+      // Set elegant brief title based on first query
+      const firstUserMsg = updatedMsgs.find(m => m.role === "user");
+      const title = firstUserMsg ? (firstUserMsg.message.slice(0, 50) + "...") : "SDB Annual Report Assistant Chat";
+
+      await setDoc(doc(db, "chats", currentId), {
+        userId: user.uid,
+        title,
+        messages: serializedMessages,
+        updatedAt: new Date().toISOString()
+      }, { merge: true }).catch(err => {
+        handleFirestoreError(err, OperationType.UPDATE, `chats/${currentId}`);
+      });
+    } catch (e) {
+      console.error("Error writing chat update to Firestore:", e);
+    }
+  };
 
   // Auto-scroll to the latest message
   const scrollToBottom = () => {
@@ -72,6 +178,9 @@ export default function SDBAssistant() {
     setMessages(updatedMessages);
     setIsLoading(true);
 
+    // Sync user message to Firestore
+    syncChatToFirestore(updatedMessages);
+
     try {
       // Build history excluding initial message or any error messages
       const history = updatedMessages
@@ -99,15 +208,18 @@ export default function SDBAssistant() {
       }
 
       const botMsgId = `bot-${Date.now()}`;
-      setMessages(prev => [
-        ...prev,
+      const finalMsgs: ChatMessage[] = [
+        ...updatedMessages,
         {
           id: botMsgId,
           role: "model",
           message: data.reply,
           timestamp: new Date()
         }
-      ]);
+      ];
+      setMessages(finalMsgs);
+      // Sync bot answer to Firestore
+      syncChatToFirestore(finalMsgs);
     } catch (err: any) {
       console.error("Chat error:", err);
       setErrorText(err.message || "An error occurred. Please verify your internet connection or check if your Gemini API key is configured.");
@@ -122,16 +234,30 @@ export default function SDBAssistant() {
     }
   };
 
-  const clearChat = () => {
-    setMessages([
+  const clearChat = async () => {
+    const cleared = [
       {
         id: "welcome",
-        role: "model",
+        role: "model" as const,
         message: "Hello! I am your SDB Bank AI Assistant. I have read the complete audited **SDB 2025 Annual Report**, including all **20 Notes to the Financial Statements**. \n\nFeel free to ask me anything about our financial performance, strategic pillars, agricultural cooperative networks, digital transformation, or board of directors. How can I assist you today?",
         timestamp: new Date()
       }
-    ]);
+    ];
+    setMessages(cleared);
     setErrorText(null);
+    if (user && chatDocId) {
+      // Start a fresh document to clear context cleanly
+      const newId = `chat-${user.uid}-${Date.now()}`;
+      setChatDocId(newId);
+      await setDoc(doc(db, "chats", newId), {
+        userId: user.uid,
+        title: "SDB Annual Report Assistant Chat",
+        messages: cleared.map(m => ({ ...m, timestamp: m.timestamp.toISOString() })),
+        updatedAt: new Date().toISOString()
+      }).catch(err => {
+        handleFirestoreError(err, OperationType.CREATE, `chats/${newId}`);
+      });
+    }
   };
 
   // Helper to safely render simple markdown elements (bold, bullets, paragraphs, tables)
@@ -236,6 +362,15 @@ export default function SDBAssistant() {
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
+                {user && (
+                  <button
+                    onClick={signOut}
+                    title={`Sign out (${user.displayName || user.email})`}
+                    className="p-1.5 rounded-lg hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer"
+                  >
+                    <LogOut className="w-4 h-4 text-sdb-coral" />
+                  </button>
+                )}
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-1.5 rounded-lg hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer"
@@ -248,6 +383,46 @@ export default function SDBAssistant() {
             {/* Message Area */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-sdb-cream/15 custom-scrollbar">
               
+              {/* Google Sign In Call-To-Action */}
+              {!user && (
+                <div className="bg-gradient-to-r from-sdb-purple/5 to-sdb-coral/5 border border-sdb-purple/10 rounded-2xl p-4 text-xs text-left shadow-sm mb-2 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-sdb-coral/10 rounded-full blur-xl pointer-events-none" />
+                  <div className="relative z-10 flex flex-col gap-2.5">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-sdb-coral" />
+                      <p className="font-serif font-bold text-slate-800">Durable Chat History</p>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed text-[11px]">
+                      Sign in with Google to securely save your chatbot discussions and access them anytime, even from different devices!
+                    </p>
+                    <button
+                      onClick={signInWithGoogle}
+                      className="inline-flex items-center justify-center space-x-2 bg-white hover:bg-slate-50 text-slate-700 font-mono text-[10px] font-bold border border-slate-200 hover:border-slate-300 py-1.5 px-3 rounded-lg shadow-sm transition-all duration-150 cursor-pointer w-fit"
+                    >
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
+                        <path
+                          fill="#EA4335"
+                          d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582l3.51-3.51C17.764 1.055 15.027 0 12 0 7.33 0 3.313 2.682 1.345 6.582l3.92 3.183z"
+                        />
+                        <path
+                          fill="#4285F4"
+                          d="M23.49 12.275c0-.825-.075-1.616-.213-2.383H12v4.513h6.446a5.51 5.51 0 0 1-2.39 3.613l3.722 2.883c2.177-2.01 3.431-4.962 3.431-8.626z"
+                        />
+                        <path
+                          fill="#FBBC05"
+                          d="M5.266 14.235L1.345 17.42A11.962 11.962 0 0 1 0 12c0-1.927.455-3.755 1.266-5.418l3.92 3.183c-.236.709-.366 1.463-.366 2.235 0 .8.144 1.573.412 2.235z"
+                        />
+                        <path
+                          fill="#34A853"
+                          d="M12 24c3.24 0 5.97-1.077 7.962-2.925l-3.722-2.883c-1.033.693-2.356 1.104-4.24 1.104-3.255 0-6.015-2.2-7.002-5.163l-3.922 3.185C3.313 21.318 7.33 24 12 24z"
+                        />
+                      </svg>
+                      <span>Sign In with Google</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
               {messages.map((msg) => (
                 <div
                   key={msg.id}

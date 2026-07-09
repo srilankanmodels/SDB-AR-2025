@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   ShieldCheck, Scale, Users, CheckCircle2, TrendingUp, AlertTriangle, 
@@ -167,6 +167,19 @@ export default function GovernanceAndRisk() {
   const boardroomLeadershipImage = branding?.boardroomLeadershipImage || "/src/assets/images/boardroom_leadership_1783367647402.jpg";
 
   const [activeTab, setActiveTab] = useState<SubTab>("governance");
+
+  useEffect(() => {
+    const handleSetTab = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && ["governance", "risk"].includes(detail)) {
+        setActiveTab(detail as SubTab);
+      }
+    };
+    window.addEventListener("set-governance-tab", handleSetTab);
+    return () => {
+      window.removeEventListener("set-governance-tab", handleSetTab);
+    };
+  }, []);
   const [selectedCommittee, setSelectedCommittee] = useState<number>(0);
   const [selectedRisk, setSelectedRisk] = useState<string>("risk-1");
 

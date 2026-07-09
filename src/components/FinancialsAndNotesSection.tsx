@@ -7,13 +7,17 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Search, FileText, TrendingUp, DollarSign, Calendar, Scale, ChevronDown, ChevronRight, 
-  HelpCircle, Sparkles, BookOpen, Calculator, Download, AlertCircle, FileSpreadsheet, Layers
+  HelpCircle, Sparkles, BookOpen, Calculator, Download, AlertCircle, FileSpreadsheet, Layers,
+  Bookmark, BookmarkCheck
 } from "lucide-react";
 import { 
   INCOME_STATEMENT_ROWS, BALANCE_SHEET_ROWS, CASH_FLOW_ROWS, CHANGES_IN_EQUITY_ROWS, 
   NOTES_TO_FINANCIALS, NoteDetail, FinancialRow 
 } from "../data/financialsAndNotes";
 import { useBranding } from "./BrandingContext";
+import { useAuth } from "./AuthContext";
+import { db, handleFirestoreError, OperationType } from "../firebase";
+import { doc, setDoc, deleteDoc, collection, query, where, getDocs } from "firebase/firestore";
 
 // Images generated
 const IMAGES = {
@@ -36,6 +40,8 @@ interface SearchResult {
 
 export default function FinancialsAndNotesSection() {
   const { branding } = useBranding();
+  const { user } = useAuth();
+  const [bookmarks, setBookmarks] = useState<Record<string, string>>({}); // Mapping from itemId -> docId
 
   const activeImages = useMemo(() => ({
     headOffice: branding?.headOfficeImage || IMAGES.headOffice,
@@ -44,7 +50,91 @@ export default function FinancialsAndNotesSection() {
     boardroomLeadership: branding?.boardroomLeadershipImage || IMAGES.boardroomLeadership
   }), [branding]);
 
+  // Load user's bookmarks from Firestore
+  useEffect(() => {
+    if (!user) {
+      setBookmarks({});
+      return;
+    }
+    
+    async function fetchBookmarks() {
+      try {
+        const bookmarksRef = collection(db, "bookmarks");
+        const q = query(bookmarksRef, where("userId", "==", user.uid), where("itemType", "==", "note"));
+        const snap = await getDocs(q);
+        const bMap: Record<string, string> = {};
+        snap.forEach(docSnap => {
+          bMap[docSnap.data().itemId] = docSnap.id;
+        });
+        setBookmarks(bMap);
+      } catch (err) {
+        console.error("Error loading bookmarks:", err);
+      }
+    }
+    fetchBookmarks();
+  }, [user]);
+
+  const handleToggleBookmark = async (noteNum: string, noteTitle: string) => {
+    if (!user) {
+      alert("Please sign in using the AI Copilot chat to save report bookmarks!");
+      return;
+    }
+    
+    const existingDocId = bookmarks[noteNum];
+    if (existingDocId) {
+      try {
+        await deleteDoc(doc(db, "bookmarks", existingDocId)).catch(err => {
+          handleFirestoreError(err, OperationType.DELETE, `bookmarks/${existingDocId}`);
+        });
+        setBookmarks(prev => {
+          const next = { ...prev };
+          delete next[noteNum];
+          return next;
+        });
+      } catch (err) {
+        console.error("Error removing bookmark:", err);
+      }
+    } else {
+      const docId = `bookmark-${user.uid}-${noteNum.replace(/\s+/g, "_")}`;
+      try {
+        await setDoc(doc(db, "bookmarks", docId), {
+          userId: user.uid,
+          itemType: "note",
+          itemId: noteNum,
+          title: `${noteNum}: ${noteTitle}`,
+          sectionId: "financials",
+          personalNotes: "",
+          noteNumber: parseFloat(noteNum.replace(/[^\d.]/g, "")) || 0,
+          noteTitle: noteTitle,
+          createdAt: new Date().toISOString()
+        }).catch(err => {
+          handleFirestoreError(err, OperationType.CREATE, `bookmarks/${docId}`);
+        });
+        setBookmarks(prev => ({
+          ...prev,
+          [noteNum]: docId
+        }));
+      } catch (err) {
+        console.error("Error adding bookmark:", err);
+      }
+    }
+  };
+
   const [activeStatementTab, setActiveStatementTab] = useState<StatementType>("income");
+
+  useEffect(() => {
+    const handleSetTab = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && ["income", "balance", "cashflow", "equity"].includes(detail)) {
+        setActiveStatementTab(detail as StatementType);
+      }
+    };
+    window.addEventListener("set-financials-tab", handleSetTab);
+    return () => {
+      window.removeEventListener("set-financials-tab", handleSetTab);
+    };
+  }, []);
+
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [expandedNotes, setExpandedNotes] = useState<Record<string, boolean>>({});
   const [highlightedNoteId, setHighlightedNoteId] = useState<string | null>(null);
@@ -571,13 +661,32 @@ export default function FinancialsAndNotesSection() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-3 text-slate-400">
-                    <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-wider font-semibold">
-                      {isExpanded ? "Collapse" : "Expand"}
-                    </span>
-                    <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
-                      <ChevronDown className="w-4 h-4 text-sdb-purple" />
-                    </motion.div>
+                  <div className="flex items-center space-x-3 text-slate-400" onClick={(e) => e.stopPropagation()}>
+                    <button
+                      onClick={() => handleToggleBookmark(note.number, note.title)}
+                      title={bookmarks[note.number] ? "Remove Bookmark" : "Add Bookmark"}
+                      className={`p-1.5 rounded-lg hover:bg-sdb-purple/5 transition-all cursor-pointer ${
+                        bookmarks[note.number] ? "text-sdb-coral" : "text-slate-400 hover:text-sdb-purple"
+                      }`}
+                    >
+                      {bookmarks[note.number] ? (
+                        <BookmarkCheck className="w-4.5 h-4.5 fill-current" />
+                      ) : (
+                        <Bookmark className="w-4.5 h-4.5" />
+                      )}
+                    </button>
+                    
+                    <div
+                      onClick={() => toggleNote(note.number)}
+                      className="flex items-center space-x-2 text-slate-400 hover:text-sdb-purple cursor-pointer"
+                    >
+                      <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-wider font-semibold">
+                        {isExpanded ? "Collapse" : "Expand"}
+                      </span>
+                      <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
+                        <ChevronDown className="w-4 h-4 text-sdb-purple" />
+                      </motion.div>
+                    </div>
                   </div>
                 </div>
 

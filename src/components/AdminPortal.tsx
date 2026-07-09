@@ -8,12 +8,15 @@ import { motion, AnimatePresence } from "motion/react";
 import { useBranding, BrandingConfig } from "./BrandingContext";
 import { BOARD_MEMBERS, EXECUTIVE_MANAGEMENT } from "../data/reportData";
 import SDBLogo from "./SDBLogo";
+import { db } from "../firebase";
+import { collection, query, getDocs, orderBy, deleteDoc, doc } from "firebase/firestore";
 
 // Import all icons we need
 import { 
   KeyRound, ShieldAlert, CheckCircle2, RotateCcw, Save, LogOut, ArrowLeft, 
   Settings, Image as ImageIcon, Sparkles, Type, Palette, ExternalLink,
-  UserCheck, Users, Briefcase, FileImage, LayoutGrid, Check, Trash2, UploadCloud
+  UserCheck, Users, Briefcase, FileImage, LayoutGrid, Check, Trash2, UploadCloud,
+  MessageSquare, Star
 } from "lucide-react";
 
 interface AdminPortalProps {
@@ -69,7 +72,63 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
   const [loginError, setLoginError] = useState<string | null>(null);
 
   // Dynamic console tab state
-  const [activeTab, setActiveTab] = useState<"logo" | "portraits" | "board" | "management" | "backgrounds">("logo");
+  const [activeTab, setActiveTab] = useState<"logo" | "portraits" | "board" | "management" | "backgrounds" | "feedback">("logo");
+
+  // Feedback states
+  interface FeedbackRecord {
+    id: string;
+    rating: number;
+    subject?: string;
+    sectionId?: string;
+    message?: string;
+    comment?: string;
+    name?: string;
+    userName?: string;
+    email?: string;
+    userEmail?: string;
+    userId: string;
+    createdAt: string;
+  }
+  const [feedbackList, setFeedbackList] = useState<FeedbackRecord[]>([]);
+  const [feedbackLoading, setFeedbackLoading] = useState(false);
+
+  useEffect(() => {
+    if (activeTab !== "feedback") return;
+
+    async function fetchFeedback() {
+      setFeedbackLoading(true);
+      try {
+        const feedbackRef = collection(db, "feedback");
+        const q = query(feedbackRef, orderBy("createdAt", "desc"));
+        const snap = await getDocs(q);
+        const list: FeedbackRecord[] = [];
+        snap.forEach(docSnap => {
+          list.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          } as FeedbackRecord);
+        });
+        setFeedbackList(list);
+      } catch (err) {
+        console.error("Error loading feedback in Admin Console:", err);
+      } finally {
+        setFeedbackLoading(false);
+      }
+    }
+
+    fetchFeedback();
+  }, [activeTab]);
+
+  const handleDeleteFeedback = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this feedback record?")) return;
+    try {
+      await deleteDoc(doc(db, "feedback", id));
+      setFeedbackList(prev => prev.filter(f => f.id !== id));
+    } catch (err) {
+      console.error("Error deleting feedback:", err);
+      alert("Failed to delete feedback. Verify administrator privileges.");
+    }
+  };
 
   // Selection states for collections
   const [selectedDirectorId, setSelectedDirectorId] = useState(BOARD_MEMBERS[0]?.id || "01");
@@ -473,7 +532,8 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
               { id: "portraits", label: "Exec Portraits", icon: Users },
               { id: "board", label: "Directors", icon: Briefcase },
               { id: "management", label: "Management", icon: UserCheck },
-              { id: "backgrounds", label: "Report BG", icon: FileImage }
+              { id: "backgrounds", label: "Report BG", icon: FileImage },
+              { id: "feedback", label: "Feedback", icon: MessageSquare }
             ].map(tab => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -848,6 +908,84 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                       ))}
                     </div>
                   </div>
+                </motion.div>
+              )}
+
+              {activeTab === "feedback" && (
+                <motion.div
+                  key="feedback"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="space-y-6 text-left"
+                >
+                  <div className="border-b border-slate-100 pb-3 text-left flex justify-between items-center">
+                    <div>
+                      <h3 className="font-serif font-bold text-lg text-sdb-purple">Stakeholder Feedback Console</h3>
+                      <p className="text-xs text-slate-500 mt-1">Review feedback logs and inquiries submitted by report readers.</p>
+                    </div>
+                    <span className="bg-sdb-purple/10 text-sdb-purple font-mono text-[10px] font-bold px-2.5 py-1 rounded-full">
+                      {feedbackList.length} submissions
+                    </span>
+                  </div>
+
+                  {feedbackLoading ? (
+                    <div className="py-12 text-center text-slate-400 text-xs font-mono">
+                      Loading feedback logs from secure Firestore...
+                    </div>
+                  ) : feedbackList.length === 0 ? (
+                    <div className="py-12 text-center text-slate-400 text-xs font-mono border border-dashed border-slate-200 rounded-2xl bg-slate-50/50">
+                      No stakeholder feedback logs found.
+                    </div>
+                  ) : (
+                    <div className="space-y-4 max-h-[500px] overflow-y-auto pr-1">
+                      {feedbackList.map((item) => (
+                        <div key={item.id} className="p-4 border border-slate-100 rounded-2xl bg-slate-50/50 space-y-3 relative group hover:border-sdb-purple/15 transition-all text-left">
+                          <button
+                            onClick={() => handleDeleteFeedback(item.id)}
+                            className="absolute top-4 right-4 p-1.5 bg-white border border-slate-200 text-slate-400 hover:text-red-600 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                            title="Delete Feedback"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-sdb-purple text-white uppercase tracking-wider">
+                              {item.subject || item.sectionId}
+                            </span>
+                            <div className="flex items-center">
+                              {[1, 2, 3, 4, 5].map((s) => (
+                                <Star
+                                  key={s}
+                                  className={`w-3 h-3 ${
+                                    s <= item.rating ? "text-sdb-amber fill-sdb-amber" : "text-slate-200"
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                            <span className="text-[10px] font-mono text-slate-400 ml-auto">
+                              {new Date(item.createdAt).toLocaleString()}
+                            </span>
+                          </div>
+
+                          <p className="text-xs text-slate-700 leading-relaxed font-serif whitespace-pre-wrap">
+                            "{item.message || item.comment}"
+                          </p>
+
+                          <div className="border-t border-slate-100/50 pt-2.5 flex items-center gap-1.5 text-[10px] font-mono text-slate-500">
+                            <span className="font-bold text-slate-700">SUBMITTER:</span>
+                            <span>{item.name || item.userName || "Anonymous"}</span>
+                            {(item.email || item.userEmail) && (
+                              <>
+                                <span className="text-slate-300">|</span>
+                                <span className="italic text-sdb-purple/80">{item.email || item.userEmail}</span>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
