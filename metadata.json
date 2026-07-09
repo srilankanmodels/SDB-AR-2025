@@ -1,0 +1,6 @@
+{
+  "name": "SDB Integrated Annual Report 2025",
+  "description": "An interactive, animated website to display and navigate the SDB (Sanasa Development Bank) 2025 Annual Report themed 'A Future Handcrafted'.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

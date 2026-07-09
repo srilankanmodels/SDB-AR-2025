@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-sdb-cream: #FAF7F2;
+  --color-sdb-cream-dark: #F2EBE0;
+  --color-sdb-purple: #2F1B68;
+  --color-sdb-plum: #4F2284;
+  --color-sdb-coral: #E8456C;
+  --color-sdb-amber: #E2861F;
+  --color-sdb-green: #248D4D;
+  --color-sdb-blue: #0A8AC8;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-sdb-cream);
+    color: #1A1230;
+    font-family: var(--font-sans);
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(47, 27, 104, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(47, 27, 104, 0.05);
+}
+
+.glass-nav {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(47, 27, 104, 0.08);
+}
+
+.glass-modal {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(47, 27, 104, 0.15);
+  box-shadow: 0 20px 50px rgba(47, 27, 104, 0.12);
+}
+
+.text-gradient-purple-coral {
+  background: linear-gradient(135deg, var(--color-sdb-purple) 0%, var(--color-sdb-coral) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber-green {
+  background: linear-gradient(135deg, var(--color-sdb-amber) 0%, var(--color-sdb-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom scrollbar to keep layout premium */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sdb-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(47, 27, 104, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(47, 27, 104, 0.25);
+}
+
