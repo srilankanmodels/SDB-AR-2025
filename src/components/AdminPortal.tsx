@@ -315,11 +315,14 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
               const data = await res.json();
               onUploaded(data.url);
             } else {
-              const data = await res.json();
-              alert(data.error || "Upload failed");
+              // Fallback to direct Base64 representation in static/Vercel hosting
+              console.warn("Express backend upload failed, falling back to secure client-side Base64 storage");
+              onUploaded(base64Data);
             }
           } catch (err) {
-            alert("Network error occurred during upload.");
+            // Fallback to direct Base64 representation in static/Vercel hosting
+            console.warn("No active Node.js server found. Using secure client-side Base64 fallback for static hosting");
+            onUploaded(base64Data);
           } finally {
             setUploading(false);
           }
