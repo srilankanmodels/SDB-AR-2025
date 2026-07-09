@@ -201,7 +201,12 @@ export default function SDBAssistant() {
         })
       });
 
-      const data = await response.json();
+      let data: any = {};
+      try {
+        data = await response.json();
+      } catch (jsonErr) {
+        throw new Error("The SDB AI Assistant server-side endpoint is currently unavailable. This occurs when the application is hosted on static platform environments like Vercel without a Node backend container. To run the full-featured AI Assistant, please ensure you are in the active Node.js development container.");
+      }
 
       if (!response.ok) {
         throw new Error(data.error || "Failed to communicate with SDB AI assistant.");
