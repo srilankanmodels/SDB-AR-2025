@@ -89,23 +89,46 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
           console.warn("Local config fetch failed:", e);
         }
 
-        if (firestoreConfig && localConfig) {
-          // Compare updatedAt timestamps to use the newest configuration
-          const fsTime = firestoreConfig.updatedAt ? new Date(firestoreConfig.updatedAt).getTime() : 0;
-          const localTime = localConfig.updatedAt ? new Date(localConfig.updatedAt).getTime() : 0;
-          
-          if (localTime > fsTime) {
-            setBranding(localConfig);
-          } else {
-            setBranding(firestoreConfig);
+        // Fetch localStorage config for robust persistent client-side fallback (essential for Vercel/static-only hosting)
+        let localStoreConfig: BrandingConfig | null = null;
+        try {
+          const stored = localStorage.getItem("sdb_branding_config");
+          if (stored) {
+            localStoreConfig = JSON.parse(stored);
           }
-        } else if (firestoreConfig) {
-          setBranding(firestoreConfig);
-        } else if (localConfig) {
-          setBranding(localConfig);
-        } else {
-          setBranding(DEFAULT_BRANDING);
+        } catch (e) {
+          console.warn("Local storage config load failed:", e);
         }
+
+        // Find the newest config based on updatedAt timestamp
+        let newestConfig = DEFAULT_BRANDING;
+        let maxTime = 0;
+
+        if (firestoreConfig) {
+          const fsTime = firestoreConfig.updatedAt ? new Date(firestoreConfig.updatedAt).getTime() : 0;
+          if (fsTime > maxTime) {
+            maxTime = fsTime;
+            newestConfig = firestoreConfig;
+          }
+        }
+
+        if (localConfig) {
+          const localTime = localConfig.updatedAt ? new Date(localConfig.updatedAt).getTime() : 0;
+          if (localTime > maxTime) {
+            maxTime = localTime;
+            newestConfig = localConfig;
+          }
+        }
+
+        if (localStoreConfig) {
+          const storeTime = localStoreConfig.updatedAt ? new Date(localStoreConfig.updatedAt).getTime() : 0;
+          if (storeTime > maxTime) {
+            maxTime = storeTime;
+            newestConfig = localStoreConfig;
+          }
+        }
+
+        setBranding(newestConfig);
 
         // Check if token already exists in localStorage
         const token = localStorage.getItem("sdb_admin_token");
@@ -204,15 +227,22 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
         updatedAt: new Date().toISOString()
       };
 
-      // 1. Write to Firestore branding/global only if the current user is a verified Firebase Admin
-      if (isFirebaseAdmin) {
+      // 1. Attempt to write to Firestore branding/global (succeeds if user is Firebase Admin)
+      try {
         const docRef = doc(db, "branding", "global");
-        await setDoc(docRef, configWithTimestamp).catch(err => {
-          handleFirestoreError(err, OperationType.WRITE, "branding/global");
-        });
+        await setDoc(docRef, configWithTimestamp);
+      } catch (firestoreErr) {
+        console.warn("Firestore save branding skipped or denied (expected for non-Firebase admin password logins):", firestoreErr);
       }
 
-      // 2. Also write to local server API for fallback stability if local token is available
+      // 2. Write to localStorage for robust client-side persistent fallback on Vercel/static-only hosting
+      try {
+        localStorage.setItem("sdb_branding_config", JSON.stringify(configWithTimestamp));
+      } catch (lsErr) {
+        console.warn("Failed to write to localStorage:", lsErr);
+      }
+
+      // 3. Also write to local server API for fallback stability if local token is available
       if (token) {
         try {
           await fetch("/api/admin/config", {

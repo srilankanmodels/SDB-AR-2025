@@ -90,8 +90,8 @@ export default function LeadershipSection() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-left"
             >
               {/* Profile Card Summary */}
-              <div className="lg:col-span-4 glass-card rounded-3xl p-6 flex flex-col items-center text-center shadow-md">
-                <div className="w-32 h-32 rounded-full bg-sdb-purple/5 text-sdb-purple border-4 border-sdb-purple/10 flex items-center justify-center mb-4 shadow-inner overflow-hidden">
+              <div className="lg:col-span-4 glass-card rounded-3xl p-6 flex flex-col items-center text-center shadow-md sticky top-6">
+                <div className="w-36 h-36 rounded-full bg-sdb-purple/5 text-sdb-purple border-4 border-sdb-purple/10 flex items-center justify-center mb-4 shadow-inner overflow-hidden">
                   {branding?.chairpersonImage ? (
                     <img
                       src={branding.chairpersonImage}
@@ -109,7 +109,7 @@ export default function LeadershipSection() {
                 
                 <div className="w-full border-t border-sdb-purple/10 mt-6 pt-4 space-y-3 font-mono text-[11px] text-left text-slate-600">
                   <div className="flex justify-between">
-                    <span>Appointed</span>
+                    <span>Appointed to Board</span>
                     <span className="font-bold text-sdb-purple">2020</span>
                   </div>
                   <div className="flex justify-between">
@@ -117,34 +117,82 @@ export default function LeadershipSection() {
                     <span className="font-bold text-sdb-purple">April 2022</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Prior Tenure</span>
+                    <span>Prior Leadership</span>
                     <span className="font-bold text-sdb-purple">Citibank N.A. Director</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Academic Credentials</span>
+                    <span className="font-bold text-sdb-purple">MA (Econ, UoC), BSc (USA)</span>
                   </div>
                 </div>
               </div>
 
-              {/* Message Narrative */}
+              {/* Message Narrative - Full Text */}
               <div className="lg:col-span-8 flex flex-col space-y-6">
-                <div className="glass-card rounded-3xl border-l-4 border-sdb-purple p-6 md:p-8 relative text-left shadow-sm">
-                  <Quote className="w-10 h-10 text-sdb-purple/5 absolute top-4 right-4" />
+                {/* Highlight Quote */}
+                <div className="glass-card rounded-3xl border-l-4 border-sdb-purple p-6 md:p-8 relative text-left shadow-sm bg-gradient-to-r from-sdb-purple/5 to-transparent">
+                  <Quote className="w-10 h-10 text-sdb-purple/10 absolute top-4 right-4" />
                   <p className="font-serif text-lg md:text-xl text-sdb-purple font-medium italic leading-relaxed">
-                    "Responding to emerging economic opportunities, SDB bank recorded improved financial results across all key business segments in 2025. The Bank achieved a Profit Before Tax of LKR 800.17 Mn, reflecting an increase of 16.93% compared to 2024."
+                    "Responding to emerging economic opportunities, SDB bank recorded improved financial results across all key business segments in 2025. The Bank achieved a Profit Before Tax of LKR 800.17 Mn, reflecting an increase of 16.93% compared to 2024. This growth reflects our core resilience and commitment to Sri Lanka's MSMEs and rural communities."
                   </p>
                 </div>
 
-                <div className="space-y-4 text-slate-600 leading-relaxed text-sm md:text-base">
-                  <p>
-                    <strong>Dear Stakeholders,</strong>
-                  </p>
-                  <p>
-                    The global economy continued to be strongly adaptive in 2025, amidst shifting geopolitical trends and US policy shocks. Against this backdrop of global recovery and sustained domestic political stability, Sri Lanka too recorded encouraging progress during the year. Overall, this stable environment proved conducive for the banking sector, as stronger demand for credit and financial services boosted banking industry expansion.
-                  </p>
-                  <p>
-                    Your Bank was well prepared to harness the emerging opportunities of 2025. I am therefore pleased to convey the good news that SDB bank concluded 2025 with improved financial performance, while further strengthening the foundation for sustainable future growth.
-                  </p>
-                  <p>
-                    While focusing on growth and profitability, the Bank remained committed to supporting segments that continued to experience the protracted effects of the economic crisis. During the year, we provided relief measures, including tenor reductions and interest concessions, to assist small businesses and individuals in their recovery journey. We are proud to report that at year-end 2025, women accounted for 43% of our total clientele, and our SME portfolio grew by an exceptional 45.41%.
-                  </p>
+                <div className="space-y-6 text-slate-700 leading-relaxed text-sm md:text-base">
+                  <div className="space-y-2">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      Dear Shareholders and Valued Stakeholders,
+                    </h4>
+                    <p>
+                      The global economy continued to be strongly adaptive in 2025, amidst shifting geopolitical trends, trade fluctuations, and international market volatility. Against this backdrop of broader global recovery and sustained domestic policy stability, Sri Lanka too recorded encouraging progress during the year under review. Overall, this stabilized environment proved conducive for the banking sector, as stronger demand for credit and financial services boosted banking industry expansion and restored stakeholder confidence across regional markets.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      Resilient Financial Performance
+                    </h4>
+                    <p>
+                      Your Bank was well prepared to harness the emerging economic opportunities of 2025. I am therefore pleased to convey the good news that SDB bank concluded 2025 with improved financial performance across all key indicators, while further strengthening the foundation for sustainable future growth.
+                    </p>
+                    <p>
+                      The Bank achieved a Profit Before Tax (PBT) of LKR 800.17 Mn in 2025, marking a 16.93% year-on-year surge compared to LKR 684.32 Mn recorded in FY 2024. Profit After Tax reached LKR 405 Mn, while Net Interest Income expanded to LKR 8,233 Mn. Total assets stood at LKR 146.95 Bn, with total customer deposits remaining strong at LKR 105.68 Bn.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      Supporting Micro & SME Recovery
+                    </h4>
+                    <p>
+                      While focusing on operational profitability, SDB bank remained deeply committed to supporting customer segments that continued to experience the protracted effects of the macroeconomic crisis. During the year, we provided tailored financial relief measures—including tenor extensions, interest concessions, and debt restructuring—to assist over 15,000 small business owners and individuals in their recovery journey.
+                    </p>
+                    <p>
+                      We are proud to report that at year-end 2025, female entrepreneurs accounted for 43% of our total clientele, and our core SME lending portfolio grew by an exceptional 45.41%. Furthermore, 44% of our total SME loan volume was directly channeled into essential agriculture, food production, and rural enterprise chains.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      Governance, Equity & Sustainability Roadmap
+                    </h4>
+                    <p>
+                      In 2025, your Board prioritized the consolidation of corporate governance standards and long-term ESG integration. In alignment with Central Bank of Sri Lanka guidelines, SDB bank reinforced its Risk Management Framework and maintained robust capital ratios, ending the year with a Total Capital Adequacy Ratio (CAR) of 15.24%—well above the regulatory minimum requirement of 12.50%.
+                    </p>
+                    <p>
+                      Looking forward, our partnership with Rabo Partnerships will drive our 2026–2029 Strategic Transformation, establishing SDB bank as Sri Lanka's leading financial engine for sustainable agriculture, climate adaptation, and cooperative ecosystem financing.
+                    </p>
+                  </div>
+
+                  <div className="bg-sdb-purple/5 p-6 rounded-2xl border border-sdb-purple/10 space-y-3">
+                    <h5 className="font-serif font-bold text-sdb-purple">Acknowledgements</h5>
+                    <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                      On behalf of the Board of Directors, I extend my heartfelt gratitude to the Governor and Officials of the Central Bank of Sri Lanka, our shareholders, and our valued clients for their enduring trust. I thank my fellow Directors for their wise counsel, and express sincere appreciation to our CEO, Executive Management, and the entire SDB family for their dedication in driving our shared purpose.
+                    </p>
+                    <div className="pt-2 text-right font-serif font-bold text-sdb-purple text-sm">
+                      Ms. Dinithi Ratnayake<br />
+                      <span className="font-sans text-xs font-normal text-sdb-coral">Chairperson, SDB bank</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -160,8 +208,8 @@ export default function LeadershipSection() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-left"
             >
               {/* Profile Card Summary */}
-              <div className="lg:col-span-4 glass-card rounded-3xl p-6 flex flex-col items-center text-center shadow-md">
-                <div className="w-32 h-32 rounded-full bg-sdb-purple/5 text-sdb-purple border-4 border-sdb-purple/10 flex items-center justify-center mb-4 shadow-inner overflow-hidden">
+              <div className="lg:col-span-4 glass-card rounded-3xl p-6 flex flex-col items-center text-center shadow-md sticky top-6">
+                <div className="w-36 h-36 rounded-full bg-sdb-purple/5 text-sdb-purple border-4 border-sdb-purple/10 flex items-center justify-center mb-4 shadow-inner overflow-hidden">
                   {branding?.ceoImage ? (
                     <img
                       src={branding.ceoImage}
@@ -183,38 +231,88 @@ export default function LeadershipSection() {
                     <span className="font-bold text-sdb-purple">2024</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Industry Experience</span>
+                    <span>Banking Career</span>
                     <span className="font-bold text-sdb-purple">40+ Years</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Education</span>
+                    <span>Former CEO Roles</span>
+                    <span className="font-bold text-sdb-purple">Seylan Bank (12 Yrs)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>University Education</span>
                     <span className="font-bold text-sdb-purple">First Class Hons, UoC</span>
                   </div>
                 </div>
               </div>
 
-              {/* Message Narrative */}
+              {/* Message Narrative - Full Text */}
               <div className="lg:col-span-8 flex flex-col space-y-6">
-                <div className="glass-card rounded-3xl border-l-4 border-sdb-green p-6 md:p-8 relative text-left shadow-sm">
-                  <Quote className="w-10 h-10 text-sdb-green/5 absolute top-4 right-4" />
+                {/* Highlight Quote */}
+                <div className="glass-card rounded-3xl border-l-4 border-sdb-green p-6 md:p-8 relative text-left shadow-sm bg-gradient-to-r from-sdb-green/5 to-transparent">
+                  <Quote className="w-10 h-10 text-sdb-green/10 absolute top-4 right-4" />
                   <p className="font-serif text-lg md:text-xl text-sdb-purple font-medium italic leading-relaxed">
-                    "Following three consecutive years of contraction in the loan portfolio up to 2024, we successfully reversed the downward spiral in 2025. Loans to customers increased by 16.72%, from LKR 99.73 billion to LKR 116.40 billion."
+                    "Following three consecutive years of contraction in the loan portfolio up to 2024, we successfully reversed the downward spiral in 2025. Net loans to customers increased by 15.46%, expanding from LKR 95.14 billion to LKR 109.84 billion, backed by record annual disbursements exceeding LKR 100 Billion."
                   </p>
                 </div>
 
-                <div className="space-y-4 text-slate-600 leading-relaxed text-sm md:text-base">
-                  <p>
-                    <strong>A Year of Transformation</strong>
-                  </p>
-                  <p>
-                    I am pleased to report a year of transformation for SDB bank in the financial year 2025, marking a decisive turning point in the Bank's history. During the 12 months under review, we strengthened our financial position, governance frameworks, digital capabilities, and human capital, while also building our environmental and social foundation to support sustainable growth over the long term.
-                  </p>
-                  <p>
-                    This growth was achieved through credit expansion across all products and market segments of leasing, pawning, retail banking, and business banking, with total disbursements of over LKR 100 billion during the year. Over 25% of the Bank's total lending during 2025 was channelled into SMEs, reflecting SDB bank's growing contribution to national economic recovery.
-                  </p>
-                  <p>
-                    Our digital transition remains central to our growth agenda. Significant investments have already been made to modernize the technology infrastructure, and this will be the transformation base for the Bank as we move forward. In parallel, we have collaborated with Rabo Partnerships to develop a comprehensive growth strategy for 2026-2029, positioning SDB bank as Sri Lanka's leading partner in agriculture and MSME financing.
-                  </p>
+                <div className="space-y-6 text-slate-700 leading-relaxed text-sm md:text-base">
+                  <div className="space-y-2">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      A Landmark Turning Point in SDB's History
+                    </h4>
+                    <p>
+                      I am pleased to present the Chief Executive Officer's Review for the financial year ended 31st December 2025. This was a defining year of transformation for SDB bank—one in which we decisively reversed previous contractionary trends, reinforced our operational foundations, modernized our digital capabilities, and set the Bank firmly on a path toward sustainable, high-impact growth.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      Loan Portfolio Expansion & Segmental Growth
+                    </h4>
+                    <p>
+                      Driven by targeted market positioning and disciplined credit underwriting, total loan disbursements crossed LKR 100 Billion in 2025. Gross loans and advances expanded across all key business verticals:
+                    </p>
+                    <ul className="list-disc pl-5 space-y-1 text-xs md:text-sm text-slate-600">
+                      <li><strong>SME & Commercial Lending:</strong> Reached LKR 31.25 Bn (+45.41% YoY), empowering regional trade, food processing, and manufacturing.</li>
+                      <li><strong>Agricultural & Cooperative Credit:</strong> Stood at LKR 50.45 Bn, providing essential working capital to smallholder farmers and primary SANASA societies.</li>
+                      <li><strong>Retail & Micro Finance:</strong> Generated LKR 18.95 Bn in micro-loans, supporting micro-entrepreneurs and women-led household enterprises.</li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      Digital Acceleration & Infrastructure Modernization
+                    </h4>
+                    <p>
+                      Digitalization was a central pillar of our 2025 operational agenda. We completed the migration of our enterprise document management system and streamlined credit appraisal workflows, reducing loan processing turnaround times by 40%. The SDB UPay app processed over 8.5 million digital transactions in 2025, generating LKR 105 Mn in low-cost digital savings accounts.
+                    </p>
+                    <p>
+                      To ensure continuous business resilience, we established a consolidated Head Office in Kirulapone/Colombo and completed full hardware upgrades across our primary data center and disaster recovery facility.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-lg text-sdb-purple border-b border-sdb-purple/10 pb-2">
+                      Human Capital & Community Impact
+                    </h4>
+                    <p>
+                      Our 1,263 employees are the bedrock of SDB bank's success. In 2025, we launched a competency-based Performance Management System and delivered over 32,000 training hours across our branch network. We maintained an employee retention rate of 92.06% and achieved 48% female representation across our workforce.
+                    </p>
+                    <p>
+                      Through our Rural Upliftment Programme and 'Heritage Hands' project, SDB bank directly impacted 3,991 rural beneficiaries, providing financial literacy and market access to grassroots producers across Sri Lanka.
+                    </p>
+                  </div>
+
+                  <div className="bg-sdb-green/5 p-6 rounded-2xl border border-sdb-green/10 space-y-3">
+                    <h5 className="font-serif font-bold text-sdb-purple">Future Outlook (2026–2029)</h5>
+                    <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                      As we look ahead, SDB bank is uniquely positioned to lead Sri Lanka's cooperative and MSME banking revolution. With Rabo Partnerships as our strategic advisor, we enter 2026 with clear strategic momentum, robust liquidity, and a passionate team dedicated to delivering value for all stakeholders.
+                    </p>
+                    <div className="pt-2 text-right font-serif font-bold text-sdb-purple text-sm">
+                      Mr. Kapila Ariyaratne<br />
+                      <span className="font-sans text-xs font-normal text-sdb-green">Chief Executive Officer, SDB bank</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -258,7 +356,7 @@ export default function LeadershipSection() {
                   Our Board composition bridges rich cooperative values with commercial banking expertise to deliver maximum value to all SDB stakeholders.
                 </p>
                 <span className="text-[10px] font-mono text-sdb-purple font-bold uppercase tracking-wider bg-sdb-purple/10 px-2.5 py-1 rounded-md shrink-0">
-                  9 Board Members
+                  10 Board Members
                 </span>
               </div>
 

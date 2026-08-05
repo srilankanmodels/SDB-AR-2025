@@ -173,6 +173,14 @@ export const FINANCIAL_TRENDS: FinancialMetric[] = [
   }
 ];
 
+export interface ExecutiveMember {
+  name: string;
+  designation: string;
+  qualifications: string;
+  category?: "Corporate Executive" | "Business & Operations" | "Governance & Control";
+  bio?: string;
+}
+
 export const BOARD_MEMBERS: BoardMember[] = [
   {
     id: "01",
@@ -245,26 +253,34 @@ export const BOARD_MEMBERS: BoardMember[] = [
     appointed: "Appointed to the Board in 2022",
     bio: "Mr. Dissanayake has over 40 years of experience in the Banking and Non-Banking Financial Sectors across the UAE, Oman, and Sri Lanka. He specializes in Credit Risk Management and has worked at banks including HSBC and the National Bank of Abu Dhabi. He was appointed as an Independent Director in November 2025 following FMO/SBI Ven's divestment. He is an Associate Member of the Chartered Institute of Bankers UK.",
     imageIndex: 9
+  },
+  {
+    id: "10",
+    name: "Mr. B. R. A. Bandara",
+    designation: "Non-Executive, Non-Independent Director",
+    appointed: "Appointed to the Board in 2023",
+    bio: "Mr. Bandara possesses extensive experience in cooperative sector development, microfinance, and rural economy management. He has served in key leadership positions across regional cooperative societies and represents SANASA Primary Societies. He holds a Master's in Development Economics from the University of Peradeniya and has pioneered numerous community micro-lending frameworks across Sri Lanka.",
+    imageIndex: 10
   }
 ];
 
 export const EXECUTIVE_MANAGEMENT: ExecutiveMember[] = [
-  { name: "Mr. Kapila Ariyaratne", designation: "Executive Director / CEO", qualifications: "BSc (Natural Science), Post Graduate Dip in Business & Financial Administration" },
-  { name: "Mr. Chitral De Silva", designation: "Chief Business Officer", qualifications: "Ex. Dip in Business Administration, Dip Credit Management" },
-  { name: "Mr. Anura Yapa", designation: "Chief Credit Officer", qualifications: "Associate of Institute of Bankers (AIB)" },
-  { name: "Mr. Dinesh Thomas", designation: "Chief Information & Digital Officer", qualifications: "MSc in IT, MBA" },
-  { name: "Mr. Dhananjaya Dayananda", designation: "Chief Internal Auditor", qualifications: "FCCA, FCMA, ACA, MBA (Banking Mgt)" },
-  { name: "Mr. Dinuke Wijesinghe", designation: "Chief Risk Officer", qualifications: "MBA, Dip in Banking, AIB" },
-  { name: "Ms. Lakmini Muththunga", designation: "Head of Operations", qualifications: "MBA, BSc (Hons) (UOK)" },
-  { name: "Mr. Aruna Jayasekera", designation: "Chief Human Resources Officer", qualifications: "LLB, Attorney at Law, FCIPM" },
-  { name: "Ms. Krishani Enoka", designation: "Head of Treasury", qualifications: "MBA (UK), BSc (Phy. Science) Hons, AIB" },
-  { name: "Ms. Mihiri Attanayake", designation: "Head of Credit", qualifications: "BSc Agri (Hons), MSc Agri, Dip in Micro Financing" },
-  { name: "Ms. Pavithra Liyanage", designation: "Head of Legal", qualifications: "LLM (Staffordshire), LLB, Attorney-at-Law, Company Secretary" },
-  { name: "Mr. Sanjeeva Jayasinghe", designation: "Head of Finance", qualifications: "FCA, ACCA, BSc. Mgt. Public Admin" },
-  { name: "Mr. Bhanu Wijayaratne", designation: "Chief Compliance Officer", qualifications: "Senior Fellow (IBSL), FCPM, MA (Fin Econ), MBA" },
-  { name: "Mr. Binesh Aravinda", designation: "Head of Branch Banking", qualifications: "MBA, BSc Business Administration, Moody's Business Banking Mastery" },
-  { name: "Ms. Amila Belpamulla", designation: "Company Secretary", qualifications: "Attorney-at-Law, Company Secretary, BA & MA in International Relations" },
-  { name: "Mr. Lasantha Edirisuriya", designation: "Head of Cooperative Development", qualifications: "Dip. in Fin. & Bank Mgt., Exe. Dev. Mini MBA, Harvard Cert in Entrepreneurship" }
+  { name: "Mr. Kapila Ariyaratne", designation: "Executive Director / Chief Executive Officer", qualifications: "BSc (Natural Science), Post Graduate Dip in Business & Financial Administration", category: "Corporate Executive", bio: "Leading SDB bank's strategic transformation and long-term sustainable growth." },
+  { name: "Mr. Chitral De Silva", designation: "Chief Business Officer", qualifications: "Ex. Dip in Business Administration, Dip Credit Management", category: "Corporate Executive", bio: "Driving retail, MSME, leasing, and commercial lending expansion across 94 branches." },
+  { name: "Mr. Anura Yapa", designation: "Chief Credit Officer", qualifications: "Associate of Institute of Bankers (AIB)", category: "Corporate Executive", bio: "Overseeing bank-wide loan underwriting, portfolio quality, and asset recovery." },
+  { name: "Mr. Dinesh Thomas", designation: "Chief Information & Digital Officer", qualifications: "MSc in IT, MBA", category: "Corporate Executive", bio: "Spearheading SDB's core banking cloud infrastructure and digital payment ecosystem." },
+  { name: "Mr. Dhananjaya Dayananda", designation: "Chief Internal Auditor", qualifications: "FCCA, FCMA, ACA, MBA (Banking Mgt)", category: "Governance & Control", bio: "Ensuring independent audit assurance, operational compliance, and internal controls." },
+  { name: "Mr. Dinuke Wijesinghe", designation: "Chief Risk Officer", qualifications: "MBA, Dip in Banking, AIB", category: "Governance & Control", bio: "Managing market risk, credit risk models, and Basel III regulatory risk frameworks." },
+  { name: "Ms. Lakmini Muththunga", designation: "Head of Operations", qualifications: "MBA, BSc (Hons) (UOK)", category: "Business & Operations", bio: "Optimizing central operational workflows, trade processing, and branch back-office systems." },
+  { name: "Mr. Aruna Jayasekera", designation: "Chief Human Resources Officer", qualifications: "LLB, Attorney at Law, FCIPM", category: "Governance & Control", bio: "Transforming talent management, leadership development, and employee welfare." },
+  { name: "Ms. Krishani Enoka", designation: "Head of Treasury", qualifications: "MBA (UK), BSc (Phy. Science) Hons, AIB", category: "Corporate Executive", bio: "Managing foreign exchange trading, liquidity ratios, and money market investments." },
+  { name: "Ms. Mihiri Attanayake", designation: "Head of Credit", qualifications: "BSc Agri (Hons), MSc Agri, Dip in Micro Financing", category: "Business & Operations", bio: "Specializing in agricultural value chain credit, tea smallholder loans, and microfinance." },
+  { name: "Ms. Pavithra Liyanage", designation: "Head of Legal", qualifications: "LLM (Staffordshire), LLB, Attorney-at-Law, Company Secretary", category: "Governance & Control", bio: "Directing corporate legal strategy, contract governance, and litigation management." },
+  { name: "Mr. Sanjeeva Jayasinghe", designation: "Head of Finance", qualifications: "FCA, ACCA, BSc. Mgt. Public Admin", category: "Corporate Executive", bio: "Leading corporate financial reporting, statutory taxation, and budget planning." },
+  { name: "Mr. Bhanu Wijayaratne", designation: "Chief Compliance Officer", qualifications: "Senior Fellow (IBSL), FCPM, MA (Fin Econ), MBA", category: "Governance & Control", bio: "Enforcing AML/CFT regulations, CBSL compliance guidelines, and corporate ethics." },
+  { name: "Mr. Binesh Aravinda", designation: "Head of Branch Banking", qualifications: "MBA, BSc Business Administration, Moody's Business Banking Mastery", category: "Business & Operations", bio: "Directing branch operations, deposit mobilization, and regional distribution channels." },
+  { name: "Ms. Amila Belpamulla", designation: "Company Secretary", qualifications: "Attorney-at-Law, Company Secretary, BA & MA in International Relations", category: "Governance & Control", bio: "Managing Board governance, share registration, and Colombo Stock Exchange disclosures." },
+  { name: "Mr. Lasantha Edirisuriya", designation: "Head of Cooperative Development", qualifications: "Dip. in Fin. & Bank Mgt., Exe. Dev. Mini MBA, Harvard Cert in Entrepreneurship", category: "Business & Operations", bio: "Fostering strategic partnerships with primary SANASA cooperative unions nationwide." }
 ];
 
 export const CAPITALS_DATA: CapitalImpact[] = [

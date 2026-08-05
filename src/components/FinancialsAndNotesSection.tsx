@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { 
   INCOME_STATEMENT_ROWS, BALANCE_SHEET_ROWS, CASH_FLOW_ROWS, CHANGES_IN_EQUITY_ROWS, 
-  NOTES_TO_FINANCIALS, NoteDetail, FinancialRow 
+  NOTES_TO_FINANCIALS, SUPPLEMENTARY_INFO, NoteDetail, FinancialRow 
 } from "../data/financialsAndNotes";
 import { useBranding } from "./BrandingContext";
 import { useAuth } from "./AuthContext";
@@ -801,6 +801,118 @@ export default function FinancialsAndNotesSection() {
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Section 3: Supplementary Information & Statistical Schedules */}
+      <div id="supplementary-information" className="glass-card rounded-3xl p-6 md:p-8 shadow-lg text-left space-y-8">
+        <div className="border-b border-sdb-purple/15 pb-4">
+          <div className="flex items-center space-x-2.5">
+            <FileSpreadsheet className="w-5 h-5 text-sdb-purple" />
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-sdb-purple">
+              Supplementary Information & Statistical Schedules
+            </h3>
+          </div>
+          <p className="text-slate-600 text-xs md:text-sm mt-1">
+            Historical ten-year trends, top shareholders analysis, and value creation distribution statement for SANASA Development Bank PLC.
+          </p>
+        </div>
+
+        {/* 10-Year Financial Summary */}
+        <div className="space-y-3">
+          <h4 className="font-serif font-bold text-lg text-sdb-purple flex items-center space-x-2">
+            <span>10-Year Financial Summary (2016 – 2025)</span>
+            <span className="text-[10px] font-mono bg-sdb-purple/10 text-sdb-purple px-2 py-0.5 rounded font-normal">LKR Mn</span>
+          </h4>
+          <div className="overflow-x-auto border border-sdb-purple/10 rounded-2xl bg-white">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="bg-sdb-purple/5 text-sdb-purple font-mono uppercase text-[10px] tracking-wider border-b border-sdb-purple/10">
+                  <th className="py-3 px-3 font-semibold">Year</th>
+                  <th className="py-3 px-3 font-semibold text-right">Gross Income</th>
+                  <th className="py-3 px-3 font-semibold text-right">NII</th>
+                  <th className="py-3 px-3 font-semibold text-right">PBT</th>
+                  <th className="py-3 px-3 font-semibold text-right">PAT</th>
+                  <th className="py-3 px-3 font-semibold text-right">Total Assets</th>
+                  <th className="py-3 px-3 font-semibold text-right">Deposits</th>
+                  <th className="py-3 px-3 font-semibold text-right">Gross Loans</th>
+                  <th className="py-3 px-3 font-semibold text-right">CAR (%)</th>
+                  <th className="py-3 px-3 font-semibold text-right">NPL (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SUPPLEMENTARY_INFO.tenYearSummary.map((row, i) => (
+                  <tr key={i} className={`border-b border-slate-100 last:border-0 hover:bg-sdb-purple/5 transition-colors ${i === 0 ? "font-bold bg-sdb-cream/40 text-sdb-purple" : "text-slate-700"}`}>
+                    <td className="py-2.5 px-3 font-mono font-semibold">{row.year}</td>
+                    <td className="py-2.5 px-3 text-right">{row.grossIncome.toLocaleString()}</td>
+                    <td className="py-2.5 px-3 text-right">{row.nii.toLocaleString()}</td>
+                    <td className="py-2.5 px-3 text-right">{row.pbt.toLocaleString()}</td>
+                    <td className="py-2.5 px-3 text-right font-semibold text-sdb-purple">{row.pat.toLocaleString()}</td>
+                    <td className="py-2.5 px-3 text-right">{row.totalAssets.toLocaleString()}</td>
+                    <td className="py-2.5 px-3 text-right">{row.customerDeposits.toLocaleString()}</td>
+                    <td className="py-2.5 px-3 text-right">{row.grossLoans.toLocaleString()}</td>
+                    <td className="py-2.5 px-3 text-right text-sdb-green font-mono">{row.car}</td>
+                    <td className="py-2.5 px-3 text-right text-sdb-coral font-mono">{row.nplRatio}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Grid: Top Shareholders & Value Added Statement */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Top Shareholders */}
+          <div className="space-y-3">
+            <h4 className="font-serif font-bold text-lg text-sdb-purple">Top Shareholders Distribution</h4>
+            <div className="overflow-x-auto border border-sdb-purple/10 rounded-2xl bg-white">
+              <table className="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr className="bg-sdb-purple/5 text-sdb-purple font-mono uppercase text-[10px] tracking-wider border-b border-sdb-purple/10">
+                    <th className="py-3 px-3 font-semibold w-10">#</th>
+                    <th className="py-3 px-3 font-semibold">Shareholder Name</th>
+                    <th className="py-3 px-3 font-semibold text-right">Shares</th>
+                    <th className="py-3 px-3 font-semibold text-right">%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SUPPLEMENTARY_INFO.topShareholders.map((sh, i) => (
+                    <tr key={i} className="border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors text-slate-700">
+                      <td className="py-2.5 px-3 font-mono font-semibold text-slate-400">{sh.rank}</td>
+                      <td className="py-2.5 px-3 font-medium text-sdb-purple">{sh.name}</td>
+                      <td className="py-2.5 px-3 text-right font-mono">{sh.shares.toLocaleString()}</td>
+                      <td className="py-2.5 px-3 text-right font-bold text-sdb-coral font-mono">{sh.percentage}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Value Added Statement */}
+          <div className="space-y-3">
+            <h4 className="font-serif font-bold text-lg text-sdb-purple">Value Added Statement 2025</h4>
+            <div className="overflow-x-auto border border-sdb-purple/10 rounded-2xl bg-white">
+              <table className="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr className="bg-sdb-purple/5 text-sdb-purple font-mono uppercase text-[10px] tracking-wider border-b border-sdb-purple/10">
+                    <th className="py-3 px-4 font-semibold">Distribution Channel</th>
+                    <th className="py-3 px-4 font-semibold text-right">Amount (LKR Mn)</th>
+                    <th className="py-3 px-4 font-semibold text-right">% Share</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SUPPLEMENTARY_INFO.valueAddedStatement.map((item, i) => (
+                    <tr key={i} className={`border-b border-slate-100 last:border-0 transition-colors ${i === 2 ? "font-bold bg-sdb-purple/5 text-sdb-purple" : "text-slate-700"}`}>
+                      <td className="py-2.5 px-4 font-medium">{item.category}</td>
+                      <td className="py-2.5 px-4 text-right font-mono font-semibold">{item.amount.toLocaleString()}</td>
+                      <td className="py-2.5 px-4 text-right font-mono text-sdb-purple font-bold">{item.percentage}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </section>
