@@ -4,13 +4,18 @@
   "logoColor": "#2B80C5",
   "logoTextColorBank": "#4D4D4F",
   "headOfficeImage": "/src/assets/images/sdb_head_office_1783367607149.jpg",
-  "cooperativeFarmingImage": "/src/assets/images/cooperative_farming_1783367621583.jpg",
-  "digitalBankingImage": "/src/assets/images/digital_banking_1783367635268.jpg",
-  "boardroomLeadershipImage": "/src/assets/images/boardroom_leadership_1783367647402.jpg",
+  "cooperativeFarmingImage": "/src/assets/annual_report_images/leadership/page_43_image_0.png",
+  "digitalBankingImage": "/src/assets/annual_report_images/highlights/page_12_screenshot.png",
+  "boardroomLeadershipImage": "/src/assets/annual_report_images/board/page_52_image_0.png",
   "logoImage": "/uploads/1783596238655_sdb_logo.svg",
-  "coverImage": "",
-  "chairpersonImage": "",
-  "ceoImage": "",
-  "boardImages": {},
+  "coverImage": "/src/assets/annual_report_images/theme/page_1_image_0.png",
+  "chairpersonImage": "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+  "ceoImage": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+  "boardImages": {
+    "01": "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+    "02": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+    "group1": "/src/assets/annual_report_images/board/page_52_image_0.png",
+    "group2": "/src/assets/annual_report_images/board/page_53_image_1.png"
+  },
   "managementImages": {}
 }

@@ -1,265 +1,391 @@
-import { motion } from "motion/react";
-import { ArrowRight, Sparkles, HeartHandshake } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  ArrowRight, Sparkles, HeartHandshake, TrendingUp, ShieldCheck,
+  FileText, Users, Award, ExternalLink, Download, BookOpen,
+  ChevronRight, X, Play, Compass, Leaf
+} from "lucide-react";
 import SDBLogo from "./SDBLogo";
 import { useBranding } from "./BrandingContext";
+import NavbarShader from "./NavbarShader";
 
 interface ThemeCoverProps {
   onExplore: () => void;
+  onNavigateSection?: (section: any, subtab?: string) => void;
+  onOpenDownloadCentre?: () => void;
+  onOpenSearch?: () => void;
 }
 
-export default function ThemeCover(props: ThemeCoverProps) {
+export default function ThemeCover({
+  onExplore,
+  onNavigateSection,
+  onOpenDownloadCentre,
+  onOpenSearch
+}: ThemeCoverProps) {
   const { branding } = useBranding();
+  const coverImg = branding.coverImage || "/src/assets/annual_report_images/theme/cover_handcrafted.png";
+  const [showThemeModal, setShowThemeModal] = useState(false);
+
+  const handleJump = (sectionId: string, subtab?: string) => {
+    if (onNavigateSection) {
+      onNavigateSection(sectionId, subtab);
+    } else {
+      onExplore();
+    }
+  };
+
+  const FEATURED_SPOTLIGHTS = [
+    {
+      id: "chairperson",
+      section: "leadership",
+      subtab: "chairperson",
+      title: "Message from the Chairperson",
+      subtitle: "Ms. Dinithi Ratnayake",
+      image: "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+      tag: "Leadership Review"
+    },
+    {
+      id: "ceo",
+      section: "leadership",
+      subtab: "ceo",
+      title: "CEO's Strategic Review",
+      subtitle: "Mr. Kapila Ariyaratne",
+      image: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+      tag: "Executive Review"
+    },
+    {
+      id: "strategy",
+      section: "strategy",
+      title: "Strategic Growth Blueprint",
+      subtitle: "Rabo Partnerships & Agri Task Force",
+      image: "/src/assets/annual_report_images/strategy/page_32_image_0.png",
+      tag: "Roadmap 2026–2029"
+    },
+    {
+      id: "sustainability",
+      section: "sustainability",
+      title: "Sustainability & UN SDGs",
+      subtitle: "8 ESG Pillars & European SSCI",
+      image: "/src/assets/annual_report_images/capitals/page_68_image_5.png",
+      tag: "ESG & Community"
+    }
+  ];
 
   return (
-    <div id="theme-cover-container" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-gradient-to-br from-sdb-cream via-sdb-cream to-sdb-cream-dark p-6 md:p-12 text-slate-800">
-      {/* Decorative frosted mesh backdrop blobs */}
-      <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-sdb-coral/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-100px] right-[-100px] w-[600px] h-[600px] bg-sdb-purple/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-sdb-amber/5 rounded-full blur-[100px] pointer-events-none" />
+    <div id="theme-cover-container" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-white text-slate-800 selection:bg-sdb-purple/20">
+      {/* Cinematic Ambient Animated Background Video on Clean Pure White Canvas - Left Aligned */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 flex items-center justify-center lg:justify-start pl-0 lg:pl-8">
+        <video
+          src="/src/assets/annual_report_images/theme/mainvideo.mp4"
+          poster={coverImg}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full lg:w-auto max-h-[115vh] object-contain object-center lg:object-left mix-blend-multiply opacity-90 lg:opacity-100 filter contrast-105"
+        />
+        {/* Soft pure white gradient vignette on the right to ensure crisp text contrast for right column */}
+        <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-white via-white/85 to-transparent lg:w-7/12 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/50 to-transparent pointer-events-none" />
+      </div>
 
-      {/* Header */}
-      <header id="cover-header" className="relative z-10 flex justify-between items-center w-full max-w-7xl mx-auto backdrop-blur-md bg-white/40 border border-sdb-purple/10 rounded-2xl p-4 shadow-sm">
-        <div className="flex flex-col items-start">
-          <SDBLogo className="h-10" />
-          <p className="text-[10px] text-slate-500 tracking-wider font-mono uppercase ml-13 -mt-1">SANASA Development Bank PLC</p>
-        </div>
-        <div className="flex items-center space-x-4">
-          <div className="hidden sm:block text-right">
-            <span className="font-mono text-xs text-sdb-purple tracking-wider font-semibold">Integrated Annual Report 2025</span>
+      {/* Top Header Bar with WebGL Shader Accent Ribbon */}
+      <header className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 pt-6">
+        <div className="relative overflow-hidden flex flex-col sm:flex-row justify-between items-center gap-3.5 backdrop-blur-xl bg-white/80 border border-slate-200/70 rounded-3xl px-6 py-3.5 shadow-[0_4px_30px_rgba(47,27,104,0.05)] transition-all duration-300">
+          {/* WebGL Fluid Shader Top Accent */}
+          <div className="absolute top-0 inset-x-0">
+            <NavbarShader height={2.5} />
+          </div>
+
+          {/* Left Brand Lockup */}
+          <div className="flex items-center space-x-3.5 select-none">
+            <SDBLogo className="h-9 md:h-10 transition-transform duration-300 hover:scale-[1.02]" />
+            <div className="hidden sm:block h-7 w-[1px] bg-gradient-to-b from-transparent via-slate-300 to-transparent mx-0.5" />
+            <div className="hidden sm:flex flex-col text-left">
+              <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#1A1230] font-sans leading-none">
+                SANASA Development Bank PLC
+              </span>
+              <div className="flex items-center space-x-2 text-[9.5px] text-slate-500 font-medium tracking-wide mt-1">
+                <span>Integrated Annual Report 2025</span>
+                <span className="text-slate-300">&bull;</span>
+                <span className="inline-flex items-center space-x-1 font-mono text-sdb-purple font-semibold bg-sdb-purple/5 px-1.5 py-0.5 rounded border border-sdb-purple/10">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>CSE: SDB.N0000</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Action Tools */}
+          <div className="flex items-center space-x-2 text-xs font-mono">
+            {/* Quick Search trigger */}
+            {onOpenSearch && (
+              <button
+                onClick={onOpenSearch}
+                className="hidden md:inline-flex items-center space-x-2 bg-slate-100/90 hover:bg-slate-200/80 text-slate-700 px-3.5 py-1.5 rounded-full border border-slate-200 transition-all cursor-pointer shadow-2xs font-sans group"
+                title="Search the Report (Ctrl+K)"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-sdb-purple group-hover:rotate-12 transition-transform" />
+                <span className="font-medium text-xs">Search</span>
+                <kbd className="text-[9.5px] font-mono bg-white px-1.5 py-0.5 rounded border border-slate-300 text-slate-500">
+                  Ctrl+K
+                </kbd>
+              </button>
+            )}
+
+            {/* Explore Report CTA */}
+            <button
+              onClick={onExplore}
+              className="inline-flex items-center space-x-1.5 text-sdb-purple hover:text-sdb-purple-dark bg-sdb-purple/5 hover:bg-sdb-purple/10 border border-sdb-purple/20 px-3.5 py-1.5 rounded-full cursor-pointer transition-all font-sans font-bold shadow-2xs text-xs"
+            >
+              <span>Explore Report</span>
+              <ChevronRight className="w-3.5 h-3.5 text-sdb-coral" />
+            </button>
+
+            {/* Download Full PDF CTA */}
+            <button
+              onClick={() => onOpenDownloadCentre ? onOpenDownloadCentre() : window.open("https://cdn.cse.lk/cmt/upload_report_file/1182_1777891461840.pdf", "_blank")}
+              className="inline-flex items-center space-x-1.5 bg-gradient-to-r from-sdb-purple via-[#3D237A] to-sdb-purple hover:brightness-110 text-white border border-white/15 px-4 py-1.5 rounded-full cursor-pointer shadow-md shadow-sdb-purple/20 font-sans font-bold text-xs transition-all active:scale-95"
+            >
+              <Download className="w-3.5 h-3.5 text-sdb-coral" />
+              <span>Full PDF (328 Pages)</span>
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Hero Content */}
-      <main id="cover-main" className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto py-8">
-        {/* Left column: Typography and Text */}
-        <div className="lg:col-span-6 flex flex-col items-start space-y-6 text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center space-x-2 bg-sdb-purple/10 border border-sdb-purple/10 text-sdb-purple px-3 py-1 rounded-full text-xs font-medium font-mono backdrop-blur-md"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Integrated Annual Report 2025</span>
-          </motion.div>
+      {/* Main Hero Showcase */}
+      <main className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-8 md:py-12 flex-1 flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Column on Desktop: Open Showcase for Background Animated Artwork on Left */}
+          <div className="lg:col-span-5 hidden lg:block min-h-[460px] pointer-events-none order-2 lg:order-1" />
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-4"
-          >
-            <h1 className="font-serif text-5xl md:text-7xl font-light text-sdb-purple tracking-tight leading-none">
-              A Future <br />
-              <span className="font-bold italic relative text-transparent bg-clip-text bg-gradient-to-r from-sdb-coral to-sdb-purple">
-                Handcrafted
-              </span>
-            </h1>
-            <p className="font-serif text-2xl text-sdb-plum/80 leading-relaxed italic max-w-lg">
-              "Some futures are not built by chance. They are shaped with intention, refined with patience, and nurtured with unwavering belief."
-            </p>
-          </motion.div>
+          {/* Right Column on Desktop: Minimal Editorial Typography & Actions */}
+          <div className="lg:col-span-7 space-y-6 text-left lg:pl-6 order-1 lg:order-2">
 
-          <motion.p
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-gray-600 leading-relaxed max-w-md text-sm md:text-base"
-          >
-            In 2025, Sanasa Development Bank PLC proved that its strength lies in the lives it uplifts. Supporting micro, small, and medium enterprises (MSMEs), agriculture, and women-led innovations isn't just a strategy—it is a responsibility embedded in our DNA.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="pt-4"
-          >
-            <button
-              onClick={props.onExplore}
-              className="inline-flex items-center space-x-3 bg-sdb-purple hover:bg-sdb-plum text-white font-bold px-8 py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group cursor-pointer"
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="space-y-3"
             >
-              <span>Explore Annual Report</span>
-              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-            </button>
-          </motion.div>
+              <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-tight text-[#1A1230] leading-[1.05]">
+                A FUTURE <br />
+                <span className="text-gradient-purple-coral italic font-light">HANDCRAFTED</span>
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base max-w-xl font-sans leading-relaxed pt-1">
+                Weaving together co-operative heritage, grassroots craftsmanship, resilient rural communities, and modern digital banking to shape enduring national prosperity.
+              </p>
+            </motion.div>
+
+            {/* "Explore the Theme" Expandable Capsule (Inspired by ComBank) */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="pt-1"
+            >
+              <div className="relative inline-block">
+                <button
+                  onClick={() => setShowThemeModal(true)}
+                  className="inline-flex items-center space-x-2.5 bg-white/90 hover:bg-white text-sdb-purple px-5 py-2.5 rounded-full border border-sdb-purple/20 shadow-xs hover:shadow-md transition-all group cursor-pointer text-xs font-bold"
+                >
+                  <BookOpen className="w-4 h-4 text-sdb-coral" />
+                  <span>Explore the Theme Philosophy</span>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Primary Action Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-wrap items-center gap-3 pt-2"
+            >
+              <button
+                onClick={onExplore}
+                className="inline-flex items-center space-x-3 bg-sdb-purple hover:bg-sdb-purple-dark text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg shadow-sdb-purple/20 hover:shadow-xl transition-all group cursor-pointer text-sm"
+              >
+                <span>Enter Interactive Report</span>
+                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                onClick={() => onOpenSearch && onOpenSearch()}
+                className="inline-flex items-center space-x-2 bg-white hover:bg-slate-50 text-slate-700 font-semibold px-5 py-3.5 rounded-2xl border border-slate-200 shadow-2xs hover:shadow-xs transition-all cursor-pointer text-sm"
+              >
+                <span>Search 21 Chapters</span>
+                <kbd className="text-[10px] font-mono bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded text-slate-400">Ctrl+K</kbd>
+              </button>
+            </motion.div>
+
+            {/* Audited KPI Floating Ticker */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-4 w-full max-w-2xl"
+            >
+              <div className="flex flex-col justify-between bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-3 sm:p-3.5 text-left shadow-2xs hover:shadow-xs transition-shadow min-h-[105px]">
+                <span className="text-[10px] sm:text-[10.5px] font-bold text-slate-500 font-mono uppercase tracking-wider block truncate">Gross Income</span>
+                <span className="text-[15px] sm:text-base md:text-[17px] font-black font-mono tracking-tight text-[#1A1230] whitespace-nowrap block my-1">LKR 18.40 B</span>
+                <span className="text-[10px] sm:text-[10.5px] font-semibold text-slate-500 font-mono block mt-auto pt-0.5 whitespace-nowrap">Audited 2025</span>
+              </div>
+
+              <div className="flex flex-col justify-between bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-3 sm:p-3.5 text-left shadow-2xs hover:shadow-xs transition-shadow min-h-[105px]">
+                <span className="text-[10px] sm:text-[10.5px] font-bold text-slate-500 font-mono uppercase tracking-wider block truncate">Profit Before Tax</span>
+                <span className="text-[15px] sm:text-base md:text-[17px] font-black font-mono tracking-tight text-[#1A1230] whitespace-nowrap block my-1">LKR 800.17 M</span>
+                <span className="text-[10px] sm:text-[10.5px] font-bold text-emerald-600 font-mono block mt-auto pt-0.5 whitespace-nowrap">+16.94% YoY</span>
+              </div>
+
+              <div className="flex flex-col justify-between bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-3 sm:p-3.5 text-left shadow-2xs hover:shadow-xs transition-shadow min-h-[105px]">
+                <span className="text-[10px] sm:text-[10.5px] font-bold text-slate-500 font-mono uppercase tracking-wider block truncate">Net Advances</span>
+                <span className="text-[15px] sm:text-base md:text-[17px] font-black font-mono tracking-tight text-[#1A1230] whitespace-nowrap block my-1">LKR 109.84 B</span>
+                <span className="text-[10px] sm:text-[10.5px] font-bold text-emerald-600 font-mono block mt-auto pt-0.5 whitespace-nowrap">+15.46% Surge</span>
+              </div>
+
+              <div className="flex flex-col justify-between bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-3 sm:p-3.5 text-left shadow-2xs hover:shadow-xs transition-shadow min-h-[105px]">
+                <span className="text-[10px] sm:text-[10.5px] font-bold text-slate-500 font-mono uppercase tracking-wider block truncate">Capital (CAR)</span>
+                <span className="text-[15px] sm:text-base md:text-[17px] font-black font-mono tracking-tight text-[#1A1230] whitespace-nowrap block my-1">15.24%</span>
+                <span className="text-[10px] sm:text-[10.5px] font-bold text-sdb-coral font-mono block mt-auto pt-0.5 whitespace-nowrap">vs 12.5% CBSL</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Right column: Beautiful handcrafted interactive DNA Helix / Knitting animation or Custom Image */}
-        <div className="lg:col-span-6 flex justify-center items-center relative min-h-[350px] md:min-h-[500px]">
-          {/* Conceptual background glow matching cover page colors */}
-          <div className="absolute inset-0 flex justify-center items-center">
-            <div className="w-72 h-72 rounded-full bg-sdb-purple/10 blur-2xl animate-pulse" />
+        {/* Bottom Row: 4 Featured Spotlight Cards (Inspired by ComBank Bottom Video Cards) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-12 pt-8 border-t border-slate-200/80"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-2">
+              <Sparkles className="w-3.5 h-3.5 text-sdb-coral" />
+              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600">
+                Executive Reviews &amp; Strategic Highlights
+              </h3>
+            </div>
+            <button
+              onClick={onExplore}
+              className="text-xs font-bold text-sdb-purple hover:underline cursor-pointer flex items-center space-x-1"
+            >
+              <span>View Table of Contents</span>
+              <ArrowRight className="w-3 h-3" />
+            </button>
           </div>
 
-          {branding.coverImage ? (
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-full max-w-[450px] aspect-[3/4] flex items-center justify-center rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white/50 p-2 backdrop-blur-sm group"
-            >
-              <img
-                src={branding.coverImage}
-                alt="A Future Handcrafted - Knitting DNA"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover rounded-2xl transition-all duration-700 group-hover:scale-105"
-              />
-              {/* Overlay decorative elements mimicking the handcrafted theme */}
-              <div className="absolute inset-0 border border-sdb-purple/10 rounded-3xl pointer-events-none" />
-              <div className="absolute inset-2 border-2 border-dashed border-sdb-purple/5 rounded-2xl pointer-events-none" />
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative w-full max-w-[400px] aspect-square flex items-center justify-center"
-            >
-              {/* SVG Interactive Drawing of Hands Knitting the DNA Spiral */}
-              <svg viewBox="0 0 400 500" className="w-full h-full max-h-[500px]">
-                {/* Glowing core */}
-                <defs>
-                  <linearGradient id="helix-glow" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#2F1B68" />
-                    <stop offset="35%" stopColor="#E8456C" />
-                    <stop offset="70%" stopColor="#E2861F" />
-                    <stop offset="100%" stopColor="#248D4D" />
-                  </linearGradient>
-                  <filter id="shadow">
-                    <feDropShadow dx="2" dy="2" stdDeviation="4" floodOpacity="0.15" />
-                  </filter>
-                </defs>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {FEATURED_SPOTLIGHTS.map((card) => (
+              <div
+                key={card.id}
+                onClick={() => handleJump(card.section, card.subtab)}
+                className="bg-white/85 hover:bg-white rounded-2xl p-3.5 border border-slate-200/80 hover:border-sdb-purple/30 shadow-2xs hover:shadow-md transition-all cursor-pointer group flex items-center space-x-3.5"
+              >
+                <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+                </div>
 
-                {/* Handcrafted Knitting Needles (Background Layer) */}
-                <g filter="url(#shadow)">
-                  {/* Needle 1 */}
-                  <line x1="80" y1="60" x2="220" y2="140" stroke="#8C6239" strokeWidth="6" strokeLinecap="round" />
-                  <circle cx="80" cy="60" r="10" fill="#E2861F" />
-                  
-                  {/* Needle 2 */}
-                  <line x1="320" y1="60" x2="180" y2="140" stroke="#8C6239" strokeWidth="6" strokeLinecap="round" />
-                  <circle cx="320" cy="60" r="10" fill="#E8456C" />
-                </g>
-
-                {/* Interactive Knitted DNA strands */}
-                <g filter="url(#shadow)">
-                  {/* Thread strands that wind down to represent the DNA Helix */}
-                  {Array.from({ length: 15 }).map((_, i) => {
-                    const y = 140 + i * 22;
-                    const angle = (i * Math.PI) / 3;
-                    const width = 45;
-                    
-                    // Calculate sine-wave X coordinates representing double helix spiral
-                    const x1 = 200 + Math.sin(angle) * width;
-                    const x2 = 200 - Math.sin(angle) * width;
-                    const zIndex = Math.cos(angle); // to decide which strand overlaps
-                    
-                    const r = 6;
-                    // Theme color based on depth of DNA spiral
-                    let strandColor = "var(--color-sdb-purple)";
-                    if (i % 5 === 0) strandColor = "var(--color-sdb-coral)";
-                    else if (i % 5 === 1) strandColor = "var(--color-sdb-amber)";
-                    else if (i % 5 === 2) strandColor = "var(--color-sdb-green)";
-                    else if (i % 5 === 3) strandColor = "var(--color-sdb-blue)";
-                    else strandColor = "var(--color-sdb-plum)";
-
-                    return (
-                      <g key={i}>
-                        {/* Connecting Base Pair bridges (DNA links) */}
-                        <motion.line
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          animate={{ pathLength: 1, opacity: 0.6 }}
-                          transition={{ delay: 0.5 + i * 0.05, duration: 0.8 }}
-                          x1={x1}
-                          y1={y}
-                          x2={x2}
-                          y2={y}
-                          stroke={strandColor}
-                          strokeWidth="3"
-                          strokeDasharray="2,2"
-                        />
-
-                        {/* Strand Point 1 (Front/Back depending on zIndex) */}
-                        <motion.circle
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: i * 0.05, type: "spring", stiffness: 100 }}
-                          cx={x1}
-                          cy={y}
-                          r={r}
-                          fill={zIndex >= 0 ? strandColor : "#CBD5E1"}
-                          className="cursor-pointer hover:r-8 transition-all"
-                        />
-
-                        {/* Strand Point 2 */}
-                        <motion.circle
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: i * 0.05 + 0.02, type: "spring", stiffness: 100 }}
-                          cx={x2}
-                          cy={y}
-                          r={r}
-                          fill={zIndex < 0 ? strandColor : "#94A3B8"}
-                          className="cursor-pointer hover:r-8 transition-all"
-                        />
-
-                        {/* Wool texture lines wrapping around points (Stylized Knitting effect) */}
-                        {zIndex >= 0 && (
-                          <path
-                            d={`M ${x1 - 10} ${y - 8} Q ${x1} ${y + 10} ${x1 + 10} ${y - 8}`}
-                            fill="none"
-                            stroke={strandColor}
-                            strokeWidth="1.5"
-                            opacity="0.8"
-                          />
-                        )}
-                      </g>
-                    );
-                  })}
-                </g>
-
-                {/* Handcrafted organic vines and flower buds growing along the DNA */}
-                <g opacity="0.8">
-                  {/* Decorative leaves */}
-                  <path d="M 230 180 Q 250 170 245 190 Z" fill="var(--color-sdb-green)" />
-                  <path d="M 160 220 Q 140 215 150 230 Z" fill="var(--color-sdb-green)" />
-                  <path d="M 240 280 Q 255 295 235 295 Z" fill="var(--color-sdb-green)" />
-                  <path d="M 155 360 Q 140 375 160 380 Z" fill="var(--color-sdb-green)" />
-                  
-                  {/* Micro flower buds */}
-                  <circle cx="245" cy="190" r="4" fill="var(--color-sdb-coral)" />
-                  <circle cx="140" cy="215" r="4" fill="var(--color-sdb-amber)" />
-                  <circle cx="255" cy="295" r="4" fill="var(--color-sdb-blue)" />
-                </g>
-
-                {/* Sri Lanka Map silhouette outline subtly floating at the bottom */}
-                <motion.path
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.15 }}
-                  transition={{ delay: 1, duration: 2 }}
-                  d="M200,320 C180,340 185,380 180,400 C175,410 180,430 190,440 C195,445 205,445 210,430 C215,420 225,410 225,390 C225,370 215,350 210,340 Z"
-                  fill="none"
-                  stroke="url(#helix-glow)"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className="animate-pulse"
-                />
-              </svg>
-            </motion.div>
-          )}
-        </div>
+                <div className="flex-1 min-w-0">
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-sdb-coral block">
+                    {card.tag}
+                  </span>
+                  <h4 className="text-xs font-bold text-slate-900 group-hover:text-sdb-purple transition-colors truncate">
+                    {card.title}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 truncate mt-0.5">
+                    {card.subtitle}
+                  </p>
+                  <span className="inline-flex items-center space-x-1 text-[10px] font-bold text-sdb-purple group-hover:text-sdb-coral transition-colors mt-1">
+                    <span>Read Section</span>
+                    <ArrowRight className="w-2.5 h-2.5 transform group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </main>
 
       {/* Footer */}
-      <footer id="cover-footer" className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 border-t border-sdb-purple/10 pt-6">
-        <p className="flex items-center space-x-1">
-          <HeartHandshake className="w-3.5 h-3.5 text-sdb-coral" />
-          <span>Crafting Sri Lanka's grassroots prosperity, one household at a time.</span>
+      <footer className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-4 text-xs text-slate-500 border-t border-slate-200/60 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <p className="flex items-center space-x-1.5">
+          <HeartHandshake className="w-4 h-4 text-sdb-coral" />
+          <span>SANASA Development Bank PLC &bull; Co-operative Banking on Values</span>
         </p>
-        <p className="mt-2 md:mt-0 font-mono text-[10px]">© 2025 SANASA Development Bank PLC. All rights reserved.</p>
+        <p className="font-mono text-[10px] text-slate-400">
+          Integrated Annual Report 2025 &bull; Colombo Stock Exchange (CSE: SDB.N0000)
+        </p>
       </footer>
+
+      {/* "Explore the Theme" Glass Reveal Modal (Inspired by ComBank) */}
+      <AnimatePresence>
+        {showThemeModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden"
+            >
+              <div className="p-6 bg-gradient-to-r from-[#1A1230] to-[#2F1B68] text-white flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 bg-white/10 rounded-xl">
+                    <Sparkles className="w-5 h-5 text-sdb-coral" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold font-serif">A Future Handcrafted</h3>
+                    <p className="text-xs text-slate-300">The 2025 Annual Report Creative Philosophy &bull; Page 2</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowThemeModal(false)}
+                  className="p-1.5 rounded-full hover:bg-white/10 text-slate-300 hover:text-white cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="p-6 md:p-8 space-y-4 text-slate-700 text-sm md:text-base leading-relaxed font-serif">
+                <p>
+                  As Sri Lanka’s economic fabric rebounds with renewed stability, true progress is not born of chance. It is carefully, deliberately handcrafted by the hands of our people: the rural farmer planting sustenance, the micro-entrepreneur expanding a family trade, the artisan weaving regional craft, and the cooperative society mobilizing thrift and solidarity.
+                </p>
+                <p>
+                  The cover visual combines these hands with a colourful, multi-stranded DNA helix. Each strand represents a vital dimension of SDB Bank’s value creation: our 28-year cooperative heritage, deep provincial roots spanning 94 branches, dedication to food security through 68,900+ agricultural facilities, empowerment of female entrepreneurs, and the digital leap powered by UPay.
+                </p>
+                <p className="text-xs text-slate-500 font-sans italic pt-2 border-t border-slate-100">
+                  Together, we are not merely witnessing the future. We are handcrafting it—one community, one enterprise, and one family at a time.
+                </p>
+              </div>
+
+              <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs font-mono text-slate-500">Official Report Source: Page 2</span>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => {
+                      setShowThemeModal(false);
+                      onExplore();
+                    }}
+                    className="px-4 py-2 bg-sdb-purple hover:bg-sdb-purple-dark text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    Start Exploring Report
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

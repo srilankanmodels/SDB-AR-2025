@@ -12,6 +12,39 @@ const ICON_MAP: Record<string, any> = {
   Leaf: Leaf
 };
 
+const CAPITAL_MEDIA = [
+  {
+    image: "/src/assets/annual_report_images/capitals_sections/page_68_screenshot.png",
+    caption: "Financial Capital Architecture • Page 68 of Annual Report",
+    metricBadge: "LKR 109.8 Bn Net Advances"
+  },
+  {
+    image: "/src/assets/images/sdb_head_office_1783367607149.jpg",
+    caption: "New Kirulapone Head Office & 94 Branch Physical Footprint",
+    metricBadge: "20,000 sq ft Facility"
+  },
+  {
+    image: "/src/assets/annual_report_images/capitals_sections/page_76_screenshot.png",
+    caption: "Intellectual Capital & SDB UPay Digital Banking Platform",
+    metricBadge: "8.5M+ Digital Transactions"
+  },
+  {
+    image: "/src/assets/annual_report_images/capitals_sections/page_80_screenshot.png",
+    caption: "Human Capital & Diverse Banking Cadre Development",
+    metricBadge: "1,263 Total Cadre (48% Female)"
+  },
+  {
+    image: "/src/assets/annual_report_images/capitals/page_88_image_6.png",
+    caption: "Community Social Capital & SANASA Cooperative Network",
+    metricBadge: "3,991 Rural Beneficiaries"
+  },
+  {
+    image: "/src/assets/annual_report_images/capitals/page_88_image_10.png",
+    caption: "Natural Capital Stewardship & Coastal Cleanup CSR Initiative",
+    metricBadge: "LKR 75M Green Energy Financing"
+  }
+];
+
 export default function CapitalsHub() {
   const [selectedCapitalIndex, setSelectedCapitalIndex] = useState<number>(0);
   const [showFullSectionModal, setShowFullSectionModal] = useState<boolean>(false);
@@ -105,6 +138,24 @@ export default function CapitalsHub() {
                   </div>
                   <h3 className="font-serif text-xl font-bold text-sdb-purple">{activeCapital.title}</h3>
                 </div>
+
+                {/* Authentic Report Media Spotlight */}
+                <div className="rounded-2xl overflow-hidden border border-sdb-purple/10 mb-4 relative group shadow-sm bg-slate-50">
+                  <img
+                    src={CAPITAL_MEDIA[selectedCapitalIndex].image}
+                    alt={activeCapital.title}
+                    className="w-full h-44 object-cover object-top group-hover:scale-103 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-sdb-purple/90 via-transparent to-transparent flex flex-col justify-end p-3 text-left">
+                    <span className="text-[10px] font-mono font-bold text-amber-300 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded w-fit mb-1">
+                      {CAPITAL_MEDIA[selectedCapitalIndex].metricBadge}
+                    </span>
+                    <p className="text-[11px] text-white/95 font-sans leading-tight font-medium">
+                      {CAPITAL_MEDIA[selectedCapitalIndex].caption}
+                    </p>
+                  </div>
+                </div>
+
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
                   {activeCapital.summary}
                 </p>

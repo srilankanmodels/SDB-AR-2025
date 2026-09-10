@@ -117,24 +117,54 @@ export default function StrategySection() {
         </div>
       </div>
 
-      {/* Strategic Goals list */}
-      <div id="strategic-goals-container" className="space-y-6 text-left">
-        <h3 className="font-serif text-2xl font-bold text-sdb-purple">Strategic Growth Goals</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {GOALS_DATA.map((goal, idx) => {
-            const GoalIcon = GOAL_ICON_MAP[goal.icon] || TrendingUp;
-            return (
-              <div
-                key={idx}
-                className="glass-card rounded-2xl p-5 flex items-start space-x-4 shadow-md hover:border-sdb-purple/20 transition-all"
-              >
-                <div className="p-2.5 bg-white/40 border border-sdb-purple/10 text-sdb-purple rounded-xl shrink-0">
-                  <GoalIcon className="w-4 h-4" />
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed pt-0.5">{goal.text}</p>
-              </div>
-            );
-          })}
+      {/* Strategic Blueprint & Business Model Publication Spotlights (Pages 30-33) */}
+      <div className="bg-white rounded-3xl p-6 md:p-8 border border-sdb-purple/10 shadow-md text-left space-y-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-sdb-purple/10 pb-4">
+          <div>
+            <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider block">
+              Strategic Frameworks • Annual Report Pages 30–33
+            </span>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-sdb-purple">
+              How We Create Value & Strategic Blueprint
+            </h3>
+          </div>
+          <span className="text-xs font-mono text-sdb-green bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full font-semibold">
+            In Collaboration with Rabo Partnerships
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-3">
+            <span className="font-mono text-xs text-sdb-purple font-bold block">
+              Value Creation Architecture (Page 30)
+            </span>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+              <img
+                src="/src/assets/annual_report_images/strategy/page_30_screenshot.png"
+                alt="SDB Value Creation Model Page 30"
+                className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
+              />
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              How inputs across 6 Capitals flow through governance, risk assessment, and core operations to generate outputs for stakeholders.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <span className="font-mono text-xs text-sdb-purple font-bold block">
+              2026–2029 Strategic Blueprint (Page 32)
+            </span>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+              <img
+                src="/src/assets/annual_report_images/strategy/page_32_screenshot.png"
+                alt="SDB Strategic Blueprint Page 32"
+                className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
+              />
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Designed with Rabo Partnerships to expand agricultural value chains, sustainable MSME lending, and rural digital penetration.
+            </p>
+          </div>
         </div>
       </div>
     </section>

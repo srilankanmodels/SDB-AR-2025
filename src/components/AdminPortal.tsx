@@ -25,24 +25,24 @@ interface AdminPortalProps {
 
 const PRESET_IMAGES = {
   headOffice: [
-    { label: "Original Asset", url: "/src/assets/images/sdb_head_office_1783367607149.jpg" },
-    { label: "Modern Glass Tower", url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" },
-    { label: "Eco Corporate Building", url: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" }
+    { label: "Published Report - About This Report Visual", url: "/src/assets/annual_report_images/highlights/page_12_screenshot.png" },
+    { label: "Capital Showcase - Page 68", url: "/src/assets/annual_report_images/capitals/page_68_image_0.png" },
+    { label: "Original Asset", url: "/src/assets/images/sdb_head_office_1783367607149.jpg" }
   ],
   cooperativeFarming: [
-    { label: "Original Asset", url: "/src/assets/images/cooperative_farming_1783367621583.jpg" },
-    { label: "Sri Lankan Paddy Fields", url: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80" },
-    { label: "Tea Estate Plantation", url: "https://images.unsplash.com/photo-1563201382-1e96f1fc953b?auto=format&fit=crop&w=800&q=80" }
+    { label: "Published Report - Farmer Harvest Artwork", url: "/src/assets/annual_report_images/leadership/page_43_image_0.png" },
+    { label: "Social Capital Fieldwork", url: "/src/assets/annual_report_images/capitals/page_88_image_6.png" },
+    { label: "Original Asset", url: "/src/assets/images/cooperative_farming_1783367621583.jpg" }
   ],
   digitalBanking: [
-    { label: "Original Asset", url: "/src/assets/images/digital_banking_1783367635268.jpg" },
-    { label: "Mobile Touch Payment", url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" },
-    { label: "Secure Digital Banking UI", url: "https://images.unsplash.com/photo-1563013544-824ae1d704d3?auto=format&fit=crop&w=800&q=80" }
+    { label: "Published Report - Financial Highlights Summary", url: "/src/assets/annual_report_images/highlights/page_12_screenshot.png" },
+    { label: "Digital Capital & Branches", url: "/src/assets/annual_report_images/capitals/page_88_image_7.png" },
+    { label: "Original Asset", url: "/src/assets/images/digital_banking_1783367635268.jpg" }
   ],
   boardroomLeadership: [
-    { label: "Original Asset", url: "/src/assets/images/boardroom_leadership_1783367647402.jpg" },
-    { label: "Executive Board Meeting", url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" },
-    { label: "Strategic Leadership Summit", url: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80" }
+    { label: "Published Report - Board Session A", url: "/src/assets/annual_report_images/board/page_52_image_0.png" },
+    { label: "Published Report - Board Session B", url: "/src/assets/annual_report_images/board/page_53_image_1.png" },
+    { label: "Original Asset", url: "/src/assets/images/boardroom_leadership_1783367647402.jpg" }
   ]
 };
 
@@ -52,14 +52,19 @@ const DEFAULT_BRANDING: BrandingConfig = {
   logoColor: "#2B80C5",
   logoTextColorBank: "#4D4D4F",
   headOfficeImage: "/src/assets/images/sdb_head_office_1783367607149.jpg",
-  cooperativeFarmingImage: "/src/assets/images/cooperative_farming_1783367621583.jpg",
-  digitalBankingImage: "/src/assets/images/digital_banking_1783367635268.jpg",
-  boardroomLeadershipImage: "/src/assets/images/boardroom_leadership_1783367647402.jpg",
-  logoImage: "",
-  coverImage: "",
-  chairpersonImage: "",
-  ceoImage: "",
-  boardImages: {},
+  cooperativeFarmingImage: "/src/assets/annual_report_images/leadership/page_43_image_0.png",
+  digitalBankingImage: "/src/assets/annual_report_images/highlights/page_12_screenshot.png",
+  boardroomLeadershipImage: "/src/assets/annual_report_images/board/page_52_image_0.png",
+  logoImage: "/uploads/1783596238655_sdb_logo.svg",
+  coverImage: "/src/assets/annual_report_images/theme/page_1_image_0.png",
+  chairpersonImage: "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+  ceoImage: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+  boardImages: {
+    "01": "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+    "02": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+    "group1": "/src/assets/annual_report_images/board/page_52_image_0.png",
+    "group2": "/src/assets/annual_report_images/board/page_53_image_1.png"
+  },
   managementImages: {}
 };
 

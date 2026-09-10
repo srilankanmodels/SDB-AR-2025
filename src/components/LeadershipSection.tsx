@@ -326,41 +326,58 @@ export default function LeadershipSection() {
               exit={{ opacity: 0 }}
               className="space-y-10"
             >
-              {/* Grand Hero Group Portrait Banner */}
-              <div id="board-group-hero" className="relative w-full h-64 sm:h-80 md:h-[380px] rounded-3xl overflow-hidden shadow-xl border border-sdb-purple/10 group">
-                <img
-                  src={boardroomLeadershipImage}
-                  alt="SDB Board of Directors Group Session"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-                {/* Elegant dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-sdb-purple/95 via-sdb-purple/40 to-transparent flex flex-col justify-end p-6 md:p-8 text-left">
-                  <div className="max-w-3xl space-y-2">
-                    <span className="text-[10px] font-mono font-bold text-sdb-coral bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest inline-block">
-                      Governance & Oversight
+              {/* Dual Grand Boardroom Portraits */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="relative h-80 sm:h-96 rounded-3xl overflow-hidden shadow-xl border border-sdb-purple/10 group">
+                  <img
+                    src="/src/assets/annual_report_images/board/page_52_image_0.png"
+                    alt="SDB Board of Directors (Session A: Ms. Dinithi Ratnayake & Directors)"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-sdb-purple/90 via-sdb-purple/20 to-transparent flex flex-col justify-end p-6 text-left">
+                    <span className="text-[10px] font-mono font-bold text-sdb-coral bg-white/15 backdrop-blur-md px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block w-fit mb-1">
+                      Session A
                     </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
-                      Board of Directors Group Portrait
-                    </h3>
-                    <p className="text-white/80 text-xs sm:text-sm leading-relaxed max-w-2xl font-sans">
-                      A team of corporate leaders, cooperative pioneers, and industry experts committed to stewardship, integrity, and sustainable value creation.
+                    <h4 className="font-serif text-lg sm:text-xl font-bold text-white">
+                      Chairperson Ms. Dinithi Ratnayake & Directors
+                    </h4>
+                    <p className="text-white/80 text-xs font-sans mt-0.5">
+                      Messrs. Prasanna Premaratna, Conrad Dias, Chaaminda Kumarasiri, and Thusantha Wijemanna
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative h-80 sm:h-96 rounded-3xl overflow-hidden shadow-xl border border-sdb-purple/10 group">
+                  <img
+                    src="/src/assets/annual_report_images/board/page_53_image_1.png"
+                    alt="SDB Board of Directors (Session B: Mr. Kapila Ariyaratne & Directors)"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-sdb-purple/90 via-sdb-purple/20 to-transparent flex flex-col justify-end p-6 text-left">
+                    <span className="text-[10px] font-mono font-bold text-sdb-coral bg-white/15 backdrop-blur-md px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block w-fit mb-1">
+                      Session B
+                    </span>
+                    <h4 className="font-serif text-lg sm:text-xl font-bold text-white">
+                      CEO Mr. Kapila Ariyaratne & Directors
+                    </h4>
+                    <p className="text-white/80 text-xs font-sans mt-0.5">
+                      Messrs. Romani De Silva, Sarath Nandasiri, Chandana Dissanayake, and B. R. A. Bandara
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Summary Bar */}
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                <p className="text-xs text-slate-500 text-left">
-                  Our Board composition bridges rich cooperative values with commercial banking expertise to deliver maximum value to all SDB stakeholders.
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-5 rounded-2xl border border-sdb-purple/10 shadow-xs">
+                <p className="text-xs text-slate-600 text-left">
+                  Our Board composition balances cooperative grassroots wisdom with commercial banking leadership to ensure robust governance and stakeholder value.
                 </p>
-                <span className="text-[10px] font-mono text-sdb-purple font-bold uppercase tracking-wider bg-sdb-purple/10 px-2.5 py-1 rounded-md shrink-0">
-                  10 Board Members
+                <span className="text-[10px] font-mono text-sdb-purple font-bold uppercase tracking-wider bg-sdb-purple/10 px-3 py-1.5 rounded-xl shrink-0">
+                  10 Board Members • CBSL Compliant
                 </span>
               </div>
 
-              {/* Individual Directors' Details underneath */}
+              {/* Individual Directors' Details */}
               <div id="board-details-list" className="space-y-6">
                 {BOARD_MEMBERS.map((director) => {
                   const hasImage = !!branding?.boardImages?.[director.id];
@@ -369,15 +386,14 @@ export default function LeadershipSection() {
                   return (
                     <div
                       key={director.id}
-                      className="bg-white border border-sdb-purple/5 hover:border-sdb-purple/15 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col lg:flex-row gap-6 md:gap-8 text-left group relative overflow-hidden"
+                      className="bg-white border border-sdb-purple/10 hover:border-sdb-purple/25 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col lg:flex-row gap-6 md:gap-8 text-left group relative overflow-hidden"
                     >
                       {/* Left Side: Avatar/Portrait and Quick Info */}
                       <div className="lg:w-1/4 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-100 pb-6 lg:pb-0 lg:pr-8 shrink-0 justify-between">
                         <div className="space-y-4 w-full flex flex-col items-center lg:items-start">
-                          {/* Portrait Container */}
                           <div className="relative">
                             {hasImage ? (
-                              <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-sdb-purple/10 shadow-md">
+                              <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-sdb-purple/15 shadow-md">
                                 <img
                                   src={imageUrl}
                                   alt={director.name}
@@ -396,7 +412,6 @@ export default function LeadershipSection() {
                             </div>
                           </div>
 
-                          {/* Director Name and Designation */}
                           <div className="space-y-1 mt-2">
                             <h4 className="font-serif text-lg md:text-xl font-bold text-sdb-purple leading-tight group-hover:text-sdb-coral transition-colors duration-300">
                               {director.name}
@@ -407,18 +422,16 @@ export default function LeadershipSection() {
                           </div>
                         </div>
 
-                        {/* Quick Metadata Badge */}
                         <div className="mt-6 w-full pt-4 border-t border-slate-100/80">
                           <span className="inline-block bg-slate-50 text-[10px] font-mono text-slate-500 px-3 py-1.5 rounded-lg border border-slate-100 font-semibold w-full text-center lg:text-left">
-                            Active Governance
+                            Board Member
                           </span>
                         </div>
                       </div>
 
-                      {/* Right Side: Detailed Biography & Appointed Details */}
+                      {/* Right Side: Detailed Biography & Tenure */}
                       <div className="lg:w-3/4 flex flex-col justify-between space-y-4">
                         <div className="space-y-4">
-                          {/* Appointed Banner */}
                           <div className="bg-sdb-purple/5 border-l-4 border-sdb-purple px-4 py-3 rounded-r-xl">
                             <p className="text-xs font-mono font-bold text-sdb-purple uppercase tracking-wider">
                               Tenure & Board Status
@@ -428,10 +441,9 @@ export default function LeadershipSection() {
                             </p>
                           </div>
 
-                          {/* Biography */}
                           <div className="space-y-2">
                             <p className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
-                              Professional Biography
+                              Professional Profile & Expertise
                             </p>
                             <p className="text-slate-600 text-sm md:text-base leading-relaxed">
                               {director.bio}
@@ -439,9 +451,8 @@ export default function LeadershipSection() {
                           </div>
                         </div>
 
-                        {/* Qualifications or Footer inside card */}
                         <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
-                          <span>SDB bank 2025 Board Profile</span>
+                          <span>SDB bank 2025 Annual Report Profile</span>
                           <span className="flex items-center gap-1 text-sdb-green font-bold">
                             <span className="w-1.5 h-1.5 rounded-full bg-sdb-green" /> CBSL Approved
                           </span>
@@ -460,30 +471,48 @@ export default function LeadershipSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="space-y-6"
+              className="space-y-8"
             >
-              {/* Executive Grid */}
-              <div id="management-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Publication Gallery Feature: Pages 57 & 58 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div className="bg-white rounded-3xl p-4 border border-sdb-purple/10 shadow-md">
+                  <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider block mb-2">
+                    Official Publication • Corporate Management (Part 1)
+                  </span>
+                  <div className="rounded-2xl overflow-hidden border border-slate-100">
+                    <img
+                      src="/src/assets/annual_report_images/management/page_59_screenshot.png"
+                      alt="Corporate Management Page 57"
+                      className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-3xl p-4 border border-sdb-purple/10 shadow-md">
+                  <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider block mb-2">
+                    Official Publication • Corporate Management (Part 2)
+                  </span>
+                  <div className="rounded-2xl overflow-hidden border border-slate-100">
+                    <img
+                      src="/src/assets/annual_report_images/management/page_60_screenshot.png"
+                      alt="Corporate Management Page 58"
+                      className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Executive Grid Cards */}
+              <div id="management-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
                 {EXECUTIVE_MANAGEMENT.map((exec, idx) => (
                   <div
                     key={idx}
-                    className="glass-card rounded-2xl p-5 flex flex-col justify-between hover:border-sdb-purple/20 transition-all text-left shadow-md"
+                    className="glass-card rounded-2xl p-5 flex flex-col justify-between hover:border-sdb-purple/20 transition-all text-left shadow-xs hover:shadow-md"
                   >
                     <div className="space-y-2">
-                      {branding?.managementImages?.[exec.name] ? (
-                        <div className="w-12 h-12 rounded-full overflow-hidden border border-sdb-purple/10 shadow-sm mb-2 shrink-0">
-                          <img
-                            src={branding.managementImages[exec.name]}
-                            alt={exec.name}
-                            referrerPolicy="no-referrer"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-8 h-8 rounded-full bg-sdb-purple/5 border border-sdb-purple/10 text-sdb-purple flex items-center justify-center">
-                          <UserCheck className="w-4 h-4" />
-                        </div>
-                      )}
+                      <div className="w-9 h-9 rounded-full bg-sdb-purple/5 border border-sdb-purple/10 text-sdb-purple flex items-center justify-center">
+                        <UserCheck className="w-4 h-4" />
+                      </div>
                       <div>
                         <h4 className="font-serif font-bold text-sm text-sdb-purple leading-tight">{exec.name}</h4>
                         <p className="text-[11px] text-sdb-coral font-mono uppercase tracking-wider mt-0.5">{exec.designation}</p>

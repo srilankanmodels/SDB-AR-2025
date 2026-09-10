@@ -19,12 +19,12 @@ import { useAuth } from "./AuthContext";
 import { db, handleFirestoreError, OperationType } from "../firebase";
 import { doc, setDoc, deleteDoc, collection, query, where, getDocs } from "firebase/firestore";
 
-// Images generated
+// Images generated & extracted from published annual report
 const IMAGES = {
   headOffice: "/src/assets/images/sdb_head_office_1783367607149.jpg",
-  cooperativeFarming: "/src/assets/images/cooperative_farming_1783367621583.jpg",
-  digitalBanking: "/src/assets/images/digital_banking_1783367635268.jpg",
-  boardroomLeadership: "/src/assets/images/boardroom_leadership_1783367647402.jpg"
+  cooperativeFarming: "/src/assets/annual_report_images/leadership/page_43_image_0.png",
+  digitalBanking: "/src/assets/annual_report_images/capitals/page_88_image_6.png",
+  boardroomLeadership: "/src/assets/annual_report_images/board/page_52_image_0.png"
 };
 
 type StatementType = "income" | "balance" | "cashflow" | "equity";
@@ -495,12 +495,12 @@ export default function FinancialsAndNotesSection() {
           </div>
           
           {/* Statement tabs */}
-          <div className="flex flex-wrap gap-1 bg-sdb-cream-dark/50 p-1 rounded-xl border border-sdb-purple/5">
+          <div className="flex flex-wrap gap-1 bg-sdb-cream-dark/50 p-1.5 rounded-xl border border-sdb-purple/10 shadow-inner">
             {[
-              { id: "income", label: "Profit & Loss" },
-              { id: "balance", label: "Balance Sheet" },
-              { id: "cashflow", label: "Cash Flows" },
-              { id: "equity", label: "Equity Changes" }
+              { id: "income", label: "Statement of Profit or Loss" },
+              { id: "balance", label: "Statement of Financial Position" },
+              { id: "cashflow", label: "Statement of Cash Flows" },
+              { id: "equity", label: "Statement of Changes in Equity" }
             ].map(tab => (
               <button
                 key={tab.id}
@@ -508,10 +508,10 @@ export default function FinancialsAndNotesSection() {
                   setActiveStatementTab(tab.id as StatementType);
                   setStatementSearchHighlight(null);
                 }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-tight transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-tight transition-all cursor-pointer ${
                   activeStatementTab === tab.id
-                    ? "bg-sdb-purple text-white shadow-sm"
-                    : "text-sdb-purple/70 hover:text-sdb-purple hover:bg-sdb-purple/5"
+                    ? "bg-sdb-crimson text-white shadow-md font-bold"
+                    : "text-sdb-purple/80 hover:text-sdb-purple hover:bg-sdb-purple/10"
                 }`}
               >
                 {tab.label}
@@ -526,16 +526,16 @@ export default function FinancialsAndNotesSection() {
         </p>
 
         {/* Statements Table */}
-        <div className="overflow-x-auto border border-sdb-purple/10 rounded-2xl bg-white/60">
+        <div className="overflow-x-auto border border-sdb-purple/15 rounded-2xl bg-white/70 shadow-sm">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-sdb-purple/5 text-[11px] font-mono text-sdb-purple/80 border-b border-sdb-purple/10 uppercase tracking-wider">
-                <th className="py-4.5 px-6 font-semibold w-[45%]">Financial Account / Item</th>
-                <th className="py-4.5 px-4 font-semibold text-right">FY 2025</th>
-                <th className="py-4.5 px-4 font-semibold text-right">FY 2024</th>
-                <th className="py-4.5 px-4 font-semibold text-right">FY 2023</th>
-                <th className="py-4.5 px-4 font-semibold text-right font-light text-slate-500">FY 2022</th>
-                <th className="py-4.5 px-6 font-semibold text-right font-light text-slate-500">FY 2021</th>
+              <tr className="bg-sdb-crimson text-white text-[11px] font-mono uppercase tracking-wider border-b border-sdb-purple/10">
+                <th className="py-4 px-6 font-semibold w-[45%] text-white">Financial Account / Item</th>
+                <th className="py-4 px-4 font-bold text-right text-amber-200">FY 2025 (Audited)</th>
+                <th className="py-4 px-4 font-semibold text-right text-white/95">FY 2024</th>
+                <th className="py-4 px-4 font-semibold text-right text-white/85">FY 2023</th>
+                <th className="py-4 px-4 font-normal text-right text-white/70">FY 2022</th>
+                <th className="py-4 px-6 font-normal text-right text-white/70">FY 2021</th>
               </tr>
             </thead>
             <tbody>
@@ -868,11 +868,11 @@ export default function FinancialsAndNotesSection() {
             <div className="overflow-x-auto border border-sdb-purple/10 rounded-2xl bg-white">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-sdb-purple/5 text-sdb-purple font-mono uppercase text-[10px] tracking-wider border-b border-sdb-purple/10">
-                    <th className="py-3 px-3 font-semibold w-10">#</th>
-                    <th className="py-3 px-3 font-semibold">Shareholder Name</th>
-                    <th className="py-3 px-3 font-semibold text-right">Shares</th>
-                    <th className="py-3 px-3 font-semibold text-right">%</th>
+                  <tr className="bg-sdb-purple text-white font-mono uppercase text-[10px] tracking-wider border-b border-sdb-purple/10">
+                    <th className="py-3 px-3 font-semibold w-10 text-white">#</th>
+                    <th className="py-3 px-3 font-semibold text-white">Shareholder Name</th>
+                    <th className="py-3 px-3 font-semibold text-right text-white">Shares</th>
+                    <th className="py-3 px-3 font-semibold text-right text-amber-200">%</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -895,10 +895,10 @@ export default function FinancialsAndNotesSection() {
             <div className="overflow-x-auto border border-sdb-purple/10 rounded-2xl bg-white">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-sdb-purple/5 text-sdb-purple font-mono uppercase text-[10px] tracking-wider border-b border-sdb-purple/10">
-                    <th className="py-3 px-4 font-semibold">Distribution Channel</th>
-                    <th className="py-3 px-4 font-semibold text-right">Amount (LKR Mn)</th>
-                    <th className="py-3 px-4 font-semibold text-right">% Share</th>
+                  <tr className="bg-sdb-purple text-white font-mono uppercase text-[10px] tracking-wider border-b border-sdb-purple/10">
+                    <th className="py-3 px-4 font-semibold text-white">Distribution Channel</th>
+                    <th className="py-3 px-4 font-semibold text-right text-amber-200">Amount (LKR Mn)</th>
+                    <th className="py-3 px-4 font-semibold text-right text-white">% Share</th>
                   </tr>
                 </thead>
                 <tbody>

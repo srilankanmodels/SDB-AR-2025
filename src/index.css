@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Cinzel", "Playfair Display", "Cormorant Garamond", serif;
   
   --color-sdb-cream: #FAF7F2;
   --color-sdb-cream-dark: #F2EBE0;
@@ -14,11 +15,12 @@
   --color-sdb-amber: #E2861F;
   --color-sdb-green: #248D4D;
   --color-sdb-blue: #0A8AC8;
+  --color-sdb-crimson: #8B1D2C;
 }
 
 @layer base {
   body {
-    background-color: var(--color-sdb-cream);
+    background-color: #FFFFFF;
     color: #1A1230;
     font-family: var(--font-sans);
   }
@@ -75,4 +77,44 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(47, 27, 104, 0.25);
 }
+
+/* Accessibility & Reading Mask Styles */
+.highlight-links a,
+.highlight-links button:not([disabled]) {
+  outline: 2px solid #E2861F !important;
+  outline-offset: 2px !important;
+}
+
+.reading-mask-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.reading-mask-top,
+.reading-mask-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.65);
+  transition: top 0.05s ease-out, height 0.05s ease-out;
+}
+
+.text-zoom-110 {
+  font-size: 1.1rem;
+}
+
+.text-zoom-120 {
+  font-size: 1.2rem;
+}
+
+/* Minimalist Editorial Card styling */
+.editorial-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(47, 27, 104, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(47, 27, 104, 0.04);
+}
+
 

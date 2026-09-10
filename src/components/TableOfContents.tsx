@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { 
   BookOpen, ChevronRight, X, Menu, TrendingUp, Handshake, Calendar, 
   Award, ShieldCheck, FileText, Compass, Sparkles, HelpCircle, 
-  Coins, Home, Brain, Users, Leaf, ArrowRight, Activity
+  Coins, Home, Brain, Users, Leaf, ArrowRight, Activity, Package,
+  Layers, BookMarked, PieChart
 } from "lucide-react";
 import SDBLogo from "./SDBLogo";
 
@@ -30,24 +31,24 @@ const CHAPTERS: ChapterItem[] = [
   {
     id: "overview",
     title: "Financial Progress & Highlights",
-    description: "SDB bank's 5-year financial trajectory and key performance indicators.",
+    description: "SDB bank's 5-year financial trajectory, audited 2025 KPIs, and movement indicators.",
     icon: TrendingUp,
     colorClass: "bg-sdb-coral/10 text-sdb-coral border-sdb-coral/20",
     subsections: [
       { id: "financial-section", title: "Performance Progress Trend", type: "scroll" },
-      { id: "financial-highlights-container", title: "Metric Selection Portal", type: "scroll" },
+      { id: "financial-highlights-container", title: "Audited Metric Selection Portal", type: "scroll" },
       { id: "financial-ratios-container", title: "Key Profitability, Capital & Liquidity Ratios", type: "scroll" }
     ]
   },
   {
     id: "leadership",
     title: "Leadership Messages",
-    description: "Key letters and strategic messages from SDB's leadership.",
+    description: "Strategic reviews from Chairperson, CEO, Board of Directors, and Management.",
     icon: Handshake,
     colorClass: "bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20",
     subsections: [
-      { id: "chairperson", title: "Chairperson's Message", type: "tab", tabValue: "chairperson", icon: Sparkles },
-      { id: "ceo", title: "CEO's Executive Review", type: "tab", tabValue: "ceo", icon: HelpCircle },
+      { id: "chairperson", title: "Chairperson's Message (Dinithi Ratnayake)", type: "tab", tabValue: "chairperson", icon: Sparkles },
+      { id: "ceo", title: "CEO's Executive Review (Kapila Ariyaratne)", type: "tab", tabValue: "ceo", icon: HelpCircle },
       { id: "board", title: "Board of Directors Profile Grid", type: "tab", tabValue: "board", icon: Users },
       { id: "management", title: "Corporate Management Team", type: "tab", tabValue: "management", icon: Handshake }
     ]
@@ -59,13 +60,13 @@ const CHAPTERS: ChapterItem[] = [
     icon: Calendar,
     colorClass: "bg-sdb-amber/10 text-sdb-amber border-sdb-amber/20",
     subsections: [
-      { id: "timeline-section", title: "Interactive Milestone Navigator", type: "scroll" }
+      { id: "timeline-section", title: "Interactive Milestone Navigator (1997–2025)", type: "scroll" }
     ]
   },
   {
     id: "strategy",
     title: "Strategic Roadmap 2026-2029",
-    description: "The sustainable growth blueprint, core pillars, and future targets.",
+    description: "The sustainable growth blueprint, core pillars, Rabo Partnerships, and future targets.",
     icon: Award,
     colorClass: "bg-sdb-green/10 text-sdb-green border-sdb-green/20",
     subsections: [
@@ -77,7 +78,7 @@ const CHAPTERS: ChapterItem[] = [
   {
     id: "capitals",
     title: "Value Creation Capitals",
-    description: "How SDB harnesses its six capitals to co-create value.",
+    description: "How SDB harnesses its six capitals to co-create sustainable value.",
     icon: BookOpen,
     colorClass: "bg-sdb-blue/10 text-sdb-blue border-sdb-blue/20",
     subsections: [
@@ -90,9 +91,49 @@ const CHAPTERS: ChapterItem[] = [
     ]
   },
   {
+    id: "products",
+    title: "Products & Digital Solutions",
+    description: "11 product categories, MSME credit, UPay mobile banking, and green loans.",
+    icon: Package,
+    colorClass: "bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20",
+    subsections: [
+      { id: "products-section", title: "18 Tailored Banking Products & UPay Portal", type: "scroll" }
+    ]
+  },
+  {
+    id: "environment",
+    title: "Operating Environment & Outlook",
+    description: "Macroeconomic review (GDP 5.0%), banking sector, regulatory landscape, and 2026 outlook.",
+    icon: Compass,
+    colorClass: "bg-sdb-amber/10 text-sdb-amber border-sdb-amber/20",
+    subsections: [
+      { id: "operating-env-section", title: "Economic Context & Geopolitical Outlook", type: "scroll" }
+    ]
+  },
+  {
+    id: "stakeholders",
+    title: "Stakeholders & Materiality",
+    description: "9 Stakeholder groups, Power vs Interest quadrant matrix, and 13 material issues.",
+    icon: Users,
+    colorClass: "bg-sdb-coral/10 text-sdb-coral border-sdb-coral/20",
+    subsections: [
+      { id: "stakeholders-section", title: "Stakeholder Engagement & Materiality Matrix", type: "scroll" }
+    ]
+  },
+  {
+    id: "sustainability",
+    title: "Sustainability & UN SDGs",
+    description: "8 Sustainability Pillars, ESRMS, SPM, 10 UN SDGs Tracker, and Consumer Protection Unit.",
+    icon: Leaf,
+    colorClass: "bg-emerald-600/10 text-emerald-700 border-emerald-600/20",
+    subsections: [
+      { id: "sustainability-section", title: "8 Sustainability Pillars & UN SDGs Tracker", type: "scroll" }
+    ]
+  },
+  {
     id: "governance",
     title: "Governance & Enterprise Risk",
-    description: "Our board oversight committees and climate-risk resilience models.",
+    description: "Board oversight committees, risk architecture, and climate resilience models.",
     icon: ShieldCheck,
     colorClass: "bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20",
     subsections: [
@@ -103,7 +144,7 @@ const CHAPTERS: ChapterItem[] = [
   {
     id: "financials",
     title: "Financial Statements & Notes",
-    description: "Audited accounts and explanatory accounting policy disclosures.",
+    description: "Audited financial statements and comprehensive notes to the accounts (Notes 1–52).",
     icon: FileText,
     colorClass: "bg-sdb-coral/10 text-sdb-coral border-sdb-coral/20",
     subsections: [
@@ -111,6 +152,16 @@ const CHAPTERS: ChapterItem[] = [
       { id: "balance", title: "Statement of Financial Position", type: "tab", tabValue: "balance", icon: FileText },
       { id: "cashflow", title: "Statement of Cash Flows", type: "tab", tabValue: "cashflow", icon: FileText },
       { id: "equity", title: "Statement of Changes in Equity", type: "tab", tabValue: "equity", icon: FileText }
+    ]
+  },
+  {
+    id: "supplementary",
+    title: "Supplementary & Reference Guide",
+    description: "Ten Years at a Glance (2016–2025), Basel III Pillar III, Glossary, and 29th AGM Notice.",
+    icon: BookMarked,
+    colorClass: "bg-sdb-blue/10 text-sdb-blue border-sdb-blue/20",
+    subsections: [
+      { id: "supplementary-section", title: "10-Year Record & Regulatory Disclosures", type: "scroll" }
     ]
   }
 ];
@@ -248,19 +299,19 @@ export default function TableOfContents({ activeSection, onNavigate }: TableOfCo
               </div>
 
               {/* Scrollable Navigation List */}
-              <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8 scrollbar-thin">
+              <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 scrollbar-thin">
                 <div className="text-left space-y-1">
-                  <h4 className="font-serif text-xs font-bold text-slate-400 uppercase tracking-widest">Table of Contents</h4>
+                  <h4 className="font-serif text-xs font-bold text-slate-400 uppercase tracking-widest">Table of Contents &bull; 12 Chapters</h4>
                   <p className="text-xs text-slate-500">Select any chapter or subsection to instantly hop to that segment.</p>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {CHAPTERS.map((chapter) => {
                     const ChapterIcon = chapter.icon;
                     const isCurrentActive = activeSection === chapter.id;
 
                     return (
-                      <div key={chapter.id} className="space-y-2 border-b border-slate-50 pb-5 last:border-0 last:pb-0">
+                      <div key={chapter.id} className="space-y-2 border-b border-slate-100 pb-4 last:border-0 last:pb-0">
                         {/* Chapter Row Header */}
                         <button
                           onClick={() => {
@@ -270,7 +321,7 @@ export default function TableOfContents({ activeSection, onNavigate }: TableOfCo
                           }}
                           className={`w-full flex items-start space-x-3.5 p-2 rounded-xl transition-all duration-300 group text-left cursor-pointer ${
                             isCurrentActive 
-                              ? "bg-sdb-purple/5 border border-sdb-purple/10" 
+                              ? "bg-sdb-purple/5 border border-sdb-purple/15" 
                               : "hover:bg-slate-50 border border-transparent"
                           }`}
                         >
@@ -328,8 +379,8 @@ export default function TableOfContents({ activeSection, onNavigate }: TableOfCo
               <div className="p-6 bg-slate-50 border-t border-slate-100 text-left">
                 <div className="flex items-center space-x-2 text-[10px] text-slate-500 font-mono tracking-widest uppercase mb-1">
                   <span>SDB bank</span>
-                  <span>•</span>
-                  <span>Interactive Hub</span>
+                  <span>&bull;</span>
+                  <span>Integrated Annual Report 2025</span>
                 </div>
                 <p className="text-[11px] text-slate-500 leading-relaxed">
                   Navigating the fabric of co-operative progress and grassroots empowerment. Press <kbd className="bg-slate-200 px-1 py-0.5 rounded font-mono text-[10px]">ESC</kbd> to close index overlay.

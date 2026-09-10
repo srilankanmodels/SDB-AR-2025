@@ -120,27 +120,70 @@ export default function TimelineSection() {
         </AnimatePresence>
       </div>
 
-      {/* Grid of quick summary points below the interactive slider */}
-      <div id="timeline-summary-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white/40 border border-sdb-purple/10 rounded-2xl p-4 text-left backdrop-blur-sm shadow-sm">
-          <span className="font-serif text-xs text-sdb-purple uppercase tracking-wider font-semibold block mb-1">Incorporated</span>
-          <span className="font-serif text-2xl font-bold text-sdb-purple block">LKR 123 Mn</span>
-          <span className="text-xs text-slate-500 mt-1 block">Starting capital mostly contributed by primary societies.</span>
+      {/* Archival Report Publication Gallery (Pages 6-8 & 9) */}
+      <div className="bg-white rounded-3xl p-6 md:p-8 border border-sdb-purple/10 shadow-md text-left space-y-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-sdb-purple/10 pb-4">
+          <div>
+            <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider block">
+              Historical Documentation • Annual Report Pages 6–9
+            </span>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-sdb-purple">
+              28 Years of Cooperative & Commercial Banking
+            </h3>
+          </div>
+          <span className="text-xs font-mono text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+            Founded 1997 • Colombo Stock Exchange Listed
+          </span>
         </div>
-        <div className="bg-white/40 border border-sdb-purple/10 rounded-2xl p-4 text-left backdrop-blur-sm shadow-sm">
-          <span className="font-serif text-xs text-sdb-purple uppercase tracking-wider font-semibold block mb-1">Listed CSE</span>
-          <span className="font-serif text-2xl font-bold text-sdb-purple block">May 2012</span>
-          <span className="text-xs text-slate-500 mt-1 block">Successfully listed on the Main Board of the CSE.</span>
-        </div>
-        <div className="bg-white/40 border border-sdb-purple/10 rounded-2xl p-4 text-left backdrop-blur-sm shadow-sm">
-          <span className="font-serif text-xs text-sdb-purple uppercase tracking-wider font-semibold block mb-1">Physical Reach</span>
-          <span className="font-serif text-2xl font-bold text-sdb-purple block">94 Branches</span>
-          <span className="text-xs text-slate-500 mt-1 block">Spanning all 25 districts with 13 dedicated SDB ATMs.</span>
-        </div>
-        <div className="bg-white/40 border border-sdb-purple/10 rounded-2xl p-4 text-left backdrop-blur-sm shadow-sm">
-          <span className="font-serif text-xs text-sdb-purple uppercase tracking-wider font-semibold block mb-1">Profitability Peak</span>
-          <span className="font-serif text-2xl font-bold text-sdb-purple block">LKR 800.17 Mn</span>
-          <span className="text-xs text-slate-500 mt-1 block">Profit before tax achieved in 2025, a 16.93% YoY gain.</span>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="space-y-2">
+            <span className="font-mono text-xs text-sdb-purple font-bold block">
+              1. The Foundation & Rural Roots (Page 6)
+            </span>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+              <img
+                src="/src/assets/annual_report_images/evolution/page_6_screenshot.png"
+                alt="SDB Evolution Page 6"
+                className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
+              />
+            </div>
+            <p className="text-[11px] text-slate-500 leading-snug">
+              Incorporated with LKR 123 Mn capital from primary SANASA societies.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <span className="font-mono text-xs text-sdb-purple font-bold block">
+              2. CSE Listing & Expansion (Page 7)
+            </span>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+              <img
+                src="/src/assets/annual_report_images/evolution/page_7_screenshot.png"
+                alt="SDB Evolution Page 7"
+                className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
+              />
+            </div>
+            <p className="text-[11px] text-slate-500 leading-snug">
+              Listed on CSE Main Board in 2012; assets expanded beyond LKR 66 Bn.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <span className="font-mono text-xs text-sdb-purple font-bold block">
+              3. Awards & Accolades in 2025 (Page 9)
+            </span>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+              <img
+                src="/src/assets/annual_report_images/awards/page_9_screenshot.png"
+                alt="SDB Awards and Accolades Page 9"
+                className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
+              />
+            </div>
+            <p className="text-[11px] text-slate-500 leading-snug">
+              Recognized nationally and internationally for MSME growth and digital innovation.
+            </p>
+          </div>
         </div>
       </div>
     </section>

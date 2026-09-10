@@ -44,7 +44,7 @@ const DEFAULT_BRANDING: BrandingConfig = {
   cooperativeFarmingImage: "/src/assets/images/cooperative_farming_1783367621583.jpg",
   digitalBankingImage: "/src/assets/images/digital_banking_1783367635268.jpg",
   boardroomLeadershipImage: "/src/assets/images/boardroom_leadership_1783367647402.jpg",
-  logoImage: "",
+  logoImage: "/src/assets/images/sdb_logo_transparent.png",
   coverImage: "",
   chairpersonImage: "",
   ceoImage: "",
