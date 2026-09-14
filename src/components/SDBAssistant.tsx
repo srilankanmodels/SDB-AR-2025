@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
 import { supabase, handleSupabaseError, OperationType } from "../supabase";
+import { generateReportAnswer } from "../services/reportAiEngine";
 
 interface ChatMessage {
   id: string;
@@ -196,26 +197,37 @@ export default function SDBAssistant() {
           message: m.message
         }));
 
-      const response = await fetch("/api/chatbot", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: trimmed,
-          history
-        })
-      });
+      let botReply = "";
 
-      let data: any = {};
+      // 1. First attempt to call the backend /api/chatbot endpoint
       try {
-        data = await response.json();
-      } catch (jsonErr) {
-        throw new Error("The SDB AI Assistant server-side endpoint is currently unavailable. This occurs when the application is hosted on static platform environments like Vercel without a Node backend container. To run the full-featured AI Assistant, please ensure you are in the active Node.js development container.");
+        const response = await fetch("/api/chatbot", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: trimmed,
+            history
+          })
+        });
+
+        if (response.ok) {
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const data = await response.json();
+            if (data && data.reply) {
+              botReply = data.reply;
+            }
+          }
+        }
+      } catch (fetchErr) {
+        console.warn("Backend /api/chatbot fetch unavailable, falling back to SDB Report Engine:", fetchErr);
       }
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to communicate with SDB AI assistant.");
+      // 2. If backend response was unavailable or empty, use built-in SDB Report Knowledge Engine
+      if (!botReply) {
+        botReply = generateReportAnswer(trimmed);
       }
 
       const botMsgId = `bot-${Date.now()}`;
@@ -224,7 +236,7 @@ export default function SDBAssistant() {
         {
           id: botMsgId,
           role: "model",
-          message: data.reply,
+          message: botReply,
           timestamp: new Date()
         }
       ];
@@ -233,7 +245,20 @@ export default function SDBAssistant() {
       syncChatToDatabase(finalMsgs);
     } catch (err: any) {
       console.error("Chat error:", err);
-      setErrorText(err.message || "An error occurred. Please verify your internet connection or check if your Gemini API key is configured.");
+      // Fallback reliably to local report intelligence
+      const fallbackReply = generateReportAnswer(trimmed);
+      const botMsgId = `bot-${Date.now()}`;
+      const finalMsgs: ChatMessage[] = [
+        ...updatedMessages,
+        {
+          id: botMsgId,
+          role: "model",
+          message: fallbackReply,
+          timestamp: new Date()
+        }
+      ];
+      setMessages(finalMsgs);
+      syncChatToDatabase(finalMsgs);
     } finally {
       setIsLoading(false);
     }
@@ -273,66 +298,108 @@ export default function SDBAssistant() {
     }
   };
 
-  // Helper to safely render simple markdown elements (bold, bullets, paragraphs, tables)
+  // Helper to safely render simple markdown elements (bold, bullets, paragraphs, tables, headers)
   const formatMarkdown = (text: string) => {
-    // Escape and transform
     const lines = text.split("\n");
     return lines.map((line, idx) => {
-      let content = line;
+      const trimmedLine = line.trim();
 
-      // Handle Bold formatting (**text**)
-      const boldRegex = /\*\*(.*?)\*\*/g;
-      const parts = [];
-      let lastIndex = 0;
-      let match;
+      // Render bold within a text string
+      const renderFormattedText = (str: string) => {
+        const boldRegex = /\*\*(.*?)\*\*/g;
+        const parts = [];
+        let lastIndex = 0;
+        let match;
 
-      while ((match = boldRegex.exec(content)) !== null) {
-        if (match.index > lastIndex) {
-          parts.push(content.substring(lastIndex, match.index));
+        while ((match = boldRegex.exec(str)) !== null) {
+          if (match.index > lastIndex) {
+            parts.push(str.substring(lastIndex, match.index));
+          }
+          parts.push(
+            <strong key={match.index} className="font-bold text-sdb-purple">
+              {match[1]}
+            </strong>
+          );
+          lastIndex = boldRegex.lastIndex;
         }
-        parts.push(
-          <strong key={match.index} className="font-bold text-sdb-purple">
-            {match[1]}
-          </strong>
+        if (lastIndex < str.length) {
+          parts.push(str.substring(lastIndex));
+        }
+        return parts.length > 0 ? parts : str;
+      };
+
+      // Header 3 (### )
+      if (trimmedLine.startsWith("### ")) {
+        return (
+          <h4 key={idx} className="font-bold text-sdb-purple mt-2.5 mb-1 text-xs md:text-sm text-left">
+            {renderFormattedText(trimmedLine.substring(4))}
+          </h4>
         );
-        lastIndex = boldRegex.lastIndex;
-      }
-      
-      if (lastIndex < content.length) {
-        parts.push(content.substring(lastIndex));
       }
 
-      const renderedContent = parts.length > 0 ? parts : content;
+      // Header 4 (#### )
+      if (trimmedLine.startsWith("#### ")) {
+        return (
+          <h5 key={idx} className="font-semibold text-slate-800 mt-2 mb-0.5 text-xs text-left">
+            {renderFormattedText(trimmedLine.substring(5))}
+          </h5>
+        );
+      }
+
+      // Table row (| col1 | col2 |)
+      if (trimmedLine.startsWith("|") && trimmedLine.endsWith("|")) {
+        // Skip separator line e.g. | :--- | :---: |
+        if (trimmedLine.includes("---")) {
+          return null;
+        }
+        const cells = trimmedLine.split("|").map(c => c.trim()).filter(Boolean);
+        return (
+          <div key={idx} className="flex items-center justify-between gap-2 text-[10.5px] py-1 border-b border-slate-100 text-left">
+            <span className="font-semibold text-slate-800 text-left flex-1">
+              {renderFormattedText(cells[0] || "")}
+            </span>
+            {cells.slice(1).map((cell, cIdx) => (
+              <span key={cIdx} className="text-slate-600 font-mono text-right shrink-0">
+                {renderFormattedText(cell)}
+              </span>
+            ))}
+          </div>
+        );
+      }
 
       // Unordered List item
-      if (line.trim().startsWith("- ") || line.trim().startsWith("* ")) {
-        const textOnly = line.trim().substring(2);
+      if (trimmedLine.startsWith("- ") || trimmedLine.startsWith("* ")) {
+        const textOnly = trimmedLine.substring(2);
         return (
           <li key={idx} className="ml-4 list-disc pl-1 py-0.5 text-xs md:text-sm text-slate-700 leading-relaxed text-left">
-            {renderedContent}
+            {renderFormattedText(textOnly)}
           </li>
         );
       }
 
       // Ordered list item
-      const numMatch = line.trim().match(/^(\d+)\.\s(.*)/);
+      const numMatch = trimmedLine.match(/^(\d+)\.\s(.*)/);
       if (numMatch) {
         return (
           <li key={idx} className="ml-4 list-decimal pl-1 py-0.5 text-xs md:text-sm text-slate-700 leading-relaxed text-left">
-            {renderedContent}
+            {renderFormattedText(numMatch[2])}
           </li>
         );
       }
 
       // Handle table separators or horizontal lines
-      if (line.trim() === "---" || line.trim() === "___") {
+      if (trimmedLine === "---" || trimmedLine === "___") {
         return <hr key={idx} className="my-2 border-slate-200" />;
       }
 
-      // Default paragraph (or simple line break)
+      if (trimmedLine === "") {
+        return <div key={idx} className="h-1" />;
+      }
+
+      // Default paragraph
       return (
         <p key={idx} className="text-xs md:text-sm text-slate-700 leading-relaxed text-left min-h-[8px]">
-          {renderedContent}
+          {renderFormattedText(line)}
         </p>
       );
     });

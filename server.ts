@@ -14,6 +14,7 @@ import {
 import { 
   BOARD_MEMBERS, FINANCIAL_TRENDS, TIMELINE_MILESTONES 
 } from "./src/data/reportData";
+import { generateReportAnswer } from "./src/services/reportAiEngine";
 
 // Format context dynamically for Gemini to provide 100% accurate responses
 function getReportContext(): string {
@@ -246,64 +247,73 @@ async function startServer() {
   app.post("/api/chatbot", async (req, res) => {
     try {
       const { message, history } = req.body;
-      if (!message) {
+      if (!message || typeof message !== "string") {
         return res.status(400).json({ error: "Message is required." });
       }
 
-      const ai = getGeminiClient();
-      const reportContext = getReportContext();
+      const apiKey = process.env.GEMINI_API_KEY;
 
-      const systemInstruction = `You are the official SDB Bank AI Chatbot. SDB Bank (SANASA Development Bank PLC) is a licensed specialized bank in Sri Lanka.
+      // If Gemini API Key is configured, attempt model generation
+      if (apiKey && apiKey.trim().length > 0) {
+        try {
+          const ai = getGeminiClient();
+          const reportContext = getReportContext();
+
+          const systemInstruction = `You are the official SDB Bank AI Chatbot. SDB Bank (SANASA Development Bank PLC) is a licensed specialized bank in Sri Lanka.
 Your task is to answer user questions about the SDB Bank Annual Report 2025 based on the official audited financial figures and qualitative disclosures provided in your context.
 
 Guidelines:
 1. Always be professional, helpful, accurate, and objective. Speak clearly.
 2. Rely ONLY on the authentic data provided. Do not invent or make up figures. If a detail is not in the provided financial sheets or notes, state that the specific information is not disclosed in the 2025 Annual Report.
 3. SDB's primary currency is Sri Lankan Rupees (LKR). Financial figures in the statements are expressed in LKR Millions (Mn), unless specified otherwise.
-4. When citing figures, try to mention which statement or Note number it belongs to if applicable (e.g., Note 12 for Property, Plant, & Equipment, Note 14 for Deposits, etc.).
+4. When citing figures, try to mention which statement or Note number it belongs to if applicable.
 5. Keep answers well-structured, using markdown formatting such as tables, lists, and bold text to present numbers clearly.
-6. If the user asks general greetings (e.g., "hi", "hello"), reply cordially and invite them to ask about SDB's 2025 Annual Report.
 
 Here is SDB's 2025 Annual Report knowledge base:
 ${reportContext}`;
 
-      // Convert history to the correct structure for Gemini generateContent
-      // history is an array of { role: 'user' | 'model', message: string }
-      const contents: any[] = [];
-      if (history && Array.isArray(history)) {
-        history.forEach((h: any) => {
-          if (h.role && h.message) {
-            contents.push({
-              role: h.role,
-              parts: [{ text: h.message }]
+          const contents: any[] = [];
+          if (history && Array.isArray(history)) {
+            history.forEach((h: any) => {
+              if (h.role && h.message) {
+                contents.push({
+                  role: h.role === "model" ? "model" : "user",
+                  parts: [{ text: String(h.message) }]
+                });
+              }
             });
           }
-        });
+
+          contents.push({
+            role: "user",
+            parts: [{ text: message }]
+          });
+
+          const response = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents,
+            config: {
+              systemInstruction,
+              temperature: 0.2,
+            }
+          });
+
+          if (response.text) {
+            return res.json({ reply: response.text });
+          }
+        } catch (geminiError: any) {
+          console.warn("[Chatbot] Gemini service error, falling back to local SDB Report Engine:", geminiError?.message || geminiError);
+        }
       }
 
-      // Push current message
-      contents.push({
-        role: "user",
-        parts: [{ text: message }]
-      });
-
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents,
-        config: {
-          systemInstruction,
-          temperature: 0.2, // Low temperature for factual precision
-        }
-      });
-
-      const reply = response.text || "I apologize, but I could not formulate an answer. Could you please rephrase your question?";
-      res.json({ reply });
+      // High-precision audited fallback using SDB Report Intelligence Engine
+      const reply = generateReportAnswer(message);
+      return res.json({ reply });
 
     } catch (error: any) {
       console.error("Chatbot API error:", error);
-      res.status(500).json({ 
-        error: error.message || "An unexpected error occurred while communicating with the AI service." 
-      });
+      const fallbackReply = generateReportAnswer(req.body?.message || "SDB Bank Annual Report 2025");
+      return res.json({ reply: fallbackReply });
     }
   });
 
