@@ -24,6 +24,7 @@ export default function ThemeCover({
 }: ThemeCoverProps) {
   const { branding } = useBranding();
   const coverImg = branding.coverImage || "/src/assets/annual_report_images/theme/cover_handcrafted.png";
+  const coverVideo = branding.coverVideo || "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4";
   const [showThemeModal, setShowThemeModal] = useState(false);
 
   const handleJump = (sectionId: string, subtab?: string) => {
@@ -76,7 +77,7 @@ export default function ThemeCover({
       {/* Cinematic Ambient Animated Background Video on Clean Pure White Canvas - Left Aligned */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 flex items-center justify-center lg:justify-start pl-0 lg:pl-8">
         <video
-          src="/src/assets/annual_report_images/theme/mainvideo.mp4"
+          src={coverVideo}
           poster={coverImg}
           autoPlay
           loop

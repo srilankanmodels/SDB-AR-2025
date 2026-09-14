@@ -42,6 +42,13 @@ const PRESET_IMAGES = {
     { label: "Published Report - Board Session A", url: "/src/assets/annual_report_images/board/page_52_image_0.png" },
     { label: "Published Report - Board Session B", url: "/src/assets/annual_report_images/board/page_53_image_1.png" },
     { label: "Original Asset", url: "/src/assets/images/boardroom_leadership_1783367647402.jpg" }
+  ],
+  coverVideo: [
+    { label: "Supabase Database Storage (mainvideo.mp4)", url: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4" }
+  ],
+  coverImage: [
+    { label: "Published Handcrafted Cover", url: "/src/assets/annual_report_images/theme/cover_handcrafted.png" },
+    { label: "Page 1 Title Artwork", url: "/src/assets/annual_report_images/theme/page_1_image_0.png" }
   ]
 };
 
@@ -55,7 +62,8 @@ const DEFAULT_BRANDING: BrandingConfig = {
   digitalBankingImage: "/src/assets/annual_report_images/highlights/page_12_screenshot.png",
   boardroomLeadershipImage: "/src/assets/annual_report_images/board/page_52_image_0.png",
   logoImage: "/uploads/1783596238655_sdb_logo.svg",
-  coverImage: "/src/assets/annual_report_images/theme/page_1_image_0.png",
+  coverImage: "/src/assets/annual_report_images/theme/cover_handcrafted.png",
+  coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   chairpersonImage: "/src/assets/annual_report_images/leadership/page_44_image_1.png",
   ceoImage: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
   boardImages: {
@@ -313,12 +321,36 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
     };
 
     const uploadFile = async (file: File) => {
-      if (!file.type.startsWith("image/")) {
-        alert("Please select a valid image file.");
+      if (!file.type.startsWith("image/") && !file.type.startsWith("video/")) {
+        alert("Please select a valid image or video file.");
         return;
       }
       setUploading(true);
       try {
+        // Priority 1: Upload directly to Supabase database storage bucket "sdb bank"
+        try {
+          const cleanName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+          const { data: uploadData, error: uploadErr } = await supabase.storage
+            .from("sdb bank")
+            .upload(cleanName, file, {
+              cacheControl: "3600",
+              upsert: true
+            });
+          if (!uploadErr && uploadData) {
+            const { data: { publicUrl } } = supabase.storage
+              .from("sdb bank")
+              .getPublicUrl(cleanName);
+            if (publicUrl) {
+              onUploaded(publicUrl);
+              setUploading(false);
+              return;
+            }
+          }
+        } catch (sbErr) {
+          console.warn("Supabase storage direct upload fallback:", sbErr);
+        }
+
+        // Priority 2: Fallback to Node.js backend upload
         const token = localStorage.getItem("sdb_admin_token");
         const reader = new FileReader();
         reader.onload = async () => {
@@ -932,6 +964,70 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                       ))}
                     </div>
                   </div>
+
+                  {/* Asset 5: Cover Page Video (Database Storage) */}
+                  <div className="space-y-3 p-4 border border-slate-100 bg-slate-50/50 rounded-2xl text-left">
+                    <div className="flex justify-between items-center">
+                      <label className="text-xs font-mono font-bold text-slate-700 uppercase tracking-wide">5. Cover Page Animated Background Video</label>
+                      <span className="text-[10px] font-mono text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Supabase Storage</span>
+                    </div>
+                    <input
+                      type="text"
+                      value={formConfig.coverVideo || ""}
+                      onChange={(e) => updateField("coverVideo", e.target.value)}
+                      placeholder="Paste Supabase storage video URL here"
+                      className="w-full px-3 py-2 border border-slate-200 focus:border-sdb-purple/50 bg-white rounded-xl text-xs focus:outline-none font-mono"
+                    />
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      <span className="text-[10px] text-slate-500 font-mono flex items-center mr-1">Presets:</span>
+                      {PRESET_IMAGES.coverVideo.map((preset, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => updateField("coverVideo", preset.url)}
+                          className={`text-[10px] font-mono px-2 py-1 rounded border transition-all cursor-pointer ${
+                            formConfig.coverVideo === preset.url 
+                              ? "bg-sdb-purple border-sdb-purple text-white shadow-sm" 
+                              : "bg-white border-slate-200 hover:bg-slate-50 text-slate-600"
+                          }`}
+                        >
+                          {preset.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Asset 6: Cover Page Static Poster */}
+                  <div className="space-y-3 p-4 border border-slate-100 bg-slate-50/50 rounded-2xl text-left">
+                    <div className="flex justify-between items-center">
+                      <label className="text-xs font-mono font-bold text-slate-700 uppercase tracking-wide">6. Cover Page Fallback / Poster Image</label>
+                      <span className="text-[10px] font-mono text-slate-400">Used as Video Poster</span>
+                    </div>
+                    <input
+                      type="text"
+                      value={formConfig.coverImage || ""}
+                      onChange={(e) => updateField("coverImage", e.target.value)}
+                      placeholder="Paste picture URL here"
+                      className="w-full px-3 py-2 border border-slate-200 focus:border-sdb-purple/50 bg-white rounded-xl text-xs focus:outline-none font-mono"
+                    />
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      <span className="text-[10px] text-slate-500 font-mono flex items-center mr-1">Presets:</span>
+                      {PRESET_IMAGES.coverImage.map((preset, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => updateField("coverImage", preset.url)}
+                          className={`text-[10px] font-mono px-2 py-1 rounded border transition-all cursor-pointer ${
+                            formConfig.coverImage === preset.url 
+                              ? "bg-sdb-purple border-sdb-purple text-white shadow-sm" 
+                              : "bg-white border-slate-200 hover:bg-slate-50 text-slate-600"
+                          }`}
+                        >
+                          {preset.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </motion.div>
               )}
 
@@ -1162,6 +1258,22 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                     <img src={formConfig.boardroomLeadershipImage} alt="Boardroom Preview" className="w-full h-full object-cover" />
                   </div>
                 </div>
+
+                {formConfig.coverVideo && (
+                  <div className="space-y-1 col-span-2">
+                    <span className="text-[9px] font-mono text-emerald-600 font-bold block truncate">5. Cover Video (Supabase Storage)</span>
+                    <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-black relative">
+                      <video 
+                        src={formConfig.coverVideo} 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline 
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 

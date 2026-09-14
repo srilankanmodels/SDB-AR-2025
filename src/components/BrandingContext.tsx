@@ -17,6 +17,7 @@ export interface BrandingConfig {
   boardroomLeadershipImage: string;
   logoImage?: string;
   coverImage?: string;
+  coverVideo?: string;
   chairpersonImage?: string;
   ceoImage?: string;
   boardImages?: Record<string, string>;
@@ -45,6 +46,7 @@ const DEFAULT_BRANDING: BrandingConfig = {
   boardroomLeadershipImage: "/src/assets/images/boardroom_leadership_1783367647402.jpg",
   logoImage: "/src/assets/images/sdb_logo_transparent.png",
   coverImage: "",
+  coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   chairpersonImage: "",
   ceoImage: "",
   boardImages: {},
