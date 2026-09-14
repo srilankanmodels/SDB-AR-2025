@@ -36,6 +36,7 @@ export const CORPORATE_MANAGEMENT_IMAGE_MAP: Record<string, string> = {
   "Mr. Sanjeeva Jayasinghe": "W A S C S Jayasinghe.png",
   "Mr. Bhanu Wijayaratne": "D V C B Wijayaratne.png",
   "Mr. Binesh Aravinda": "U Aravinda.png",
+  "Ms. Amila Belpamulla": "Ms. Amila Belpamulla.png",
   "Mr. Lasantha Edirisuriya": "E A L S Eidirisuriya.png",
 };
 
@@ -90,6 +91,7 @@ export const ALL_UPLOADED_PERSONNEL_FILES: string[] = [
   "L H C Roshan.png",
   "M H Attanayaka.png",
   "M M Y L Muththunga.png",
+  "Ms. Amila Belpamulla.png",
   "N A R S Kumara.png",
   "N C Pallegama.png",
   "N N Edirisinghe.png",

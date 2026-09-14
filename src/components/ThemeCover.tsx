@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ArrowRight, Sparkles, HeartHandshake, TrendingUp, ShieldCheck,
+  ArrowRight, Search, Sparkles, HeartHandshake, TrendingUp, ShieldCheck,
   FileText, Users, Award, ExternalLink, Download, BookOpen,
   ChevronRight, X, Play, Compass, Leaf
 } from "lucide-react";
@@ -121,7 +121,7 @@ export default function ThemeCover({
                 className="hidden md:inline-flex items-center space-x-2 bg-slate-100/90 hover:bg-slate-200/80 text-slate-700 px-3.5 py-1.5 rounded-full border border-slate-200 transition-all cursor-pointer shadow-2xs font-sans group"
                 title="Search the Report (Ctrl+K)"
               >
-                <Sparkles className="w-3.5 h-3.5 text-sdb-purple group-hover:rotate-12 transition-transform" />
+                <Search className="w-3.5 h-3.5 text-sdb-purple group-hover:scale-110 transition-transform" />
                 <span className="font-medium text-xs">Search</span>
                 <kbd className="text-[9.5px] font-mono bg-white px-1.5 py-0.5 rounded border border-slate-300 text-slate-500">
                   Ctrl+K
@@ -211,8 +211,9 @@ export default function ThemeCover({
 
               <button
                 onClick={() => onOpenSearch && onOpenSearch()}
-                className="inline-flex items-center space-x-2 bg-white hover:bg-slate-50 text-slate-700 font-semibold px-5 py-3.5 rounded-2xl border border-slate-200 shadow-2xs hover:shadow-xs transition-all cursor-pointer text-sm"
+                className="inline-flex items-center space-x-2 bg-white hover:bg-slate-50 text-slate-700 font-semibold px-5 py-3.5 rounded-2xl border border-slate-200 shadow-2xs hover:shadow-xs transition-all cursor-pointer text-sm group"
               >
+                <Search className="w-4 h-4 text-sdb-purple group-hover:scale-110 transition-transform" />
                 <span>Search 21 Chapters</span>
                 <kbd className="text-[10px] font-mono bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded text-slate-400">Ctrl+K</kbd>
               </button>

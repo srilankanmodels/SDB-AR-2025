@@ -716,7 +716,7 @@ export default function LeadershipSection() {
               {/* Executive Grid Cards */}
               <div id="management-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
                 {EXECUTIVE_MANAGEMENT.map((exec, idx) => {
-                  const portraitUrl = branding?.managementImages?.[exec.name] || resolvePersonnelImageUrl(exec.name);
+                  const portraitUrl = exec.imageUrl || branding?.managementImages?.[exec.name] || resolvePersonnelImageUrl(exec.name);
                   return (
                     <div
                       key={idx}

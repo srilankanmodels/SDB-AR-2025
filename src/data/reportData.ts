@@ -341,6 +341,7 @@ export interface ExecutiveMember {
   category?: "Corporate Executive" | "Business & Operations" | "Governance & Control";
   department?: string;
   bio?: string;
+  imageUrl?: string;
 }
 
 export const BOARD_MEMBERS: BoardMember[] = [
@@ -440,7 +441,7 @@ export const EXECUTIVE_MANAGEMENT: ExecutiveMember[] = [
   { name: "Ms. Pavithra Liyanage", designation: "Head of Legal", qualifications: "LLM (Staffordshire), LLB, Attorney-at-Law, Company Secretary", category: "Governance & Control", bio: "Directing corporate legal strategy, contract governance, and litigation management." },
   { name: "Mr. Bhanu Wijayaratne", designation: "Chief Compliance Officer", qualifications: "Senior Fellow (IBSL), FCPM, MA (Fin Econ), MBA", category: "Governance & Control", bio: "Enforcing AML/CFT regulations, CBSL compliance guidelines, and corporate ethics." },
   { name: "Mr. Binesh Aravinda", designation: "Head of Branch Banking", qualifications: "MBA, BSc Business Administration, Moody's Business Banking Mastery", category: "Business & Operations", bio: "Directing branch operations, deposit mobilization, and regional distribution channels." },
-  { name: "Ms. Amila Belpamulla", designation: "Company Secretary", qualifications: "Attorney-at-Law, Company Secretary, BA & MA in International Relations", category: "Governance & Control", bio: "Managing Board governance, share registration, and Colombo Stock Exchange disclosures." },
+  { name: "Ms. Amila Belpamulla", designation: "Company Secretary", qualifications: "Attorney-at-Law, Company Secretary, BA & MA in International Relations", category: "Governance & Control", bio: "Managing Board governance, share registration, and Colombo Stock Exchange disclosures.", imageUrl: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Ms.%20Amila%20Belpamulla.png" },
   { name: "Mr. Lasantha Edirisuriya", designation: "Head of Cooperative Development", qualifications: "Dip. in Fin. & Bank Mgt., Exe. Dev. Mini MBA, Harvard Cert in Entrepreneurship", category: "Business & Operations", bio: "Fostering strategic partnerships with primary SANASA cooperative unions nationwide." },
   { name: "Mr. Sanjeeva Jayasinghe", designation: "Head of Finance", qualifications: "FCA, ACCA, BSc. Mgt. Public Admin", category: "Corporate Executive", bio: "Leading corporate financial reporting, statutory taxation, and budget planning." }
 ];
