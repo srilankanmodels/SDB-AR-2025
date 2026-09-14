@@ -16,8 +16,7 @@ import {
 } from "../data/financialsAndNotes";
 import { useBranding } from "./BrandingContext";
 import { useAuth } from "./AuthContext";
-import { db, handleFirestoreError, OperationType } from "../firebase";
-import { doc, setDoc, deleteDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { supabase, handleSupabaseError, OperationType } from "../supabase";
 
 // Images generated & extracted from published annual report
 const IMAGES = {
@@ -50,7 +49,7 @@ export default function FinancialsAndNotesSection() {
     boardroomLeadership: branding?.boardroomLeadershipImage || IMAGES.boardroomLeadership
   }), [branding]);
 
-  // Load user's bookmarks from Firestore
+  // Load user's bookmarks from Supabase
   useEffect(() => {
     if (!user) {
       setBookmarks({});
@@ -59,13 +58,23 @@ export default function FinancialsAndNotesSection() {
     
     async function fetchBookmarks() {
       try {
-        const bookmarksRef = collection(db, "bookmarks");
-        const q = query(bookmarksRef, where("userId", "==", user.uid), where("itemType", "==", "note"));
-        const snap = await getDocs(q);
+        const { data, error } = await supabase
+          .from("bookmarks")
+          .select("*")
+          .eq("user_id", user.uid)
+          .eq("item_type", "note");
+
+        if (error) {
+          console.error("Error loading bookmarks:", error);
+          return;
+        }
+
         const bMap: Record<string, string> = {};
-        snap.forEach(docSnap => {
-          bMap[docSnap.data().itemId] = docSnap.id;
-        });
+        if (data) {
+          data.forEach((item: any) => {
+            bMap[item.item_id] = item.id;
+          });
+        }
         setBookmarks(bMap);
       } catch (err) {
         console.error("Error loading bookmarks:", err);
@@ -83,9 +92,14 @@ export default function FinancialsAndNotesSection() {
     const existingDocId = bookmarks[noteNum];
     if (existingDocId) {
       try {
-        await deleteDoc(doc(db, "bookmarks", existingDocId)).catch(err => {
-          handleFirestoreError(err, OperationType.DELETE, `bookmarks/${existingDocId}`);
-        });
+        const { error } = await supabase
+          .from("bookmarks")
+          .delete()
+          .eq("id", existingDocId);
+
+        if (error) {
+          handleSupabaseError(error, OperationType.DELETE, "bookmarks");
+        }
         setBookmarks(prev => {
           const next = { ...prev };
           delete next[noteNum];
@@ -97,19 +111,24 @@ export default function FinancialsAndNotesSection() {
     } else {
       const docId = `bookmark-${user.uid}-${noteNum.replace(/\s+/g, "_")}`;
       try {
-        await setDoc(doc(db, "bookmarks", docId), {
-          userId: user.uid,
-          itemType: "note",
-          itemId: noteNum,
-          title: `${noteNum}: ${noteTitle}`,
-          sectionId: "financials",
-          personalNotes: "",
-          noteNumber: parseFloat(noteNum.replace(/[^\d.]/g, "")) || 0,
-          noteTitle: noteTitle,
-          createdAt: new Date().toISOString()
-        }).catch(err => {
-          handleFirestoreError(err, OperationType.CREATE, `bookmarks/${docId}`);
-        });
+        const { error } = await supabase
+          .from("bookmarks")
+          .insert([{
+            id: docId,
+            user_id: user.uid,
+            item_type: "note",
+            item_id: noteNum,
+            title: `${noteNum}: ${noteTitle}`,
+            section_id: "financials",
+            personal_notes: "",
+            note_number: parseFloat(noteNum.replace(/[^\d.]/g, "")) || 0,
+            note_title: noteTitle,
+            created_at: new Date().toISOString()
+          }]);
+
+        if (error) {
+          handleSupabaseError(error, OperationType.CREATE, "bookmarks");
+        }
         setBookmarks(prev => ({
           ...prev,
           [noteNum]: docId

@@ -8,8 +8,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useBranding, BrandingConfig } from "./BrandingContext";
 import { BOARD_MEMBERS, EXECUTIVE_MANAGEMENT } from "../data/reportData";
 import SDBLogo from "./SDBLogo";
-import { db } from "../firebase";
-import { collection, query, getDocs, orderBy, deleteDoc, doc } from "firebase/firestore";
+import { supabase } from "../supabase";
 
 // Import all icons we need
 import { 
@@ -103,16 +102,30 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
     async function fetchFeedback() {
       setFeedbackLoading(true);
       try {
-        const feedbackRef = collection(db, "feedback");
-        const q = query(feedbackRef, orderBy("createdAt", "desc"));
-        const snap = await getDocs(q);
-        const list: FeedbackRecord[] = [];
-        snap.forEach(docSnap => {
-          list.push({
-            id: docSnap.id,
-            ...docSnap.data()
-          } as FeedbackRecord);
-        });
+        const { data, error } = await supabase
+          .from("feedback")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          console.error("Error loading feedback in Admin Console:", error);
+          return;
+        }
+
+        const list: FeedbackRecord[] = (data || []).map((item: any) => ({
+          id: item.id,
+          rating: item.rating,
+          subject: item.subject,
+          sectionId: item.section_id || item.sectionId,
+          message: item.message,
+          comment: item.comment,
+          name: item.name,
+          userName: item.user_name || item.userName,
+          email: item.email,
+          userEmail: item.user_email || item.userEmail,
+          userId: item.user_id || item.userId,
+          createdAt: item.created_at || item.createdAt
+        }));
         setFeedbackList(list);
       } catch (err) {
         console.error("Error loading feedback in Admin Console:", err);
@@ -127,7 +140,10 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
   const handleDeleteFeedback = async (id: string) => {
     if (!window.confirm("Are you sure you want to delete this feedback record?")) return;
     try {
-      await deleteDoc(doc(db, "feedback", id));
+      const { error } = await supabase.from("feedback").delete().eq("id", id);
+      if (error) {
+        throw error;
+      }
       setFeedbackList(prev => prev.filter(f => f.id !== id));
     } catch (err) {
       console.error("Error deleting feedback:", err);
@@ -939,7 +955,7 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
 
                   {feedbackLoading ? (
                     <div className="py-12 text-center text-slate-400 text-xs font-mono">
-                      Loading feedback logs from secure Firestore...
+                      Loading feedback logs from secure Supabase database...
                     </div>
                   ) : feedbackList.length === 0 ? (
                     <div className="py-12 text-center text-slate-400 text-xs font-mono border border-dashed border-slate-200 rounded-2xl bg-slate-50/50">

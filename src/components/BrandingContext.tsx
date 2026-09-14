@@ -4,8 +4,7 @@
  */
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db, handleFirestoreError, OperationType } from "../firebase";
+import { supabase } from "../supabase";
 
 export interface BrandingConfig {
   logoTextSDB: string;
@@ -66,16 +65,20 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
       try {
         setLoading(true);
 
-        // Try reading from Firestore
-        const docRef = doc(db, "branding", "global");
-        const docSnap = await getDoc(docRef).catch(err => {
-          console.warn("Firestore branding fetch failed (perhaps rules not deployed yet or offline):", err);
-          return null;
-        });
+        // Try reading from Supabase
+        let supabaseConfig: BrandingConfig | null = null;
+        try {
+          const { data, error: sbErr } = await supabase
+            .from("branding")
+            .select("config, updated_at")
+            .eq("id", "global")
+            .maybeSingle();
 
-        let firestoreConfig: BrandingConfig | null = null;
-        if (docSnap && docSnap.exists()) {
-          firestoreConfig = docSnap.data() as BrandingConfig;
+          if (!sbErr && data?.config) {
+            supabaseConfig = data.config as BrandingConfig;
+          }
+        } catch (err) {
+          console.warn("Supabase branding fetch failed:", err);
         }
 
         // Fetch local server config
@@ -104,11 +107,11 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
         let newestConfig = DEFAULT_BRANDING;
         let maxTime = 0;
 
-        if (firestoreConfig) {
-          const fsTime = firestoreConfig.updatedAt ? new Date(firestoreConfig.updatedAt).getTime() : 0;
-          if (fsTime > maxTime) {
-            maxTime = fsTime;
-            newestConfig = firestoreConfig;
+        if (supabaseConfig) {
+          const sbTime = supabaseConfig.updatedAt ? new Date(supabaseConfig.updatedAt).getTime() : 0;
+          if (sbTime > maxTime) {
+            maxTime = sbTime;
+            newestConfig = supabaseConfig;
           }
         }
 
@@ -130,9 +133,10 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
 
         setBranding(newestConfig);
 
-        // Check if token already exists in localStorage
+        // Check if token or admin session already exists
         const token = localStorage.getItem("sdb_admin_token");
-        if (token === "sdb_admin_auth_token_2025" || (auth.currentUser?.email === "srilankanmodels@gmail.com")) {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (token === "sdb_admin_auth_token_2025" || (session?.user?.email === "srilankanmodels@gmail.com")) {
           setIsAdmin(true);
         }
       } catch (err) {
@@ -145,8 +149,8 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
     init();
 
     // Set up auth observer for Google login as admin
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user && user.email === "srilankanmodels@gmail.com") {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user && session.user.email === "srilankanmodels@gmail.com") {
         setIsAdmin(true);
       } else {
         const token = localStorage.getItem("sdb_admin_token");
@@ -156,7 +160,9 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    return unsubscribe;
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   // Admin login function
@@ -214,9 +220,10 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
   // Save changes back to server
   const saveBranding = async (newConfig: BrandingConfig): Promise<boolean> => {
     const token = localStorage.getItem("sdb_admin_token");
-    const isFirebaseAdmin = auth.currentUser?.email === "srilankanmodels@gmail.com";
+    const { data: { session } } = await supabase.auth.getSession();
+    const isSupabaseAdmin = session?.user?.email === "srilankanmodels@gmail.com";
 
-    if (!token && !isFirebaseAdmin) {
+    if (!token && !isSupabaseAdmin) {
       setError("Unauthorized operation. Log in as administrator first.");
       return false;
     }
@@ -227,12 +234,15 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
         updatedAt: new Date().toISOString()
       };
 
-      // 1. Attempt to write to Firestore branding/global (succeeds if user is Firebase Admin)
+      // 1. Attempt to write to Supabase branding table
       try {
-        const docRef = doc(db, "branding", "global");
-        await setDoc(docRef, configWithTimestamp);
-      } catch (firestoreErr) {
-        console.warn("Firestore save branding skipped or denied (expected for non-Firebase admin password logins):", firestoreErr);
+        await supabase.from("branding").upsert({
+          id: "global",
+          config: configWithTimestamp,
+          updated_at: new Date().toISOString()
+        });
+      } catch (supabaseErr) {
+        console.warn("Supabase save branding skipped or denied:", supabaseErr);
       }
 
       // 2. Write to localStorage for robust client-side persistent fallback on Vercel/static-only hosting

@@ -9,8 +9,7 @@ import {
   MessageSquare, Send, X, Bot, User, Sparkles, Loader2, HelpCircle, ArrowRight, Trash2, ShieldAlert, LogIn, LogOut
 } from "lucide-react";
 import { useAuth } from "./AuthContext";
-import { db, handleFirestoreError, OperationType } from "../firebase";
-import { doc, setDoc, collection, query, where, getDocs, limit, orderBy } from "firebase/firestore";
+import { supabase, handleSupabaseError, OperationType } from "../supabase";
 
 interface ChatMessage {
   id: string;
@@ -45,7 +44,7 @@ export default function SDBAssistant() {
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  // Load user's latest chat log from Firestore upon signing in
+  // Load user's latest chat log from Supabase upon signing in
   useEffect(() => {
     if (!user) {
       setChatDocId(null);
@@ -63,18 +62,21 @@ export default function SDBAssistant() {
 
     async function loadLatestChat() {
       try {
-        const chatsRef = collection(db, "chats");
-        const q = query(
-          chatsRef,
-          where("userId", "==", user.uid),
-          orderBy("updatedAt", "desc"),
-          limit(1)
-        );
-        const snap = await getDocs(q);
-        if (!snap.empty) {
-          const docSnap = snap.docs[0];
-          const chatData = docSnap.data();
-          setChatDocId(docSnap.id);
+        const { data, error } = await supabase
+          .from("chats")
+          .select("*")
+          .eq("user_id", user.uid)
+          .order("updated_at", { ascending: false })
+          .limit(1);
+
+        if (error) {
+          console.error("Error loading chat session from Supabase:", error);
+          return;
+        }
+
+        if (data && data.length > 0) {
+          const chatData = data[0];
+          setChatDocId(chatData.id);
           if (chatData.messages && Array.isArray(chatData.messages)) {
             setMessages(chatData.messages.map((m: any, index: number) => ({
               id: m.id || `msg-${index}`,
@@ -84,7 +86,7 @@ export default function SDBAssistant() {
             })));
           }
         } else {
-          // Create fresh session in Firestore
+          // Create fresh session in Supabase
           const newId = `chat-${user.uid}-${Date.now()}`;
           setChatDocId(newId);
           const initialMsgs = [
@@ -95,25 +97,27 @@ export default function SDBAssistant() {
               timestamp: new Date().toISOString()
             }
           ];
-          await setDoc(doc(db, "chats", newId), {
-            userId: user.uid,
+          const { error: insertErr } = await supabase.from("chats").insert([{
+            id: newId,
+            user_id: user.uid,
             title: "SDB Annual Report Assistant Chat",
             messages: initialMsgs,
-            updatedAt: new Date().toISOString()
-          }).catch(err => {
-            handleFirestoreError(err, OperationType.CREATE, `chats/${newId}`);
-          });
+            updated_at: new Date().toISOString()
+          }]);
+          if (insertErr) {
+            handleSupabaseError(insertErr, OperationType.CREATE, "chats");
+          }
         }
       } catch (e) {
-        console.error("Error loading chat session from Firestore:", e);
+        console.error("Error loading chat session from Supabase:", e);
       }
     }
 
     loadLatestChat();
   }, [user]);
 
-  // Sync current chat state to Firestore
-  const syncChatToFirestore = async (updatedMsgs: ChatMessage[]) => {
+  // Sync current chat state to Supabase
+  const syncChatToDatabase = async (updatedMsgs: ChatMessage[]) => {
     if (!user) return;
     let currentId = chatDocId;
     if (!currentId) {
@@ -133,16 +137,18 @@ export default function SDBAssistant() {
       const firstUserMsg = updatedMsgs.find(m => m.role === "user");
       const title = firstUserMsg ? (firstUserMsg.message.slice(0, 50) + "...") : "SDB Annual Report Assistant Chat";
 
-      await setDoc(doc(db, "chats", currentId), {
-        userId: user.uid,
+      const { error } = await supabase.from("chats").upsert({
+        id: currentId,
+        user_id: user.uid,
         title,
         messages: serializedMessages,
-        updatedAt: new Date().toISOString()
-      }, { merge: true }).catch(err => {
-        handleFirestoreError(err, OperationType.UPDATE, `chats/${currentId}`);
+        updated_at: new Date().toISOString()
       });
+      if (error) {
+        handleSupabaseError(error, OperationType.UPDATE, "chats");
+      }
     } catch (e) {
-      console.error("Error writing chat update to Firestore:", e);
+      console.error("Error writing chat update to Supabase:", e);
     }
   };
 
@@ -178,8 +184,8 @@ export default function SDBAssistant() {
     setMessages(updatedMessages);
     setIsLoading(true);
 
-    // Sync user message to Firestore
-    syncChatToFirestore(updatedMessages);
+    // Sync user message to Supabase
+    syncChatToDatabase(updatedMessages);
 
     try {
       // Build history excluding initial message or any error messages
@@ -223,8 +229,8 @@ export default function SDBAssistant() {
         }
       ];
       setMessages(finalMsgs);
-      // Sync bot answer to Firestore
-      syncChatToFirestore(finalMsgs);
+      // Sync bot answer to Supabase
+      syncChatToDatabase(finalMsgs);
     } catch (err: any) {
       console.error("Chat error:", err);
       setErrorText(err.message || "An error occurred. Please verify your internet connection or check if your Gemini API key is configured.");
@@ -254,14 +260,16 @@ export default function SDBAssistant() {
       // Start a fresh document to clear context cleanly
       const newId = `chat-${user.uid}-${Date.now()}`;
       setChatDocId(newId);
-      await setDoc(doc(db, "chats", newId), {
-        userId: user.uid,
+      const { error } = await supabase.from("chats").insert([{
+        id: newId,
+        user_id: user.uid,
         title: "SDB Annual Report Assistant Chat",
         messages: cleared.map(m => ({ ...m, timestamp: m.timestamp.toISOString() })),
-        updatedAt: new Date().toISOString()
-      }).catch(err => {
-        handleFirestoreError(err, OperationType.CREATE, `chats/${newId}`);
-      });
+        updated_at: new Date().toISOString()
+      }]);
+      if (error) {
+        handleSupabaseError(error, OperationType.CREATE, "chats");
+      }
     }
   };
 

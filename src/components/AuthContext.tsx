@@ -1,11 +1,18 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { User, signInWithPopup, GoogleAuthProvider, signOut as firebaseSignOut, onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import { supabase } from "../supabase";
+
+export interface AppUser {
+  id: string;
+  uid: string; // Compatibility alias with previous code referencing user.uid
+  email: string | null;
+  displayName: string | null;
+  photoURL: string | null;
+}
 
 interface AuthContextType {
-  user: User | null;
+  user: AppUser | null;
   loading: boolean;
-  signInWithGoogle: () => Promise<User | null>;
+  signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   isAdmin: boolean;
 }
@@ -13,34 +20,68 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AppUser | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Monitor auth state changes
+  // Monitor Supabase auth state changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    // 1. Check initial active session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        const u = session.user;
+        setUser({
+          id: u.id,
+          uid: u.id,
+          email: u.email || null,
+          displayName: (u.user_metadata?.full_name as string) || (u.user_metadata?.name as string) || (u.email ? u.email.split("@")[0] : null),
+          photoURL: (u.user_metadata?.avatar_url as string) || (u.user_metadata?.picture as string) || null,
+        });
+      } else {
+        setUser(null);
+      }
       setLoading(false);
-    }, (error) => {
-      console.error("Auth state change error:", error);
+    }).catch(err => {
+      console.error("Error loading Supabase auth session:", err);
       setLoading(false);
     });
 
-    return () => unsubscribe();
+    // 2. Subscribe to auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        const u = session.user;
+        setUser({
+          id: u.id,
+          uid: u.id,
+          email: u.email || null,
+          displayName: (u.user_metadata?.full_name as string) || (u.user_metadata?.name as string) || (u.email ? u.email.split("@")[0] : null),
+          photoURL: (u.user_metadata?.avatar_url as string) || (u.user_metadata?.picture as string) || null,
+        });
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-  // Google Login popup
-  const signInWithGoogle = async (): Promise<User | null> => {
+  // Google Login OAuth
+  const signInWithGoogle = async (): Promise<void> => {
     try {
       setLoading(true);
-      const provider = new GoogleAuthProvider();
-      // Enforce select_account prompt so they can switch accounts easily if needed
-      provider.setCustomParameters({ prompt: "select_account" });
-      const result = await signInWithPopup(auth, provider);
-      return result.user;
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: window.location.origin,
+        },
+      });
+      if (error) {
+        console.error("Google sign in error:", error);
+      }
     } catch (error) {
       console.error("Google sign in error:", error);
-      return null;
     } finally {
       setLoading(false);
     }
@@ -50,7 +91,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = async () => {
     try {
       setLoading(true);
-      await firebaseSignOut(auth);
+      await supabase.auth.signOut();
+      setUser(null);
     } catch (error) {
       console.error("Sign out error:", error);
     } finally {

@@ -7,8 +7,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, Star, CheckCircle2, ShieldAlert, Send } from "lucide-react";
 import { useAuth } from "./AuthContext";
-import { db, handleFirestoreError, OperationType } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { supabase, handleSupabaseError, OperationType } from "../supabase";
 
 export default function FeedbackSection() {
   const { user } = useAuth();
@@ -34,20 +33,21 @@ export default function FeedbackSection() {
       const feedbackData = {
         rating,
         subject,
-        sectionId: subject,
+        section_id: subject,
         message: message.trim(),
         comment: message.trim(),
         name: user ? (user.displayName || "Authenticated User") : (name.trim() || "Anonymous"),
-        userName: user ? (user.displayName || "Authenticated User") : (name.trim() || "Anonymous"),
+        user_name: user ? (user.displayName || "Authenticated User") : (name.trim() || "Anonymous"),
         email: user ? (user.email || "no-email@sdb.lk") : (email.trim() || "no-email@sdb.lk"),
-        userEmail: user ? (user.email || "no-email@sdb.lk") : (email.trim() || "no-email@sdb.lk"),
-        userId: user ? user.uid : "anonymous",
-        createdAt: new Date().toISOString()
+        user_email: user ? (user.email || "no-email@sdb.lk") : (email.trim() || "no-email@sdb.lk"),
+        user_id: user ? user.uid : "anonymous",
+        created_at: new Date().toISOString()
       };
 
-      await addDoc(collection(db, "feedback"), feedbackData).catch(err => {
-        handleFirestoreError(err, OperationType.CREATE, "feedback/new");
-      });
+      const { error } = await supabase.from("feedback").insert([feedbackData]);
+      if (error) {
+        handleSupabaseError(error, OperationType.CREATE, "feedback");
+      }
 
       setSubmitSuccess(true);
       setMessage("");
@@ -78,7 +78,7 @@ export default function FeedbackSection() {
           </p>
           <div className="mt-4 flex flex-wrap gap-2 text-[10px] font-mono text-slate-400">
             <span className="bg-sdb-cream px-2 py-0.5 rounded border border-sdb-purple/5 font-semibold">SECURE TRANSMISSION</span>
-            <span className="bg-sdb-cream px-2 py-0.5 rounded border border-sdb-purple/5 font-semibold">FIRESTORE PORTAL</span>
+            <span className="bg-sdb-cream px-2 py-0.5 rounded border border-sdb-purple/5 font-semibold">SUPABASE DATABASE</span>
           </div>
         </div>
 
