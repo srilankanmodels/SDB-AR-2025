@@ -5,6 +5,7 @@
  * Uses branding parameters: logoTextSDB, logoTextBank, logoColor, logoTextColorBank
  */
 
+import { useState } from "react";
 import { useBranding } from "./BrandingContext";
 
 interface SDBLogoProps {
@@ -15,19 +16,37 @@ interface SDBLogoProps {
 
 export default function SDBLogo({ className = "h-9", iconOnly = false, inverted = false }: SDBLogoProps) {
   const { branding } = useBranding();
+  const [imgError, setImgError] = useState(false);
 
   const logoTextSDB = branding?.logoTextSDB || "SDB";
   const logoTextBank = branding?.logoTextBank || "bank";
   const logoColor = inverted ? "#FFFFFF" : (branding?.logoColor || "#2B80C5");
   const logoTextColorBank = inverted ? "#F1F5F9" : (branding?.logoTextColorBank || "#4D4D4F");
 
-  // If user uploaded a custom image in admin that is not the removed default external URL
-  if (branding?.logoImage && !branding.logoImage.includes("sdb_logo_transparent.png")) {
+  // Determine official logo source
+  const officialLogo = iconOnly 
+    ? "/assets/images/sdb_bank_icon.png" 
+    : "/assets/images/sdb_bank_logo.png";
+
+  const activeSrc = iconOnly 
+    ? (branding?.logoIcon || officialLogo)
+    : (branding?.logoImage || officialLogo);
+
+  // Render official image logo by default
+  if (!imgError && activeSrc) {
     return (
       <div className={`inline-flex items-center select-none ${className}`}>
         <img
-          src={branding.logoImage}
+          src={activeSrc}
+          srcSet={
+            activeSrc === "/assets/images/sdb_bank_logo.png"
+              ? "/assets/images/sdb_bank_logo.png 1x, /assets/images/sdb_bank_logo@2x.png 2x, /assets/images/sdb_bank_logo@3x.png 3x"
+              : activeSrc === "/assets/images/sdb_bank_icon.png"
+              ? "/assets/images/sdb_bank_icon.png 1x, /assets/images/sdb_bank_icon@2x.png 2x"
+              : undefined
+          }
           alt="SANASA Development Bank PLC - SDB bank"
+          onError={() => setImgError(true)}
           className={`h-full w-auto object-contain max-w-full transition-all duration-300 ${
             inverted ? "brightness-0 invert drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]" : ""
           }`}

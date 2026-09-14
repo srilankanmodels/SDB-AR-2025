@@ -51,7 +51,11 @@ const PRESET_IMAGES = {
     { label: "Published Handcrafted Cover", url: "/src/assets/annual_report_images/theme/cover_handcrafted.png" },
     { label: "Page 1 Title Artwork", url: "/src/assets/annual_report_images/theme/page_1_image_0.png" }
   ],
-  logo: [],
+  logo: [
+    { label: "Official SDB bank Logo", url: "/assets/images/sdb_bank_logo.png" },
+    { label: "Official SDB bank Logo (Hi-Res 2x)", url: "/assets/images/sdb_bank_logo@2x.png" },
+    { label: "Official SDB bank Emblem Icon", url: "/assets/images/sdb_bank_icon.png" }
+  ],
   chairperson: [
     { label: "Supabase Database Studio Portrait (EUK05956.png)", url: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png" },
     { label: "Published Report - Page 44", url: "/src/assets/annual_report_images/leadership/page_44_image_1.png" }
@@ -79,7 +83,7 @@ const DEFAULT_BRANDING: BrandingConfig = {
   cooperativeFarmingImage: "/src/assets/annual_report_images/leadership/page_43_image_0.png",
   digitalBankingImage: "/src/assets/annual_report_images/highlights/page_12_screenshot.png",
   boardroomLeadershipImage: "/src/assets/full team/sdb_bod_2025_web.jpg",
-  logoImage: "",
+  logoImage: "/assets/images/sdb_bank_logo.png",
   coverImage: "/src/assets/annual_report_images/theme/cover_handcrafted.png",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   chairpersonImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
