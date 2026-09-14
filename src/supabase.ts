@@ -20,7 +20,6 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   },
 });
 
-// Supported database operation categories
 export enum OperationType {
   CREATE = "create",
   UPDATE = "update",
