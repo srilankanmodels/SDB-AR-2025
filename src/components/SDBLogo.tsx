@@ -12,11 +12,13 @@ interface SDBLogoProps {
   inverted?: boolean;
 }
 
+export const DATABASE_SDB_LOGO = "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png";
+
 export default function SDBLogo({ className = "h-9", iconOnly = false, inverted = false }: SDBLogoProps) {
   const { branding } = useBranding();
   
-  // Use uploaded official transparent logo by default, or branding override if custom uploaded
-  const logoSrc = branding?.logoImage || sdbLogoTransparent;
+  // Use official transparent logo from database storage by default, or local fallback
+  const logoSrc = branding?.logoImage || DATABASE_SDB_LOGO || sdbLogoTransparent;
 
   return (
     <div className={`inline-flex items-center select-none ${className}`}>

@@ -7,8 +7,9 @@
   "cooperativeFarmingImage": "/src/assets/annual_report_images/leadership/page_43_image_0.png",
   "digitalBankingImage": "/src/assets/annual_report_images/highlights/page_12_screenshot.png",
   "boardroomLeadershipImage": "/src/assets/annual_report_images/board/page_52_image_0.png",
-  "logoImage": "/uploads/1783596238655_sdb_logo.svg",
-  "coverImage": "/src/assets/annual_report_images/theme/page_1_image_0.png",
+  "logoImage": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png",
+  "coverImage": "/src/assets/annual_report_images/theme/cover_handcrafted.png",
+  "coverVideo": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   "chairpersonImage": "/src/assets/annual_report_images/leadership/page_44_image_1.png",
   "ceoImage": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
   "boardImages": {

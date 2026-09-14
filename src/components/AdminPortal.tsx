@@ -49,6 +49,9 @@ const PRESET_IMAGES = {
   coverImage: [
     { label: "Published Handcrafted Cover", url: "/src/assets/annual_report_images/theme/cover_handcrafted.png" },
     { label: "Page 1 Title Artwork", url: "/src/assets/annual_report_images/theme/page_1_image_0.png" }
+  ],
+  logo: [
+    { label: "Supabase Database Storage (sdb_logo_transparent.png)", url: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png" }
   ]
 };
 
@@ -61,7 +64,7 @@ const DEFAULT_BRANDING: BrandingConfig = {
   cooperativeFarmingImage: "/src/assets/annual_report_images/leadership/page_43_image_0.png",
   digitalBankingImage: "/src/assets/annual_report_images/highlights/page_12_screenshot.png",
   boardroomLeadershipImage: "/src/assets/annual_report_images/board/page_52_image_0.png",
-  logoImage: "/uploads/1783596238655_sdb_logo.svg",
+  logoImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png",
   coverImage: "/src/assets/annual_report_images/theme/cover_handcrafted.png",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   chairpersonImage: "/src/assets/annual_report_images/leadership/page_44_image_1.png",
@@ -693,6 +696,23 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                       onUploaded={(url) => updateField("logoImage", url)}
                       onClear={() => updateField("logoImage", "")}
                     />
+                    <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                      <span className="text-[10px] text-slate-500 font-mono">Preset:</span>
+                      {PRESET_IMAGES.logo.map((preset, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => updateField("logoImage", preset.url)}
+                          className={`text-[10px] font-mono px-2 py-1 rounded border transition-all cursor-pointer ${
+                            formConfig.logoImage === preset.url 
+                              ? "bg-sdb-purple border-sdb-purple text-white shadow-sm" 
+                              : "bg-white border-slate-200 hover:bg-slate-50 text-slate-600"
+                          }`}
+                        >
+                          {preset.label}
+                        </button>
+                      ))}
+                    </div>
                     <p className="text-[10px] text-slate-400 mt-2">Setting a custom brand logo image overrides the default SVG text/colors across the entire annual report.</p>
                   </div>
 

@@ -137,7 +137,7 @@ VALUES (
     "cooperativeFarmingImage": "/src/assets/images/cooperative_farming_1783367621583.jpg",
     "digitalBankingImage": "/src/assets/images/digital_banking_1783367635268.jpg",
     "boardroomLeadershipImage": "/src/assets/images/boardroom_leadership_1783367647402.jpg",
-    "logoImage": "/src/assets/images/sdb_logo_transparent.png",
+    "logoImage": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png",
     "coverVideo": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4"
   }'::jsonb,
   NOW()
