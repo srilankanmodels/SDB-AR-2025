@@ -44,7 +44,7 @@ const DEFAULT_BRANDING: BrandingConfig = {
   cooperativeFarmingImage: "/src/assets/images/cooperative_farming_1783367621583.jpg",
   digitalBankingImage: "/src/assets/images/digital_banking_1783367635268.jpg",
   boardroomLeadershipImage: "/src/assets/full team/sdb_bod_2025_web.jpg",
-  logoImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png",
+  logoImage: "",
   coverImage: "",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   chairpersonImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
