@@ -60,10 +60,10 @@ export default function ProductsSection() {
         <div>
           <div className="inline-flex items-center space-x-2 text-xs font-mono font-bold text-sdb-coral uppercase tracking-wider mb-2">
             <span className="w-2 h-2 rounded-full bg-sdb-coral" />
-            <span>Inclusive Financial Solutions • Pages 15–19</span>
+            <span>Points 09 & 11 • Pages 15–19</span>
           </div>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-sdb-purple tracking-tight">
-            Products & Services Directory
+            Product Portfolio & What We Offer
           </h2>
           <p className="text-slate-600 mt-2 max-w-2xl text-sm md:text-base">
             From grassroots micro-savings and women entrepreneurship to high-yield corporate deposits, agricultural value chain finance, and concessionary refinance credit lines.
@@ -88,6 +88,76 @@ export default function ProductsSection() {
               Clear
             </button>
           )}
+        </div>
+      </div>
+
+      {/* Point 11: What We Offer Segment */}
+      <div className="space-y-4">
+        <div className="flex justify-between items-center">
+          <div>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-sdb-purple">
+              What We Offer — Core Banking Pillars
+            </h3>
+            <p className="text-xs text-slate-500 font-mono">
+              Holistic financial solutions engineered for rural transformation and national economic rebound
+            </p>
+          </div>
+          <span className="text-xs font-mono bg-sdb-purple/10 text-sdb-purple px-2.5 py-1 rounded-md font-bold">
+            Point 11
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {[
+            {
+              pillar: "Retail & Savings",
+              desc: "Personal savings accounts, fixed deposits, women's empowerment packages ('Uttamavi'), and children's education trusts ('Dayada').",
+              metric: "LKR 20.5 Bn+",
+              tag: "Public Savings"
+            },
+            {
+              pillar: "MSME & Micro Finance",
+              desc: "Tailored credit facilities, SME Plus, Business Plus, working capital lines, and specialized equipment lease financing.",
+              metric: "25% of Book",
+              tag: "Enterprise Core"
+            },
+            {
+              pillar: "Cooperative Banking",
+              desc: "Wholesale liquidity pools, institutional deposit products, and technical advisory for 4,000+ primary SANASA cooperative societies.",
+              metric: "35% Funding",
+              tag: "Grassroots Network"
+            },
+            {
+              pillar: "Food, Agri & VCF",
+              desc: "Value Chain Financing with Rabo Partnerships, tea smallholders credit lines, dairy farming facilities, and green agro-solar loans.",
+              metric: "68,900+ Loans",
+              tag: "54% New Credit"
+            },
+            {
+              pillar: "Digital & UPay Ecosystem",
+              desc: "SDB UPay mobile wallet, LankaPay QR merchant settlement, Business Internet Banking, and automated CDM branch networks.",
+              metric: "37% Digital Share",
+              tag: "Fintech Inclusion"
+            }
+          ].map((item, idx) => (
+            <div key={idx} className="bg-white rounded-2xl p-4 border border-sdb-purple/10 shadow-xs flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[9px] font-mono font-bold text-sdb-coral uppercase tracking-wider block">
+                  {item.tag}
+                </span>
+                <h4 className="font-serif font-bold text-sm text-sdb-purple mt-1">
+                  {item.pillar}
+                </h4>
+                <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+              <div className="pt-2 border-t border-slate-100 flex justify-between items-center text-[10px] font-mono text-sdb-purple font-bold">
+                <span>{item.metric}</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

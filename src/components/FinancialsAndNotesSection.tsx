@@ -724,6 +724,19 @@ export default function FinancialsAndNotesSection() {
                         {highlightText(note.content, searchQuery)}
                       </p>
 
+                      {/* Accounting Policy Callout (Points 48, 49, 50, 52, 58) */}
+                      {note.accountingPolicy && (
+                        <div className="bg-[#FAF2EB] border-l-4 border-[#8B1D2C] p-4 rounded-r-xl text-xs space-y-1.5 shadow-xs">
+                          <div className="flex items-center space-x-1.5 text-[#8B1D2C] font-bold uppercase tracking-wider font-mono text-[10px]">
+                            <Scale className="w-3.5 h-3.5" />
+                            <span>Significant Accounting Policy • SLFRS / LKAS</span>
+                          </div>
+                          <p className="text-slate-800 leading-relaxed font-sans">
+                            {note.accountingPolicy}
+                          </p>
+                        </div>
+                      )}
+
                       {/* Embedded Picture Integration based on Note Topic */}
                       {note.number === "Note 12" && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center border-y border-sdb-purple/10 py-5">
@@ -792,7 +805,7 @@ export default function FinancialsAndNotesSection() {
                                   {note.columns!.map((col, cIdx) => {
                                     const cellVal = tRow[col.key];
                                     const isNum = typeof cellVal === "number";
-                                    const isMatch = searchQuery && cellVal.toString().toLowerCase().includes(searchQuery.toLowerCase());
+                                    const isMatch = searchQuery && cellVal !== undefined && cellVal.toString().toLowerCase().includes(searchQuery.toLowerCase());
                                     
                                     return (
                                       <td 
@@ -803,7 +816,9 @@ export default function FinancialsAndNotesSection() {
                                       >
                                         {isNum && cellVal < 0 
                                           ? `(${Math.abs(cellVal)})` 
-                                          : highlightText(cellVal.toString(), searchQuery)
+                                          : cellVal !== undefined
+                                          ? highlightText(cellVal.toString(), searchQuery)
+                                          : ""
                                         }
                                       </td>
                                     );
@@ -812,6 +827,82 @@ export default function FinancialsAndNotesSection() {
                               ))}
                             </tbody>
                           </table>
+                        </div>
+                      )}
+
+                      {/* Sub-Notes & Sub-Schedules (Points 51, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74) */}
+                      {note.subNotes && note.subNotes.length > 0 && (
+                        <div className="space-y-4 pt-3 border-t border-sdb-purple/10">
+                          <h5 className="font-serif font-bold text-xs uppercase tracking-wider text-sdb-purple">
+                            Sub-Schedules & Detailed Breakdowns:
+                          </h5>
+                          {note.subNotes.map((sub, sIdx) => (
+                            <div key={sIdx} className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs space-y-3">
+                              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+                                <div className="flex items-center space-x-2">
+                                  <span className="font-mono font-bold text-xs bg-sdb-purple/10 text-sdb-purple px-2 py-0.5 rounded">
+                                    {sub.subNumber}
+                                  </span>
+                                  <h6 className="font-serif font-bold text-sm text-sdb-purple">
+                                    {sub.title}
+                                  </h6>
+                                </div>
+                              </div>
+
+                              {sub.accountingPolicy && (
+                                <div className="bg-amber-50/50 border-l-2 border-amber-500 p-2.5 rounded-r text-[11px] text-slate-700">
+                                  <strong className="text-amber-800">Policy: </strong> {sub.accountingPolicy}
+                                </div>
+                              )}
+
+                              {sub.content && (
+                                <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                                  {sub.content}
+                                </p>
+                              )}
+
+                              {sub.columns && sub.tableData && (
+                                <div className="overflow-x-auto border border-slate-100 rounded-lg">
+                                  <table className="w-full text-left text-xs font-mono">
+                                    <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
+                                      <tr>
+                                        {sub.columns.map((col, cIdx) => (
+                                          <th 
+                                            key={cIdx} 
+                                            className={`py-2 px-3 font-semibold ${
+                                              col.align === "right" || col.key.includes("y20") ? "text-right" : "text-left"
+                                            }`}
+                                          >
+                                            {col.header}
+                                          </th>
+                                        ))}
+                                      </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-100">
+                                      {sub.tableData.map((row, rIdx) => (
+                                        <tr key={rIdx} className="hover:bg-slate-50">
+                                          {sub.columns!.map((col, cIdx) => {
+                                            const cellVal = row[col.key];
+                                            const isNum = typeof cellVal === "number";
+                                            return (
+                                              <td 
+                                                key={cIdx}
+                                                className={`py-2 px-3 ${
+                                                  isNum || col.key.includes("y20") ? "text-right font-bold text-sdb-purple" : "text-left text-slate-700 font-sans"
+                                                }`}
+                                              >
+                                                {isNum && cellVal < 0 ? `(${Math.abs(cellVal)})` : cellVal ?? ""}
+                                              </td>
+                                            );
+                                          })}
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              )}
+                            </div>
+                          ))}
                         </div>
                       )}
                     </motion.div>

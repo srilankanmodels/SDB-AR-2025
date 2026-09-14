@@ -166,7 +166,7 @@ const OFFICIAL_PAGE_12_HIGHLIGHTS = [
 
 export default function FinancialCharts() {
   const [selectedMetric, setSelectedMetric] = useState<MetricKey>("netAdvances");
-  const [viewMode, setViewMode] = useState<"table" | "charts">("table");
+  const [viewMode, setViewMode] = useState<"combined" | "table" | "charts">("combined");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
 
   const displayedMetrics = FINANCIAL_HIGHLIGHTS_DATA.filter(m => {
@@ -221,10 +221,21 @@ export default function FinancialCharts() {
         </div>
 
         {/* View Toggle Button */}
-        <div className="flex items-center bg-white/80 p-1.5 rounded-2xl border border-sdb-purple/15 shadow-sm">
+        <div className="flex items-center bg-white/80 p-1 rounded-2xl border border-sdb-purple/15 shadow-sm">
+          <button
+            onClick={() => setViewMode("combined")}
+            className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition-all cursor-pointer ${
+              viewMode === "combined"
+                ? "bg-sdb-purple text-white shadow-sm"
+                : "text-slate-600 hover:text-sdb-purple"
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>All (Table & Graphs)</span>
+          </button>
           <button
             onClick={() => setViewMode("table")}
-            className={`inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold font-mono transition-all cursor-pointer ${
+            className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition-all cursor-pointer ${
               viewMode === "table"
                 ? "bg-sdb-crimson text-white shadow-sm"
                 : "text-slate-600 hover:text-sdb-purple"
@@ -235,7 +246,7 @@ export default function FinancialCharts() {
           </button>
           <button
             onClick={() => setViewMode("charts")}
-            className={`inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold font-mono transition-all cursor-pointer ${
+            className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition-all cursor-pointer ${
               viewMode === "charts"
                 ? "bg-sdb-purple text-white shadow-sm"
                 : "text-slate-600 hover:text-sdb-purple"
@@ -340,8 +351,8 @@ export default function FinancialCharts() {
         </div>
       </div>
 
-      {/* Conditional View: Table Mode vs Charts Mode */}
-      {viewMode === "table" ? (
+      {/* Financial Table and/or Charts depending on viewMode */}
+      {(viewMode === "combined" || viewMode === "table") && (
         <motion.div
           key="table-view"
           initial={{ opacity: 0, y: 15 }}
@@ -438,7 +449,9 @@ export default function FinancialCharts() {
             </div>
           </div>
         </motion.div>
-      ) : (
+      )}
+
+      {(viewMode === "combined" || viewMode === "charts") && (
         <motion.div
           key="charts-view"
           initial={{ opacity: 0, y: 15 }}

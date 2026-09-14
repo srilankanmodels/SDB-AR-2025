@@ -48,6 +48,8 @@ const MEGA_CATEGORIES: MegaCategory[] = [
     previewQuote: "Navigating macroeconomic rebound with cooperative resilience and community craftsmanship.",
     previewSection: "overview",
     links: [
+      { label: "About This Report", description: "Reporting framework, GRI standards & EY assurance", sectionId: "about-report", pageHint: "Pages 5 & 10", icon: BookOpen },
+      { label: "Awards & Accolades", description: "National recognition, TAGS & CRIB rating", sectionId: "awards", pageHint: "Page 9", icon: Award },
       { label: "Financial Progress & 2025 Highlights", description: "Audited KPIs, YoY movements & 5-year trends", sectionId: "overview", pageHint: "Pages 14–15", icon: TrendingUp },
       { label: "Chairperson's Review", description: "Ms. Dinithi Ratnayake on resilience & strategic direction", sectionId: "leadership", subtab: "chairperson", pageHint: "Pages 16–19", icon: Handshake },
       { label: "CEO's Strategic Review", description: "Mr. Kapila Ariyaratne on operations & growth blueprint", sectionId: "leadership", subtab: "ceo", pageHint: "Pages 20–23", icon: Handshake },

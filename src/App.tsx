@@ -21,6 +21,8 @@ import SustainabilitySection from "./components/SustainabilitySection";
 import GovernanceAndRisk from "./components/GovernanceAndRisk";
 import FinancialsAndNotesSection from "./components/FinancialsAndNotesSection";
 import SupplementarySection from "./components/SupplementarySection";
+import AboutTheReport from "./components/AboutTheReport";
+import AwardsAndAccolades from "./components/AwardsAndAccolades";
 import MegaNavbar from "./components/MegaNavbar";
 import AccessibilityPanel from "./components/AccessibilityPanel";
 import MyReportDrawer, { BookmarkedSection } from "./components/MyReportDrawer";
@@ -36,6 +38,8 @@ import FeedbackSection from "./components/FeedbackSection";
 
 export type ActiveSection = 
   | "overview" 
+  | "about-report"
+  | "awards"
   | "leadership" 
   | "timeline" 
   | "strategy" 
@@ -229,6 +233,8 @@ function AppContent() {
                         <FeedbackSection />
                       </div>
                     )}
+                    {activeSection === "about-report" && <AboutTheReport />}
+                    {activeSection === "awards" && <AwardsAndAccolades />}
                     {activeSection === "leadership" && <LeadershipSection />}
                     {activeSection === "timeline" && <TimelineSection />}
                     {activeSection === "strategy" && <StrategySection />}

@@ -102,6 +102,23 @@ export default function TimelineSection() {
               <p className="text-slate-700 leading-relaxed text-sm md:text-base">
                 {activeMilestone.description}
               </p>
+
+              {/* Milestone Bullet Points */}
+              {activeMilestone.points && activeMilestone.points.length > 0 && (
+                <div className="bg-sdb-purple/5 rounded-2xl p-4 sm:p-5 border border-sdb-purple/10 space-y-2.5 mt-2">
+                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-sdb-coral block">
+                    Key Highlights & Developments in {activeMilestone.year}
+                  </span>
+                  <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                    {activeMilestone.points.map((pt, pIdx) => (
+                      <li key={pIdx} className="flex items-start space-x-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-sdb-purple shrink-0 mt-1.5" />
+                        <span className="leading-snug">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               
               {/* Context indicator */}
               <div className="flex items-center space-x-2 pt-4">

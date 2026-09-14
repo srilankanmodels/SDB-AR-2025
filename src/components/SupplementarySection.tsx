@@ -1,30 +1,62 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ * SDB Bank Integrated Annual Report 2025 - Supplementary Disclosures, Basel III & Shareholder Analysis
+ * Addresses Points 29, 30, 35, 36, 75 to 100
+ */
+
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   FileSpreadsheet, ShieldAlert, PieChart, BookMarked,
   HelpCircle, Building2, Calendar, Search, ArrowUpRight,
-  Download, ExternalLink, Filter, CheckCircle, Info
+  Download, ExternalLink, Filter, CheckCircle, Info,
+  TrendingUp, Users, DollarSign, Layers, ChevronRight, Award, Stamp
 } from "lucide-react";
 import {
   TEN_YEARS_AT_A_GLANCE_DATA,
-  BASEL_III_PILLAR_III_DATA,
+  BASEL_TEMPLATE_1_KEY_RATIOS,
+  BASEL_TEMPLATE_2_CAPITAL_COMPUTATION,
+  BASEL_TEMPLATE_3_LEVERAGE_RATIO,
+  BASEL_TEMPLATE_4_LCR,
+  BASEL_TEMPLATE_5_CAPITAL_INSTRUMENTS,
+  BASEL_TEMPLATE_6_ADEQUACY_DISCUSSION,
+  BASEL_TEMPLATE_8_CREDIT_RISK_EXPOSURES,
+  BASEL_TEMPLATE_9_MARKET_RISK,
+  BASEL_TEMPLATE_10_OPERATIONAL_RISK,
+  BASEL_TEMPLATE_11_MAPPING_SCOPES,
   SOURCES_AND_UTILISATION_OF_INCOME,
+  QUARTERLY_PERFORMANCE_TABLE,
+  SHARE_OWNERSHIP_COMPOSITION_TABLE_1,
+  RESIDENT_NON_RESIDENT_TABLE_2,
+  INDIVIDUAL_INSTITUTIONAL_TABLE_3,
+  INSTITUTIONAL_SUB_ANALYSIS_TABLE_4,
+  DISTRIBUTION_SCHEDULE_OF_SHAREHOLDINGS,
+  TOP_20_SHAREHOLDERS,
+  DIRECTORS_AND_CEO_SHAREHOLDING_TABLE_7,
+  MARKET_CAP_AND_PUBLIC_HOLDING,
+  SDB_BANK_SHARE_TRADING_DETAILS,
+  CSE_BANKING_INDUSTRY_MARKET_CAP,
+  SDB_BANK_CAPITALISATION_DETAILS,
+  SDB_SHARE_PRICE_MOVEMENT,
+  DIVIDENDS_TABLE,
+  VALUE_CREATION_FOR_SHAREHOLDERS,
   GLOSSARY_TERMS,
   ABBREVIATIONS_DATA,
   CORPORATE_INFORMATION_DATA,
   GlossaryEntry
 } from "../data/supplementaryData";
 
-export default function SupplementarySection() {
-  const [activeSubTab, setActiveSubTab] = useState<
-    "ten-years" | "basel" | "income-dist" | "glossary" | "corporate"
-  >("ten-years");
+type MainSubTab = "ten-years" | "basel" | "shareholders" | "income-dist" | "glossary" | "corporate";
 
-  // Glossary state
+export default function SupplementarySection() {
+  const [activeSubTab, setActiveSubTab] = useState<MainSubTab>("ten-years");
+  const [activeBaselTemplate, setActiveBaselTemplate] = useState<number>(1);
+  const [activeShareholderView, setActiveShareholderView] = useState<string>("tables-1-4");
+
+  // Glossary search & filter
   const [glossarySearch, setGlossarySearch] = useState("");
   const [glossaryCategory, setGlossaryCategory] = useState<string>("all");
-
-  // Abbreviations state
   const [abbrSearch, setAbbrSearch] = useState("");
 
   const filteredGlossary = GLOSSARY_TERMS.filter((entry) => {
@@ -46,7 +78,7 @@ export default function SupplementarySection() {
   });
 
   return (
-    <div id="supplementary-section" className="space-y-8">
+    <div id="supplementary-section" className="space-y-8 text-left">
       {/* Header Banner */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1E113F] via-[#2F1B68] to-[#452782] text-white p-8 md:p-12 shadow-xl border border-sdb-purple/20">
         <div className="absolute top-0 right-0 w-80 h-80 bg-sdb-coral/15 rounded-full blur-3xl pointer-events-none" />
@@ -55,27 +87,27 @@ export default function SupplementarySection() {
         <div className="relative z-10 max-w-4xl space-y-4">
           <div className="inline-flex items-center space-x-2 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-semibold text-sdb-coral">
             <BookMarked className="w-3.5 h-3.5" />
-            <span>Pages 298–328 &bull; Supplementary Disclosures &amp; References</span>
+            <span>Pages 298–328 &bull; Supplementary Disclosures &amp; Statutory Analysis</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-black font-serif tracking-tight text-white leading-tight">
-            Supplementary Disclosures &amp; Reference Guide
+            Supplementary Disclosures &amp; Investor Guide
           </h2>
-          <p className="text-slate-200 text-sm md:text-base leading-relaxed max-w-3xl">
-            A comprehensive reference hub providing the ten-year statistical record (2016–2025), statutory Basel III Pillar III market disclosures, income distribution analysis, technical glossary, abbreviations, corporate details, and Notice of the 29th Annual General Meeting.
+          <p className="text-slate-200 text-sm md:text-base leading-relaxed max-w-3xl font-sans">
+            Statutory disclosures encompassing the 10-year historical trajectory (2016–2025), comprehensive Basel III Pillar III Templates 1 to 11, Shareholder Analysis Tables 1 to 7, CSE trading metrics, income utilisation, and corporate data audited by Ernst & Young (EY).
           </p>
 
-          <div className="pt-2 flex flex-wrap gap-2 text-xs">
+          <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
             <span className="bg-white/10 px-3 py-1 rounded-full border border-white/15">
               10-Year Record (2016–2025)
             </span>
             <span className="bg-white/10 px-3 py-1 rounded-full border border-white/15">
-              Basel III Pillar III (CAR 15.24%)
+              Basel III Pillar III (Templates 1–11)
             </span>
             <span className="bg-white/10 px-3 py-1 rounded-full border border-white/15">
-              Searchable Financial Glossary
+              Shareholder Analysis (Tables 1–7)
             </span>
             <span className="bg-white/10 px-3 py-1 rounded-full border border-white/15">
-              Notice of 29th AGM
+              Audited by Ernst & Young (EY)
             </span>
           </div>
         </div>
@@ -85,20 +117,21 @@ export default function SupplementarySection() {
       <div className="flex items-center space-x-2 overflow-x-auto pb-2 border-b border-slate-200 scrollbar-none">
         {[
           { id: "ten-years", label: "Ten Years at a Glance", icon: FileSpreadsheet },
-          { id: "basel", label: "Basel III Pillar III", icon: ShieldAlert },
-          { id: "income-dist", label: "Income Sources & Utilisation", icon: PieChart },
+          { id: "basel", label: "Basel III Pillar III (Templates 1–11)", icon: ShieldAlert },
+          { id: "shareholders", label: "Shareholder Analysis & Trading", icon: Users },
+          { id: "income-dist", label: "Income Sources & Quarterly", icon: PieChart },
           { id: "glossary", label: "Glossary & Abbreviations", icon: HelpCircle },
-          { id: "corporate", label: "Corporate Info & AGM Notice", icon: Building2 }
+          { id: "corporate", label: "Corporate Directory", icon: Building2 }
         ].map((tab) => {
           const TabIcon = tab.icon;
           const isActive = activeSubTab === tab.id;
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveSubTab(tab.id as any)}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
+              onClick={() => setActiveSubTab(tab.id as MainSubTab)}
+              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                 isActive
-                  ? "bg-sdb-purple text-white shadow-md shadow-sdb-purple/20"
+                  ? "bg-sdb-purple text-white shadow-md shadow-sdb-purple/20 font-bold"
                   : "bg-white/80 hover:bg-sdb-purple/5 text-slate-700 border border-slate-200"
               }`}
             >
@@ -121,7 +154,7 @@ export default function SupplementarySection() {
                   </span>
                   <span className="text-xs text-slate-400 font-mono">Report Page 306</span>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 font-serif mt-1">
+                <h3 className="text-xl sm:text-2xl font-bold text-sdb-purple font-serif mt-1">
                   Ten Years Financial Trajectory (LKR Millions)
                 </h3>
               </div>
@@ -178,7 +211,7 @@ export default function SupplementarySection() {
                     ))}
                   </tr>
                   <tr className="hover:bg-slate-50/80">
-                    <td className="p-3 font-sans font-bold text-slate-800">Total Equity (Shareholders)</td>
+                    <td className="p-3 font-sans font-bold text-slate-800">Total Equity</td>
                     {TEN_YEARS_AT_A_GLANCE_DATA.map((d) => (
                       <td key={d.year} className={`p-3 text-right ${d.year === "2025" ? "font-bold text-sdb-purple" : ""}`}>
                         {d.totalEquity.toLocaleString()}
@@ -193,18 +226,18 @@ export default function SupplementarySection() {
                       </td>
                     ))}
                   </tr>
-                  <tr className="hover:bg-slate-50/80 bg-emerald-50/30">
-                    <td className="p-3 font-sans font-bold text-emerald-900">Profit Before Tax (PBT)</td>
+                  <tr className="hover:bg-slate-50/80">
+                    <td className="p-3 font-sans font-bold text-slate-800">Profit Before Tax (PBT)</td>
                     {TEN_YEARS_AT_A_GLANCE_DATA.map((d) => (
-                      <td key={d.year} className={`p-3 text-right font-semibold text-emerald-900 ${d.year === "2025" ? "font-black" : ""}`}>
+                      <td key={d.year} className={`p-3 text-right ${d.year === "2025" ? "font-bold text-sdb-purple" : ""}`}>
                         {d.profitBeforeTax.toLocaleString()}
                       </td>
                     ))}
                   </tr>
-                  <tr className="hover:bg-slate-50/80 bg-emerald-50/60">
-                    <td className="p-3 font-sans font-bold text-emerald-950">Profit After Tax (PAT)</td>
+                  <tr className="hover:bg-slate-50/80 bg-sdb-cream/30">
+                    <td className="p-3 font-sans font-bold text-slate-900">Profit After Tax (PAT)</td>
                     {TEN_YEARS_AT_A_GLANCE_DATA.map((d) => (
-                      <td key={d.year} className={`p-3 text-right font-semibold text-emerald-950 ${d.year === "2025" ? "font-black" : ""}`}>
+                      <td key={d.year} className={`p-3 text-right font-bold ${d.year === "2025" ? "text-sdb-purple" : "text-slate-700"}`}>
                         {d.profitAfterTax.toLocaleString()}
                       </td>
                     ))}
@@ -212,310 +245,937 @@ export default function SupplementarySection() {
                 </tbody>
               </table>
             </div>
-
-            {/* Growth callout */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                <span className="text-[11px] font-bold text-slate-500 uppercase">10-Year Advances Growth</span>
-                <div className="text-xl font-black text-sdb-purple font-mono mt-1">+93.8%</div>
-                <p className="text-[11px] text-slate-600 mt-0.5">From LKR 56.68 Bn (2016) to LKR 109.84 Bn (2025)</p>
-              </div>
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                <span className="text-[11px] font-bold text-slate-500 uppercase">10-Year Deposits Growth</span>
-                <div className="text-xl font-black text-sdb-purple font-mono mt-1">+128.4%</div>
-                <p className="text-[11px] text-slate-600 mt-0.5">From LKR 46.27 Bn (2016) to LKR 105.68 Bn (2025)</p>
-              </div>
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                <span className="text-[11px] font-bold text-slate-500 uppercase">10-Year Total Assets Growth</span>
-                <div className="text-xl font-black text-sdb-purple font-mono mt-1">+122.5%</div>
-                <p className="text-[11px] text-slate-600 mt-0.5">From LKR 66.05 Bn (2016) to LKR 146.96 Bn (2025)</p>
-              </div>
-            </div>
           </div>
         </div>
       )}
 
-      {/* TAB 2: Basel III Pillar III */}
+      {/* TAB 2: BASEL III PILLAR III (Points 75 to 84) */}
       {activeSubTab === "basel" && (
         <div className="space-y-6">
           <div className="bg-white rounded-3xl border border-sdb-purple/10 p-6 sm:p-8 shadow-sm space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4">
-              <div>
-                <div className="flex items-center space-x-2">
-                  <span className="bg-emerald-100 text-emerald-800 text-xs font-mono font-bold px-2.5 py-0.5 rounded-md">
-                    Statutory Compliance &bull; Basel III
-                  </span>
-                  <span className="text-xs text-slate-400 font-mono">Report Pages 300–305</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 font-serif mt-1">
-                  Capital Adequacy &amp; Liquidity Standards (Pillar III Market Disclosures)
-                </h3>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="bg-sdb-coral/10 text-sdb-coral text-xs font-mono font-bold px-2.5 py-0.5 rounded-md uppercase">
+                  Points 75–84 &bull; Basel III Market Discipline Disclosures
+                </span>
+                <span className="text-xs text-slate-400 font-mono">Pages 300–305</span>
               </div>
-              <span className="text-xs font-mono bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
-                CBSL Banking Act Directions
-              </span>
+              <h3 className="text-2xl font-bold text-sdb-purple font-serif mt-2">
+                Basel III Pillar III Market Disclosures (Templates 1 to 11)
+              </h3>
+              <p className="text-xs text-slate-500 font-mono mt-1">
+                Mandated under CBSL Banking Act Direction No. 01 of 2016 for licensed specialised banks.
+              </p>
             </div>
 
-            {/* Ratios Table */}
-            <div className="overflow-x-auto rounded-2xl border border-slate-200">
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 font-mono font-bold text-slate-700">
-                    <th className="p-3.5">Regulatory Metric</th>
-                    <th className="p-3.5 text-center">Regulatory Minimum</th>
-                    <th className="p-3.5 text-right bg-sdb-purple/10 text-sdb-purple">Bank 2025</th>
-                    <th className="p-3.5 text-right">Bank 2024</th>
-                    <th className="p-3.5 text-center text-emerald-800">Compliance Surplus</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 font-mono">
-                  {BASEL_III_PILLAR_III_DATA.capitalAdequacyRatios.map((item, idx) => (
-                    <tr key={idx} className="hover:bg-slate-50/80">
-                      <td className="p-3.5 font-sans font-semibold text-slate-800">{item.ratio}</td>
-                      <td className="p-3.5 text-center text-slate-600">{item.requirement}</td>
-                      <td className="p-3.5 text-right font-black text-sdb-purple bg-sdb-purple/5">{item.bank2025}</td>
-                      <td className="p-3.5 text-right text-slate-600">{item.bank2024}</td>
-                      <td className="p-3.5 text-center font-bold text-emerald-700">{item.surplus}</td>
-                    </tr>
+            {/* Template Selector Pills */}
+            <div className="flex flex-wrap gap-1.5 border-b border-slate-200 pb-3 text-xs font-mono">
+              {[
+                { id: 1, label: "Template 1: Key Ratios" },
+                { id: 2, label: "Template 2: Capital Computation" },
+                { id: 3, label: "Template 3: Leverage Ratio" },
+                { id: 4, label: "Template 4: Liquidity (LCR)" },
+                { id: 5, label: "Template 5: Capital Instruments" },
+                { id: 6, label: "Template 6: Adequacy Discussion" },
+                { id: 8, label: "Template 8: Credit Risk Exposures" },
+                { id: 9, label: "Template 9: Market Risk" },
+                { id: 10, label: "Template 10: Operational Risk" },
+                { id: 11, label: "Template 11: Scope Mapping" }
+              ].map(t => (
+                <button
+                  key={t.id}
+                  onClick={() => setActiveBaselTemplate(t.id)}
+                  className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                    activeBaselTemplate === t.id
+                      ? "bg-sdb-purple text-white shadow-xs"
+                      : "bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Template 1: Key Regulatory Ratios (Point 75) */}
+            {activeBaselTemplate === 1 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 1: Key Regulatory Ratios - Capital and Liquidity (Point 75)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-[#8B1D2C] text-white">
+                      <tr>
+                        <th className="py-3 px-4 font-bold font-sans">Regulatory Indicator</th>
+                        <th className="py-3 px-4 text-center font-bold">CBSL Requirement</th>
+                        <th className="py-3 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">Bank 2025</th>
+                        <th className="py-3 px-4 text-right font-bold">Bank 2024</th>
+                        <th className="py-3 px-4 text-right font-bold">Capital Buffer / Surplus</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_1_KEY_RATIOS.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50">
+                          <td className="py-2.5 px-4 font-sans font-medium text-slate-800">{row.item}</td>
+                          <td className="py-2.5 px-4 text-center text-slate-500">{row.requirement}</td>
+                          <td className="py-2.5 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.bank2025}</td>
+                          <td className="py-2.5 px-4 text-right text-slate-600">{row.bank2024}</td>
+                          <td className="py-2.5 px-4 text-right font-bold text-emerald-600">{row.surplus}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 2: Capital Computation (Point 76) */}
+            {activeBaselTemplate === 2 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 2: Basel III Computation of Capital Ratio (Point 76)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-slate-100 text-slate-700">
+                      <tr>
+                        <th className="py-2.5 px-4 font-bold font-sans">Capital Component (LKR Millions)</th>
+                        <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">2025 (LKR Mn)</th>
+                        <th className="py-2.5 px-4 text-right font-bold">2024 (LKR Mn)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_2_CAPITAL_COMPUTATION.map((row, idx) => (
+                        <tr
+                          key={idx}
+                          className={`${
+                            row.isHeader ? "bg-slate-50 font-bold text-sdb-purple" : ""
+                          } ${row.isTotal ? "bg-[#FAF2EB]/70 font-black text-[#8B1D2C]" : ""}`}
+                        >
+                          <td className={`py-2 px-4 font-sans ${row.indent ? "pl-8 text-slate-600" : ""}`}>
+                            {row.component}
+                          </td>
+                          <td className="py-2 px-4 text-right">{row.amount2025.toLocaleString()}</td>
+                          <td className="py-2 px-4 text-right text-slate-500">{row.amount2024.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 3: Leverage Ratio (Point 77) */}
+            {activeBaselTemplate === 3 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 3: Computation of Leverage Ratio (Point 77)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-slate-100 text-slate-700">
+                      <tr>
+                        <th className="py-2.5 px-4 font-bold font-sans">Item / Exposure Category</th>
+                        <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">2025</th>
+                        <th className="py-2.5 px-4 text-right font-bold">2024</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_3_LEVERAGE_RATIO.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50">
+                          <td className="py-2.5 px-4 font-sans font-medium text-slate-800">{row.item}</td>
+                          <td className="py-2.5 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.y2025}</td>
+                          <td className="py-2.5 px-4 text-right text-slate-600">{row.y2024}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 4: Liquidity Coverage Ratio (Point 78) */}
+            {activeBaselTemplate === 4 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 4: Basel III Computation of Liquidity Coverage Ratio (Point 78)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-slate-100 text-slate-700">
+                      <tr>
+                        <th className="py-2.5 px-4 font-bold font-sans">Liquidity Metric</th>
+                        <th className="py-2.5 px-4 text-right font-bold">LKR (Rupee Buffer)</th>
+                        <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">All Currencies Total</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_4_LCR.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50">
+                          <td className="py-2.5 px-4 font-sans font-medium text-slate-800">{row.metric}</td>
+                          <td className="py-2.5 px-4 text-right text-slate-700">{row.lkr2025}</td>
+                          <td className="py-2.5 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.all2025}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 5: Capital Instruments (Point 79) */}
+            {activeBaselTemplate === 5 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 5: Main Features of Regulatory Capital Instruments (Point 79)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_5_CAPITAL_INSTRUMENTS.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50">
+                          <td className="py-2.5 px-4 font-sans font-bold text-sdb-purple w-1/3 bg-slate-50">{row.feature}</td>
+                          <td className="py-2.5 px-4 text-slate-800 font-sans">{row.detail}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 6: Adequacy Discussion (Point 80) */}
+            {activeBaselTemplate === 6 && (
+              <div className="space-y-4 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 6: Summary Discussion on Capital Adequacy (Point 80)
+                </h4>
+                <div className="space-y-3">
+                  {BASEL_TEMPLATE_6_ADEQUACY_DISCUSSION.keyPoints.map((pt, idx) => (
+                    <div key={idx} className="bg-white p-4 rounded-xl border border-slate-200/70 flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <p className="text-xs text-slate-700 leading-relaxed font-sans">{pt}</p>
+                    </div>
                   ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Risk Weighted Assets breakdown */}
-            <div className="mt-6 pt-4 border-t border-slate-100">
-              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-700 mb-3">
-                Risk-Weighted Assets (RWA) Breakdown &bull; 31 December 2025
-              </h4>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                  <span className="text-[11px] text-slate-500 font-bold block">Credit Risk RWA</span>
-                  <div className="text-lg font-black text-slate-800 font-mono mt-1">
-                    {BASEL_III_PILLAR_III_DATA.riskWeightedAssets.creditRisk}
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-mono">88.9% of Total</span>
-                </div>
-
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                  <span className="text-[11px] text-slate-500 font-bold block">Operational Risk RWA</span>
-                  <div className="text-lg font-black text-slate-800 font-mono mt-1">
-                    {BASEL_III_PILLAR_III_DATA.riskWeightedAssets.operationalRisk}
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-mono">9.2% of Total</span>
-                </div>
-
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                  <span className="text-[11px] text-slate-500 font-bold block">Market Risk RWA</span>
-                  <div className="text-lg font-black text-slate-800 font-mono mt-1">
-                    {BASEL_III_PILLAR_III_DATA.riskWeightedAssets.marketRisk}
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-mono">1.9% of Total</span>
-                </div>
-
-                <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
-                  <span className="text-[11px] text-emerald-800 font-bold block">Total Risk Weighted Assets</span>
-                  <div className="text-lg font-black text-emerald-950 font-mono mt-1">
-                    {BASEL_III_PILLAR_III_DATA.riskWeightedAssets.totalRWA}
-                  </div>
-                  <span className="text-[10px] text-emerald-700 font-mono">Pillar III Basis</span>
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Template 8: Credit Risk Exposures (Point 81) */}
+            {activeBaselTemplate === 8 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 8: Credit Risk Under Standardised Approach - Exposures & Risk Weights (Point 81)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-slate-100 text-slate-700">
+                      <tr>
+                        <th className="py-2.5 px-3 font-bold font-sans">Asset Class</th>
+                        <th className="py-2.5 px-3 text-right font-bold">Gross Exposure</th>
+                        <th className="py-2.5 px-3 text-right font-bold">0%</th>
+                        <th className="py-2.5 px-3 text-right font-bold">20%</th>
+                        <th className="py-2.5 px-3 text-right font-bold">50%</th>
+                        <th className="py-2.5 px-3 text-right font-bold">100%</th>
+                        <th className="py-2.5 px-3 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">Total RWA</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_8_CREDIT_RISK_EXPOSURES.map((row, idx) => (
+                        <tr key={idx} className={`hover:bg-slate-50 ${idx === BASEL_TEMPLATE_8_CREDIT_RISK_EXPOSURES.length - 1 ? "bg-slate-100 font-bold" : ""}`}>
+                          <td className="py-2.5 px-3 font-sans font-medium text-slate-800">{row.assetClass}</td>
+                          <td className="py-2.5 px-3 text-right">{row.grossExposure.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right text-slate-500">{row.riskWeight0.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right text-slate-500">{row.riskWeight20.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right text-slate-500">{row.riskWeight50.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right text-slate-500">{row.riskWeight100.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.totalRWA.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 9: Market Risk (Point 82) */}
+            {activeBaselTemplate === 9 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 9: Market Risk Under Standardised Measurement Method (Point 82)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-slate-100 text-slate-700">
+                      <tr>
+                        <th className="py-2.5 px-4 font-bold font-sans">Market Risk Type</th>
+                        <th className="py-2.5 px-4 text-right font-bold">RWA Amount (LKR Mn)</th>
+                        <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">Capital Charge (LKR Mn)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_9_MARKET_RISK.map((row, idx) => (
+                        <tr key={idx} className={`hover:bg-slate-50 ${idx === BASEL_TEMPLATE_9_MARKET_RISK.length - 1 ? "bg-slate-100 font-bold" : ""}`}>
+                          <td className="py-2.5 px-4 font-sans font-medium text-slate-800">{row.riskType}</td>
+                          <td className="py-2.5 px-4 text-right">{row.rwaAmount.toLocaleString()}</td>
+                          <td className="py-2.5 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.capitalCharge}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 10: Operational Risk (Point 83) */}
+            {activeBaselTemplate === 10 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 10: Operational Risk Under Basic Indicator Approach (Point 83)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-slate-100 text-slate-700">
+                      <tr>
+                        <th className="py-2.5 px-4 font-bold font-sans">Period / Computation Parameter</th>
+                        <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">Amount (LKR Millions)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_10_OPERATIONAL_RISK.map((row, idx) => (
+                        <tr key={idx} className={`hover:bg-slate-50 ${idx >= 3 ? "bg-slate-50 font-bold text-sdb-purple" : ""}`}>
+                          <td className="py-2.5 px-4 font-sans font-medium text-slate-800">{row.year}</td>
+                          <td className="py-2.5 px-4 text-right font-bold text-sdb-purple">{row.grossIncome.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Template 11: Scope Mapping (Point 84) */}
+            {activeBaselTemplate === 11 && (
+              <div className="space-y-4">
+                <h4 className="font-serif font-bold text-lg text-sdb-purple">
+                  Template 11: Differences Between Accounting & Regulatory Scopes (Point 84)
+                </h4>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-slate-100 text-slate-700">
+                      <tr>
+                        <th className="py-2.5 px-3 font-bold font-sans">Balance Sheet Line</th>
+                        <th className="py-2.5 px-3 text-right font-bold">Carrying Value</th>
+                        <th className="py-2.5 px-3 text-right font-bold">Credit Risk Scope</th>
+                        <th className="py-2.5 px-3 text-right font-bold">Market Risk Scope</th>
+                        <th className="py-2.5 px-3 text-right font-bold">Not Subject to Capital</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {BASEL_TEMPLATE_11_MAPPING_SCOPES.map((row, idx) => (
+                        <tr key={idx} className={`hover:bg-slate-50 ${idx === BASEL_TEMPLATE_11_MAPPING_SCOPES.length - 1 ? "bg-slate-100 font-bold text-sdb-purple" : ""}`}>
+                          <td className="py-2.5 px-3 font-sans font-medium text-slate-800">{row.balanceSheetLine}</td>
+                          <td className="py-2.5 px-3 text-right font-bold">{row.carryingValue.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right text-slate-600">{row.creditRiskScope.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right text-slate-600">{row.marketScope.toLocaleString()}</td>
+                          <td className="py-2.5 px-3 text-right text-slate-600">{row.notSubjectToCap.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
 
-      {/* TAB 3: Sources & Utilisation of Income */}
+      {/* TAB 3: SHAREHOLDER ANALYSIS & TRADING (Points 29, 30, 35, 36, 87 to 100) */}
+      {activeSubTab === "shareholders" && (
+        <div className="space-y-6">
+          <div className="bg-white rounded-3xl border border-sdb-purple/10 p-6 sm:p-8 shadow-sm space-y-6">
+            <div>
+              <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-widest bg-sdb-coral/10 px-2.5 py-1 rounded-full">
+                Points 29, 30, 35, 36 & 87–100 &bull; Investor Disclosures
+              </span>
+              <h3 className="text-2xl font-bold text-sdb-purple font-serif mt-2">
+                Shares and Shareholders’ Analysis & Market Trading
+              </h3>
+              <p className="text-xs text-slate-500 font-mono mt-1">
+                Stated Capital of LKR 10,816 Mn represented by 160,698,832 Ordinary Voting Shares listed on the Colombo Stock Exchange (CSE).
+              </p>
+            </div>
+
+            {/* Navigation pills for Shareholder analysis */}
+            <div className="flex flex-wrap gap-1.5 border-b border-slate-200 pb-3 text-xs font-mono">
+              {[
+                { id: "tables-1-4", label: "Tables 1–4: Composition & Types" },
+                { id: "distribution-top20", label: "Distribution & Top 20 (Points 29, 30)" },
+                { id: "directors-holding", label: "Table 7: Directors' Shareholding (Points 36, 92)" },
+                { id: "market-trading", label: "Share Trading & Market Cap (Points 91–97)" },
+                { id: "dividends-value", label: "Dividends & Value Creation (Points 98–100)" }
+              ].map(v => (
+                <button
+                  key={v.id}
+                  onClick={() => setActiveShareholderView(v.id)}
+                  className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+                    activeShareholderView === v.id
+                      ? "bg-sdb-purple text-white shadow-xs"
+                      : "bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200"
+                  }`}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Sub-View: Tables 1-4 */}
+            {activeShareholderView === "tables-1-4" && (
+              <div className="space-y-6">
+                {/* Table 1: Share Ownership Composition (Point 87) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Table 1: Share Ownership Composition (Point 87)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-[#8B1D2C] text-white">
+                        <tr>
+                          <th className="py-2.5 px-4 font-bold font-sans">Ownership Category</th>
+                          <th className="py-2.5 px-4 text-center font-bold">No. of Shareholders</th>
+                          <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">Total Holding (Shares)</th>
+                          <th className="py-2.5 px-4 text-right font-bold">% of Stated Capital</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {SHARE_OWNERSHIP_COMPOSITION_TABLE_1.map((row, idx) => (
+                          <tr key={idx} className={`hover:bg-slate-50 ${idx === SHARE_OWNERSHIP_COMPOSITION_TABLE_1.length - 1 ? "bg-slate-50 font-bold" : ""}`}>
+                            <td className="py-2 px-4 font-sans font-medium text-slate-800">{row.category}</td>
+                            <td className="py-2 px-4 text-center text-slate-600">{row.noOfShareholders.toLocaleString()}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.totalShares.toLocaleString()}</td>
+                            <td className="py-2 px-4 text-right font-bold text-emerald-600">{row.percentage}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Table 2 & 3: Resident/Non-Resident and Individual/Institutional (Points 88, 89) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Table 2 */}
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-base text-sdb-purple">
+                      Table 2: Resident / Non-Resident Analysis (Point 88)
+                    </h4>
+                    <div className="overflow-x-auto rounded-xl border border-slate-200">
+                      <table className="w-full text-left text-xs font-mono">
+                        <thead className="bg-slate-100 text-slate-700">
+                          <tr>
+                            <th className="py-2.5 px-3 font-bold font-sans">Status</th>
+                            <th className="py-2.5 px-3 text-center font-bold">Count</th>
+                            <th className="py-2.5 px-3 text-right font-bold">Shares</th>
+                            <th className="py-2.5 px-3 text-right font-bold">%</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {RESIDENT_NON_RESIDENT_TABLE_2.map((row, idx) => (
+                            <tr key={idx} className={`hover:bg-slate-50 ${idx === 2 ? "font-bold bg-slate-50" : ""}`}>
+                              <td className="py-2 px-3 font-sans text-slate-800">{row.status}</td>
+                              <td className="py-2 px-3 text-center text-slate-600">{row.noOfShareholders.toLocaleString()}</td>
+                              <td className="py-2 px-3 text-right font-bold text-sdb-purple">{row.totalShares.toLocaleString()}</td>
+                              <td className="py-2 px-3 text-right font-bold text-emerald-600">{row.percentage}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Table 3 */}
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-base text-sdb-purple">
+                      Table 3: Individual / Institutional Analysis (Point 89)
+                    </h4>
+                    <div className="overflow-x-auto rounded-xl border border-slate-200">
+                      <table className="w-full text-left text-xs font-mono">
+                        <thead className="bg-slate-100 text-slate-700">
+                          <tr>
+                            <th className="py-2.5 px-3 font-bold font-sans">Investor Type</th>
+                            <th className="py-2.5 px-3 text-center font-bold">Count</th>
+                            <th className="py-2.5 px-3 text-right font-bold">Shares</th>
+                            <th className="py-2.5 px-3 text-right font-bold">%</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {INDIVIDUAL_INSTITUTIONAL_TABLE_3.map((row, idx) => (
+                            <tr key={idx} className={`hover:bg-slate-50 ${idx === 2 ? "font-bold bg-slate-50" : ""}`}>
+                              <td className="py-2 px-3 font-sans text-slate-800">{row.type}</td>
+                              <td className="py-2 px-3 text-center text-slate-600">{row.noOfShareholders.toLocaleString()}</td>
+                              <td className="py-2 px-3 text-right font-bold text-sdb-purple">{row.totalShares.toLocaleString()}</td>
+                              <td className="py-2 px-3 text-right font-bold text-emerald-600">{row.percentage}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Table 4: Institutional Sub-Analysis (Point 90) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Table 4: Institutional Sub Analysis (Point 90)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-slate-100 text-slate-700">
+                        <tr>
+                          <th className="py-2.5 px-4 font-bold font-sans">Institutional Sub-Category</th>
+                          <th className="py-2.5 px-4 text-center font-bold">Holders</th>
+                          <th className="py-2.5 px-4 text-right font-bold">Shares Held</th>
+                          <th className="py-2.5 px-4 text-right font-bold">% of Total</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {INSTITUTIONAL_SUB_ANALYSIS_TABLE_4.map((row, idx) => (
+                          <tr key={idx} className={`hover:bg-slate-50 ${idx === INSTITUTIONAL_SUB_ANALYSIS_TABLE_4.length - 1 ? "bg-slate-50 font-bold" : ""}`}>
+                            <td className="py-2 px-4 font-sans font-medium text-slate-800">{row.subCategory}</td>
+                            <td className="py-2 px-4 text-center text-slate-600">{row.noOfShareholders.toLocaleString()}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple">{row.totalShares.toLocaleString()}</td>
+                            <td className="py-2 px-4 text-right font-bold text-emerald-600">{row.percentage}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Sub-View: Distribution Schedule & Top 20 (Points 29, 30, 35) */}
+            {activeShareholderView === "distribution-top20" && (
+              <div className="space-y-6">
+                {/* Distribution Schedule (Points 29, 35) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Distribution Schedule of Shareholdings (Points 29 & 35)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-[#8B1D2C] text-white">
+                        <tr>
+                          <th className="py-2.5 px-4 font-bold font-sans">Shareholding Range</th>
+                          <th className="py-2.5 px-4 text-center font-bold">Shareholders</th>
+                          <th className="py-2.5 px-4 text-center font-bold">% Holders</th>
+                          <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">Total Holding (Shares)</th>
+                          <th className="py-2.5 px-4 text-right font-bold">% Holding</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {DISTRIBUTION_SCHEDULE_OF_SHAREHOLDINGS.map((row, idx) => (
+                          <tr key={idx} className={`hover:bg-slate-50 ${idx === DISTRIBUTION_SCHEDULE_OF_SHAREHOLDINGS.length - 1 ? "bg-slate-100 font-bold" : ""}`}>
+                            <td className="py-2 px-4 font-sans text-slate-800">{row.range}</td>
+                            <td className="py-2 px-4 text-center text-slate-600">{row.noOfShareholders.toLocaleString()}</td>
+                            <td className="py-2 px-4 text-center text-slate-600">{row.percentageShareholders}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.totalHolding.toLocaleString()}</td>
+                            <td className="py-2 px-4 text-right font-bold text-emerald-600">{row.percentageHolding}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Substantial Shareholdings - Top 20 (Point 30) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Substantial Shareholdings - Top 20 Shareholders as at 31st December 2025 (Point 30)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-slate-100 text-slate-700">
+                        <tr>
+                          <th className="py-2.5 px-3 text-center font-bold">Rank</th>
+                          <th className="py-2.5 px-4 font-bold font-sans">Shareholder Name</th>
+                          <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">No. of Shares</th>
+                          <th className="py-2.5 px-4 text-right font-bold">% Holding</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {TOP_20_SHAREHOLDERS.map((s) => (
+                          <tr key={s.rank} className="hover:bg-slate-50">
+                            <td className="py-2 px-3 text-center font-bold text-slate-400">{s.rank}</td>
+                            <td className="py-2 px-4 font-sans font-medium text-slate-800">{s.name}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{s.shares.toLocaleString()}</td>
+                            <td className="py-2 px-4 text-right font-bold text-emerald-600">{s.percentage}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Sub-View: Table 7 Directors' Shareholding (Points 36, 92) */}
+            {activeShareholderView === "directors-holding" && (
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Table 7: Directors' and CEO's Shareholding (Points 36 & 92)
+                  </h4>
+                  <p className="text-xs text-slate-500 font-mono mt-0.5">
+                    Disclosed in compliance with Section 7.6 (viii) of the Listing Rules of the Colombo Stock Exchange.
+                  </p>
+                </div>
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-left text-xs font-mono">
+                    <thead className="bg-[#8B1D2C] text-white">
+                      <tr>
+                        <th className="py-2.5 px-4 font-bold font-sans">Director Name & Office</th>
+                        <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">31 Dec 2025</th>
+                        <th className="py-2.5 px-4 text-right font-bold">31 Dec 2024</th>
+                        <th className="py-2.5 px-4 text-right font-bold">% of Shares</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {DIRECTORS_AND_CEO_SHAREHOLDING_TABLE_7.map((d, idx) => (
+                        <tr key={idx} className={`hover:bg-slate-50 ${idx === DIRECTORS_AND_CEO_SHAREHOLDING_TABLE_7.length - 1 ? "bg-slate-100 font-bold" : ""}`}>
+                          <td className="py-2 px-4 font-sans font-semibold text-slate-800">{d.directorName}</td>
+                          <td className="py-2 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">
+                            {typeof d.shares2025 === "number" ? d.shares2025.toLocaleString() : d.shares2025}
+                          </td>
+                          <td className="py-2 px-4 text-right text-slate-600">
+                            {typeof d.shares2024 === "number" ? d.shares2024.toLocaleString() : d.shares2024}
+                          </td>
+                          <td className="py-2 px-4 text-right font-bold text-emerald-600">{d.percentage}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Sub-View: Market Trading & Cap (Points 91–97) */}
+            {activeShareholderView === "market-trading" && (
+              <div className="space-y-6">
+                {/* Point 91: Market Cap and Minimum Public Holding */}
+                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Market Capitalisation and Minimum Public Holding Compliance (Point 91)
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono">
+                    <div className="bg-white p-3 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-400 uppercase">Float Adjusted Market Cap</span>
+                      <p className="font-bold text-sdb-purple text-sm mt-1">{MARKET_CAP_AND_PUBLIC_HOLDING.floatAdjustedMarketCap}</p>
+                    </div>
+                    <div className="bg-white p-3 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-400 uppercase">Public Holding %</span>
+                      <p className="font-bold text-emerald-600 text-sm mt-1">{MARKET_CAP_AND_PUBLIC_HOLDING.publicHoldingPercentage}</p>
+                    </div>
+                    <div className="bg-white p-3 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-400 uppercase">Public Shareholders</span>
+                      <p className="font-bold text-sdb-purple text-sm mt-1">{MARKET_CAP_AND_PUBLIC_HOLDING.noOfPublicShareholders.toLocaleString()}</p>
+                    </div>
+                    <div className="bg-white p-3 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-400 uppercase">Listing Rule Option</span>
+                      <p className="font-bold text-sdb-purple text-sm mt-1">Option 4 (Complied)</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SDB Bank Share Trading Table (Point 93, 94) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    SDB Bank Share Trading & Market Activity (Points 93 & 94)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-slate-100 text-slate-700">
+                        <tr>
+                          <th className="py-2.5 px-4 font-bold font-sans">Market Trading Indicator</th>
+                          <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">2025</th>
+                          <th className="py-2.5 px-4 text-right font-bold">2024</th>
+                          <th className="py-2.5 px-4 text-right font-bold">YoY Movement</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {SDB_BANK_SHARE_TRADING_DETAILS.map((row, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50">
+                            <td className="py-2 px-4 font-sans font-medium text-slate-800">{row.indicator}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{row.y2025}</td>
+                            <td className="py-2 px-4 text-right text-slate-600">{row.y2024}</td>
+                            <td className="py-2 px-4 text-right font-bold text-emerald-600">{row.change}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* CSE & Industry Capitalisation (Point 95, 96) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-base text-sdb-purple">
+                      CSE and Banking Industry Capitalisation (Point 95)
+                    </h4>
+                    <div className="overflow-x-auto rounded-xl border border-slate-200">
+                      <table className="w-full text-left text-xs font-mono">
+                        <tbody className="divide-y divide-slate-100">
+                          {CSE_BANKING_INDUSTRY_MARKET_CAP.map((row, idx) => (
+                            <tr key={idx} className="hover:bg-slate-50">
+                              <td className="py-2 px-3 font-sans text-slate-800">{row.item}</td>
+                              <td className="py-2 px-3 text-right font-bold text-sdb-purple">{row.y2025}</td>
+                              <td className="py-2 px-3 text-right text-slate-500">{row.y2024}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-base text-sdb-purple">
+                      SDB Bank Capitalisation Details (Point 96)
+                    </h4>
+                    <div className="overflow-x-auto rounded-xl border border-slate-200">
+                      <table className="w-full text-left text-xs font-mono">
+                        <tbody className="divide-y divide-slate-100">
+                          {SDB_BANK_CAPITALISATION_DETAILS.map((row, idx) => (
+                            <tr key={idx} className="hover:bg-slate-50">
+                              <td className="py-2 px-3 font-sans text-slate-800">{row.metric}</td>
+                              <td className="py-2 px-3 text-right font-bold text-sdb-purple">{row.value}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SDB Bank Share Price Movement (Point 97) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    SDB Bank Share Price Movement During 2025 (Point 97)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-[#8B1D2C] text-white">
+                        <tr>
+                          <th className="py-2.5 px-4 font-bold font-sans">Quarterly Period</th>
+                          <th className="py-2.5 px-4 text-right font-bold">Highest (LKR)</th>
+                          <th className="py-2.5 px-4 text-right font-bold">Lowest (LKR)</th>
+                          <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">Closing (LKR)</th>
+                          <th className="py-2.5 px-4 text-right font-bold">Trade Volume</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {SDB_SHARE_PRICE_MOVEMENT.map((q, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50">
+                            <td className="py-2 px-4 font-sans font-medium text-slate-800">{q.period}</td>
+                            <td className="py-2 px-4 text-right text-emerald-600 font-bold">{q.high}</td>
+                            <td className="py-2 px-4 text-right text-slate-600">{q.low}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{q.close}</td>
+                            <td className="py-2 px-4 text-right text-slate-700">{q.volume}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Sub-View: Dividends & Value Creation (Points 98 to 100) */}
+            {activeShareholderView === "dividends-value" && (
+              <div className="space-y-6">
+                {/* Dividends Record (Point 98) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Historical Dividends Record (Point 98)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-slate-100 text-slate-700">
+                        <tr>
+                          <th className="py-2.5 px-4 font-bold font-sans">Financial Year</th>
+                          <th className="py-2.5 px-4 font-bold font-sans">Type of Dividend</th>
+                          <th className="py-2.5 px-4 text-right font-bold">DPS (LKR)</th>
+                          <th className="py-2.5 px-4 text-right font-bold">Payout Ratio (%)</th>
+                          <th className="py-2.5 px-4 text-right font-bold">Gross Payout (LKR)</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {DIVIDENDS_TABLE.map((d, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50">
+                            <td className="py-2 px-4 font-bold text-sdb-purple">{d.year}</td>
+                            <td className="py-2 px-4 font-sans text-slate-700">{d.dividendType}</td>
+                            <td className="py-2 px-4 text-right text-slate-700">{d.dividendPerShare}</td>
+                            <td className="py-2 px-4 text-right text-slate-700">{d.payoutRatio}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple">{d.totalPayout}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Value Creation for Shareholders (Points 99, 100) */}
+                <div className="space-y-3">
+                  <h4 className="font-serif font-bold text-base text-sdb-purple">
+                    Value Creation for Shareholders - CSE Market Indicators (Points 99 & 100)
+                  </h4>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200">
+                    <table className="w-full text-left text-xs font-mono">
+                      <thead className="bg-[#8B1D2C] text-white">
+                        <tr>
+                          <th className="py-2.5 px-4 font-bold font-sans">Indicator</th>
+                          <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">2025</th>
+                          <th className="py-2.5 px-4 text-right font-bold">2024</th>
+                          <th className="py-2.5 px-4 text-right font-bold">YoY Movement</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {VALUE_CREATION_FOR_SHAREHOLDERS.map((v, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50">
+                            <td className="py-2 px-4 font-sans font-medium text-slate-800">{v.indicator}</td>
+                            <td className="py-2 px-4 text-right font-bold text-sdb-purple bg-[#FAF2EB]/40">{v.y2025}</td>
+                            <td className="py-2 px-4 text-right text-slate-600">{v.y2024}</td>
+                            <td className="py-2 px-4 text-right font-bold text-emerald-600">{v.change}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 4: Income Sources & Quarterly Performance (Points 85 & 86) */}
       {activeSubTab === "income-dist" && (
         <div className="space-y-6">
           <div className="bg-white rounded-3xl border border-sdb-purple/10 p-6 sm:p-8 shadow-sm space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4">
-              <div>
-                <div className="flex items-center space-x-2">
-                  <span className="bg-sdb-coral/10 text-sdb-coral text-xs font-mono font-bold px-2.5 py-0.5 rounded-md">
-                    Value Generation &amp; Distribution
-                  </span>
-                  <span className="text-xs text-slate-400 font-mono">Report Page 308</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 font-serif mt-1">
-                  Sources &amp; Utilisation of Income (2025)
-                </h3>
-              </div>
-              <span className="text-xs font-mono text-slate-500">Gross Income: LKR 18,404 Million</span>
+            <div>
+              <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-widest bg-sdb-coral/10 px-2.5 py-1 rounded-full">
+                Points 85 & 86 &bull; Value Added Statement & Quarterly Flow
+              </span>
+              <h3 className="text-2xl font-bold text-sdb-purple font-serif mt-2">
+                Sources and Utilisation of Income & Quarterly Performance
+              </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Income Sources & Utilisation (Point 85) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Sources */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-slate-700">
-                    Sources of Income (Inflows)
-                  </h4>
-                  <span className="text-xs font-mono font-bold text-emerald-700">100.0%</span>
-                </div>
-
-                <div className="space-y-3">
-                  {SOURCES_AND_UTILISATION_OF_INCOME.sources.map((item, idx) => (
-                    <div key={idx} className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-                      <div className="flex justify-between text-xs font-semibold text-slate-800 mb-1">
-                        <span>{item.label}</span>
-                        <span className="font-mono text-emerald-800 font-bold">{item.percentage}</span>
-                      </div>
-                      <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                        <div
-                          className="bg-emerald-600 h-full rounded-full"
-                          style={{ width: item.percentage }}
-                        />
-                      </div>
-                      <div className="text-[11px] text-slate-400 font-mono mt-1 text-right">
-                        LKR {item.amount.toLocaleString()} Mn
-                      </div>
+              <div className="space-y-3 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                <h4 className="font-serif font-bold text-base text-sdb-purple">
+                  Sources of Income (Point 85)
+                </h4>
+                <div className="space-y-2 font-mono text-xs">
+                  {SOURCES_AND_UTILISATION_OF_INCOME.sources.map((s, idx) => (
+                    <div key={idx} className="flex justify-between items-center p-2.5 bg-white rounded-lg border border-slate-100">
+                      <span className="font-sans text-slate-700">{s.label}</span>
+                      <span className="font-bold text-sdb-purple">{s.percentage} (LKR {s.amount} Mn)</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Utilisation */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-slate-700">
-                    Utilisation of Income (Outflows &amp; Retention)
-                  </h4>
-                  <span className="text-xs font-mono font-bold text-sdb-purple">100.0%</span>
-                </div>
-
-                <div className="space-y-3">
-                  {SOURCES_AND_UTILISATION_OF_INCOME.utilisation.map((item, idx) => (
-                    <div key={idx} className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-                      <div className="flex justify-between text-xs font-semibold text-slate-800 mb-1">
-                        <span>{item.label}</span>
-                        <span className="font-mono text-sdb-purple font-bold">{item.percentage}</span>
-                      </div>
-                      <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                        <div
-                          className="bg-sdb-purple h-full rounded-full"
-                          style={{ width: item.percentage }}
-                        />
-                      </div>
-                      <div className="text-[11px] text-slate-400 font-mono mt-1 text-right">
-                        LKR {item.amount.toLocaleString()} Mn
-                      </div>
+              <div className="space-y-3 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                <h4 className="font-serif font-bold text-base text-sdb-purple">
+                  Utilisation of Income (Point 85)
+                </h4>
+                <div className="space-y-2 font-mono text-xs">
+                  {SOURCES_AND_UTILISATION_OF_INCOME.utilisation.map((u, idx) => (
+                    <div key={idx} className="flex justify-between items-center p-2.5 bg-white rounded-lg border border-slate-100">
+                      <span className="font-sans text-slate-700">{u.label}</span>
+                      <span className="font-bold text-sdb-coral">{u.percentage} (LKR {u.amount} Mn)</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
+
+            {/* Quarterly Performance (Point 86) */}
+            <div className="space-y-3 pt-4 border-t border-slate-200">
+              <h4 className="font-serif font-bold text-base text-sdb-purple">
+                Quarterly Performance of the Bank - FY 2025 (Point 86)
+              </h4>
+              <div className="overflow-x-auto rounded-xl border border-slate-200">
+                <table className="w-full text-left text-xs font-mono">
+                  <thead className="bg-[#8B1D2C] text-white">
+                    <tr>
+                      <th className="py-2.5 px-4 font-bold font-sans">Quarterly Period</th>
+                      <th className="py-2.5 px-4 text-right font-bold">Interest Income</th>
+                      <th className="py-2.5 px-4 text-right font-bold">Interest Expense</th>
+                      <th className="py-2.5 px-4 text-right font-bold">Net Interest Income</th>
+                      <th className="py-2.5 px-4 text-right font-bold bg-[#FAF2EB] text-[#8B1D2C]">PBT</th>
+                      <th className="py-2.5 px-4 text-right font-bold">PAT</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {QUARTERLY_PERFORMANCE_TABLE.map((q, idx) => (
+                      <tr key={idx} className={`hover:bg-slate-50 ${idx === QUARTERLY_PERFORMANCE_TABLE.length - 1 ? "bg-slate-100 font-bold" : ""}`}>
+                        <td className="py-2 px-4 font-sans font-medium text-slate-800">{q.quarter}</td>
+                        <td className="py-2 px-4 text-right">{q.interestIncome.toLocaleString()}</td>
+                        <td className="py-2 px-4 text-right text-rose-600">{q.interestExpense.toLocaleString()}</td>
+                        <td className="py-2 px-4 text-right font-bold text-sdb-purple">{q.nii.toLocaleString()}</td>
+                        <td className="py-2 px-4 text-right font-bold text-[#8B1D2C] bg-[#FAF2EB]/40">{q.pbt.toLocaleString()}</td>
+                        <td className="py-2 px-4 text-right font-bold text-emerald-600">{q.pat.toLocaleString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       )}
 
-      {/* TAB 4: Glossary & Abbreviations */}
+      {/* TAB 5: Glossary & Abbreviations */}
       {activeSubTab === "glossary" && (
-        <div className="space-y-8">
-          {/* Glossary Section */}
+        <div className="space-y-6">
           <div className="bg-white rounded-3xl border border-sdb-purple/10 p-6 sm:p-8 shadow-sm space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-slate-100 pb-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <div className="flex items-center space-x-2">
-                  <span className="bg-sdb-blue/10 text-sdb-blue text-xs font-mono font-bold px-2.5 py-0.5 rounded-md">
-                    Technical Directory
-                  </span>
-                  <span className="text-xs text-slate-400 font-mono">Pages 318–321</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 font-serif mt-1">
-                  Glossary of Banking &amp; Financial Terms
+                <h3 className="font-serif text-2xl font-bold text-sdb-purple">
+                  Financial Glossary & Abbreviations
                 </h3>
+                <p className="text-xs text-slate-500 font-mono mt-0.5">
+                  Standard terminology under SLFRS/LKAS, Basel III, and Integrated Reporting standards.
+                </p>
               </div>
-
-              {/* Glossary Search & Filter */}
-              <div className="flex flex-col sm:flex-row gap-2">
-                <div className="relative w-full sm:w-60">
-                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                  <input
-                    type="text"
-                    placeholder="Search terms or acronyms..."
-                    value={glossarySearch}
-                    onChange={(e) => setGlossarySearch(e.target.value)}
-                    className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sdb-purple/30"
-                  />
-                </div>
-                <select
-                  value={glossaryCategory}
-                  onChange={(e) => setGlossaryCategory(e.target.value)}
-                  className="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none"
-                >
-                  <option value="all">All Categories</option>
-                  <option value="banking">Banking</option>
-                  <option value="accounting">Accounting</option>
-                  <option value="risk">Risk Management</option>
-                  <option value="sustainability">Sustainability</option>
-                  <option value="governance">Governance</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {filteredGlossary.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80 hover:border-sdb-purple/30 transition-colors"
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <h4 className="text-sm font-bold text-slate-800">
-                      {item.term} {item.acronym && <span className="text-sdb-purple font-mono font-normal">({item.acronym})</span>}
-                    </h4>
-                    <span className="text-[10px] font-mono uppercase bg-white border border-slate-200 px-2 py-0.5 rounded text-slate-500">
-                      {item.category}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {item.definition}
-                  </p>
-                  <div className="mt-2 text-[10px] text-slate-400 font-mono">
-                    Page {item.sourcePage}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Abbreviations Section */}
-          <div className="bg-white rounded-3xl border border-sdb-purple/10 p-6 sm:p-8 shadow-sm space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-slate-100 pb-4">
-              <div>
-                <div className="flex items-center space-x-2">
-                  <span className="bg-amber-100 text-amber-800 text-xs font-mono font-bold px-2.5 py-0.5 rounded-md">
-                    Acronym Index
-                  </span>
-                  <span className="text-xs text-slate-400 font-mono">Pages 316–317</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 font-serif mt-1">
-                  Abbreviations Directory ({filteredAbbreviations.length} Items)
-                </h3>
-              </div>
-
-              <div className="relative w-full sm:w-60">
-                <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <div className="relative w-full sm:w-64">
                 <input
                   type="text"
-                  placeholder="Filter abbreviations..."
-                  value={abbrSearch}
-                  onChange={(e) => setAbbrSearch(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-600/30"
+                  placeholder="Search glossary..."
+                  value={glossarySearch}
+                  onChange={(e) => setGlossarySearch(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs outline-none focus:border-sdb-purple font-mono"
                 />
+                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-              {filteredAbbreviations.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-slate-50 p-3 rounded-xl border border-slate-200 hover:bg-amber-50/50 transition-colors"
-                >
-                  <div className="text-xs font-mono font-bold text-slate-900">{item.abbreviation}</div>
-                  <div className="text-[11px] text-slate-600 line-clamp-2 mt-0.5 leading-tight">
-                    {item.meaning}
+            {/* Glossary Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {filteredGlossary.map((g, idx) => (
+                <div key={idx} className="bg-slate-50/70 p-4 rounded-xl border border-slate-200/70 space-y-1">
+                  <div className="flex justify-between items-center">
+                    <span className="font-serif font-bold text-sm text-sdb-purple">{g.term}</span>
+                    {g.acronym && (
+                      <span className="font-mono text-[10px] font-bold bg-sdb-purple/10 text-sdb-purple px-2 py-0.5 rounded">
+                        {g.acronym}
+                      </span>
+                    )}
                   </div>
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">{g.definition}</p>
                 </div>
               ))}
             </div>
@@ -523,114 +1183,39 @@ export default function SupplementarySection() {
         </div>
       )}
 
-      {/* TAB 5: Corporate Info & AGM Notice */}
+      {/* TAB 6: Corporate Directory */}
       {activeSubTab === "corporate" && (
         <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Corporate Information */}
-            <div className="bg-white rounded-3xl border border-sdb-purple/10 p-6 sm:p-8 shadow-sm space-y-4">
-              <div className="flex items-center space-x-2 border-b border-slate-100 pb-3">
-                <Building2 className="w-4 h-4 text-sdb-purple" />
-                <h3 className="text-lg font-bold text-slate-800 font-serif">
-                  Corporate Information &bull; Page {CORPORATE_INFORMATION_DATA.sourcePage}
-                </h3>
-              </div>
-
-              <div className="space-y-3 text-xs">
-                <div>
-                  <span className="font-bold text-slate-700 block">Name of Bank:</span>
-                  <span className="text-slate-900 font-semibold">{CORPORATE_INFORMATION_DATA.nameOfBank}</span>
-                </div>
-                <div>
-                  <span className="font-bold text-slate-700 block">Legal Form &amp; License:</span>
-                  <p className="text-slate-600 leading-relaxed">{CORPORATE_INFORMATION_DATA.legalForm}</p>
-                </div>
-                <div className="grid grid-cols-2 gap-2 font-mono">
-                  <div>
-                    <span className="font-bold text-slate-700 block">Company Reg No:</span>
-                    <span className="text-slate-800">{CORPORATE_INFORMATION_DATA.registrationNo}</span>
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-700 block">VAT Reg No:</span>
-                    <span className="text-slate-800">{CORPORATE_INFORMATION_DATA.vatRegistrationNo}</span>
-                  </div>
-                </div>
-                <div>
-                  <span className="font-bold text-slate-700 block">Registered Office:</span>
-                  <span className="text-slate-800">{CORPORATE_INFORMATION_DATA.registeredOffice}</span>
-                </div>
-                <div>
-                  <span className="font-bold text-slate-700 block">External Auditors:</span>
-                  <span className="text-slate-800">{CORPORATE_INFORMATION_DATA.externalAuditors}</span>
-                </div>
-                <div>
-                  <span className="font-bold text-slate-700 block">Company Secretaries:</span>
-                  <span className="text-slate-800">{CORPORATE_INFORMATION_DATA.boardSecretaries}</span>
-                </div>
-                <div>
-                  <span className="font-bold text-slate-700 block">Stock Exchange Listing:</span>
-                  <span className="text-slate-800">{CORPORATE_INFORMATION_DATA.stockExchangeListing}</span>
-                </div>
-              </div>
+          <div className="bg-white rounded-3xl border border-sdb-purple/10 p-6 sm:p-8 shadow-sm space-y-6">
+            <div>
+              <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-widest bg-sdb-coral/10 px-2.5 py-1 rounded-full">
+                Point 43 &bull; Audited by Ernst & Young (EY)
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-sdb-purple mt-2">
+                Corporate Information & Institutional Directory
+              </h3>
             </div>
 
-            {/* Notice of 29th Annual General Meeting */}
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50/50 rounded-3xl border border-amber-200 p-6 sm:p-8 shadow-sm space-y-4 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-amber-200/80 pb-3">
-                  <div className="flex items-center space-x-2">
-                    <Calendar className="w-4 h-4 text-amber-700" />
-                    <h3 className="text-lg font-bold text-amber-950 font-serif">
-                      Notice of AGM &bull; Page {CORPORATE_INFORMATION_DATA.agmNotice.sourcePage}
-                    </h3>
-                  </div>
-                  <span className="bg-amber-200/70 text-amber-900 text-xs font-mono font-bold px-2.5 py-0.5 rounded">
-                    Official Notice
-                  </span>
-                </div>
-
-                <div className="space-y-3 text-xs">
-                  <div className="bg-white p-4 rounded-2xl border border-amber-200/80 space-y-2">
-                    <div className="text-base font-black text-amber-900 font-serif">
-                      {CORPORATE_INFORMATION_DATA.agmNotice.meeting}
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div>
-                        <span className="text-slate-500 block">Date:</span>
-                        <span className="font-bold text-slate-800">{CORPORATE_INFORMATION_DATA.agmNotice.date}</span>
-                      </div>
-                      <div>
-                        <span className="text-slate-500 block">Time:</span>
-                        <span className="font-bold text-slate-800">{CORPORATE_INFORMATION_DATA.agmNotice.time}</span>
-                      </div>
-                    </div>
-                    <div>
-                      <span className="text-slate-500 block">Venue:</span>
-                      <span className="text-slate-800 font-medium">{CORPORATE_INFORMATION_DATA.agmNotice.venue}</span>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/80 p-4 rounded-2xl border border-amber-200/60 text-slate-700 leading-relaxed">
-                    <span className="font-bold block mb-1">Key AGM Agenda Items:</span>
-                    <ul className="list-disc list-inside space-y-1 text-[11px]">
-                      <li>Receive and consider the Annual Report and Audited Financial Statements for year ended 31 December 2025</li>
-                      <li>Re-election and appointment of Directors retiring by rotation</li>
-                      <li>Re-appointment of KPMG as External Independent Auditors and authorize Directors to determine their remuneration</li>
-                      <li>Consideration of special business and cooperative institutional resolutions</li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                <span className="text-slate-400 uppercase text-[10px]">Name of Company</span>
+                <p className="font-bold text-sdb-purple text-sm font-sans">{CORPORATE_INFORMATION_DATA.companyName}</p>
               </div>
-
-              <a
-                href="https://cdn.cse.lk/cmt/upload_report_file/1182_1777891461840.pdf#page=324"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center justify-center space-x-2 bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs py-3 px-4 rounded-xl transition-colors shadow-sm"
-              >
-                <span>Read Full AGM Notice (Page 324)</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                <span className="text-slate-400 uppercase text-[10px]">Legal Form & Registration</span>
+                <p className="font-bold text-slate-800 font-sans">{CORPORATE_INFORMATION_DATA.legalForm}</p>
+                <p className="text-slate-500">{CORPORATE_INFORMATION_DATA.registrationNumber}</p>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                <span className="text-slate-400 uppercase text-[10px]">Head Office & Registered Office</span>
+                <p className="font-bold text-slate-800 font-sans">{CORPORATE_INFORMATION_DATA.registeredOffice}</p>
+                <p className="text-slate-500">Tel: {CORPORATE_INFORMATION_DATA.contactPhone}</p>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                <span className="text-slate-400 uppercase text-[10px]">Statutory External Auditor (Point 43)</span>
+                <p className="font-bold text-[#8B1D2C] text-sm font-sans">{CORPORATE_INFORMATION_DATA.auditors}</p>
+                <p className="text-slate-500">{CORPORATE_INFORMATION_DATA.auditorsAddress}</p>
+              </div>
             </div>
           </div>
         </div>

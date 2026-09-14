@@ -29,6 +29,26 @@ interface ChapterItem {
 
 const CHAPTERS: ChapterItem[] = [
   {
+    id: "about-report",
+    title: "About This Report",
+    description: "Scope, boundary, reporting cycle, GRI standards, and EY external audit assurance.",
+    icon: BookOpen,
+    colorClass: "bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20",
+    subsections: [
+      { id: "about-report-section", title: "Reporting Standards & Boundary", type: "scroll" }
+    ]
+  },
+  {
+    id: "awards",
+    title: "Awards & Accolades",
+    description: "National recognition: National Business Excellence, SLIM Digis, Technnovation & CRIB rating.",
+    icon: Award,
+    colorClass: "bg-sdb-amber/10 text-sdb-amber border-sdb-amber/20",
+    subsections: [
+      { id: "awards-accolades-section", title: "2025 Honors & Corporate Accolades", type: "scroll" }
+    ]
+  },
+  {
     id: "overview",
     title: "Financial Progress & Highlights",
     description: "SDB bank's 5-year financial trajectory, audited 2025 KPIs, and movement indicators.",

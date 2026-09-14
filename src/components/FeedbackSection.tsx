@@ -146,11 +146,28 @@ export default function FeedbackSection() {
                     onChange={(e) => setSubject(e.target.value)}
                     className="w-full bg-slate-50 border border-sdb-purple/10 focus:border-sdb-purple/30 rounded-xl px-3 py-2 text-xs text-slate-800 outline-none transition-colors"
                   >
-                    <option value="Financial Highlights">Financial Highlights & PBT</option>
-                    <option value="Cooperative Networks">Note 12: Cooperatives & Livelihood</option>
-                    <option value="Digital Disclosures">Note 14: Digital Banking (UPay)</option>
-                    <option value="Executive Governance">Leadership & Governance</option>
-                    <option value="Copilot Usability">Report AI Copilot Usability</option>
+                    <option value="Financial Highlights">01. Financial Highlights & Performance</option>
+                    <option value="Chairperson's Message">02. Chairperson’s Message (Ms. Dinithi Ratnayake)</option>
+                    <option value="CEO's Review">03. CEO’s Strategic Review (Mr. Kapila Ariyaratne)</option>
+                    <option value="Board of Directors">04. Board of Directors Profiles</option>
+                    <option value="Corporate Management">05. Corporate & Senior Management</option>
+                    <option value="Our Evolution">06. 28 Years Evolution & Milestones (1997–2025)</option>
+                    <option value="About the Report">07. About the Report & Reporting Framework</option>
+                    <option value="Awards and Accolades">08. Awards and Accolades</option>
+                    <option value="Product Portfolio & What We Offer">09. Product Portfolio & What We Offer</option>
+                    <option value="Operating Environment">10. Operating Environment & Macroeconomic Outlook</option>
+                    <option value="Stakeholder Engagement & Materiality">11. Stakeholder Engagement & Material Topics</option>
+                    <option value="Strategic Roadmap 2026-2029">12. Strategic Roadmap 2026–2029 (Rabo Partnerships)</option>
+                    <option value="Value Creation Capitals">13. Six Value Creation Capitals</option>
+                    <option value="Sustainability & UN SDGs">14. 8 Sustainability Pillars & UN SDGs Tracker</option>
+                    <option value="Corporate Governance & Subcommittees">15. Corporate Governance & Board Subcommittees</option>
+                    <option value="Enterprise Risk Management">16. Enterprise Risk Management & Climate Resilience</option>
+                    <option value="Statutory Financial Statements">17. Audited Financial Statements (P&L, Balance Sheet, Equity, Cash Flow)</option>
+                    <option value="Notes to the Financial Statements">18. Notes to Financial Statements (Notes 1–52)</option>
+                    <option value="Independent Auditors' Report">19. Independent Auditors' Report (Audited by EY)</option>
+                    <option value="Basel III Disclosures">20. Basel III Pillar III Disclosures (Templates 1–11)</option>
+                    <option value="Shareholder Information & Market Trading">21. Shares and Shareholders’ Analysis & CSE Trading</option>
+                    <option value="General Stakeholder Inquiry">22. General Stakeholder Inquiry</option>
                   </select>
                 </div>
 
