@@ -9,6 +9,7 @@ import { useBranding, BrandingConfig } from "./BrandingContext";
 import { BOARD_MEMBERS, EXECUTIVE_MANAGEMENT } from "../data/reportData";
 import SDBLogo from "./SDBLogo";
 import { supabase } from "../supabase";
+import { CORPORATE_MANAGEMENT_IMAGE_MAP, getSupabaseImageUrl } from "../utils/supabasePersonnel";
 
 // Import all icons we need
 import { 
@@ -58,9 +59,18 @@ const PRESET_IMAGES = {
     { label: "Published Report - Page 44", url: "/src/assets/annual_report_images/leadership/page_44_image_1.png" }
   ],
   ceo: [
+    { label: "Supabase Database Storage (Kapila Ariyaratne.png)", url: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png" },
     { label: "Published Report - Page 48", url: "/src/assets/annual_report_images/leadership/page_48_image_2.png" }
   ]
 };
+
+const DEFAULT_MANAGEMENT_IMAGES_ADMIN: Record<string, string> = Object.entries(CORPORATE_MANAGEMENT_IMAGE_MAP).reduce(
+  (acc, [name, filename]) => {
+    acc[name] = getSupabaseImageUrl(filename);
+    return acc;
+  },
+  {} as Record<string, string>
+);
 
 const DEFAULT_BRANDING: BrandingConfig = {
   logoTextSDB: "SDB",
@@ -75,14 +85,14 @@ const DEFAULT_BRANDING: BrandingConfig = {
   coverImage: "/src/assets/annual_report_images/theme/cover_handcrafted.png",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   chairpersonImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
-  ceoImage: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+  ceoImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
   boardImages: {
     "01": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
-    "02": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+    "02": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
     "group1": "/src/assets/annual_report_images/board/page_52_image_0.png",
     "group2": "/src/assets/annual_report_images/board/page_53_image_1.png"
   },
-  managementImages: {}
+  managementImages: DEFAULT_MANAGEMENT_IMAGES_ADMIN
 };
 
 export default function AdminPortal({ onBack }: AdminPortalProps) {
@@ -842,6 +852,30 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                         onUploaded={(url) => updateBoardImage(selectedDirectorId, url)}
                         onClear={() => clearBoardImage(selectedDirectorId)}
                       />
+                      {selectedDirectorId === "01" && (
+                        <div className="flex items-center gap-2 pt-2 border-t border-slate-200/60 mt-2">
+                          <span className="text-[10px] text-slate-500 font-mono">Preset:</span>
+                          <button
+                            type="button"
+                            onClick={() => updateBoardImage("01", "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png")}
+                            className="text-[10px] font-mono px-2 py-1 rounded border bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20 hover:bg-sdb-purple hover:text-white transition-all cursor-pointer font-bold"
+                          >
+                            Supabase Studio Portrait (EUK05956.png)
+                          </button>
+                        </div>
+                      )}
+                      {selectedDirectorId === "02" && (
+                        <div className="flex items-center gap-2 pt-2 border-t border-slate-200/60 mt-2">
+                          <span className="text-[10px] text-slate-500 font-mono">Preset:</span>
+                          <button
+                            type="button"
+                            onClick={() => updateBoardImage("02", "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png")}
+                            className="text-[10px] font-mono px-2 py-1 rounded border bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20 hover:bg-sdb-purple hover:text-white transition-all cursor-pointer font-bold"
+                          >
+                            Supabase Storage (Kapila Ariyaratne.png)
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -855,9 +889,25 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                   exit={{ opacity: 0, y: -10 }}
                   className="space-y-6"
                 >
-                  <div className="border-b border-slate-100 pb-3 text-left">
-                    <h3 className="font-serif font-bold text-lg text-sdb-purple">Corporate Management Photos</h3>
-                    <p className="text-xs text-slate-500 mt-1">Select a corporate executive from the dropdown and upload their official portrait photograph.</p>
+                  <div className="border-b border-slate-100 pb-3 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <h3 className="font-serif font-bold text-lg text-sdb-purple">Corporate Management Photos</h3>
+                      <p className="text-xs text-slate-500 mt-1">Manage executive portraits linked from Supabase Storage or upload replacements.</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newMap = { ...(formConfig.managementImages || {}) };
+                        Object.entries(CORPORATE_MANAGEMENT_IMAGE_MAP).forEach(([name, file]) => {
+                          newMap[name] = getSupabaseImageUrl(file);
+                        });
+                        updateField("managementImages", newMap);
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sdb-purple text-white text-xs font-mono font-bold hover:bg-sdb-plum transition-all shadow-xs cursor-pointer shrink-0"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                      <span>Auto-Link All 15 Supabase Images</span>
+                    </button>
                   </div>
 
                   <div className="space-y-5">
@@ -882,6 +932,18 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                         onUploaded={(url) => updateManagementImage(selectedExecName, url)}
                         onClear={() => clearManagementImage(selectedExecName)}
                       />
+                      {CORPORATE_MANAGEMENT_IMAGE_MAP[selectedExecName] && (
+                        <div className="flex items-center gap-2 pt-2 border-t border-slate-200/60 mt-2">
+                          <span className="text-[10px] text-slate-500 font-mono">Supabase Storage:</span>
+                          <button
+                            type="button"
+                            onClick={() => updateManagementImage(selectedExecName, getSupabaseImageUrl(CORPORATE_MANAGEMENT_IMAGE_MAP[selectedExecName]))}
+                            className="text-[10px] font-mono px-2 py-1 rounded border bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20 hover:bg-sdb-purple hover:text-white transition-all cursor-pointer font-bold"
+                          >
+                            Link Default: {CORPORATE_MANAGEMENT_IMAGE_MAP[selectedExecName]}
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>

@@ -5,6 +5,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { supabase } from "../supabase";
+import { CORPORATE_MANAGEMENT_IMAGE_MAP, getSupabaseImageUrl } from "../utils/supabasePersonnel";
 
 export interface BrandingConfig {
   logoTextSDB: string;
@@ -25,15 +26,14 @@ export interface BrandingConfig {
   updatedAt?: string;
 }
 
-interface BrandingContextType {
-  branding: BrandingConfig;
-  loading: boolean;
-  isAdmin: boolean;
-  login: (password: string) => Promise<boolean>;
-  logout: () => void;
-  saveBranding: (newConfig: BrandingConfig) => Promise<boolean>;
-  error: string | null;
-}
+// Generate default Supabase management URLs
+const DEFAULT_MANAGEMENT_IMAGES: Record<string, string> = Object.entries(CORPORATE_MANAGEMENT_IMAGE_MAP).reduce(
+  (acc, [name, filename]) => {
+    acc[name] = getSupabaseImageUrl(filename);
+    return acc;
+  },
+  {} as Record<string, string>
+);
 
 const DEFAULT_BRANDING: BrandingConfig = {
   logoTextSDB: "SDB",
@@ -48,10 +48,23 @@ const DEFAULT_BRANDING: BrandingConfig = {
   coverImage: "",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   chairpersonImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
-  ceoImage: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
-  boardImages: {},
-  managementImages: {}
+  ceoImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
+  boardImages: {
+    "01": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
+    "02": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
+  },
+  managementImages: DEFAULT_MANAGEMENT_IMAGES
 };
+
+interface BrandingContextType {
+  branding: BrandingConfig;
+  loading: boolean;
+  isAdmin: boolean;
+  login: (password: string) => Promise<boolean>;
+  logout: () => void;
+  saveBranding: (newConfig: BrandingConfig) => Promise<boolean>;
+  error: string | null;
+}
 
 const BrandingContext = createContext<BrandingContextType | undefined>(undefined);
 

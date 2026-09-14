@@ -11,12 +11,28 @@
   "coverImage": "/src/assets/annual_report_images/theme/cover_handcrafted.png",
   "coverVideo": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
   "chairpersonImage": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
-  "ceoImage": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+  "ceoImage": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
   "boardImages": {
     "01": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
-    "02": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+    "02": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
     "group1": "/src/assets/annual_report_images/board/page_52_image_0.png",
     "group2": "/src/assets/annual_report_images/board/page_53_image_1.png"
   },
-  "managementImages": {}
+  "managementImages": {
+    "Mr. Kapila Ariyaratne": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
+    "Mr. Chitral De Silva": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/C%20D%20Silva.png",
+    "Mr. Anura Yapa": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/A%20D%20S%20Yapa.png",
+    "Mr. Dinesh Thomas": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/P%20D%20Thomas.png",
+    "Mr. Dhananjaya Dayananda": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/K%20A%20I%20D%20Dayananda.png",
+    "Mr. Dinuke Wijesinghe": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/D%20P%20Wijesinghe.png",
+    "Ms. Lakmini Muththunga": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/M%20M%20Y%20L%20Muththunga.png",
+    "Mr. Aruna Jayasekera": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/A%20Jayasekera.png",
+    "Ms. Krishani Enoka": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/P%20K%20Enoka.png",
+    "Ms. Mihiri Attanayake": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/M%20H%20Attanayaka.png",
+    "Ms. Pavithra Liyanage": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/P%20C%20Liyanage.png",
+    "Mr. Sanjeeva Jayasinghe": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/W%20A%20S%20C%20S%20Jayasinghe.png",
+    "Mr. Bhanu Wijayaratne": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/D%20V%20C%20B%20Wijayaratne.png",
+    "Mr. Binesh Aravinda": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/U%20Aravinda.png",
+    "Mr. Lasantha Edirisuriya": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/E%20A%20L%20S%20Eidirisuriya.png"
+  }
 }
