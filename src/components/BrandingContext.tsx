@@ -47,8 +47,8 @@ const DEFAULT_BRANDING: BrandingConfig = {
   logoImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png",
   coverImage: "",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
-  chairpersonImage: "",
-  ceoImage: "",
+  chairpersonImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
+  ceoImage: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
   boardImages: {},
   managementImages: {}
 };

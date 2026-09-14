@@ -42,7 +42,7 @@ export default function ThemeCover({
       subtab: "chairperson",
       title: "Message from the Chairperson",
       subtitle: "Ms. Dinithi Ratnayake",
-      image: "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+      image: branding?.chairpersonImage || "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
       tag: "Leadership Review"
     },
     {
@@ -51,7 +51,7 @@ export default function ThemeCover({
       subtab: "ceo",
       title: "CEO's Strategic Review",
       subtitle: "Mr. Kapila Ariyaratne",
-      image: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
+      image: branding?.ceoImage || "/src/assets/annual_report_images/leadership/page_48_image_2.png",
       tag: "Executive Review"
     },
     {

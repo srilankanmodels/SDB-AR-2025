@@ -52,6 +52,13 @@ const PRESET_IMAGES = {
   ],
   logo: [
     { label: "Supabase Database Storage (sdb_logo_transparent.png)", url: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png" }
+  ],
+  chairperson: [
+    { label: "Supabase Database Studio Portrait (EUK05956.png)", url: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png" },
+    { label: "Published Report - Page 44", url: "/src/assets/annual_report_images/leadership/page_44_image_1.png" }
+  ],
+  ceo: [
+    { label: "Published Report - Page 48", url: "/src/assets/annual_report_images/leadership/page_48_image_2.png" }
   ]
 };
 
@@ -67,10 +74,10 @@ const DEFAULT_BRANDING: BrandingConfig = {
   logoImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png",
   coverImage: "/src/assets/annual_report_images/theme/cover_handcrafted.png",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
-  chairpersonImage: "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+  chairpersonImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
   ceoImage: "/src/assets/annual_report_images/leadership/page_48_image_2.png",
   boardImages: {
-    "01": "/src/assets/annual_report_images/leadership/page_44_image_1.png",
+    "01": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
     "02": "/src/assets/annual_report_images/leadership/page_48_image_2.png",
     "group1": "/src/assets/annual_report_images/board/page_52_image_0.png",
     "group2": "/src/assets/annual_report_images/board/page_53_image_1.png"
@@ -743,13 +750,32 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                   </div>
 
                   <div className="space-y-6">
-                    <FileUploader
-                      label="Chairperson Portrait (Ms. Dinithi Ratnayake)"
-                      value={formConfig.chairpersonImage}
-                      id="chairperson-image"
-                      onUploaded={(url) => updateField("chairpersonImage", url)}
-                      onClear={() => updateField("chairpersonImage", "")}
-                    />
+                    <div>
+                      <FileUploader
+                        label="Chairperson Portrait (Ms. Dinithi Ratnayake)"
+                        value={formConfig.chairpersonImage}
+                        id="chairperson-image"
+                        onUploaded={(url) => updateField("chairpersonImage", url)}
+                        onClear={() => updateField("chairpersonImage", "")}
+                      />
+                      <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                        <span className="text-[10px] text-slate-500 font-mono">Presets:</span>
+                        {PRESET_IMAGES.chairperson.map((preset, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => updateField("chairpersonImage", preset.url)}
+                            className={`text-[10px] font-mono px-2 py-1 rounded border transition-all cursor-pointer ${
+                              formConfig.chairpersonImage === preset.url 
+                                ? "bg-sdb-purple border-sdb-purple text-white shadow-sm" 
+                                : "bg-white border-slate-200 hover:bg-slate-50 text-slate-600"
+                            }`}
+                          >
+                            {preset.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
 
                     <div className="border-t border-slate-100 pt-6">
                       <FileUploader
@@ -759,6 +785,23 @@ export default function AdminPortal({ onBack }: AdminPortalProps) {
                         onUploaded={(url) => updateField("ceoImage", url)}
                         onClear={() => updateField("ceoImage", "")}
                       />
+                      <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                        <span className="text-[10px] text-slate-500 font-mono">Presets:</span>
+                        {PRESET_IMAGES.ceo.map((preset, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => updateField("ceoImage", preset.url)}
+                            className={`text-[10px] font-mono px-2 py-1 rounded border transition-all cursor-pointer ${
+                              formConfig.ceoImage === preset.url 
+                                ? "bg-sdb-purple border-sdb-purple text-white shadow-sm" 
+                                : "bg-white border-slate-200 hover:bg-slate-50 text-slate-600"
+                            }`}
+                          >
+                            {preset.label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </motion.div>

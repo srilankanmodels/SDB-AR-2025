@@ -1,10 +1,136 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { BOARD_MEMBERS, EXECUTIVE_MANAGEMENT } from "../data/reportData";
-import { Award, User, Quote, BookOpen, UserCheck, ChevronRight, X, Sparkles } from "lucide-react";
+import { Award, User, Quote, BookOpen, UserCheck, ChevronRight, X, Sparkles, Calendar, Briefcase, GraduationCap } from "lucide-react";
 import { useBranding } from "./BrandingContext";
 
 type SubSection = "chairperson" | "ceo" | "board" | "management";
+
+interface ExecutiveDossierItem {
+  label: string;
+  value: string;
+  icon: any;
+  isBadge?: boolean;
+}
+
+interface ExecutivePortraitCardProps {
+  image: string;
+  name: string;
+  role: string;
+  subRole: string;
+  badgeLabel: string;
+  badgeAccent?: "coral" | "green";
+  dossier: ExecutiveDossierItem[];
+}
+
+function ExecutivePortraitCard({
+  image,
+  name,
+  role,
+  subRole,
+  badgeLabel,
+  badgeAccent = "coral",
+  dossier
+}: ExecutivePortraitCardProps) {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  return (
+    <div className="lg:col-span-4 rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-[0_12px_45px_rgba(47,27,104,0.08)] sticky top-6 transition-all duration-300 hover:shadow-[0_18px_55px_rgba(47,27,104,0.13)]">
+      {/* High-Resolution Studio Portrait Showcase Frame */}
+      <div className="relative w-full aspect-[4/5] bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 overflow-hidden group">
+        {/* Soft Ambient Radial Backlight */}
+        <div
+          className={`absolute -inset-2 bg-gradient-to-tr ${
+            badgeAccent === "coral" ? "from-sdb-purple/30 via-sdb-coral/20" : "from-sdb-purple/30 via-sdb-green/20"
+          } to-amber-300/10 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10`}
+        />
+
+        {/* Shimmer skeleton while high-res image loads */}
+        {!imgLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-slate-200/70 to-slate-100 animate-pulse flex items-center justify-center">
+            <User className="w-16 h-16 text-slate-300" />
+          </div>
+        )}
+
+        {/* The Studio Portrait Image */}
+        <img
+          src={image}
+          alt={name}
+          referrerPolicy="no-referrer"
+          onLoad={() => setImgLoaded(true)}
+          className={`w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-[1.04] ${
+            imgLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+          loading="eager"
+        />
+
+        {/* Bottom Multi-Stop Cinematic Gradient for Readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#140C24] via-[#140C24]/35 to-transparent pointer-events-none" />
+
+        {/* Top Floating Glass Badge */}
+        <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1A1230]/80 backdrop-blur-md border border-white/20 text-white shadow-lg">
+          <Award className={`w-3.5 h-3.5 ${badgeAccent === "coral" ? "text-sdb-coral" : "text-sdb-green"}`} />
+          <span className="font-mono text-[10.5px] font-bold tracking-wider uppercase">{badgeLabel}</span>
+        </div>
+
+        {/* Overlay Typography at the Base of the Portrait */}
+        <div className="absolute inset-x-0 bottom-0 p-5 z-10 text-left">
+          <div
+            className={`h-1 w-12 bg-gradient-to-r ${
+              badgeAccent === "coral" ? "from-sdb-coral to-amber-400" : "from-sdb-green to-emerald-400"
+            } rounded-full mb-2.5 shadow-sm`}
+          />
+          <h3 className="font-serif text-2xl md:text-[25px] font-bold text-white tracking-tight leading-tight drop-shadow-md">
+            {name}
+          </h3>
+          <div className="flex items-center space-x-2 mt-1">
+            <span
+              className={`font-mono text-xs font-bold uppercase tracking-widest ${
+                badgeAccent === "coral" ? "text-sdb-coral" : "text-emerald-400"
+              }`}
+            >
+              {role}
+            </span>
+            <span className="text-white/40 text-xs">&bull;</span>
+            <span className="font-sans text-xs text-slate-200 font-medium">SDB bank</span>
+          </div>
+          <p className="text-[11.5px] text-slate-300/95 italic font-sans mt-1">
+            {subRole}
+          </p>
+        </div>
+      </div>
+
+      {/* Official Credentials & Dossier */}
+      <div className="p-5 bg-white border-t border-slate-100 space-y-3 font-mono text-[11px] text-slate-600 text-left">
+        {dossier.map((item, idx) => {
+          const IconComponent = item.icon;
+          return (
+            <div
+              key={idx}
+              className={`flex items-center justify-between ${
+                idx < dossier.length - 1 ? "pb-2.5 border-b border-slate-100" : ""
+              }`}
+            >
+              <span className="text-slate-500 flex items-center gap-2">
+                <IconComponent className="w-3.5 h-3.5 text-sdb-purple shrink-0" />
+                <span>{item.label}</span>
+              </span>
+              {item.isBadge ? (
+                <span className="font-bold text-sdb-purple font-mono bg-sdb-purple/5 px-2 py-0.5 rounded border border-sdb-purple/10">
+                  {item.value}
+                </span>
+              ) : (
+                <span className="font-bold text-slate-800 font-sans text-right text-xs">
+                  {item.value}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function LeadershipSection() {
   const { branding } = useBranding();
@@ -89,43 +215,21 @@ export default function LeadershipSection() {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-left"
             >
-              {/* Profile Card Summary */}
-              <div className="lg:col-span-4 glass-card rounded-3xl p-6 flex flex-col items-center text-center shadow-md sticky top-6">
-                <div className="w-36 h-36 rounded-full bg-sdb-purple/5 text-sdb-purple border-4 border-sdb-purple/10 flex items-center justify-center mb-4 shadow-inner overflow-hidden">
-                  {branding?.chairpersonImage ? (
-                    <img
-                      src={branding.chairpersonImage}
-                      alt="Ms. Dinithi Ratnayake"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <User className="w-16 h-16" />
-                  )}
-                </div>
-                <h3 className="font-serif text-xl font-bold text-sdb-purple">Ms. Dinithi Ratnayake</h3>
-                <p className="text-xs font-mono text-sdb-coral font-bold uppercase tracking-wider mt-1">Chairperson</p>
-                <p className="text-xs text-slate-500 mt-2 italic">Independent, Non-Executive Director</p>
-                
-                <div className="w-full border-t border-sdb-purple/10 mt-6 pt-4 space-y-3 font-mono text-[11px] text-left text-slate-600">
-                  <div className="flex justify-between">
-                    <span>Appointed to Board</span>
-                    <span className="font-bold text-sdb-purple">2020</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Chairperson since</span>
-                    <span className="font-bold text-sdb-purple">April 2022</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Prior Leadership</span>
-                    <span className="font-bold text-sdb-purple">Citibank N.A. Director</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Academic Credentials</span>
-                    <span className="font-bold text-sdb-purple">MA (Econ, UoC), BSc (USA)</span>
-                  </div>
-                </div>
-              </div>
+              {/* High-Impact Editorial Executive Portrait Showcase */}
+              <ExecutivePortraitCard
+                image={branding?.chairpersonImage || "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png"}
+                name="Ms. Dinithi Ratnayake"
+                role="Chairperson"
+                subRole="Independent, Non-Executive Director"
+                badgeLabel="Board Leadership"
+                badgeAccent="coral"
+                dossier={[
+                  { label: "Appointed to Board", value: "2020", icon: Calendar, isBadge: true },
+                  { label: "Chairperson since", value: "April 2022", icon: Sparkles },
+                  { label: "Prior Leadership", value: "Citibank N.A. Director", icon: Briefcase },
+                  { label: "Academic Credentials", value: "MA (Econ, UoC), BSc (USA)", icon: GraduationCap }
+                ]}
+              />
 
               {/* Message Narrative - Full Text */}
               <div className="lg:col-span-8 flex flex-col space-y-6">
@@ -207,43 +311,21 @@ export default function LeadershipSection() {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-left"
             >
-              {/* Profile Card Summary */}
-              <div className="lg:col-span-4 glass-card rounded-3xl p-6 flex flex-col items-center text-center shadow-md sticky top-6">
-                <div className="w-36 h-36 rounded-full bg-sdb-purple/5 text-sdb-purple border-4 border-sdb-purple/10 flex items-center justify-center mb-4 shadow-inner overflow-hidden">
-                  {branding?.ceoImage ? (
-                    <img
-                      src={branding.ceoImage}
-                      alt="Mr. Kapila Ariyaratne"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <User className="w-16 h-16" />
-                  )}
-                </div>
-                <h3 className="font-serif text-xl font-bold text-sdb-purple">Mr. Kapila Ariyaratne</h3>
-                <p className="text-xs font-mono text-sdb-coral font-bold uppercase tracking-wider mt-1">Chief Executive Officer</p>
-                <p className="text-xs text-slate-500 mt-2 italic">Executive, Non-Independent Director</p>
-                
-                <div className="w-full border-t border-sdb-purple/10 mt-6 pt-4 space-y-3 font-mono text-[11px] text-left text-slate-600">
-                  <div className="flex justify-between">
-                    <span>Appointed</span>
-                    <span className="font-bold text-sdb-purple">2024</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Banking Career</span>
-                    <span className="font-bold text-sdb-purple">40+ Years</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Former CEO Roles</span>
-                    <span className="font-bold text-sdb-purple">Seylan Bank (12 Yrs)</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>University Education</span>
-                    <span className="font-bold text-sdb-purple">First Class Hons, UoC</span>
-                  </div>
-                </div>
-              </div>
+              {/* High-Impact Editorial Executive Portrait Showcase */}
+              <ExecutivePortraitCard
+                image={branding?.ceoImage || "/src/assets/annual_report_images/leadership/page_48_image_2.png"}
+                name="Mr. Kapila Ariyaratne"
+                role="Chief Executive Officer"
+                subRole="Executive, Non-Independent Director"
+                badgeLabel="Executive Review"
+                badgeAccent="green"
+                dossier={[
+                  { label: "Appointed", value: "2024", icon: Calendar, isBadge: true },
+                  { label: "Banking Career", value: "40+ Years", icon: Sparkles },
+                  { label: "Former CEO Roles", value: "Seylan Bank (12 Yrs)", icon: Briefcase },
+                  { label: "University Education", value: "First Class Hons, UoC", icon: GraduationCap }
+                ]}
+              />
 
               {/* Message Narrative - Full Text */}
               <div className="lg:col-span-8 flex flex-col space-y-6">
