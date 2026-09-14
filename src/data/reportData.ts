@@ -428,42 +428,644 @@ export const BOARD_MEMBERS: BoardMember[] = [
 ];
 
 export const EXECUTIVE_MANAGEMENT: ExecutiveMember[] = [
-  { name: "Mr. Kapila Ariyaratne", designation: "Executive Director / Chief Executive Officer", qualifications: "BSc (Natural Science), Post Graduate Dip in Business & Financial Administration", category: "Corporate Executive", bio: "Leading SDB bank's strategic transformation and long-term sustainable growth." },
-  { name: "Mr. Chitral De Silva", designation: "Chief Business Officer", qualifications: "Ex. Dip in Business Administration, Dip Credit Management", category: "Corporate Executive", bio: "Driving retail, MSME, leasing, and commercial lending expansion across 94 branches." },
-  { name: "Mr. Anura Yapa", designation: "Chief Credit Officer", qualifications: "Associate of Institute of Bankers (AIB)", category: "Corporate Executive", bio: "Overseeing bank-wide loan underwriting, portfolio quality, and asset recovery." },
-  { name: "Mr. Dinesh Thomas", designation: "Chief Information & Digital Officer", qualifications: "MSc in IT, MBA", category: "Corporate Executive", bio: "Spearheading SDB's core banking cloud infrastructure and digital payment ecosystem." },
-  { name: "Mr. Dhananjaya Dayananda", designation: "Chief Internal Auditor", qualifications: "FCCA, FCMA, ACA, MBA (Banking Mgt)", category: "Governance & Control", bio: "Ensuring independent audit assurance, operational compliance, and internal controls." },
-  { name: "Mr. Dinuke Wijesinghe", designation: "Chief Risk Officer", qualifications: "MBA, Dip in Banking, AIB", category: "Governance & Control", bio: "Managing market risk, credit risk models, and Basel III regulatory risk frameworks." },
-  { name: "Ms. Lakmini Muththunga", designation: "Head of Operations", qualifications: "MBA, BSc (Hons) (UOK)", category: "Business & Operations", bio: "Optimizing central operational workflows, trade processing, and branch back-office systems." },
-  { name: "Mr. Aruna Jayasekera", designation: "Chief Human Resources Officer", qualifications: "LLB, Attorney at Law, FCIPM", category: "Governance & Control", bio: "Transforming talent management, leadership development, and employee welfare." },
-  { name: "Ms. Krishani Enoka", designation: "Head of Treasury", qualifications: "MBA (UK), BSc (Phy. Science) Hons, AIB", category: "Corporate Executive", bio: "Managing foreign exchange trading, liquidity ratios, and money market investments." },
-  { name: "Ms. Mihiri Attanayake", designation: "Head of Credit", qualifications: "BSc Agri (Hons), MSc Agri, Dip in Micro Financing", category: "Business & Operations", bio: "Specializing in agricultural value chain credit, tea smallholder loans, and microfinance." },
-  { name: "Ms. Pavithra Liyanage", designation: "Head of Legal", qualifications: "LLM (Staffordshire), LLB, Attorney-at-Law, Company Secretary", category: "Governance & Control", bio: "Directing corporate legal strategy, contract governance, and litigation management." },
-  { name: "Mr. Bhanu Wijayaratne", designation: "Chief Compliance Officer", qualifications: "Senior Fellow (IBSL), FCPM, MA (Fin Econ), MBA", category: "Governance & Control", bio: "Enforcing AML/CFT regulations, CBSL compliance guidelines, and corporate ethics." },
-  { name: "Mr. Binesh Aravinda", designation: "Head of Branch Banking", qualifications: "MBA, BSc Business Administration, Moody's Business Banking Mastery", category: "Business & Operations", bio: "Directing branch operations, deposit mobilization, and regional distribution channels." },
-  { name: "Ms. Amila Belpamulla", designation: "Company Secretary", qualifications: "Attorney-at-Law, Company Secretary, BA & MA in International Relations", category: "Governance & Control", bio: "Managing Board governance, share registration, and Colombo Stock Exchange disclosures.", imageUrl: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Ms.%20Amila%20Belpamulla.png" },
-  { name: "Mr. Lasantha Edirisuriya", designation: "Head of Cooperative Development", qualifications: "Dip. in Fin. & Bank Mgt., Exe. Dev. Mini MBA, Harvard Cert in Entrepreneurship", category: "Business & Operations", bio: "Fostering strategic partnerships with primary SANASA cooperative unions nationwide." },
-  { name: "Mr. Sanjeeva Jayasinghe", designation: "Head of Finance", qualifications: "FCA, ACCA, BSc. Mgt. Public Admin", category: "Corporate Executive", bio: "Leading corporate financial reporting, statutory taxation, and budget planning." }
-];
-
-export const SENIOR_MANAGEMENT: ExecutiveMember[] = [
-  { name: "Mr. K. G. S. Bandara", designation: "Senior Manager - Credit Risk Management", qualifications: "BSc (Business Admin), AIB", category: "Governance & Control", department: "Credit Risk Management", bio: "Credit risk rating models, portfolio concentration limits, and early warning indicators." },
-  { name: "Mr. Chaminda Perera", designation: "Senior Manager - Recovery & Special Asset Management", qualifications: "MBA, Dip in Credit Mgt", category: "Business & Operations", department: "Special Asset Management", bio: "NPL resolution, legal recovery enforcement, and collateral realization." },
-  { name: "Ms. Dilani Silva", designation: "Senior Manager - Information Security (CISO)", qualifications: "BSc (IT), CISA, CISSP", category: "Governance & Control", department: "Information Security", bio: "Cybersecurity governance, ISO 27001 compliance, and cloud data protection." },
-  { name: "Mr. Nalin Senanayake", designation: "Senior Manager - Treasury Back Office & Settlements", qualifications: "BCom (Hons), AIB", category: "Corporate Executive", department: "Treasury Back Office", bio: "Money market confirmation, SWIFT operations, and CBSL reserve monitoring." },
-  { name: "Ms. Priyadarshani Fernando", designation: "Senior Manager - Human Resources Operations", qualifications: "PQHRM, MBA", category: "Governance & Control", department: "Human Resources Operations", bio: "Payroll systems, statutory labor compliance, and employee welfare administration." },
-  { name: "Mr. Roshan Kumara", designation: "Senior Manager - Marketing & Communications", qualifications: "MCIM (UK), MBA", category: "Business & Operations", department: "Marketing & Communications", bio: "Brand stewardship, product campaign execution, and corporate media relations." },
-  { name: "Mr. Tharanga Dissanayake", designation: "Senior Manager - SME Products & Business Development", qualifications: "BSc (Agri), MBA", category: "Business & Operations", department: "SME Products & BizDev", bio: "Value chain credit design, regional SME business acquisition, and partnership incubation." },
-  { name: "Ms. Subhashini Rathnayake", designation: "Senior Manager - Financial Reporting & Budgeting", qualifications: "ACA, BBA (Finance)", category: "Corporate Executive", department: "Financial Reporting", bio: "Statutory accounts preparation, SLFRS 9 ECL computations, and CBSL returns." }
+  {
+    name: "Mr. Kapila Ariyaratne",
+    designation: "Executive Director /CEO",
+    qualifications: "BSc (Natural Science) University of Colombo,, Post Graduate Dip in Business & Financial, Administration",
+    category: "Corporate Executive",
+    bio: "Leading SDB bank's strategic transformation and long-term sustainable growth.",
+    imageUrl: "/assets/personnel/corporate/Mr__Kapila_Ariyaratne.png"
+  },
+  {
+    name: "Mr. Chitral De Silva",
+    designation: "Chief Business Officer",
+    qualifications: "Ex. Dip in Business Administration, Dip Credit Management",
+    category: "Corporate Executive",
+    bio: "Driving retail, MSME, leasing, and commercial lending expansion across 94 branches.",
+    imageUrl: "/assets/personnel/corporate/Mr__Chitral_De_Silva.png"
+  },
+  {
+    name: "Mr. Anura Yapa",
+    designation: "Chief Credit Officer",
+    qualifications: "AIB",
+    category: "Corporate Executive",
+    bio: "Overseeing bank-wide loan underwriting, portfolio quality, and asset recovery.",
+    imageUrl: "/assets/personnel/corporate/Mr__Anura_Yapa.png"
+  },
+  {
+    name: "Mr. Dinesh Thomas",
+    designation: "Chief Information & Digital Officer",
+    qualifications: "MSc in IT, MBA",
+    category: "Corporate Executive",
+    bio: "Spearheading SDB's core banking cloud infrastructure and digital payment ecosystem.",
+    imageUrl: "/assets/personnel/corporate/Mr__Dinesh_Thomas.png"
+  },
+  {
+    name: "Mr. Dhananjaya Dayananda",
+    designation: "Chief Internal Auditor",
+    qualifications: "FCCA, FCMA, ACA, MBA (Banking Mgt) Sikkim Manipal Uni India",
+    category: "Governance & Control",
+    bio: "Ensuring independent audit assurance, operational compliance, and internal controls.",
+    imageUrl: "/assets/personnel/corporate/Mr__Dhananjaya_Dayananda.png"
+  },
+  {
+    name: "Mr. Dinuke Wijesinghe",
+    designation: "Chief Risk Officer",
+    qualifications: "MBA, Dip in Banking, AIB",
+    category: "Governance & Control",
+    bio: "Managing market risk, credit risk models, and Basel III regulatory risk frameworks.",
+    imageUrl: "/assets/personnel/corporate/Mr__Dinuke_Wijesinghe.png"
+  },
+  {
+    name: "Ms. Lakmini Muththunga",
+    designation: "Head of Operations",
+    qualifications: "MBA (IGNOU of India), BSc (Hons) (UOK)",
+    category: "Business & Operations",
+    bio: "Optimizing central operational workflows, trade processing, and branch back-office systems.",
+    imageUrl: "/assets/personnel/corporate/Ms__Lakmini_Muththunga.png"
+  },
+  {
+    name: "Mr. Aruna Jayasekera",
+    designation: "Chief Human Resources Officer",
+    qualifications: "LLB, Attorney at Law, FCIPM",
+    category: "Governance & Control",
+    bio: "Transforming talent management, leadership development, and employee welfare.",
+    imageUrl: "/assets/personnel/corporate/Mr__Aruna_Jayasekera.png"
+  },
+  {
+    name: "Ms. Krishani Enoka",
+    designation: "Head of Treasury",
+    qualifications: "MBA (UK), BSc (Phy. Science) Hons. University, of Colombo, AIB, Dip. in Treasury Investment, and Risk Mgt., Certificate in Treasury and Foreign, Currency Operations",
+    category: "Corporate Executive",
+    bio: "Managing foreign exchange trading, liquidity ratios, and money market investments.",
+    imageUrl: "/assets/personnel/corporate/Ms__Krishani_Enoka.png"
+  },
+  {
+    name: "Ms. Mihiri Attanayake",
+    designation: "Head of Credit",
+    qualifications: "BSc Agri. (Hons), MSc Agri (Hons), CBF, Diploma, in Micro Financing (IBSL)",
+    category: "Business & Operations",
+    bio: "Specializing in agricultural value chain credit, tea smallholder loans, and microfinance.",
+    imageUrl: "/assets/personnel/corporate/Ms__Mihiri_Attanayake.png"
+  },
+  {
+    name: "Ms. Pavithra Liyanage",
+    designation: "Head of Legal",
+    qualifications: "LLM (Staffordshire), LLB, Attorney-at-Law, Notary Public, Commissioner for Oaths, Company Secretary",
+    category: "Governance & Control",
+    bio: "Directing corporate legal strategy, contract governance, and litigation management.",
+    imageUrl: "/assets/personnel/corporate/Ms__Pavithra_Liyanage.png"
+  },
+  {
+    name: "Mr. Bhanu Wijayaratne",
+    designation: "Chief Compliance Officer",
+    qualifications: "Senior Fellow (IBSL), FCPM, MA-Fin Econ (Col), MBA (Manipal), AIB (Sri Lanka), MIIA (USA-SL Chapter)",
+    category: "Governance & Control",
+    bio: "Enforcing AML/CFT regulations, CBSL compliance guidelines, and corporate ethics.",
+    imageUrl: "/assets/personnel/corporate/Mr__Bhanu_Wijayaratne.png"
+  },
+  {
+    name: "Mr. Binesh Aravinda",
+    designation: "Head of Branch Banking",
+    qualifications: "MBA, BSc Business Administration Sp. (USJP),, CBA (ICASL), Moody’s Business Banking Mastery, Certification.",
+    category: "Business & Operations",
+    bio: "Directing branch operations, deposit mobilization, and regional distribution channels.",
+    imageUrl: "/assets/personnel/corporate/Mr__Binesh_Aravinda.png"
+  },
+  {
+    name: "Ms. Amila Belpamulla",
+    designation: "Company Secretary",
+    qualifications: "Attorney-at-Law, Notary Public, Commissioner of, Oaths, Company Secretary, BA (in International, Relations - UoC), MA (in International Relations-, UoC), MA (in Financial Economics- UoC)",
+    category: "Governance & Control",
+    bio: "Managing Board governance, share registration, and Colombo Stock Exchange disclosures.",
+    imageUrl: "/assets/personnel/corporate/Ms__Amila_Belpamulla.png"
+  },
+  {
+    name: "Mr. Lasantha Edirisuriya",
+    designation: "Head of Cooperative Development",
+    qualifications: "Dip. in Fin. & Bank Mgt. (IBSL), Intermediate Banking, Diploma (IBSL), Exe. Dev. (Mini MBA - CSBM), Investment, Advisor certified by CSE, Certificate in Entrepreneurship, (Harvard), National Dip. in Training & Human Talent Dev., ( SLITAD)",
+    category: "Business & Operations",
+    bio: "Fostering strategic partnerships with primary SANASA cooperative unions nationwide.",
+    imageUrl: "/assets/personnel/corporate/Mr__Lasantha_Edirisuriya.png"
+  },
+  {
+    name: "Mr. Sanjeeva Jayasinghe",
+    designation: "Head of Finance",
+    qualifications: "FCA, ACCA, BSc. Mgt. Public Admin (USJP)",
+    category: "Corporate Executive",
+    bio: "Leading corporate financial reporting, statutory taxation, and budget planning.",
+    imageUrl: "/assets/personnel/corporate/Mr__Sanjeeva_Jayasinghe.png"
+  }
 ];
 
 export const CHIEF_MANAGERS: ExecutiveMember[] = [
-  { name: "Mr. Jagath Jayasundara", designation: "Chief Manager - Western Province Central", qualifications: "MBA, AIB", category: "Business & Operations", department: "Western Province Central", bio: "Overseeing branch profitability, deposit growth, and commercial lending across Colombo region." },
-  { name: "Mr. Sisira Kumara", designation: "Chief Manager - Central & Uva Provinces", qualifications: "BA (Econ), Dip in Banking", category: "Business & Operations", department: "Central & Uva Provinces", bio: "Directing 18 branch outlets across Kandy, Nuwara Eliya, and Badulla districts." },
-  { name: "Mr. Manjula Wijewardena", designation: "Chief Manager - North Western & North Central", qualifications: "BSc Mgt, AIB", category: "Business & Operations", department: "North Western & North Central", bio: "Leading agricultural credit lines, paddy farmer outreach, and cooperative union financing." },
-  { name: "Mr. Asanka Weerasinghe", designation: "Chief Manager - Southern & Sabaragamuwa", qualifications: "MBA, Dip in Microfinance", category: "Business & Operations", department: "Southern & Sabaragamuwa", bio: "Expanding tea smallholder and fisheries credit across Galle, Matara, and Ratnapura." },
-  { name: "Mr. Thushara Senarath", designation: "Chief Manager - Northern & Eastern Provinces", qualifications: "BCom, AIB", category: "Business & Operations", department: "Northern & Eastern Provinces", bio: "Driving regional financial inclusion and SME credit expansion across Jaffna and Batticaloa." },
-  { name: "Mr. Gamini Ekanayake", designation: "Chief Manager - Card & Digital Payment Systems", qualifications: "BSc (IT), Dip in Card Banking", category: "Corporate Executive", department: "Card & Digital Systems", bio: "Managing UPay app infrastructure, debit card processing, and LankaQR merchant networks." }
+  {
+    name: "Mr. Sarath Kumara",
+    designation: "Head of Administration",
+    qualifications: "BSc. Mgt",
+    category: "Corporate Executive",
+    department: "Administration",
+    imageUrl: "/assets/personnel/chief/Mr__Sarath_Kumara.png"
+  },
+  {
+    name: "Ms. Saranga Igalagamage",
+    designation: "Compliance Officer",
+    qualifications: "MBA (UK), BSc. (Agri Special) Hons, Dip in HRM,, MIMSL, Dip.in Compliance",
+    category: "Governance & Control",
+    department: "Compliance Officer",
+    imageUrl: "/assets/personnel/chief/Ms__Saranga_Igalagamage.png"
+  },
+  {
+    name: "Mr Jayantha Chandrasiri",
+    designation: "Chief Manager - Branch Banking Unit",
+    qualifications: "B.Sc. (Mgt. & Administration - Special) (USJP)",
+    category: "Business & Operations",
+    department: "Branch Banking Unit",
+    imageUrl: "/assets/personnel/chief/Mr_Jayantha_Chandrasiri.png"
+  },
+  {
+    name: "Mr. Indika Udayangana",
+    designation: "Head of Collection & Recoveries",
+    qualifications: "MBA (UK), BBMgt (Kelaniya), AIB, Dip.in Banking, & Finance, Dip.in Micro Finance, Dip.in Public, Management, Dip.in Small & Medium Enterprises,, Dip.in Counselling",
+    category: "Business & Operations",
+    department: "Collection & Recoveries",
+    imageUrl: "/assets/personnel/chief/Mr__Indika_Udayangana.png"
+  },
+  {
+    name: "Mr. Surandika Wimalarathne",
+    designation: "Regional Head – North Central Region",
+    qualifications: "B.A. (Hons) Business Statistics, Post Graduate, Dip. - Business Statistics, Postgraduate Dip. in, Management - (RUSL)",
+    category: "Business & Operations",
+    department: "North Central Region",
+    imageUrl: "/assets/personnel/chief/Mr__Surandika_Wimalarathne.png"
+  },
+  {
+    name: "Mr. Sarath Kumara Kariyawasam",
+    designation: "Deputy Head of Credit",
+    qualifications: "BA (Special), CBF(IBSL), DMF (IBSL), ADCM, (IBSL)",
+    category: "Business & Operations",
+    department: "Deputy  Credit",
+    imageUrl: "/assets/personnel/chief/Mr__Sarath_Kumara_Kariyawasam.png"
+  },
+  {
+    name: "Mr. Ayesh Wickramarathne",
+    designation: "Chief Manager – Internal Audit",
+    qualifications: "ACCA, FIB (IBSL), MSc App Fin (USJP), BSc, Applied Accounting (Oxford Brookes)",
+    category: "Governance & Control",
+    department: "Internal Audit",
+    imageUrl: "/assets/personnel/chief/Mr__Ayesh_Wickramarathne.png"
+  },
+  {
+    name: "Mr. Sujeewa Perera",
+    designation: "Chief Manager - SME",
+    qualifications: "AIB, B Com (USJP), DBF (IBSL), Moody’s Business, Banking Mastery Certification",
+    category: "Business & Operations",
+    department: "SME",
+    imageUrl: "/assets/personnel/chief/Mr__Sujeewa_Perera.png"
+  },
+  {
+    name: "Dr. Heather Fernando",
+    designation: "Chief Manager - Human Resources",
+    qualifications: "Ph.D.-Management & Business (Management, & Science University, Malaysia), MBA-OUSL,, PQHRM - CIPM, T&D Evaluator-Kirkpatrick Int’l,, Chartered MCIPM, AMAPB",
+    category: "Corporate Executive",
+    department: "Human Resources",
+    imageUrl: "/assets/personnel/chief/Dr__Heather_Fernando.png"
+  },
+  {
+    name: "Mr. Tharanga De Silva",
+    designation: "Chief Manager - Business Banking",
+    qualifications: "MBA-Cardiff Metropolitan University UK, Diploma, in Credit Management – IBSL",
+    category: "Business & Operations",
+    department: "Business Banking",
+    imageUrl: "/assets/personnel/chief/Mr__Tharanga_De_Silva.png"
+  },
+  {
+    name: "Mr. Senthilvel Thulasidhas",
+    designation: "Chief Manager - IT",
+    qualifications: "PgD. Technology Management, University of, Staffordshire",
+    category: "Corporate Executive",
+    department: "IT",
+    imageUrl: "/assets/personnel/chief/Mr__Senthilvel_Thulasidhas.png"
+  },
+  {
+    name: "Mr. Janaka Edirisinghe",
+    designation: "Chief Manager - Business Revival & Special Assets Management",
+    qualifications: "AIB (SL), AICM(SL), DPS (Agri-biz Mgt.), Certificate, in Microfinance",
+    category: "Business & Operations",
+    department: "Business Revival & Special Assets Management",
+    imageUrl: "/assets/personnel/chief/Mr__Janaka_Edirisinghe.png"
+  },
+  {
+    name: "Mr. Ranjith Randeniya",
+    designation: "Regional Head - Metro I Region",
+    qualifications: "BBA,Dip.in Management Science, CBF, Moody’s, Business Banking Mastery Certification.",
+    category: "Business & Operations",
+    department: "Metro I Region",
+    imageUrl: "/assets/personnel/chief/Mr__Ranjith_Randeniya.png"
+  }
+];
+
+export const SENIOR_MANAGEMENT: ExecutiveMember[] = [
+  {
+    name: "Ms. Nushika Edirisinghe",
+    designation: "Senior Manager – Credit Administration",
+    qualifications: "BSc (Colombo), Intermediate Banking Diploma, (IBSL), Certificate in Hire Purchase and Lease, Financing (IBSL), ACS",
+    category: "Business & Operations",
+    department: "Credit Administration",
+    imageUrl: "/assets/personnel/senior/Ms__Nushika_Edirisinghe.png"
+  },
+  {
+    name: "Mr. Dhammika Gamage",
+    designation: "Senior Manager - Business Growth and Strategic Transformation",
+    qualifications: "Intermediate Banking Diploma (IBSL), Ad. N. Dip in, HRM (NSBM), DSMEF (IBSL)",
+    category: "Business & Operations",
+    department: "Business Growth and Strategic Transformation",
+    imageUrl: "/assets/personnel/senior/Mr__Dhammika_Gamage.png"
+  },
+  {
+    name: "Mr. Aruna Sujeewa Perera",
+    designation: "Senior Manager - Co-operative Relationship Development",
+    qualifications: "BA.,IABF, National Certificate in Technology (Civil, Engineering)",
+    category: "Corporate Executive",
+    department: "operative Relationship Development",
+    imageUrl: "/assets/personnel/senior/Mr__Aruna_Sujeewa_Perera.png"
+  },
+  {
+    name: "Mr. A.M. Nimal Chandra",
+    designation: "Senior Regional Manager-North Western Region",
+    qualifications: "BA (Peradeniya)",
+    category: "Business & Operations",
+    department: "North Western Region",
+    imageUrl: "/assets/personnel/senior/Mr__A_M__Nimal_Chandra.png"
+  },
+  {
+    name: "Ms. Renuka Jeewanthi",
+    designation: "Head of Refinance",
+    qualifications: "MBA (UK), BSc. Business Administration (Special), Hons (USJP),PGD in Community Development, (UoC), Associate Member of IBSL & Life Member, APB, Certified CGAP Trainer, Micro Finance, Facilitator",
+    category: "Corporate Executive",
+    department: "Refinance",
+    imageUrl: "/assets/personnel/senior/Ms__Renuka_Jeewanthi.png"
+  },
+  {
+    name: "Mr. Chaminda Rathnayaka",
+    designation: "Senior Regional Manager - Sabaragamuwa Region",
+    qualifications: "B.Sc. Accountancy & Finance (SP.) Hons, Registered, Trainer & Consultant (Ministry of Public Management, Reforms), Moody’s Business Banking Mastery Certification",
+    category: "Business & Operations",
+    department: "Sabaragamuwa Region",
+    imageUrl: "/assets/personnel/senior/Mr__Chaminda_Rathnayaka.png"
+  },
+  {
+    name: "Mr. Pradeep Gnanasiri",
+    designation: "Senior Branch Manager - Ampara",
+    qualifications: "BA Geography (Special) (USJP)",
+    category: "Business & Operations",
+    department: "Ampara",
+    imageUrl: "/assets/personnel/senior/Mr__Pradeep_Gnanasiri.png"
+  },
+  {
+    name: "Mr. Ajith Samantha",
+    designation: "Divisional Head - Leasing Assessment & Approval",
+    qualifications: "B Com (Special), AIB, DBF (IBSL), MDP (AAT)",
+    category: "Business & Operations",
+    department: "Leasing Assessment & Approval",
+    imageUrl: "/assets/personnel/senior/Mr__Ajith_Samantha.png"
+  },
+  {
+    name: "Mr. Udena Welikumbura",
+    designation: "Head of Liabilities",
+    qualifications: "MBA (Peradeniya), PGDM, MSLIM, BMS,, Associate APB",
+    category: "Corporate Executive",
+    department: "Liabilities",
+    imageUrl: "/assets/personnel/senior/Mr__Udena_Welikumbura.png"
+  },
+  {
+    name: "Mr. Nishantha Wijesinghe",
+    designation: "Senior Branch Manager - Negombo Branch",
+    qualifications: "Dip.in SME(IBSL)",
+    category: "Business & Operations",
+    department: "Negombo Branch",
+    imageUrl: "/assets/personnel/senior/Mr__Nishantha_Wijesinghe.png"
+  },
+  {
+    name: "Mr. Priyankara Fernando",
+    designation: "Divisional Head - SME Credit Assessment & Approval",
+    qualifications: "Dip.in Credit Management, Dip.in SME Finance, ,Dip. in Microfinance, CBF, Moody’s Business, Banking Mastery Certification.",
+    category: "Business & Operations",
+    department: "SME Credit Assessment & Approval",
+    imageUrl: "/assets/personnel/senior/Mr__Priyankara_Fernando.png"
+  },
+  {
+    name: "Ms. Denuka Priyangani",
+    designation: "Divisional Head – Retail Credit Assessment & Approval",
+    qualifications: "MSc, Executive Dip.in Service Management, CBF.",
+    category: "Business & Operations",
+    department: "Retail Credit Assessment & Approval",
+    imageUrl: "/assets/personnel/senior/Ms__Denuka_Priyangani.png"
+  },
+  {
+    name: "Mr. Piyal Senadheera",
+    designation: "Senior Manager - Integrated Risk Department",
+    qualifications: "MFE (Colombo), PG. Dip. (Colombo), AIB, MAAT,, CIT (SL), Dip in Finance & Bank Management, (IBSL), Dip.in SME Finance (IBSL)",
+    category: "Governance & Control",
+    department: "Integrated Risk Department",
+    imageUrl: "/assets/personnel/senior/Mr__Piyal_Senadheera.png"
+  },
+  {
+    name: "Ms. K. K. Rangani",
+    designation: "Senior Branch Manager - Elpitiya Branch",
+    qualifications: "HNDA, Intermediate Banking Diploma(IBSL)",
+    category: "Business & Operations",
+    department: "Elpitiya Branch",
+    imageUrl: "/assets/personnel/senior/Ms__K__K__Rangani.png"
+  },
+  {
+    name: "Mr. Mahinda Thennakoon",
+    designation: "Senior Manager - Centralised Operations",
+    qualifications: "IABF- IBSL",
+    category: "Business & Operations",
+    department: "Centralised Operations",
+    imageUrl: "/assets/personnel/senior/Mr__Mahinda_Thennakoon.png"
+  },
+  {
+    name: "Ms. Sasikala Subhashini",
+    designation: "Senior Regional Manager - Metro II Region",
+    qualifications: "MScSMgt. University of Colombo, Dip., in Microfinance, Executive Dip.in Service, Management, CBF",
+    category: "Business & Operations",
+    department: "Metro II Region",
+    imageUrl: "/assets/personnel/senior/Ms__Sasikala_Subhashini.png"
+  },
+  {
+    name: "Mr. Sanjeewa Dissanayake",
+    designation: "Senior Regional Manager - Uva Region",
+    qualifications: "Dip in Credit Mgt. (SLICM), CBF, Ad.Dip. In Credit, Management, Moody’s Business Banking Mastery, Certification, Ad.Dip Credit Mgmt., AMAPB",
+    category: "Business & Operations",
+    department: "Uva Region",
+    imageUrl: "/assets/personnel/senior/Mr__Sanjeewa_Dissanayake.png"
+  },
+  {
+    name: "Mr. Semera Mahathanthila",
+    designation: "Senior Manager – Compliance",
+    qualifications: "MSc Applied Finance (USJP), PG. Dip. in Business, & Financial Administration (ICASL), BSc Applied, Sciences (Rajarata), Dip.in Compliance",
+    category: "Governance & Control",
+    department: "Compliance",
+    imageUrl: "/assets/personnel/senior/Mr__Semera_Mahathanthila.png"
+  },
+  {
+    name: "Mr. Rajeewa Adikaram",
+    designation: "Senior Manager - Information Systems Audit",
+    qualifications: "Executive MSc in Information Security, Certified Information Systems Auditor (ISACA), CBF",
+    category: "Governance & Control",
+    department: "Information Systems Audit",
+    imageUrl: "/assets/personnel/senior/Mr__Rajeewa_Adikaram.png"
+  },
+  {
+    name: "Mr. Nishan Pallegama",
+    designation: "Senior Branch Manager - 1st Colombo City Branch",
+    qualifications: "Dip.in SME Finance, CBF, Certificate in Hire, Purchase & Leasing, Moody’s Business Banking, Mastery Certifications",
+    category: "Business & Operations",
+    department: "1st Colombo City Branch",
+    imageUrl: "/assets/personnel/senior/Mr__Nishan_Pallegama.png"
+  },
+  {
+    name: "Mr. Sasika Wickramarathne",
+    designation: "Senior Manager – Digital Operations",
+    qualifications: "MBS - Kelaniya, Ad.Cert. in Banking & Finance,, DBF, CBF",
+    category: "Business & Operations",
+    department: "Digital Operations",
+    imageUrl: "/assets/personnel/senior/Mr__Sasika_Wickramarathne.png"
+  },
+  {
+    name: "Mr. Chinthaka Jayakody",
+    designation: "Senior Branch Manager - Kurunegala Branch",
+    qualifications: "BA(SP) Business Statistics, CBF",
+    category: "Business & Operations",
+    department: "Kurunegala Branch",
+    imageUrl: "/assets/personnel/senior/Mr__Chinthaka_Jayakody.png"
+  },
+  {
+    name: "Mr. Sarath Gunathilaka Banda",
+    designation: "Senior Regional Manager - Central Region",
+    qualifications: "BSc.(Business Management Special),CBF, DBF,, Dip.in SME & Finance, AIB",
+    category: "Business & Operations",
+    department: "Central Region",
+    imageUrl: "/assets/personnel/senior/Mr__Sarath_Gunathilaka_Banda.png"
+  },
+  {
+    name: "Mr. Sadara Pandipperuma",
+    designation: "Senior Manager - Credit Administration Unit - Karapitiya",
+    qualifications: "MBA - Cardiff Met (UK), BBA (Accounting &, Finance),CBA (ICASL)",
+    category: "Business & Operations",
+    department: "Karapitiya",
+    imageUrl: "/assets/personnel/senior/Mr__Sadara_Pandipperuma.png"
+  },
+  {
+    name: "Ms. Pemila Ranojani",
+    designation: "Senior Manager – Legal",
+    qualifications: "LLB (UOC), Attorney at Law, Notary Public,, Commissioner for Oaths, Company Secretary",
+    category: "Governance & Control",
+    department: "Legal",
+    imageUrl: "/assets/personnel/senior/Ms__Pemila_Ranojani.png"
+  },
+  {
+    name: "Ms. Nilupama Madurawala",
+    designation: "Senior Manager - Strategic Planning and Sustainable Banking",
+    qualifications: "BSc, MFE, CBF, DBF, Certificate in HRM, Moody’s, Business Banking Mastery Certification, Dip. in, Retail Banking",
+    category: "Corporate Executive",
+    department: "Strategic Planning and Sustainable Banking",
+    imageUrl: "/assets/personnel/senior/Ms__Nilupama_Madurawala.png"
+  },
+  {
+    name: "Ms. Chathurika Meemanage",
+    designation: "Senior Manager – Internal Audit",
+    qualifications: "FCA, ACCA, BSc. Finance (Sp) - USJP, AIB,, Dip.in Information System Security Control and, Audit (DISSCA)",
+    category: "Governance & Control",
+    department: "Internal Audit",
+    imageUrl: "/assets/personnel/senior/Ms__Chathurika_Meemanage.png"
+  },
+  {
+    name: "Ms. Chathurika Peramunasinghe",
+    designation: "Divisional Head - Co-operative Credit Assessment",
+    qualifications: "MBA-Cardiff Metropolitan University UK,, Dip.in SME Finance (IBSL), AIB, B.Sc. Plant, Biotechnology (Sp.)",
+    category: "Business & Operations",
+    department: "operative Credit Assessment",
+    imageUrl: "/assets/personnel/senior/Ms__Chathurika_Peramunasinghe.png"
+  },
+  {
+    name: "Mr. Ajith Herath",
+    designation: "Senior Branch Manager - Matale Branch",
+    qualifications: "MBA- University of Gloucestershire (UK), BSc., HRM (Special), Dip. in Strategic Management and, Leadership (UK)",
+    category: "Business & Operations",
+    department: "Matale Branch",
+    imageUrl: "/assets/personnel/senior/Mr__Ajith_Herath.png"
+  },
+  {
+    name: "Ms. Niketha Ranaweera",
+    designation: "Senior Manager - Pawning",
+    qualifications: "BA, MA (SOC.SC) (Kelaniya), IABF",
+    category: "Business & Operations",
+    department: "Pawning",
+    imageUrl: "/assets/personnel/senior/Ms__Niketha_Ranaweera.png"
+  },
+  {
+    name: "Ms. K.H.A. Ayesha",
+    designation: "Senior Manager - EDW and Data Analytics",
+    qualifications: "BSc in Computer Science (Hons) (Colombo)",
+    category: "Corporate Executive",
+    department: "EDW and Data Analytics",
+    imageUrl: "/assets/personnel/senior/Ms__K_H_A__Ayesha.png"
+  },
+  {
+    name: "Mr. Sampath Priyankara",
+    designation: "Senior Manager - IT",
+    qualifications: "BIT (Colombo), MBA (UK)",
+    category: "Corporate Executive",
+    department: "IT",
+    imageUrl: "/assets/personnel/senior/Mr__Sampath_Priyankara.png"
+  },
+  {
+    name: "Mr. Suntharalingam Keshanth",
+    designation: "Senior Regional Manager - Eastern Region",
+    qualifications: "AIB, PGDM (SEUSL)",
+    category: "Business & Operations",
+    department: "Eastern Region",
+    imageUrl: "/assets/personnel/senior/Mr__Suntharalingam_Keshanth.png"
+  },
+  {
+    name: "Mr. Chaminda Roshan",
+    designation: "Senior Regional Manager - Southern Region",
+    qualifications: "BSc. Accountancy (sp) Hons, CBF",
+    category: "Business & Operations",
+    department: "Southern Region",
+    imageUrl: "/assets/personnel/senior/Mr__Chaminda_Roshan.png"
+  },
+  {
+    name: "Mr. Deepadarsha C. Samarathunga",
+    designation: "Senior Manager - Internal Audit",
+    qualifications: "MBA-Cardiff Metropolitan University UK, B.B. Mgt, (Kelaniya), AIB - SL, Dip-in Internal Audit",
+    category: "Governance & Control",
+    department: "Internal Audit",
+    imageUrl: "/assets/personnel/senior/Mr__Deepadarsha_C__Samarathunga.png"
+  },
+  {
+    name: "Mr. Rajesh Karunarathne",
+    designation: "Senior Manager - Consumer Assets",
+    qualifications: "MBA in Buckinghamshire New University (UK),, Dip.in Strategic Management and Leadership (UK),, CBF",
+    category: "Corporate Executive",
+    department: "Consumer Assets",
+    imageUrl: "/assets/personnel/senior/Mr__Rajesh_Karunarathne.png"
+  },
+  {
+    name: "Mr. Indika Lakmal",
+    designation: "Senior Branch Manager - Matara Branch",
+    qualifications: "PGD.in B Ad in Marketing (Ruhuna), AIB(IBSL),, Dip. in Digital Marketing (SLIMS), Dip.in M.Finance, (Sanasa Campus)",
+    category: "Business & Operations",
+    department: "Matara Branch",
+    imageUrl: "/assets/personnel/senior/Mr__Indika_Lakmal.png"
+  },
+  {
+    name: "Mr. K.G. Ashoka Kumara Katukurunda",
+    designation: "Senior Branch Manager - Kegalle Branch",
+    qualifications: "MBA- University of Gloucestershire (UK), B.B.Mgt, (Kelaniya), Dip. in Strategic Management and, Leadership (UK)",
+    category: "Business & Operations",
+    department: "Kegalle Branch",
+    imageUrl: "/assets/personnel/senior/Mr__K_G__Ashoka_Kumara_Katukurunda.png"
+  },
+  {
+    name: "Mr. Lalith Kumara",
+    designation: "Head of Post Disbursement & Credit Review",
+    qualifications: "DABF(IBSL), CBF(IBSL), Dip in SME(IBSL),, AIB(IBSL)",
+    category: "Business & Operations",
+    department: "Post Disbursement & Credit Review",
+    imageUrl: "/assets/personnel/senior/Mr__Lalith_Kumara.png"
+  },
+  {
+    name: "Mr. Ruwan Dharmasena",
+    designation: "Senior Manager - Retail Remedial Task Force",
+    qualifications: "BBA (Mkt) sp, MBA",
+    category: "Business & Operations",
+    department: "Retail Remedial Task Force",
+    imageUrl: "/assets/personnel/senior/Mr__Ruwan_Dharmasena.png"
+  },
+  {
+    name: "Mr. Anil Wanigasiri",
+    designation: "Senior Branch Manager - Battaramulla Branch",
+    qualifications: "MBA (MoT), PGD in Bank Management, Advanced, Economics & Computer Science (Sp), Member of, GARP",
+    category: "Business & Operations",
+    department: "Battaramulla Branch",
+    imageUrl: "/assets/personnel/senior/Mr__Anil_Wanigasiri.png"
+  },
+  {
+    name: "Mr. Gayan Abeysiriwardana",
+    designation: "Senior Manager - Collections, Administration & Analytics",
+    qualifications: "MBA (USJP), BSc. Agri (UOP), PGDM-SLIM",
+    category: "Business & Operations",
+    department: "Collections, Administration & Analytics",
+    imageUrl: "/assets/personnel/senior/Mr__Gayan_Abeysiriwardana.png"
+  },
+  {
+    name: "Ms. Suganya Kandeeban",
+    designation: "Senior Manager - Treasury",
+    qualifications: "MSC (UK) International Banking & Finance, MBA,, Dip in Treasury & Risk Management, Certificate, in Treasury & Foreign Exchange Operations, CBF, (IBSL)",
+    category: "Corporate Executive",
+    department: "Treasury",
+    imageUrl: "/assets/personnel/senior/Ms__Suganya_Kandeeban.png"
+  },
+  {
+    name: "Mr. N.A.R.S. Kumara",
+    designation: "Senior Manager - Branch Operations",
+    qualifications: "B.B.Mgt (Accountancy) Special - University of Kelaniya, CBA (ICASL)",
+    category: "Business & Operations",
+    department: "Branch Operations",
+    imageUrl: "/assets/personnel/senior/Mr__N_A_R_S__Kumara.png"
+  },
+  {
+    name: "Mr. Udana Weerasinghe",
+    designation: "Head of Credit Risk",
+    qualifications: "IAB (UK), PGDip (Busi Admin) Heriot-Watt University, MBA - University of Sunderland",
+    category: "Governance & Control",
+    department: "Credit Risk",
+    imageUrl: "/assets/personnel/senior/Mr__Udana_Weerasinghe.png"
+  },
+  {
+    name: "Mr. Gayan Fernando",
+    designation: "Senior Manager – Marketing & Corporate Communication",
+    qualifications: "MBA.Mkt (UK), PGDM (UOK), Executive Member, (DMASL)",
+    category: "Corporate Executive",
+    department: "Marketing & Corporate Communication",
+    imageUrl: "/assets/personnel/senior/Mr__Gayan_Fernando.png"
+  },
+  {
+    name: "Mr. Chamida Jayasena",
+    designation: "Senior Manager - Finance",
+    qualifications: "ACA ,ACCA , BSc  Finance (Special)  USJP",
+    category: "Corporate Executive",
+    department: "Finance",
+    imageUrl: "/assets/personnel/senior/Mr__Chamida_Jayasena.png"
+  },
+  {
+    name: "Ms. Pubudini Gunawardena",
+    designation: "Senior Manager - Market Risk",
+    qualifications: "DBF - IBSL,Certificate in Treasury & Foreign, Exchange Operations, Licentiate I - ICASL",
+    category: "Governance & Control",
+    department: "Market Risk",
+    imageUrl: "/assets/personnel/senior/Ms__Pubudini_Gunawardena.png"
+  },
+  {
+    name: "Mr. Prasanna Samarakoon",
+    designation: "Senior Manager - Core Banking Operations",
+    qualifications: "B.Sc. IT(Hons), CBF, APB, Dip.in National, Certificate of Accounting Technicians",
+    category: "Business & Operations",
+    department: "Core Banking Operations",
+    imageUrl: "/assets/personnel/senior/Mr__Prasanna_Samarakoon.png"
+  },
+  {
+    name: "Mr. Lahiru Ekanayake",
+    designation: "Senior Manager - Leasing",
+    qualifications: "MBA (Business Administration) | MSc (Digital, Marketing) | CIM (UK) | PGDip Strategic, Management & Leadership | Diploma in, Microfinance | Diploma in FINANCE LEASING, (IBSL)",
+    category: "Business & Operations",
+    department: "Leasing",
+    imageUrl: "/assets/personnel/senior/Mr__Lahiru_Ekanayake.png"
+  }
 ];
 
 export const CAPITALS_DATA: CapitalImpact[] = [

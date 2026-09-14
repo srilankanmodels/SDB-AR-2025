@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { BOARD_MEMBERS, EXECUTIVE_MANAGEMENT, SENIOR_MANAGEMENT, CHIEF_MANAGERS } from "../data/reportData";
 import { Award, User, Quote, BookOpen, UserCheck, ChevronRight, X, Sparkles, Calendar, Briefcase, GraduationCap, Search, Building2, ImageIcon, ExternalLink, Download, Users } from "lucide-react";
 import { useBranding } from "./BrandingContext";
-import { resolvePersonnelImageUrl, SENIOR_BRANCH_MANAGERS } from "../utils/supabasePersonnel";
+import { resolvePersonnelImageUrl } from "../utils/supabasePersonnel";
 
 // Full Team Boardroom Showcase Photo
 import fullTeamBODImage from "../assets/full team/sdb_bod_2025_web.jpg";
@@ -186,18 +186,30 @@ export default function LeadershipSection() {
     };
   }, []);
   const [selectedDirectorId, setSelectedDirectorId] = useState<string | null>(null);
-  const [managerSearch, setManagerSearch] = useState<string>("");
+  const [seniorSearch, setSeniorSearch] = useState<string>("");
+  const [chiefSearch, setChiefSearch] = useState<string>("");
 
   const selectedDirector = BOARD_MEMBERS.find((d) => d.id === selectedDirectorId);
 
-  const filteredBranchManagers = SENIOR_BRANCH_MANAGERS.filter((m) => {
-    if (!managerSearch.trim()) return true;
-    const q = managerSearch.toLowerCase().trim();
+  const filteredSeniorManagers = SENIOR_MANAGEMENT.filter((m) => {
+    if (!seniorSearch.trim()) return true;
+    const q = seniorSearch.toLowerCase().trim();
     return (
       m.name.toLowerCase().includes(q) ||
-      m.filename.toLowerCase().includes(q) ||
       m.designation.toLowerCase().includes(q) ||
-      m.department.toLowerCase().includes(q)
+      (m.department && m.department.toLowerCase().includes(q)) ||
+      (m.qualifications && m.qualifications.toLowerCase().includes(q))
+    );
+  });
+
+  const filteredChiefManagers = CHIEF_MANAGERS.filter((m) => {
+    if (!chiefSearch.trim()) return true;
+    const q = chiefSearch.toLowerCase().trim();
+    return (
+      m.name.toLowerCase().includes(q) ||
+      m.designation.toLowerCase().includes(q) ||
+      (m.department && m.department.toLowerCase().includes(q)) ||
+      (m.qualifications && m.qualifications.toLowerCase().includes(q))
     );
   });
 
@@ -782,93 +794,39 @@ export default function LeadershipSection() {
                 })}
               </div>
 
-              {/* Senior Management & Branch Leadership Network Showcase */}
-              <div className="space-y-6 pt-6 border-t border-slate-200/80 text-left">
-                {/* Header with Search and Stats */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-sdb-purple/5 via-slate-50 to-white p-6 rounded-3xl border border-sdb-purple/15 shadow-sm">
-                  <div className="space-y-1">
+              {/* Quick Navigation to Chief & Senior Management */}
+              <div className="pt-8 border-t border-slate-200/80 text-left">
+                <div className="bg-gradient-to-r from-sdb-purple/5 via-slate-50 to-white p-6 rounded-3xl border border-sdb-purple/15 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+                  <div className="space-y-1 max-w-xl">
                     <div className="inline-flex items-center gap-1.5 text-sdb-coral font-mono text-xs font-bold uppercase tracking-wider">
-                      <Building2 className="w-3.5 h-3.5" />
-                      <span>Island-wide Branch Leadership</span>
+                      <Users className="w-3.5 h-3.5" />
+                      <span>Extended Leadership Cadre</span>
                     </div>
-                    <h3 className="font-serif font-bold text-xl md:text-2xl text-sdb-purple">
-                      Senior Management & Branch Leadership Network
+                    <h3 className="font-serif font-bold text-xl text-sdb-purple">
+                      Chief Managers &amp; Senior Management Team
                     </h3>
-                    <p className="text-xs text-slate-600 max-w-2xl">
-                      Showcasing SDB bank's dedicated regional heads and branch managers serving 94 locations across Sri Lanka, including key leaders like Mr. T. K. Banda.
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      SDB bank's executive hierarchy extends across 13 Chief Managers and 50 Senior Management leaders directing operations, credit risk, retail recoveries, and provincial banking island-wide.
                     </p>
                   </div>
-
-                  {/* Search Box */}
-                  <div className="w-full md:w-72 relative shrink-0">
-                    <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                    <input
-                      type="text"
-                      value={managerSearch}
-                      onChange={(e) => setManagerSearch(e.target.value)}
-                      placeholder="Search by name (e.g. Banda, Kumara)..."
-                      className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 focus:border-sdb-purple/50 rounded-xl text-xs font-sans focus:outline-none focus:ring-2 focus:ring-sdb-purple/10 shadow-xs"
-                    />
-                    {managerSearch && (
-                      <button
-                        onClick={() => setManagerSearch("")}
-                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 text-xs cursor-pointer"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    )}
+                  <div className="flex flex-wrap gap-3">
+                    <button
+                      onClick={() => setActiveTab("chief-managers")}
+                      className="px-4 py-2.5 bg-white hover:bg-sdb-purple/5 text-sdb-purple border border-sdb-purple/20 rounded-xl text-xs font-mono font-bold transition-all shadow-xs hover:border-sdb-purple/40 flex items-center gap-2 cursor-pointer"
+                    >
+                      <Building2 className="w-3.5 h-3.5 text-sdb-coral" />
+                      <span>Chief Managers ({CHIEF_MANAGERS.length})</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("senior")}
+                      className="px-4 py-2.5 bg-sdb-purple hover:bg-sdb-purple/90 text-white rounded-xl text-xs font-mono font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
+                    >
+                      <Users className="w-3.5 h-3.5 text-amber-300" />
+                      <span>Senior Management ({SENIOR_MANAGEMENT.length})</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
-                </div>
-
-                {/* Count & filter info */}
-                <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1">
-                  <span>Showing {filteredBranchManagers.length} of {SENIOR_BRANCH_MANAGERS.length} Branch & Regional Leaders</span>
-                  <span className="text-[11px] text-slate-500 font-medium">Branch Network • 94 Locations Island-wide</span>
-                </div>
-
-                {/* Roster Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {filteredBranchManagers.map((leader, lIdx) => {
-                    const isFeatured = leader.filename.includes("T K Banda");
-                    return (
-                      <div
-                        key={lIdx}
-                        className={`bg-white rounded-2xl p-3 border transition-all duration-300 flex flex-col justify-between group hover:shadow-md ${
-                          isFeatured 
-                            ? "border-sdb-coral/70 ring-2 ring-sdb-coral/20 shadow-xs" 
-                            : "border-slate-200/80 hover:border-sdb-purple/30"
-                        }`}
-                      >
-                        <div>
-                          <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 mb-2.5 border border-slate-100 group-hover:border-sdb-purple/20">
-                            <img
-                              src={leader.imageUrl}
-                              alt={leader.name}
-                              loading="lazy"
-                              referrerPolicy="no-referrer"
-                              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-106"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#140C24]/80 via-transparent to-transparent pointer-events-none" />
-                            {isFeatured && (
-                              <div className="absolute top-1.5 left-1.5 bg-sdb-coral text-white font-mono text-[8px] font-bold px-1.5 py-0.5 rounded shadow">
-                                FEATURED
-                              </div>
-                            )}
-                          </div>
-                          <h5 className="font-serif font-bold text-xs text-sdb-purple leading-tight group-hover:text-sdb-coral transition-colors line-clamp-1">
-                            {leader.name}
-                          </h5>
-                          <p className="text-[10px] text-slate-500 font-sans mt-0.5 line-clamp-2 leading-snug">
-                            {leader.designation}
-                          </p>
-                        </div>
-                        <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[9px] font-mono text-slate-400">
-                          <span>{leader.department.split(" ")[0]}</span>
-                          <span className="text-sdb-green font-bold">● Active</span>
-                        </div>
-                      </div>
-                    );
-                  })}
                 </div>
               </div>
             </motion.div>
@@ -882,50 +840,106 @@ export default function LeadershipSection() {
               exit={{ opacity: 0 }}
               className="space-y-8 text-left"
             >
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-5 rounded-2xl border border-sdb-purple/10 shadow-xs">
-                <div>
-                  <h3 className="font-serif font-bold text-lg md:text-xl text-sdb-purple">
+              {/* Header with Search and Stats */}
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-sdb-purple/5 via-slate-50 to-white p-6 rounded-3xl border border-sdb-purple/15 shadow-sm">
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-1.5 text-sdb-coral font-mono text-xs font-bold uppercase tracking-wider">
+                    <Users className="w-3.5 h-3.5" />
+                    <span>Annual Report Pages 61–66</span>
+                  </div>
+                  <h3 className="font-serif font-bold text-xl md:text-2xl text-sdb-purple">
                     Senior Management Team
                   </h3>
-                  <p className="text-xs text-slate-600 mt-0.5">
-                    Senior leadership heads managing strategic business divisions, credit underwriting, digital channels, and provincial operations.
+                  <p className="text-xs text-slate-600 max-w-2xl">
+                    Official Senior Management cadre of 50 leaders managing provincial divisions, centralized operations, leasing, credit risk models, recovery enforcement, and branch hubs.
                   </p>
                 </div>
-                <span className="text-[10px] font-mono text-sdb-purple font-bold uppercase tracking-wider bg-sdb-purple/10 px-3 py-1.5 rounded-xl shrink-0">
-                  {SENIOR_MANAGEMENT.length} Senior Leaders • Operations &amp; Strategy
-                </span>
+
+                {/* Search Box */}
+                <div className="w-full md:w-80 relative shrink-0">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={seniorSearch}
+                    onChange={(e) => setSeniorSearch(e.target.value)}
+                    placeholder="Search by name, title or region..."
+                    className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 focus:border-sdb-purple/50 rounded-xl text-xs font-sans focus:outline-none focus:ring-2 focus:ring-sdb-purple/10 shadow-xs"
+                  />
+                  {seniorSearch && (
+                    <button
+                      onClick={() => setSeniorSearch("")}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 text-xs cursor-pointer"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
               </div>
 
+              {/* Count Info */}
+              <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1">
+                <span>Showing {filteredSeniorManagers.length} of {SENIOR_MANAGEMENT.length} Senior Leaders</span>
+                <span className="text-[11px] text-slate-500 font-medium">Pages 61–66 • Official Publication</span>
+              </div>
+
+              {/* Senior Management Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {SENIOR_MANAGEMENT.map((mgr, idx) => (
+                {filteredSeniorManagers.map((mgr, idx) => (
                   <div
                     key={idx}
-                    className="bg-white border border-sdb-purple/10 hover:border-sdb-purple/30 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                    className="bg-white border border-sdb-purple/10 hover:border-sdb-purple/30 rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
                   >
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-sdb-coral bg-sdb-coral/10 px-2 py-0.5 rounded-full">
-                          {mgr.department}
-                        </span>
-                        <span className="text-[10px] font-mono text-slate-400">#SM-{idx + 1}</span>
+                    <div>
+                      {/* Portrait Frame */}
+                      <div className="relative w-full aspect-[4/5] bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 overflow-hidden">
+                        {mgr.imageUrl ? (
+                          <img
+                            src={mgr.imageUrl}
+                            alt={mgr.name}
+                            loading="lazy"
+                            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center text-sdb-purple/50 bg-sdb-purple/5">
+                            <UserCheck className="w-12 h-12 mb-2 text-sdb-purple/40" />
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sdb-purple/70">Leader</span>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#140C24]/90 via-[#140C24]/20 to-transparent pointer-events-none" />
+
+                        {mgr.category && (
+                          <div className="absolute top-3 left-3">
+                            <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-white bg-sdb-purple/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
+                              {mgr.category}
+                            </span>
+                          </div>
+                        )}
+
+                        <div className="absolute bottom-3 left-3 right-3 text-left">
+                          <h4 className="font-serif font-bold text-base text-white leading-tight drop-shadow-sm">
+                            {mgr.name}
+                          </h4>
+                          <p className="text-[11px] text-sdb-coral font-mono uppercase tracking-wider font-semibold mt-0.5 line-clamp-2">
+                            {mgr.designation}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-serif font-bold text-base text-sdb-purple group-hover:text-sdb-coral transition-colors">
-                          {mgr.name}
-                        </h4>
-                        <p className="text-xs text-slate-700 font-medium mt-0.5">
-                          {mgr.designation}
-                        </p>
+
+                      {/* Credentials */}
+                      <div className="p-4 space-y-2.5 text-left">
+                        {mgr.qualifications && (
+                          <div className="text-[10.5px] font-mono text-slate-600 leading-snug">
+                            <span className="text-slate-400 font-semibold uppercase tracking-wider block text-[9px] mb-0.5">Credentials</span>
+                            <p className="line-clamp-3">{mgr.qualifications}</p>
+                          </div>
+                        )}
                       </div>
-                      <p className="text-xs text-slate-500 leading-relaxed pt-1 border-t border-slate-100">
-                        {mgr.bio}
-                      </p>
                     </div>
 
-                    <div className="pt-3 mt-4 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                      <span>SDB bank Senior Cadre</span>
-                      <span className="text-sdb-green font-bold flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-sdb-green inline-block" /> Active
+                    <div className="px-4 pb-3 pt-1 text-[10px] font-mono text-slate-400 flex items-center justify-between border-t border-slate-50">
+                      <span className="truncate max-w-[150px]">{mgr.department || "Operations"}</span>
+                      <span className="text-sdb-green font-bold flex items-center gap-1 shrink-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-sdb-green inline-block" /> Active Cadre
                       </span>
                     </div>
                   </div>
@@ -942,50 +956,106 @@ export default function LeadershipSection() {
               exit={{ opacity: 0 }}
               className="space-y-8 text-left"
             >
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-5 rounded-2xl border border-sdb-purple/10 shadow-xs">
-                <div>
-                  <h3 className="font-serif font-bold text-lg md:text-xl text-sdb-purple">
+              {/* Header with Search and Stats */}
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-sdb-purple/5 via-slate-50 to-white p-6 rounded-3xl border border-sdb-purple/15 shadow-sm">
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-1.5 text-sdb-coral font-mono text-xs font-bold uppercase tracking-wider">
+                    <Building2 className="w-3.5 h-3.5" />
+                    <span>Annual Report Pages 59–60</span>
+                  </div>
+                  <h3 className="font-serif font-bold text-xl md:text-2xl text-sdb-purple">
                     Chief Managers Roster
                   </h3>
-                  <p className="text-xs text-slate-600 mt-0.5">
-                    Chief Managers leading regional administration, credit appraisals, treasury operations, and internal controls.
+                  <p className="text-xs text-slate-600 max-w-2xl">
+                    Official Chief Managers leading administration, branch banking units, recoveries, regional supervision, internal audit, and IT systems.
                   </p>
                 </div>
-                <span className="text-[10px] font-mono text-sdb-purple font-bold uppercase tracking-wider bg-sdb-purple/10 px-3 py-1.5 rounded-xl shrink-0">
-                  {CHIEF_MANAGERS.length} Chief Managers • Core Operations
-                </span>
+
+                {/* Search Box */}
+                <div className="w-full md:w-80 relative shrink-0">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <input
+                    type="text"
+                    value={chiefSearch}
+                    onChange={(e) => setChiefSearch(e.target.value)}
+                    placeholder="Search by name, title or area..."
+                    className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 focus:border-sdb-purple/50 rounded-xl text-xs font-sans focus:outline-none focus:ring-2 focus:ring-sdb-purple/10 shadow-xs"
+                  />
+                  {chiefSearch && (
+                    <button
+                      onClick={() => setChiefSearch("")}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 text-xs cursor-pointer"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
               </div>
 
+              {/* Count Info */}
+              <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1">
+                <span>Showing {filteredChiefManagers.length} of {CHIEF_MANAGERS.length} Chief Managers</span>
+                <span className="text-[11px] text-slate-500 font-medium">Pages 59–60 • Official Publication</span>
+              </div>
+
+              {/* Chief Managers Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {CHIEF_MANAGERS.map((cm, idx) => (
+                {filteredChiefManagers.map((cm, idx) => (
                   <div
                     key={idx}
-                    className="bg-white border border-sdb-purple/10 hover:border-sdb-purple/30 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                    className="bg-white border border-sdb-purple/10 hover:border-sdb-purple/30 rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
                   >
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-sdb-purple bg-sdb-purple/10 px-2 py-0.5 rounded-full">
-                          {cm.department}
-                        </span>
-                        <span className="text-[10px] font-mono text-slate-400">#CM-{idx + 1}</span>
+                    <div>
+                      {/* Portrait Frame */}
+                      <div className="relative w-full aspect-[4/5] bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 overflow-hidden">
+                        {cm.imageUrl ? (
+                          <img
+                            src={cm.imageUrl}
+                            alt={cm.name}
+                            loading="lazy"
+                            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center text-sdb-purple/50 bg-sdb-purple/5">
+                            <UserCheck className="w-12 h-12 mb-2 text-sdb-purple/40" />
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sdb-purple/70">Chief Manager</span>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#140C24]/90 via-[#140C24]/20 to-transparent pointer-events-none" />
+
+                        {cm.category && (
+                          <div className="absolute top-3 left-3">
+                            <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-white bg-sdb-purple/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
+                              {cm.category}
+                            </span>
+                          </div>
+                        )}
+
+                        <div className="absolute bottom-3 left-3 right-3 text-left">
+                          <h4 className="font-serif font-bold text-base text-white leading-tight drop-shadow-sm">
+                            {cm.name}
+                          </h4>
+                          <p className="text-[11px] text-sdb-coral font-mono uppercase tracking-wider font-semibold mt-0.5 line-clamp-2">
+                            {cm.designation}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-serif font-bold text-base text-sdb-purple group-hover:text-sdb-coral transition-colors">
-                          {cm.name}
-                        </h4>
-                        <p className="text-xs text-slate-700 font-medium mt-0.5">
-                          {cm.designation}
-                        </p>
+
+                      {/* Credentials */}
+                      <div className="p-4 space-y-2.5 text-left">
+                        {cm.qualifications && (
+                          <div className="text-[10.5px] font-mono text-slate-600 leading-snug">
+                            <span className="text-slate-400 font-semibold uppercase tracking-wider block text-[9px] mb-0.5">Credentials</span>
+                            <p className="line-clamp-3">{cm.qualifications}</p>
+                          </div>
+                        )}
                       </div>
-                      <p className="text-xs text-slate-500 leading-relaxed pt-1 border-t border-slate-100">
-                        {cm.bio}
-                      </p>
                     </div>
 
-                    <div className="pt-3 mt-4 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                      <span>SDB bank Management</span>
-                      <span className="text-sdb-green font-bold flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-sdb-green inline-block" /> Active
+                    <div className="px-4 pb-3 pt-1 text-[10px] font-mono text-slate-400 flex items-center justify-between border-t border-slate-50">
+                      <span className="truncate max-w-[170px]">{cm.department || "Head Office Unit"}</span>
+                      <span className="text-sdb-green font-bold flex items-center gap-1 shrink-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-sdb-green inline-block" /> Active Cadre
                       </span>
                     </div>
                   </div>
