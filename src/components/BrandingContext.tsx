@@ -43,7 +43,7 @@ const DEFAULT_BRANDING: BrandingConfig = {
   headOfficeImage: "/src/assets/images/sdb_head_office_1783367607149.jpg",
   cooperativeFarmingImage: "/src/assets/images/cooperative_farming_1783367621583.jpg",
   digitalBankingImage: "/src/assets/images/digital_banking_1783367635268.jpg",
-  boardroomLeadershipImage: "/src/assets/images/boardroom_leadership_1783367647402.jpg",
+  boardroomLeadershipImage: "/src/assets/full team/sdb_bod_2025_web.jpg",
   logoImage: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/logo/sdb_logo_transparent.png",
   coverImage: "",
   coverVideo: "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/mainvideo.mp4",
@@ -52,6 +52,7 @@ const DEFAULT_BRANDING: BrandingConfig = {
   boardImages: {
     "01": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png",
     "02": "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png",
+    "fullTeam": "/src/assets/full team/sdb_bod_2025_web.jpg"
   },
   managementImages: DEFAULT_MANAGEMENT_IMAGES
 };

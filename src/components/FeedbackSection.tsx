@@ -77,8 +77,8 @@ export default function FeedbackSection() {
             As SDB bank progresses on our digital and sustainable roadmap, your input matters. Tell us your thoughts on the FY 2025 Annual Report disclosures, figures, or overall layout.
           </p>
           <div className="mt-4 flex flex-wrap gap-2 text-[10px] font-mono text-slate-400">
-            <span className="bg-sdb-cream px-2 py-0.5 rounded border border-sdb-purple/5 font-semibold">SECURE TRANSMISSION</span>
-            <span className="bg-sdb-cream px-2 py-0.5 rounded border border-sdb-purple/5 font-semibold">SUPABASE DATABASE</span>
+            <span className="bg-sdb-cream px-2 py-0.5 rounded border border-sdb-purple/5 font-semibold">SECURE & CONFIDENTIAL</span>
+            <span className="bg-sdb-cream px-2 py-0.5 rounded border border-sdb-purple/5 font-semibold">STAKEHOLDER GOVERNANCE</span>
           </div>
         </div>
 

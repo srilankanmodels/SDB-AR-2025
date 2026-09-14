@@ -1,9 +1,43 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { BOARD_MEMBERS, EXECUTIVE_MANAGEMENT } from "../data/reportData";
-import { Award, User, Quote, BookOpen, UserCheck, ChevronRight, X, Sparkles, Calendar, Briefcase, GraduationCap, Search, Building2 } from "lucide-react";
+import { Award, User, Quote, BookOpen, UserCheck, ChevronRight, X, Sparkles, Calendar, Briefcase, GraduationCap, Search, Building2, ImageIcon } from "lucide-react";
 import { useBranding } from "./BrandingContext";
 import { resolvePersonnelImageUrl, SENIOR_BRANCH_MANAGERS } from "../utils/supabasePersonnel";
+
+// Full Team Boardroom Showcase Photo
+import fullTeamBODImage from "../assets/full team/sdb_bod_2025_web.jpg";
+
+// Single Portrait Images for each Board Director
+import dirImg01 from "../assets/board/01_Dinithi_Ratnayake.png";
+import dirImg02 from "../assets/board/02_Kapila_Ariyaratne.png";
+import dirImg03 from "../assets/board/03_Chaaminda_Kumarasiri.png";
+import dirImg04 from "../assets/board/04_Prasanna_Premaratna.png";
+import dirImg05 from "../assets/board/05_Thusantha_Wijemanna.png";
+import dirImg06 from "../assets/board/06_Sarath_Nandasiri.png";
+import dirImg07 from "../assets/board/07_Conrad_Dias.png";
+import dirImg08 from "../assets/board/08_Romani_De_Silva.png";
+import dirImg09 from "../assets/board/09_Chandana_Dissanayake.png";
+import dirImg10 from "../assets/board/10_B_R_A_Bandara.png";
+
+interface BoardDirectorAsset {
+  src: string;
+  localPath: string;
+  filename: string;
+}
+
+const BOARD_DIRECTOR_LOCAL_ASSETS: Record<string, BoardDirectorAsset> = {
+  "01": { src: dirImg01, localPath: "src/assets/board/01_Dinithi_Ratnayake.png", filename: "01_Dinithi_Ratnayake.png" },
+  "02": { src: dirImg02, localPath: "src/assets/board/02_Kapila_Ariyaratne.png", filename: "02_Kapila_Ariyaratne.png" },
+  "03": { src: dirImg03, localPath: "src/assets/board/03_Chaaminda_Kumarasiri.png", filename: "03_Chaaminda_Kumarasiri.png" },
+  "04": { src: dirImg04, localPath: "src/assets/board/04_Prasanna_Premaratna.png", filename: "04_Prasanna_Premaratna.png" },
+  "05": { src: dirImg05, localPath: "src/assets/board/05_Thusantha_Wijemanna.png", filename: "05_Thusantha_Wijemanna.png" },
+  "06": { src: dirImg06, localPath: "src/assets/board/06_Sarath_Nandasiri.png", filename: "06_Sarath_Nandasiri.png" },
+  "07": { src: dirImg07, localPath: "src/assets/board/07_Conrad_Dias.png", filename: "07_Conrad_Dias.png" },
+  "08": { src: dirImg08, localPath: "src/assets/board/08_Romani_De_Silva.png", filename: "08_Romani_De_Silva.png" },
+  "09": { src: dirImg09, localPath: "src/assets/board/09_Chandana_Dissanayake.png", filename: "09_Chandana_Dissanayake.png" },
+  "10": { src: dirImg10, localPath: "src/assets/board/10_B_R_A_Bandara.png", filename: "10_B_R_A_Bandara.png" },
+};
 
 type SubSection = "chairperson" | "ceo" | "board" | "management";
 
@@ -135,7 +169,7 @@ function ExecutivePortraitCard({
 
 export default function LeadershipSection() {
   const { branding } = useBranding();
-  const boardroomLeadershipImage = branding?.boardroomLeadershipImage || "/src/assets/images/boardroom_leadership_1783367647402.jpg";
+  const boardroomLeadershipImage = branding?.boardroomLeadershipImage || fullTeamBODImage;
 
   const [activeTab, setActiveTab] = useState<SubSection>("chairperson");
 
@@ -180,14 +214,21 @@ export default function LeadershipSection() {
           </p>
         </div>
         
-        {/* Generated boardroom leadership picture */}
-        <div className="w-full lg:w-72 h-28 rounded-2xl overflow-hidden shadow-md border border-sdb-purple/10 shrink-0">
+        {/* Boardroom leadership showcase picture */}
+        <div className="w-full lg:w-72 h-28 rounded-2xl overflow-hidden shadow-md border border-sdb-purple/10 shrink-0 relative group">
           <img
             src={boardroomLeadershipImage}
             alt="SDB Boardroom Governance"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = fullTeamBODImage;
+            }}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+          <span className="absolute bottom-2 left-2 text-[9.5px] font-mono text-white/90 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded">
+            The Board of Directors
+          </span>
         </div>
       </div>
 
@@ -421,43 +462,44 @@ export default function LeadershipSection() {
               exit={{ opacity: 0 }}
               className="space-y-10"
             >
-              {/* Dual Grand Boardroom Portraits */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="relative h-80 sm:h-96 rounded-3xl overflow-hidden shadow-xl border border-sdb-purple/10 group">
+              {/* Grand Full Team Boardroom Showcase Banner */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-sdb-purple/20 bg-slate-950 group">
+                <div className="relative w-full aspect-[16/8] sm:aspect-[21/9] max-h-[520px] overflow-hidden">
                   <img
-                    src="/src/assets/annual_report_images/board/page_52_image_0.png"
-                    alt="SDB Board of Directors (Session A: Ms. Dinithi Ratnayake & Directors)"
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
+                    src={branding?.boardImages?.["fullTeam"] || fullTeamBODImage}
+                    alt="SDB bank Board of Directors 2025 - Full Team"
+                    className="w-full h-full object-cover object-[center_35%] transition-transform duration-1000 ease-out group-hover:scale-[1.02]"
+                    loading="eager"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-sdb-purple/90 via-sdb-purple/20 to-transparent flex flex-col justify-end p-6 text-left">
-                    <span className="text-[10px] font-mono font-bold text-sdb-coral bg-white/15 backdrop-blur-md px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block w-fit mb-1">
-                      Session A
-                    </span>
-                    <h4 className="font-serif text-lg sm:text-xl font-bold text-white">
-                      Chairperson Ms. Dinithi Ratnayake & Directors
-                    </h4>
-                    <p className="text-white/80 text-xs font-sans mt-0.5">
-                      Messrs. Prasanna Premaratna, Conrad Dias, Chaaminda Kumarasiri, and Thusantha Wijemanna
-                    </p>
-                  </div>
-                </div>
+                  {/* Cinematic Multi-Stop Vignette Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#120B24] via-[#120B24]/40 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#120B24]/60 via-transparent to-[#120B24]/60 pointer-events-none" />
 
-                <div className="relative h-80 sm:h-96 rounded-3xl overflow-hidden shadow-xl border border-sdb-purple/10 group">
-                  <img
-                    src="/src/assets/annual_report_images/board/page_53_image_1.png"
-                    alt="SDB Board of Directors (Session B: Mr. Kapila Ariyaratne & Directors)"
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-sdb-purple/90 via-sdb-purple/20 to-transparent flex flex-col justify-end p-6 text-left">
-                    <span className="text-[10px] font-mono font-bold text-sdb-coral bg-white/15 backdrop-blur-md px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block w-fit mb-1">
-                      Session B
-                    </span>
-                    <h4 className="font-serif text-lg sm:text-xl font-bold text-white">
-                      CEO Mr. Kapila Ariyaratne & Directors
-                    </h4>
-                    <p className="text-white/80 text-xs font-sans mt-0.5">
-                      Messrs. Romani De Silva, Sarath Nandasiri, Chandana Dissanayake, and B. R. A. Bandara
+                  {/* Top Floating Badge */}
+                  <div className="absolute top-4 right-4 z-10 hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A1230]/80 backdrop-blur-md border border-white/20 text-white shadow-lg text-xs font-mono font-semibold">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                    <span>The Board of Directors</span>
+                  </div>
+
+                  {/* Banner Typography & Caption */}
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 z-10 text-left">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sdb-coral/90 text-white text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase mb-2 shadow-md">
+                      <span>Official Boardroom Portrait</span>
+                      <span>•</span>
+                      <span>Annual Report 2025</span>
+                    </div>
+                    <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight drop-shadow-md">
+                      The Board of Directors (2025)
+                    </h3>
+                    <p className="text-white/90 text-xs sm:text-sm font-sans max-w-3xl mt-1.5 leading-relaxed drop-shadow">
+                      Seated and Standing in the Boardroom, Colombo. Guided by collective vision, banking acumen, and an unwavering commitment to Sri Lanka's MSMEs, agriculture, and cooperative empowerment.
                     </p>
+                    <div className="mt-3 flex items-center gap-3 text-xs font-mono text-slate-200">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        10 Board Members • Fully CBSL Compliant
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -472,47 +514,53 @@ export default function LeadershipSection() {
                 </span>
               </div>
 
-              {/* Individual Directors' Details */}
+              {/* Individual Single Images for Board of Directors */}
               <div id="board-details-list" className="space-y-6">
                 {BOARD_MEMBERS.map((director) => {
-                  const imageUrl =
-                    director.id === "01"
-                      ? (branding?.chairpersonImage || "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/chairperson%20potrait/EUK05956.png")
-                      : director.id === "02"
-                      ? (branding?.ceoImage || "https://yaefjxsrsyrrrxwkmslq.supabase.co/storage/v1/object/public/sdb%20bank/images/Kapila%20Ariyaratne.png")
-                      : (branding?.boardImages?.[director.id] || resolvePersonnelImageUrl(director.name));
-                  const hasImage = !!imageUrl;
+                  const asset = BOARD_DIRECTOR_LOCAL_ASSETS[director.id];
+                  const localFallback = asset?.src || "";
                   
+                  // Priority: Custom branding override -> Local single image file path -> Supabase personnel resolution
+                  const customImage = branding?.boardImages?.[director.id];
+                  const chairpersonDefault = director.id === "01" ? (branding?.chairpersonImage || localFallback) : null;
+                  const ceoDefault = director.id === "02" ? (branding?.ceoImage || localFallback) : null;
+                  
+                  const resolvedImageUrl = customImage || chairpersonDefault || ceoDefault || localFallback || resolvePersonnelImageUrl(director.name);
+
                   return (
                     <div
                       key={director.id}
                       className="bg-white border border-sdb-purple/10 hover:border-sdb-purple/25 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col lg:flex-row gap-6 md:gap-8 text-left group relative overflow-hidden"
                     >
-                      {/* Left Side: Avatar/Portrait and Quick Info */}
-                      <div className="lg:w-1/4 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-100 pb-6 lg:pb-0 lg:pr-8 shrink-0 justify-between">
+                      {/* Left Side: Single Portrait Showcase Frame & Path info */}
+                      <div className="lg:w-64 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-100 pb-6 lg:pb-0 lg:pr-8 shrink-0 justify-between">
                         <div className="space-y-4 w-full flex flex-col items-center lg:items-start">
-                          <div className="relative">
-                            {hasImage ? (
-                              <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-sdb-purple/15 shadow-md">
-                                <img
-                                  src={imageUrl}
-                                  alt={director.name}
-                                  referrerPolicy="no-referrer"
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                              </div>
-                            ) : (
-                              <div className="w-24 h-24 rounded-2xl bg-sdb-purple/5 border-2 border-sdb-purple/10 text-sdb-purple flex flex-col items-center justify-center shadow-inner font-serif font-bold text-2xl group-hover:bg-sdb-purple group-hover:text-white transition-all duration-300">
-                                <User className="w-8 h-8 mb-1" />
-                                <span className="text-xs font-mono tracking-wider">#{director.id}</span>
-                              </div>
-                            )}
-                            <div className="absolute -bottom-2 -right-2 bg-sdb-coral text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded-md shadow">
-                              ID {director.id}
+                          {/* 4:5 Executive Portrait Frame */}
+                          <div className="relative w-44 sm:w-52 aspect-[4/5] rounded-2xl overflow-hidden border-2 border-sdb-purple/15 shadow-md bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 group-hover:shadow-lg transition-all duration-300">
+                            <img
+                              src={resolvedImageUrl}
+                              alt={director.name}
+                              referrerPolicy="no-referrer"
+                              onError={(e) => {
+                                if (localFallback && (e.target as HTMLImageElement).src !== localFallback) {
+                                  (e.target as HTMLImageElement).src = localFallback;
+                                }
+                              }}
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                            />
+                            
+                            {/* Ambient base shadow */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+                            <div className="absolute bottom-2.5 left-2.5 right-2.5 text-center">
+                              <span className="text-[10px] font-mono font-semibold text-white/90 bg-black/40 backdrop-blur-xs px-2.5 py-0.5 rounded-full inline-block">
+                                Board of Directors
+                              </span>
                             </div>
                           </div>
 
-                          <div className="space-y-1 mt-2">
+                          {/* Director Name & Designation */}
+                          <div className="space-y-1 mt-2 text-center lg:text-left w-full">
                             <h4 className="font-serif text-lg md:text-xl font-bold text-sdb-purple leading-tight group-hover:text-sdb-coral transition-colors duration-300">
                               {director.name}
                             </h4>
@@ -522,15 +570,17 @@ export default function LeadershipSection() {
                           </div>
                         </div>
 
-                        <div className="mt-6 w-full pt-4 border-t border-slate-100/80">
-                          <span className="inline-block bg-slate-50 text-[10px] font-mono text-slate-500 px-3 py-1.5 rounded-lg border border-slate-100 font-semibold w-full text-center lg:text-left">
-                            Board Member
+                        {/* Status footer */}
+                        <div className="mt-5 w-full pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs font-sans text-slate-500">
+                          <span className="font-medium text-slate-600">SDB Governance</span>
+                          <span className="text-sdb-green font-bold text-[11px] flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-sdb-green inline-block" /> Active Cadre
                           </span>
                         </div>
                       </div>
 
                       {/* Right Side: Detailed Biography & Tenure */}
-                      <div className="lg:w-3/4 flex flex-col justify-between space-y-4">
+                      <div className="lg:flex-1 flex flex-col justify-between space-y-4">
                         <div className="space-y-4">
                           <div className="bg-sdb-purple/5 border-l-4 border-sdb-purple px-4 py-3 rounded-r-xl">
                             <p className="text-xs font-mono font-bold text-sdb-purple uppercase tracking-wider">
@@ -551,10 +601,16 @@ export default function LeadershipSection() {
                           </div>
                         </div>
 
-                        <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
-                          <span>SDB bank 2025 Annual Report Profile</span>
+                        <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400">
+                          <button
+                            onClick={() => setSelectedDirectorId(director.id)}
+                            className="inline-flex items-center gap-1.5 text-sdb-purple hover:text-sdb-coral transition-colors font-bold cursor-pointer"
+                          >
+                            <BookOpen className="w-3.5 h-3.5" />
+                            <span>View Full Biography Dossier</span>
+                          </button>
                           <span className="flex items-center gap-1 text-sdb-green font-bold">
-                            <span className="w-1.5 h-1.5 rounded-full bg-sdb-green" /> CBSL Approved
+                            <span className="w-1.5 h-1.5 rounded-full bg-sdb-green" /> CBSL Approved Director
                           </span>
                         </div>
                       </div>
@@ -573,34 +629,6 @@ export default function LeadershipSection() {
               exit={{ opacity: 0 }}
               className="space-y-8"
             >
-              {/* Publication Gallery Feature: Pages 57 & 58 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div className="bg-white rounded-3xl p-4 border border-sdb-purple/10 shadow-md">
-                  <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider block mb-2">
-                    Official Publication • Corporate Management (Part 1)
-                  </span>
-                  <div className="rounded-2xl overflow-hidden border border-slate-100">
-                    <img
-                      src="/src/assets/annual_report_images/management/page_59_screenshot.png"
-                      alt="Corporate Management Page 57"
-                      className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-3xl p-4 border border-sdb-purple/10 shadow-md">
-                  <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider block mb-2">
-                    Official Publication • Corporate Management (Part 2)
-                  </span>
-                  <div className="rounded-2xl overflow-hidden border border-slate-100">
-                    <img
-                      src="/src/assets/annual_report_images/management/page_60_screenshot.png"
-                      alt="Corporate Management Page 58"
-                      className="w-full h-auto object-cover hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-              </div>
 
               {/* Corporate Executive Management Header */}
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-5 rounded-2xl border border-sdb-purple/10 shadow-xs text-left">
@@ -617,7 +645,7 @@ export default function LeadershipSection() {
                 </span>
               </div>
 
-              {/* Executive Grid Cards with Supabase Portraits */}
+              {/* Executive Grid Cards */}
               <div id="management-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
                 {EXECUTIVE_MANAGEMENT.map((exec, idx) => {
                   const portraitUrl = branding?.managementImages?.[exec.name] || resolvePersonnelImageUrl(exec.name);
@@ -727,7 +755,7 @@ export default function LeadershipSection() {
                 {/* Count & filter info */}
                 <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1">
                   <span>Showing {filteredBranchManagers.length} of {SENIOR_BRANCH_MANAGERS.length} Branch & Regional Leaders</span>
-                  <span className="text-[11px] text-sdb-purple font-bold">Supabase Cloud Storage Connected ☁️</span>
+                  <span className="text-[11px] text-slate-500 font-medium">Branch Network • 94 Locations Island-wide</span>
                 </div>
 
                 {/* Roster Grid */}
@@ -791,20 +819,30 @@ export default function LeadershipSection() {
             {/* Modal Header */}
             <div className="p-6 bg-white border-b border-sdb-purple/10 text-sdb-purple flex justify-between items-center">
               <div className="flex items-center space-x-3">
-                {branding?.boardImages?.[selectedDirector.id] ? (
-                  <div className="w-12 h-12 rounded-full overflow-hidden border border-sdb-purple/10 shadow-sm shrink-0">
-                    <img
-                      src={branding.boardImages[selectedDirector.id]}
-                      alt={selectedDirector.name}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-10 h-10 rounded-lg bg-sdb-purple/5 border border-sdb-purple/10 flex items-center justify-center font-mono text-xs font-bold shrink-0">
-                    {selectedDirector.id}
-                  </div>
-                )}
+                {(() => {
+                  const modalAsset = BOARD_DIRECTOR_LOCAL_ASSETS[selectedDirector.id];
+                  const modalImgUrl =
+                    branding?.boardImages?.[selectedDirector.id] ||
+                    (selectedDirector.id === "01" ? branding?.chairpersonImage : null) ||
+                    (selectedDirector.id === "02" ? branding?.ceoImage : null) ||
+                    modalAsset?.src ||
+                    resolvePersonnelImageUrl(selectedDirector.name);
+                  
+                  return modalImgUrl ? (
+                    <div className="w-14 h-14 rounded-2xl overflow-hidden border border-sdb-purple/15 shadow-sm shrink-0 bg-slate-100">
+                      <img
+                        src={modalImgUrl}
+                        alt={selectedDirector.name}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 rounded-xl bg-sdb-purple/5 border border-sdb-purple/10 flex items-center justify-center font-mono text-xs font-bold shrink-0">
+                      #{selectedDirector.id}
+                    </div>
+                  );
+                })()}
                 <div>
                   <h3 className="font-serif font-bold text-lg leading-tight">{selectedDirector.name}</h3>
                   <p className="text-[10px] text-sdb-coral font-mono uppercase tracking-wider mt-0.5">{selectedDirector.designation}</p>
