@@ -108,11 +108,6 @@ export default function ThemeCover({
               </span>
               <div className="flex items-center space-x-2 text-[9.5px] text-slate-500 font-medium tracking-wide mt-1">
                 <span>Integrated Annual Report 2025</span>
-                <span className="text-slate-300">&bull;</span>
-                <span className="inline-flex items-center space-x-1 font-mono text-sdb-purple font-semibold bg-sdb-purple/5 px-1.5 py-0.5 rounded border border-sdb-purple/10">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>CSE: SDB.N0000</span>
-                </span>
               </div>
             </div>
           </div>

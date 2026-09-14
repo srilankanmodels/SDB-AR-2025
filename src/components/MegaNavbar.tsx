@@ -179,11 +179,6 @@ export default function MegaNavbar({
                 </div>
                 <div className="flex items-center space-x-2 text-[9.5px] text-slate-500 font-medium tracking-wide mt-1">
                   <span>Integrated Annual Report 2025</span>
-                  <span className="text-slate-300">&bull;</span>
-                  <span className="inline-flex items-center space-x-1 font-mono text-sdb-purple font-semibold bg-sdb-purple/5 px-1.5 py-0.5 rounded border border-sdb-purple/10">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>CSE: SDB.N0000</span>
-                  </span>
                 </div>
               </div>
             </div>
@@ -370,14 +365,14 @@ export default function MegaNavbar({
                 </kbd>
               </button>
 
-              {/* Iconic Download Full PDF Pill CTA */}
+              {/* Iconic Download PDF Icon CTA */}
               <button
                 onClick={onOpenDownloadCentre}
-                className="inline-flex items-center space-x-1.5 bg-gradient-to-r from-sdb-purple via-[#3D237A] to-sdb-purple hover:brightness-110 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md shadow-sdb-purple/20 transition-all duration-300 cursor-pointer border border-white/15 active:scale-95 group"
+                className="p-2 sm:p-2.5 rounded-full bg-gradient-to-r from-sdb-purple via-[#3D237A] to-sdb-purple hover:brightness-110 text-white shadow-md shadow-sdb-purple/20 transition-all duration-300 cursor-pointer border border-white/15 active:scale-95 group flex items-center justify-center"
                 title="Download Audited PDF Report"
+                aria-label="Download Audited PDF Report"
               >
-                <Download className="w-3.5 h-3.5 text-sdb-coral group-hover:-translate-y-0.5 transition-transform" />
-                <span className="hidden md:inline">Download PDF</span>
+                <Download className="w-4 h-4 text-sdb-coral group-hover:-translate-y-0.5 transition-transform" />
               </button>
 
               {/* Return to Cover Pill */}
