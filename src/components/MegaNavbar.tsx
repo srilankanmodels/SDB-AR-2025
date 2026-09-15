@@ -51,9 +51,11 @@ const MEGA_CATEGORIES: MegaCategory[] = [
       { label: "About This Report", description: "Reporting framework, GRI standards & EY assurance", sectionId: "about-report", pageHint: "Pages 5 & 10", icon: BookOpen },
       { label: "Awards & Accolades", description: "National recognition, TAGS & CRIB rating", sectionId: "awards", pageHint: "Page 9", icon: Award },
       { label: "Financial Progress & 2025 Highlights", description: "Audited KPIs, YoY movements & 5-year trends", sectionId: "overview", pageHint: "Pages 14–15", icon: TrendingUp },
-      { label: "Chairperson's Review", description: "Ms. Dinithi Ratnayake on resilience & strategic direction", sectionId: "leadership", subtab: "chairperson", pageHint: "Pages 16–19", icon: Handshake },
-      { label: "CEO's Strategic Review", description: "Mr. Kapila Ariyaratne on operations & growth blueprint", sectionId: "leadership", subtab: "ceo", pageHint: "Pages 20–23", icon: Handshake },
-      { label: "Board of Directors & Management", description: "Experienced leadership guiding rural transformation", sectionId: "leadership", subtab: "board", pageHint: "Pages 128–141", icon: Users },
+      { label: "Chairperson's Message", description: "Ms. Dinithi Ratnayake on resilience & strategic direction", sectionId: "leadership", subtab: "chairperson", pageHint: "Pages 43–45", icon: Handshake },
+      { label: "CEO's Strategic Review", description: "Mr. Kapila Ariyaratne on operations & growth blueprint", sectionId: "leadership", subtab: "ceo", pageHint: "Pages 47–49", icon: Handshake },
+      { label: "Board of Directors & Management", description: "Experienced leadership guiding rural transformation", sectionId: "leadership", subtab: "board", pageHint: "Pages 50–58", icon: Users },
+      { label: "Chief Managers", description: "13 Chief Managers driving key functional divisions", sectionId: "leadership", subtab: "chief-managers", pageHint: "Pages 59–60", icon: Users },
+      { label: "Senior Management", description: "50 Senior Managers driving operational excellence", sectionId: "leadership", subtab: "senior", pageHint: "Pages 61–66", icon: Users },
       { label: "28 Years of Evolution", description: "Milestones of cooperative empowerment (1997–2025)", sectionId: "timeline", pageHint: "Pages 26–27", icon: Calendar }
     ]
   },
@@ -97,8 +99,8 @@ const MEGA_CATEGORIES: MegaCategory[] = [
     previewQuote: "PBT of LKR 800.17 Mn (+16.94%) and Capital Adequacy Ratio (CAR) of 15.24% exceeding regulatory requirements.",
     previewSection: "financials",
     links: [
-      { label: "Corporate Governance & Committees", description: "Board oversight, Audit, Integrated Risk & Remuneration", sectionId: "governance", pageHint: "Pages 124–173", icon: ShieldCheck },
-      { label: "Enterprise Risk & Climate Resilience", description: "Three lines of defence, liquidity stress tests & ECL", sectionId: "governance", pageHint: "Pages 174–199", icon: ShieldCheck },
+      { label: "Corporate Governance & 7 Board Committees", description: "BIRMC, Audit, HR, Nomination, Related Party, Strategic Planning, Credit", sectionId: "governance", subtab: "committees", pageHint: "Pages 124–196", icon: ShieldCheck },
+      { label: "Enterprise Risk & Climate Resilience", description: "Three lines of defence, liquidity stress tests & ECL", sectionId: "governance", subtab: "risk", pageHint: "Pages 174–199", icon: ShieldCheck },
       { label: "Audited Financial Statements", description: "Income Statement, Balance Sheet, Cash Flows & Changes in Equity", sectionId: "financials", pageHint: "Pages 200–206", icon: FileText },
       { label: "Notes to the Financial Statements", description: "Comprehensive notes 1 to 52 & accounting policies", sectionId: "financials", pageHint: "Pages 207–297", icon: FileText },
       { label: "Ten Years at a Glance (2016–2025)", description: "Decade statistical performance record", sectionId: "supplementary", pageHint: "Page 306", icon: BookMarked },

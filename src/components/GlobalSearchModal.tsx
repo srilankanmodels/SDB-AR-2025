@@ -12,6 +12,7 @@ export interface SearchResultItem {
   description: string;
   category: "Overview" | "Leadership" | "Strategy" | "Capitals" | "Products" | "Environment" | "Stakeholders" | "Sustainability" | "Governance" | "Financials" | "Supplementary";
   sectionId: string;
+  subtab?: string;
   pageHint?: string;
   icon: any;
 }
@@ -23,10 +24,12 @@ const SEARCH_INDEX: SearchResultItem[] = [
   { id: "ov-car", title: "Capital Adequacy Ratio (CAR)", description: "Total CAR of 15.24% against CBSL statutory requirement of 12.50%. Tier 1 capital at 14.20%.", category: "Overview", sectionId: "overview", pageHint: "Page 15", icon: TrendingUp },
 
   // Leadership
-  { id: "lead-chair", title: "Chairperson's Review - Ms. Dinithi Ratnayake", description: "Reflections on navigating macroeconomic volatility, cooperative resilience, and governance.", category: "Leadership", sectionId: "leadership", pageHint: "Pages 16–19", icon: Handshake },
-  { id: "lead-ceo", title: "Chief Executive Officer's Review - Mr. Kapila Ariyaratne", description: "Operational execution, digital pivot via UPay, Rabo Partnerships, and 2026-2029 blueprint.", category: "Leadership", sectionId: "leadership", pageHint: "Pages 20–23", icon: Handshake },
-  { id: "lead-board", title: "Board of Directors Profiles", description: "10 distinguished Directors comprising experienced leaders in banking, legal, and cooperative sectors.", category: "Leadership", sectionId: "leadership", pageHint: "Pages 128–135", icon: Users },
-  { id: "lead-mgmt", title: "Corporate Management Team", description: "Executive leadership guiding retail, credit, risk, IT, operations, and cooperative networks.", category: "Leadership", sectionId: "leadership", pageHint: "Pages 136–141", icon: Users },
+  { id: "lead-chair", title: "Chairperson's Message - Ms. Dinithi Ratnayake", description: "Reflections on navigating macroeconomic volatility, cooperative resilience, and governance.", category: "Leadership", sectionId: "leadership", subtab: "chairperson", pageHint: "Pages 43–45", icon: Handshake },
+  { id: "lead-ceo", title: "Chief Executive Officer's Review - Mr. Kapila Ariyaratne", description: "Operational execution, digital pivot via UPay, Rabo Partnerships, and 2026-2029 blueprint.", category: "Leadership", sectionId: "leadership", subtab: "ceo", pageHint: "Pages 47–49", icon: Handshake },
+  { id: "lead-board", title: "Board of Directors Profiles", description: "10 distinguished Directors comprising experienced leaders in banking, legal, and cooperative sectors.", category: "Leadership", sectionId: "leadership", subtab: "board", pageHint: "Pages 50–55", icon: Users },
+  { id: "lead-mgmt", title: "Corporate Management Team", description: "Executive leadership guiding retail, credit, risk, IT, operations, and cooperative networks.", category: "Leadership", sectionId: "leadership", subtab: "management", pageHint: "Pages 56–58", icon: Users },
+  { id: "lead-chief", title: "Chief Managers (13 Functional Leaders)", description: "13 Chief Managers leading credit, branch network, cooperative development, compliance, IT, and recoveries.", category: "Leadership", sectionId: "leadership", subtab: "chief-managers", pageHint: "Pages 59–60", icon: Users },
+  { id: "lead-senior", title: "Senior Management (50 Senior Managers)", description: "50 Senior Managers steering regional operations, branch banking, and functional support across Sri Lanka.", category: "Leadership", sectionId: "leadership", subtab: "senior", pageHint: "Pages 61–66", icon: Users },
 
   // Timeline
   { id: "time-evo", title: "28 Years of Evolution (1997–2025)", description: "From inception as a specialised bank under Dr. P.A. Kiriwandeniya to a nationwide commercial force.", category: "Overview", sectionId: "timeline", pageHint: "Pages 26–27", icon: Calendar },
@@ -69,8 +72,15 @@ const SEARCH_INDEX: SearchResultItem[] = [
   { id: "sust-ssci", title: "European SSCI Sustainability Certification", description: "Accepted into EOSD German-designed holistic sustainability accreditation standard.", category: "Sustainability", sectionId: "sustainability", pageHint: "Page 36", icon: Leaf },
 
   // Governance & Risk
-  { id: "gov-board", title: "Corporate Governance & Board Committees", description: "Audit Committee, Integrated Risk Management, Nominations, Human Resources & Remuneration.", category: "Governance", sectionId: "governance", pageHint: "Pages 124–173", icon: ShieldCheck },
-  { id: "gov-risk", title: "Enterprise Risk Management & Climate Risk", description: "Three lines of defence model, stress testing, credit underwriting, and liquidity risk management.", category: "Governance", sectionId: "governance", pageHint: "Pages 174–199", icon: ShieldCheck },
+  { id: "gov-board", title: "Corporate Governance Overview", description: "Compliance with CBSL Banking Act Direction No. 11 of 2007 and Code of Best Practice.", category: "Governance", sectionId: "governance", subtab: "governance", pageHint: "Pages 124–173", icon: ShieldCheck },
+  { id: "gov-birmc", title: "REPORT OF THE BOARD INTEGRATED RISK MANAGEMENT COMMITTEE", description: "Chaired by Mr. Prasanna Premaratna. Overseeing market, credit, operational, and liquidity risk.", category: "Governance", sectionId: "governance", subtab: "birmc", pageHint: "Pages 181–182", icon: ShieldCheck },
+  { id: "gov-bac", title: "REPORT OF THE BOARD AUDIT COMMITTEE", description: "Chaired by Mr. Chaaminda Kumarasiri. Financial reporting integrity, external audit oversight (EY), and internal controls.", category: "Governance", sectionId: "governance", subtab: "bac", pageHint: "Pages 183–186", icon: FileText },
+  { id: "gov-bhrrc", title: "BOARD HUMAN RESOURCES AND REMUNERATION COMMITTEE", description: "Chaired by Mr. Thusantha Wijemanna. Talent succession, competitive compensation, and organizational culture.", category: "Governance", sectionId: "governance", subtab: "bhrrc", pageHint: "Pages 187–188", icon: Users },
+  { id: "gov-bsngc", title: "REPORT OF THE BOARD SELECTION NOMINATION AND GOVERNANCE COMMITTEE", description: "Chaired by Mr. Thusantha Wijemanna. Board composition, fitness and propriety evaluations, and governance.", category: "Governance", sectionId: "governance", subtab: "bsngc", pageHint: "Pages 189–190", icon: ShieldCheck },
+  { id: "gov-brptrc", title: "REPORT OF THE BOARD RELATED PARTY TRANSACTIONS REVIEW COMMITTEE", description: "Chaired by Mr. Thusantha Wijemanna. Review of related party transactions in compliance with CBSL and CSE rules.", category: "Governance", sectionId: "governance", subtab: "brptrc", pageHint: "Pages 191–192", icon: ShieldCheck },
+  { id: "gov-bspc", title: "REPORT OF THE BOARD STRATEGIC PLANNING COMMITTEE", description: "Chaired by Mr. Chandana Dissanayake. Formulating and reviewing the 2026-2029 Strategic Blueprint and Rabo partnership.", category: "Governance", sectionId: "governance", subtab: "bspc", pageHint: "Pages 193–194", icon: TrendingUp },
+  { id: "gov-bcc", title: "REPORT OF THE BOARD CREDIT COMMITTEE", description: "Chaired by Mr. Chandana Dissanayake. Credit appraisal, underwriting limits, sectoral concentration, and recovery oversight.", category: "Governance", sectionId: "governance", subtab: "bcc", pageHint: "Pages 195–196", icon: Award },
+  { id: "gov-risk", title: "Enterprise Risk Management & Climate Risk", description: "Three lines of defence model, stress testing, credit underwriting, and liquidity risk management.", category: "Governance", sectionId: "governance", subtab: "risk", pageHint: "Pages 174–199", icon: ShieldCheck },
 
   // Financials
   { id: "fin-pnl", title: "Income Statement (Statement of Profit or Loss)", description: "Gross income LKR 18.40 Bn, Net interest income LKR 8.23 Bn, Operating profit LKR 1.70 Bn.", category: "Financials", sectionId: "financials", pageHint: "Page 200", icon: FileText },
@@ -87,7 +97,7 @@ const SEARCH_INDEX: SearchResultItem[] = [
 interface GlobalSearchModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectSection: (sectionId: string) => void;
+  onSelectSection: (sectionId: string, subtab?: string) => void;
 }
 
 export default function GlobalSearchModal({
@@ -128,7 +138,7 @@ export default function GlobalSearchModal({
       setSelectedIndex((prev) => (prev - 1 + filtered.length) % Math.max(1, filtered.length));
     } else if (e.key === "Enter" && filtered[selectedIndex]) {
       e.preventDefault();
-      onSelectSection(filtered[selectedIndex].sectionId);
+      onSelectSection(filtered[selectedIndex].sectionId, filtered[selectedIndex].subtab);
       onClose();
     } else if (e.key === "Escape") {
       onClose();
@@ -189,7 +199,7 @@ export default function GlobalSearchModal({
                   <div
                     key={item.id}
                     onClick={() => {
-                      onSelectSection(item.sectionId);
+                      onSelectSection(item.sectionId, item.subtab);
                       onClose();
                     }}
                     onMouseEnter={() => setSelectedIndex(idx)}

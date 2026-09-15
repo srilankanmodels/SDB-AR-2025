@@ -67,10 +67,12 @@ const CHAPTERS: ChapterItem[] = [
     icon: Handshake,
     colorClass: "bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20",
     subsections: [
-      { id: "chairperson", title: "Chairperson's Message (Dinithi Ratnayake)", type: "tab", tabValue: "chairperson", icon: Sparkles },
-      { id: "ceo", title: "CEO's Executive Review (Kapila Ariyaratne)", type: "tab", tabValue: "ceo", icon: HelpCircle },
-      { id: "board", title: "Board of Directors Profile Grid", type: "tab", tabValue: "board", icon: Users },
-      { id: "management", title: "Corporate Management Team", type: "tab", tabValue: "management", icon: Handshake }
+      { id: "chairperson", title: "Chairperson's Message (Pages 43–45)", type: "tab", tabValue: "chairperson", icon: Sparkles },
+      { id: "ceo", title: "CEO's Strategic Review (Pages 47–49)", type: "tab", tabValue: "ceo", icon: HelpCircle },
+      { id: "board", title: "Board of Directors (Pages 50–55)", type: "tab", tabValue: "board", icon: Users },
+      { id: "management", title: "Corporate Management (Pages 56–58)", type: "tab", tabValue: "management", icon: Handshake },
+      { id: "chief-managers", title: "Chief Managers (Pages 59–60)", type: "tab", tabValue: "chief-managers", icon: Users },
+      { id: "senior", title: "Senior Management (Pages 61–66)", type: "tab", tabValue: "senior", icon: Users }
     ]
   },
   {
@@ -157,7 +159,17 @@ const CHAPTERS: ChapterItem[] = [
     icon: ShieldCheck,
     colorClass: "bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20",
     subsections: [
-      { id: "governance", title: "Corporate Governance & Committees", type: "tab", tabValue: "governance", icon: ShieldCheck },
+      { id: "governance", title: "Corporate Governance Overview", type: "tab", tabValue: "governance", icon: ShieldCheck },
+      { id: "committees", title: "Board Subcommittees (7 Reports, Pages 181–196)", type: "tab", tabValue: "committees", icon: Users },
+      { id: "birmc", title: "Integrated Risk Management Committee (Pages 181–182)", type: "tab", tabValue: "birmc", icon: ShieldCheck },
+      { id: "bac", title: "Board Audit Committee Report (Pages 183–186)", type: "tab", tabValue: "bac", icon: FileText },
+      { id: "bhrrc", title: "HR & Remuneration Committee (Pages 187–188)", type: "tab", tabValue: "bhrrc", icon: Users },
+      { id: "bsngc", title: "Selection, Nomination & Governance (Pages 189–190)", type: "tab", tabValue: "bsngc", icon: ShieldCheck },
+      { id: "brptrc", title: "Related Party Transactions Review (Pages 191–192)", type: "tab", tabValue: "brptrc", icon: ShieldCheck },
+      { id: "bspc", title: "Strategic Planning Committee (Pages 193–194)", type: "tab", tabValue: "bspc", icon: TrendingUp },
+      { id: "bcc", title: "Board Credit Committee Report (Pages 195–196)", type: "tab", tabValue: "bcc", icon: Award },
+      { id: "board-affairs", title: "Affairs of the Bank & 29th AGM Notice", type: "tab", tabValue: "board-affairs", icon: BookMarked },
+      { id: "audit-reports", title: "Auditor & Statutory Statements", type: "tab", tabValue: "audit-reports", icon: FileText },
       { id: "risk", title: "Enterprise Risk & Climate Resilience", type: "tab", tabValue: "risk", icon: Activity }
     ]
   },
