@@ -248,7 +248,7 @@ export const AWARDS_DATA: AwardItem[] = [
     title: "Banking Sector Merit Award",
     organization: "National Business Excellence Awards 2025",
     category: "Banking Sector Excellence",
-    image: "/src/assets/annual_report_images/awards/page_9_screenshot.png",
+    image: "/assets/awards/award_1.png",
     description: "Recognised for resilient operational recovery, sustainable governance, and outstanding contribution to rural national economic recovery.",
     sourcePage: 9
   },
@@ -257,7 +257,7 @@ export const AWARDS_DATA: AwardItem[] = [
     title: "Silver Award for Best Use of Digital in Corporate Branding",
     organization: "SLIM Digis 2.5",
     category: "Digital Marketing & Branding",
-    image: "/src/assets/annual_report_images/awards/page_9_screenshot.png",
+    image: "/assets/awards/award_2.png",
     description: "Awarded for the widely acclaimed Father's Day Digital Campaign, celebrating craftsmanship and family-led entrepreneurship across digital channels.",
     sourcePage: 9
   },
@@ -266,7 +266,7 @@ export const AWARDS_DATA: AwardItem[] = [
     title: "Excellence in Customer Convenience (Category C)",
     organization: "LankaPay Technnovation Awards 2025",
     category: "Digital Financial Inclusivity",
-    image: "/src/assets/annual_report_images/awards/page_9_screenshot.png",
+    image: "/assets/awards/award_3.png",
     description: "Honouring SDB Bank's expansion of UPay QR merchant access, interbank payment convenience, and seamless digital onboarding.",
     sourcePage: 9
   },
@@ -275,7 +275,7 @@ export const AWARDS_DATA: AwardItem[] = [
     title: "A - Institutional Rating for Q1-2025",
     organization: "Credit Information Bureau of Sri Lanka (CRIB)",
     category: "Data Governance & Compliance",
-    image: "/src/assets/annual_report_images/awards/page_9_screenshot.png",
+    image: "/assets/awards/award_4.png",
     description: "Highest tier institutional rating in recognition of exemplary data management, accurate credit reporting, and rigorous statutory compliance.",
     sourcePage: 9
   },
@@ -284,7 +284,7 @@ export const AWARDS_DATA: AwardItem[] = [
     title: "Certificate of Compliance",
     organization: "CA Sri Lanka TAGS Awards 2025",
     category: "Integrated Reporting & Transparency",
-    image: "/src/assets/annual_report_images/awards/page_9_screenshot.png",
+    image: "/assets/awards/award_5.png",
     description: "Recognising SDB's full adherence to International Integrated Reporting Standards, LKAS/SLFRS disclosures, and corporate governance transparency.",
     sourcePage: 9
   },
@@ -293,7 +293,7 @@ export const AWARDS_DATA: AwardItem[] = [
     title: "Certificate of Recognition",
     organization: "JASTECA Awards 2025",
     category: "Quality Management & 5S Culture",
-    image: "/src/assets/annual_report_images/awards/page_9_screenshot.png",
+    image: "/assets/awards/award_6.png",
     description: "Conferred by the Japan Sri Lanka Technical and Cultural Association for implementing Japanese 5S operational efficiency across branch operations.",
     sourcePage: 9
   }

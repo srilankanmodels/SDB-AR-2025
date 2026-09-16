@@ -70,8 +70,8 @@ const MEGA_CATEGORIES: MegaCategory[] = [
     links: [
       { label: "Strategic Roadmap 2026–2029", description: "4 Core Pillars: Co-op, MSME, Agri & Digitalization", sectionId: "strategy", pageHint: "Pages 24–25", icon: Award },
       { label: "6 Value Creation Capitals", description: "Financial, Manufactured, Intellectual, Human, Social & Natural", sectionId: "capitals", pageHint: "Pages 56–119", icon: BookOpen },
-      { label: "Products & Digital Services", description: "18 tailored credit & savings products", sectionId: "products", pageHint: "Pages 42–43", icon: Package },
-      { label: "UPay Mobile Banking & LankaQR", description: "Digital transaction growth and fintech ecosystem", sectionId: "products", pageHint: "Page 42", icon: Sparkles }
+      { label: "Products & Digital Services", description: "26 tailored credit & savings products", sectionId: "products", subtab: "catalog", pageHint: "Pages 15–18", icon: Package },
+      { label: "UPay Mobile Banking & LankaQR", description: "Digital transaction growth and fintech ecosystem", sectionId: "products", subtab: "upay", pageHint: "Page 42", icon: Sparkles }
     ]
   },
   {
@@ -87,7 +87,7 @@ const MEGA_CATEGORIES: MegaCategory[] = [
       { label: "Stakeholders Engagement", description: "9 Stakeholder groups & Power vs Interest quadrant matrix", sectionId: "stakeholders", pageHint: "Pages 28–30", icon: Users },
       { label: "13 Material Topics Matrix", description: "Materiality assessment mapped to UN SDGs", sectionId: "stakeholders", pageHint: "Pages 31–33", icon: Users },
       { label: "8 Sustainability Pillars (ESRMS & SPM)", description: "Sustainable finance, climate risk & community CSR", sectionId: "sustainability", pageHint: "Pages 34–36", icon: Leaf },
-      { label: "UN SDGs Alignment Tracker", description: "10 UN SDGs championed with verified 2025 metrics", sectionId: "sustainability", pageHint: "Pages 38–39", icon: Leaf }
+      { label: "UN SDGs: Contribution & Additional Support", description: "Contribution to SDGs in 2025 & Additional SDGs Supported", sectionId: "sustainability", pageHint: "Pages 38–40", icon: Leaf }
     ]
   },
   {

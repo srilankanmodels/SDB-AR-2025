@@ -48,7 +48,7 @@ const SEARCH_INDEX: SearchResultItem[] = [
   { id: "cap-nat", title: "Natural Capital & Climate Stewardship", description: "Scope 1 & 2 carbon tracking, SEA energy management, LKR 50 Mn+ rooftop solar loans.", category: "Capitals", sectionId: "capitals", pageHint: "Pages 110–119", icon: BookOpen },
 
   // Products
-  { id: "prod-upay", title: "UPay Mobile & Digital Banking Platform", description: "LankaQR, bill payments, fund transfers, merchant settlements, and biometric digital security.", category: "Products", sectionId: "products", pageHint: "Page 42", icon: Package },
+  { id: "prod-upay", title: "UPay Mobile & Digital Banking Platform", description: "LankaQR, bill payments, fund transfers, merchant settlements, and biometric digital security.", category: "Products", sectionId: "products", subtab: "upay", pageHint: "Page 42", icon: Package },
   { id: "prod-jawaya", title: "SDB Jawaya MSME Commercial Loans", description: "Working capital and term finance tailored for micro, small, and medium enterprises.", category: "Products", sectionId: "products", pageHint: "Page 42", icon: Package },
   { id: "prod-lakdaru", title: "SDB Lakdaru Minor Children Savings", description: "High-interest savings, milestone gifts, and educational cash prizes for minors.", category: "Products", sectionId: "products", pageHint: "Page 42", icon: Package },
   { id: "prod-agri", title: "Agricultural & Food Value Chain Loans", description: "68,900+ agricultural loans disbursed across tea, rubber, paddy, and spices smallholders.", category: "Products", sectionId: "products", pageHint: "Page 43", icon: Package },
@@ -67,7 +67,7 @@ const SEARCH_INDEX: SearchResultItem[] = [
 
   // Sustainability
   { id: "sust-pillars", title: "8 Sustainability Pillars (ESRMS, SPM, SIF, OPF, etc.)", description: "Comprehensive sustainability architecture spanning credit screening, social performance, and green finance.", category: "Sustainability", sectionId: "sustainability", pageHint: "Pages 34–36", icon: Leaf },
-  { id: "sust-sdg", title: "UN Sustainable Development Goals (SDGs)", description: "10 UN SDGs championed with verifiable 2025 metrics including Zero Hunger, Gender Equality, and Climate Action.", category: "Sustainability", sectionId: "sustainability", pageHint: "Pages 38–39", icon: Leaf },
+  { id: "sust-sdg", title: "UN Sustainable Development Goals (SDGs)", description: "Contribution to SDGs in 2025 (5 Core) & Additional SDGs Supported (10 SDGs) with verified metrics.", category: "Sustainability", sectionId: "sustainability", pageHint: "Pages 38–40", icon: Leaf },
   { id: "sust-fcp", title: "Financial Consumer Protection (FCP) Unit", description: "Established under CBSL Direction No. 01 of 2023; resolved 2,013 customer complaints (80%+ within target).", category: "Sustainability", sectionId: "sustainability", pageHint: "Page 37", icon: Leaf },
   { id: "sust-ssci", title: "European SSCI Sustainability Certification", description: "Accepted into EOSD German-designed holistic sustainability accreditation standard.", category: "Sustainability", sectionId: "sustainability", pageHint: "Page 36", icon: Leaf },
 

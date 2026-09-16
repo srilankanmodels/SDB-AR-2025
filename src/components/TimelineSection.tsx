@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { TIMELINE_MILESTONES } from "../data/reportData";
 import { Calendar, ChevronRight, ChevronLeft } from "lucide-react";
 
 export default function TimelineSection() {
   const [activeYearIndex, setActiveYearIndex] = useState<number>(TIMELINE_MILESTONES.length - 1);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const activeYearButtonRef = useRef<HTMLButtonElement>(null);
 
   const activeMilestone = TIMELINE_MILESTONES[activeYearIndex];
+
+  // Auto-scroll the timeline bar to keep the active year centered, ensuring years after 2016 remain visible
+  useEffect(() => {
+    if (activeYearButtonRef.current) {
+      activeYearButtonRef.current.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest"
+      });
+    }
+  }, [activeYearIndex]);
 
   const handleNext = () => {
     if (activeYearIndex < TIMELINE_MILESTONES.length - 1) {
@@ -33,27 +46,30 @@ export default function TimelineSection() {
       </div>
 
       {/* Horizontal Nav Bar of Years */}
-      <div id="timeline-years-navigation" className="relative flex items-center justify-between bg-white/40 rounded-2xl p-4 border border-sdb-purple/10 backdrop-blur-md">
+      <div id="timeline-years-navigation" className="relative flex items-center justify-between bg-white/60 rounded-2xl p-3 sm:p-4 border border-sdb-purple/15 backdrop-blur-md shadow-xs">
         <button
           onClick={handlePrev}
           disabled={activeYearIndex === 0}
-          className="p-2 rounded-xl bg-white/40 border border-sdb-purple/10 hover:bg-white/60 hover:border-sdb-purple/20 disabled:opacity-30 disabled:hover:border-sdb-purple/10 transition-all cursor-pointer"
+          title="Previous Milestone"
+          aria-label="Previous Milestone"
+          className="p-2.5 rounded-xl bg-white border border-sdb-purple/15 hover:bg-sdb-purple/5 hover:border-sdb-purple/30 disabled:opacity-30 disabled:hover:border-sdb-purple/10 transition-all cursor-pointer shrink-0 shadow-2xs"
         >
           <ChevronLeft className="w-4 h-4 text-sdb-purple" />
         </button>
 
-        <div className="flex-1 overflow-x-auto mx-4 scrollbar-none">
-          <div className="flex justify-start sm:justify-center items-center space-x-3 sm:space-x-4 min-w-max py-2 px-1">
+        <div ref={scrollContainerRef} className="flex-1 overflow-x-auto mx-2 sm:mx-4 scrollbar-thin scrollbar-thumb-sdb-purple/20 scrollbar-track-transparent py-1">
+          <div className="flex justify-start items-center space-x-2 sm:space-x-3 min-w-max px-2">
             {TIMELINE_MILESTONES.map((milestone, index) => {
               const isActive = index === activeYearIndex;
               return (
                 <button
                   key={milestone.year}
+                  ref={isActive ? activeYearButtonRef : null}
                   onClick={() => setActiveYearIndex(index)}
-                  className={`px-4 py-2 rounded-full font-mono text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                  className={`px-4 py-2 rounded-full font-mono text-xs font-semibold transition-all duration-300 cursor-pointer shrink-0 ${
                     isActive
-                      ? "bg-sdb-purple text-white shadow-md scale-110 shadow-sdb-purple/20"
-                      : "text-sdb-purple/60 hover:text-sdb-purple hover:bg-sdb-purple/5"
+                      ? "bg-sdb-purple text-white shadow-md scale-105 shadow-sdb-purple/25 ring-2 ring-sdb-purple/20 font-bold"
+                      : "text-sdb-purple/70 hover:text-sdb-purple hover:bg-sdb-purple/10 bg-white/70 border border-sdb-purple/10"
                   }`}
                 >
                   {milestone.year}
@@ -66,7 +82,9 @@ export default function TimelineSection() {
         <button
           onClick={handleNext}
           disabled={activeYearIndex === TIMELINE_MILESTONES.length - 1}
-          className="p-2 rounded-xl bg-white/40 border border-sdb-purple/10 hover:bg-white/60 hover:border-sdb-purple/20 disabled:opacity-30 disabled:hover:border-sdb-purple/10 transition-all cursor-pointer"
+          title="Next Milestone"
+          aria-label="Next Milestone"
+          className="p-2.5 rounded-xl bg-white border border-sdb-purple/15 hover:bg-sdb-purple/5 hover:border-sdb-purple/30 disabled:opacity-30 disabled:hover:border-sdb-purple/10 transition-all cursor-pointer shrink-0 shadow-2xs"
         >
           <ChevronRight className="w-4 h-4 text-sdb-purple" />
         </button>

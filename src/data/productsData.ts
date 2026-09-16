@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  * SDB Bank Integrated Annual Report 2025 - Products & Services Directory
- * Source: Official Published Annual Report 2025 (Pages 15-19)
+ * Source: Official Published Annual Report 2025 (Pages 15-18)
  */
 
 export interface ProductItem {
@@ -14,6 +14,7 @@ export interface ProductItem {
   features: string[];
   benefits: string[];
   digitalAccess?: string;
+  logo: string;
   sourcePage: number;
 }
 
@@ -26,16 +27,15 @@ export interface ProductCategory {
 }
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
-  { id: "all", name: "All Products", icon: "Layers", count: 18, description: "Complete suite of personal, cooperative, and enterprise banking solutions." },
-  { id: "savings", name: "Savings Products", icon: "PiggyBank", count: 7, description: "Structured savings accounts tailored for children, youth, women, and businesses." },
+  { id: "all", name: "All Products", icon: "Layers", count: 26, description: "Complete suite of personal, cooperative, and enterprise banking solutions." },
+  { id: "savings", name: "Savings Products", icon: "PiggyBank", count: 8, description: "Structured savings accounts tailored for children, youth, women, and businesses." },
   { id: "fixed-deposits", name: "Fixed Deposits", icon: "Vault", count: 2, description: "Guaranteed high returns with flexible tenures and cash-back borrowing lines." },
-  { id: "loans", name: "Loan Products", icon: "Home", count: 3, description: "Housing, personal, and pension-backed financing with transparent rates." },
+  { id: "loans", name: "Loan Products", icon: "Home", count: 6, description: "Housing, personal, microfinance, and property financing with transparent rates." },
   { id: "leasing", name: "Leasing", icon: "Car", count: 1, description: "Flexible leasing solutions for personal, commercial, and agricultural machinery." },
-  { id: "pawning", name: "Pawning & Gold Loans", icon: "Coins", count: 2, description: "Instant cash liquidity against gold with maximum security and discretion." },
+  { id: "pawning", name: "Pawning & Gold Loans", icon: "Coins", count: 1, description: "Instant cash liquidity against gold with maximum security and discretion." },
   { id: "sme", name: "SME Products", icon: "Briefcase", count: 2, description: "Tailored working capital, machinery financing, and term loans for growing enterprises." },
-  { id: "business", name: "Business Banking", icon: "Building2", count: 1, description: "Comprehensive corporate liquidity, merchant POS, and cash management." },
   { id: "vcf", name: "Value Chain Financing", icon: "Share2", count: 1, description: "Integrated financing for agricultural and industrial supply chain networks." },
-  { id: "cooperative", name: "Cooperative Products", icon: "Users", count: 3, description: "Custom credit and liquidity facilities engineered exclusively for SANASA societies." },
+  { id: "cooperative", name: "Cooperative Products", icon: "Users", count: 7, description: "Custom credit and liquidity facilities engineered exclusively for SANASA societies." },
   { id: "bancassurance", name: "Bancassurance", icon: "Shield", count: 1, description: "Comprehensive life and asset protection in partnership with premier insurers." },
   { id: "refinance", name: "Refinance Loans", icon: "RefreshCw", count: 1, description: "Low-cost concessionary funding partnered with ADB, CBSL, and government ministries." }
 ];
@@ -51,7 +51,7 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     features: [
       "Tiered higher interest rate structure compared to regular savings accounts",
       "Free hospitalization insurance cover including government hospitals",
-      "Exciting gift milestones based on savings balances",
+      "Exciting gift milestones based on savings balance slabs",
       "Free standing orders from parents' accounts"
     ],
     benefits: [
@@ -60,6 +60,7 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Inculcates early financial literacy"
     ],
     digitalAccess: "View balances and deposit via SDB UPay App",
+    logo: "/assets/products/logo_lakdaru.png",
     sourcePage: 15
   },
   {
@@ -79,6 +80,7 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Connects savers to Women Mean business forums and cooperative networks"
     ],
     digitalAccess: "24/7 account management on UPay mobile wallet",
+    logo: "/assets/products/logo_uththamavi.png",
     sourcePage: 15
   },
   {
@@ -97,6 +99,7 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Structured milestone endowment for higher education or enterprise"
     ],
     digitalAccess: "Certificate status visible via Business Internet Banking and UPay",
+    logo: "/assets/products/logo_dayada.png",
     sourcePage: 15
   },
   {
@@ -115,6 +118,7 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Pathway to starter credit cards and personal education loans"
     ],
     digitalAccess: "Full mobile onboarding via UPay",
+    logo: "/assets/products/logo_youth.png",
     sourcePage: 15
   },
   {
@@ -132,6 +136,7 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Maximises returns on idle operating capital without locking funds into fixed tenures"
     ],
     digitalAccess: "UPay and LankaPay ATM connectivity",
+    logo: "/assets/products/logo_top_saver.png",
     sourcePage: 15
   },
   {
@@ -149,6 +154,7 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Eliminates idle cash drag while maintaining uninterrupted working capital flow"
     ],
     digitalAccess: "Business Internet Banking (BIB) with CEFTS and SLIPS integration",
+    logo: "/assets/products/logo_business_saver.png",
     sourcePage: 15
   },
   {
@@ -166,6 +172,25 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Treasury-grade liquidity management with instant fund transfer capabilities"
     ],
     digitalAccess: "Integrated BIB and SWIFT transfer routing",
+    logo: "/assets/products/logo_top_saver_plus.png",
+    sourcePage: 15
+  },
+  {
+    id: "investment-savings",
+    category: "savings",
+    name: "Investment Savings Account",
+    tagline: "Contracted Milestone Accumulation",
+    targetMarket: "Cooperative societies, micro-enterprises, and disciplined individuals",
+    features: [
+      "Monthly contracted savings deposits toward targeted maturity sums",
+      "Guaranteed milestone yields with preferential compounding",
+      "Credit facility availability against accumulated value"
+    ],
+    benefits: [
+      "Enables structured asset creation for future capital expenditure"
+    ],
+    digitalAccess: "Automated standing order execution via UPay",
+    logo: "/assets/products/logo_investment_savings.png",
     sourcePage: 15
   },
 
@@ -185,13 +210,14 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "100% capital security backed by CBSL regulated licensed bank status",
       "Flexible liquidity without breaking the underlying deposit"
     ],
-    digitalAccess: "E-FD placement via Business Internet Banking",
+    digitalAccess: "E-FD placement via Business Internet Banking and branches",
+    logo: "/assets/products/logo_fixed_deposit.png",
     sourcePage: 15
   },
   {
-    id: "upahara",
+    id: "ayushya-fd",
     category: "fixed-deposits",
-    name: "Upahara Senior Citizens FD",
+    name: "Ayushya Senior Citizens Fixed Deposit",
     tagline: "Honouring a Lifetime of Service with Highest Yields",
     targetMarket: "Senior citizens aged 55 years and above",
     features: [
@@ -203,10 +229,11 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Reliable, predictable monthly income supporting post-retirement financial dignity"
     ],
     digitalAccess: "Monthly statements delivered via SMS and digital channels",
+    logo: "/assets/products/logo_ayushya.png",
     sourcePage: 15
   },
 
-  // 3. Loan Products (Page 16)
+  // 3. Loan Products (Pages 16-17)
   {
     id: "soduru-sewana",
     category: "loans",
@@ -224,45 +251,103 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Comprehensive advisory on title clearance and legal valuations"
     ],
     digitalAccess: "Online EMI calculator and application tracking",
+    logo: "/assets/products/logo_soduru_sewana.png",
     sourcePage: 16
   },
   {
-    id: "personal-loan",
+    id: "property-loan",
     category: "loans",
-    name: "SDB Personal Loan",
-    tagline: "Unlocking Aspirations with Swift, Uncomplicated Credit",
-    targetMarket: "Salaried employees and established professionals",
+    name: "All Purpose Property Loan",
+    tagline: "Unlocking Property Value for Holistic Aspirations",
+    targetMarket: "Property owners requiring liquidity for construction, solar, or education",
     features: [
-      "Unsecured facilities up to LKR 5 Mn depending on income verification",
-      "Fast turnaround time within 48 to 72 hours",
-      "Flexible repayment tenures up to 7 years"
+      "Financing for property purchase, residential construction, and consumption needs",
+      "Dedicated funding lines for solar power systems and electric bicycles",
+      "Statutory payments, tax settlements, and personal education financing",
+      "Repayment tenor up to 5 years with competitive interest rates"
     ],
     benefits: [
-      "Covers educational expenses, healthcare emergencies, and personal lifestyle needs"
+      "Maximises equity value from real estate assets without distress sales"
     ],
-    digitalAccess: "Direct disbursement to SDB savings account with UPay access",
+    digitalAccess: "Apply online and track loan servicing via UPay",
+    logo: "/assets/products/logo_property_loan.png",
+    sourcePage: 17
+  },
+  {
+    id: "merchant-quick-loan",
+    category: "loans",
+    name: "Merchant Quick Loan",
+    tagline: "Rapid Working Capital for Retailers & POS Merchants",
+    targetMarket: "SDB POS and LankaQR merchants needing immediate inventory capital",
+    features: [
+      "Cash flow based short-term working capital loan at a fixed interest rate",
+      "Zero guarantors required based on merchant transaction throughput",
+      "Simple, convenient application process with instant sanctioning",
+      "Facility requests initiated directly through the SDB UPay app"
+    ],
+    benefits: [
+      "Keeps store shelves stocked and captures bulk cash discounts"
+    ],
+    digitalAccess: "Direct application and disbursement through UPay app",
+    logo: "/assets/products/logo_merchant_quick_loan.png",
+    sourcePage: 17
+  },
+  {
+    id: "gami-diriya",
+    category: "loans",
+    name: "Gami Diriya Microfinance Loan",
+    tagline: "Nurturing Grassroots Micro-Enterprise",
+    targetMarket: "Rural self-employed individuals, home-based producers, and cottage industries",
+    features: [
+      "Collateral-free group and individual micro credit lines",
+      "Repayment schedules tailored to regional seasonal cash flows",
+      "Integrated business advisory and basic accounting literacy"
+    ],
+    benefits: [
+      "Drives poverty alleviation and regional rural wealth generation"
+    ],
+    digitalAccess: "Doorstep field officer tablet disbursement",
+    logo: "/assets/products/logo_gami_diriya.png",
     sourcePage: 16
   },
   {
-    id: "uththamachara",
+    id: "swashakthi",
     category: "loans",
-    name: "Uththamachara Government & Defense Pensioner Loan",
-    tagline: "Dignified Financial Freedom for Dedicated Public Servants",
-    targetMarket: "Retired government employees, CEB pensioners, and tri-forces/police veterans",
+    name: "Swashakthi Self-Employment Loan",
+    tagline: "Empowering Independent Artisans & Innovators",
+    targetMarket: "Vocational graduates, craftsmen, and small service providers",
     features: [
-      "Loans up to LKR 5 Mn without requiring external personal guarantors",
-      "Repayment periods extending up to 10 years and up to 75 years of age",
-      "Comprehensive loan protection insurance with lowest market charges",
-      "Direct facilitation of SWIFT salary/pension remittance transfers"
+      "Concessionary interest rates with flexible grace periods",
+      "Machinery, tooling, and raw material purchase financing",
+      "Fast documentation with cooperative society endorsement"
     ],
     benefits: [
-      "No guarantor burden for elderly citizens; guarantees prompt family emergency funds"
+      "Transforms skilled youth into successful enterprise owners"
     ],
-    digitalAccess: "Automated monthly deduction from pension remittance",
+    digitalAccess: "Track repayment and balance via UPay app",
+    logo: "/assets/products/logo_swashakthi.png",
+    sourcePage: 16
+  },
+  {
+    id: "ithuru-sewana",
+    category: "loans",
+    name: "Ithuru Sewana Shelter Loan",
+    tagline: "Safe and Resilient Living for Low-Income Families",
+    targetMarket: "Cooperative members improving home sanitation, roofing, and water access",
+    features: [
+      "Micro-housing credit tailored for low-income rural households",
+      "Flexible repayment terms up to 7 years",
+      "Minimal documentation requirements"
+    ],
+    benefits: [
+      "Improves basic family living conditions and sanitary security"
+    ],
+    digitalAccess: "Repayable at any SANASA society or SDB branch",
+    logo: "/assets/products/logo_ithuru_sewana.png",
     sourcePage: 16
   },
 
-  // 4. Leasing (Page 17)
+  // 4. Leasing (Page 16-17)
   {
     id: "sdb-leasing",
     category: "leasing",
@@ -273,18 +358,19 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Competitive rentals with repayment tenures up to 5 years",
       "Financing for brand-new, reconditioned, and registered vehicles",
       "Customised seasonal rental structures for agricultural harvesters and tractors",
-      "Hassle-free documentation and doorstep service"
+      "Attractive discounts on premature lease settlements"
     ],
     benefits: [
       "Expands operational fleet without immobilising liquid working capital"
     ],
     digitalAccess: "Digital lease quotation and payment via UPay",
-    sourcePage: 17
+    logo: "/assets/products/logo_sdb_leasing.png",
+    sourcePage: 16
   },
 
   // 5. Pawning & Gold Loans (Page 16)
   {
-    id: "gold-loan",
+    id: "ranmini-gold",
     category: "pawning",
     name: "Ranmini Gold Loans & Pawning",
     tagline: "Immediate Emergency Liquidity with Absolute Confidentiality",
@@ -293,16 +379,17 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
       "Highest advance values per gold sovereign (8g) 18K/24K in the industry",
       "Flexible redemption tenures: 1, 3, 6, or 12 months with part-payment options",
       "Latest computerized karat testing equipment ensuring exact valuation accuracy",
-      "Safe custody in fire-proof vaulting facilities"
+      "Safe custody in fire-proof vaulting facilities with absolute privacy"
     ],
     benefits: [
       "Provides crucial seasonal agricultural liquidity before harvest yields materialize"
     ],
     digitalAccess: "Interest payments can be renewed digitally via UPay without visiting branches",
+    logo: "/assets/products/logo_ranmini.png",
     sourcePage: 16
   },
 
-  // 6. SME Products (Page 16-17)
+  // 6. SME Products (Pages 16-17)
   {
     id: "sme-plus",
     category: "sme",
@@ -310,14 +397,16 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     tagline: "Fueling Mid-Tier Business Expansion & Innovation",
     targetMarket: "Registered MSMEs in manufacturing, agriculture, tourism, and services",
     features: [
-      "Term loans and revolving overdraft limits up to LKR 100 Mn",
-      "Attractive concessionary interest rates with up to 12-month grace periods",
-      "Structured cash-flow based underwriting rather than collateral-only assessment"
+      "Reasonable rate of interest with a suitable grace period",
+      "Loan values tailored to business requirements with flexible repayment schedules",
+      "Business guidance and consultancy services",
+      "Promoting Environmental, Social, and Governance (ESG) standards in financing"
     ],
     benefits: [
       "Direct technical advisory on enterprise capacity building, bookkeeping, and marketing"
     ],
     digitalAccess: "Business Internet Banking (BIB) multi-user authorization matrix",
+    logo: "/assets/products/logo_sme_plus.png",
     sourcePage: 16
   },
   {
@@ -327,17 +416,19 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     tagline: "Integrated Merchant Term Financing",
     targetMarket: "Regional retailers, wholesalers, and supply chain aggregators",
     features: [
-      "Fast credit sanctioning against trade receivables and merchant turnover",
-      "Customised tenor aligned with seasonal business inventory cycles"
+      "Financial assistance for pensioner entrepreneurs and agribusiness operators",
+      "Easy access to attractive interest rates and benefits for enterprise improvements",
+      "Targeted to sectors of women entrepreneurs, Agri exporters, services, and light industry"
     ],
     benefits: [
       "Enables proactive bulk purchasing and supplier cash discount capture"
     ],
     digitalAccess: "Integrated LankaPay QR settlement reporting",
-    sourcePage: 17
+    logo: "/assets/products/logo_business_plus.png",
+    sourcePage: 16
   },
 
-  // 7. Value Chain Financing (Page 18)
+  // 7. Value Chain Financing (Page 17)
   {
     id: "vcf-agri",
     category: "vcf",
@@ -345,54 +436,170 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     tagline: "Connecting Smallholders to Institutional Agri-Corridors",
     targetMarket: "Paddy, tea, rubber, dairy, coconut, and spice farmers linked to anchor buyers",
     features: [
+      "In line with Bank's forward strategy developed with Rabo Partnerships Netherlands",
       "Tripartite financing agreements between farmer smallholders, SDB Bank, and corporate anchor buyers",
-      "Automated loan repayment deductions upon harvest delivery to processors",
-      "Technical guidance supported by SDB's 45-member Agri Task Force and Rabo Partnerships"
+      "Automated loan repayment deductions upon harvest delivery to corporate processors",
+      "Technical guidance supported by SDB's 45-member Agri Task Force and Advisory Panel"
     ],
     benefits: [
       "Guarantees fair price realization for farmers while securing raw material supply for industries"
     ],
     digitalAccess: "Digital disbursement and supply voucher verification",
-    sourcePage: 18
+    logo: "/assets/products/logo_vcf.png",
+    sourcePage: 17
   },
 
-  // 8. Cooperative Products (Page 18-19)
+  // 8. Cooperative Products (Pages 17-18)
   {
-    id: "coop-credit",
+    id: "sahanya",
     category: "cooperative",
-    name: "SANASA Cooperative Liquidity & Re-lending Facilities",
-    tagline: "Capitalising the Grassroots Movement",
-    targetMarket: "Primary SANASA Societies, MPCS, and district cooperative unions",
+    name: "Sahanya Cooperative Deposit & Loan Facility",
+    tagline: "Specialised Yields & Cash-Back Facilities for Societies",
+    targetMarket: "Primary SANASA cooperative societies and affiliated institutions",
     features: [
-      "Bulk concessionary re-lending credit lines for societies to on-lend to members",
-      "Cooperative Cash Collateral Loans (CCCL) offering up to 100% LTV against deposits",
-      "Specialised software and digital accounting integration for societies"
+      "Special preferential interest rates for cooperative societies",
+      "Bonus Interest of 40% to 50% of cumulative interest paid upon terms",
+      "Up to 60% cash-back loan facilities against deposit balances"
     ],
     benefits: [
-      "Strengthens grassroots cooperative balance sheets and deepens rural financial inclusion"
+      "Maximises institutional reserve returns while preserving emergency operational liquidity"
     ],
-    digitalAccess: "Interbank cooperative electronic clearing and CEFTS transfers",
+    digitalAccess: "Electronic cooperative treasury reporting",
+    logo: "/assets/products/logo_sahanya.png",
     sourcePage: 18
   },
+  {
+    id: "samupa-saviya",
+    category: "cooperative",
+    name: "Samupa Saviya",
+    tagline: "Comprehensive Support for the Co-operative Community",
+    targetMarket: "SANASA cooperative societies and their executive staff/employees",
+    features: [
+      "Additional 0.25% preferential interest for fixed deposits",
+      "Coverage for the entire co-operative segment including society employees",
+      "Customized micro loan and welfare credit packages"
+    ],
+    benefits: [
+      "Strengthens institutional loyalty and employee financial well-being"
+    ],
+    digitalAccess: "Direct branch portal access",
+    logo: "/assets/products/logo_samupa_saviya.png",
+    sourcePage: 18
+  },
+  {
+    id: "project-loans",
+    category: "cooperative",
+    name: "Cooperative Project Loans",
+    tagline: "Financing Strategic Infrastructure & New Commercial Projects",
+    targetMarket: "Registered cooperative societies undertaking commercial investments",
+    features: [
+      "Finance startups of new projects and development of existing projects carried by societies",
+      "Repayment periods extending up to 10 years in monthly instalments",
+      "Generous 6-month grace period for construction and installation",
+      "Loan limits scaled to society capacity and total project cost"
+    ],
+    benefits: [
+      "Facilitates post-harvest storage, processing mills, and retail cooperative chains"
+    ],
+    digitalAccess: "Dedicated corporate relationship manager assistance",
+    logo: "/assets/products/logo_project_loans.png",
+    sourcePage: 18
+  },
+  {
+    id: "relending-loans",
+    category: "cooperative",
+    name: "Cooperative Relending Loans",
+    tagline: "Bulk Liquidity Injection for Member On-Lending",
+    targetMarket: "Primary SANASA societies re-lending to grassroots rural members",
+    features: [
+      "Bulk low-cost capital for societies to re-lend for income generation & consumption",
+      "Flexible repayments: monthly instalments or bullet repayments tailored to seasonal crops",
+      "Loan limits aligned with audited financial strength and capital adequacy of the society"
+    ],
+    benefits: [
+      "Deepens last-mile credit reach to unbanked rural villagers and farmers"
+    ],
+    digitalAccess: "CEFTS wholesale electronic disbursement",
+    logo: "/assets/products/logo_relending_loans.png",
+    sourcePage: 18
+  },
+  {
+    id: "cccl",
+    category: "cooperative",
+    name: "Cooperative Cash Collateral Loan (CCCL)",
+    tagline: "Instant Working Capital Against Society Reserves",
+    targetMarket: "SANASA societies holding fixed deposit reserves with SDB Bank",
+    features: [
+      "Flexible financing with Loan-to-Value (LTV) of up to 100% against maturity-interest deposits",
+      "Up to 80% LTV against monthly-interest paying fixed deposits",
+      "Streamlined, paperwork-free application utilizing existing fixed deposits as primary collateral"
+    ],
+    benefits: [
+      "Immediate emergency cash release without prematurely encashing fixed investments"
+    ],
+    digitalAccess: "Same-day clearance and electronic fund transfer",
+    logo: "/assets/products/logo_cccl.png",
+    sourcePage: 18
+  },
+  {
+    id: "coop-ngo-savings",
+    category: "cooperative",
+    name: "COOP / NGO Savings",
+    tagline: "Dedicated Liquidity Accounts for Non-Profits & Cooperatives",
+    targetMarket: "Multi-Purpose Co-operatives (MPCS), NGOs, and community development foundations",
+    features: [
+      "Savings account tailored specifically for Multi-Purpose Co-operatives and NGOs",
+      "Loan facilities available against savings balances up to 80% of deposit for one-year renewals",
+      "Preferential clearing charges on bulk community dividend payments"
+    ],
+    benefits: [
+      "Provides transparent fiduciary accounting and audited interest certificates"
+    ],
+    digitalAccess: "Business Internet Banking multi-tier authorization",
+    logo: "/assets/products/logo_coop_ngo_savings.png",
+    sourcePage: 17
+  },
+  {
+    id: "coop-saver",
+    category: "cooperative",
+    name: "Coop Saver",
+    tagline: "High-Yield Institutional Cash Pooling",
+    targetMarket: "Cooperative unions and district federations",
+    features: [
+      "Highest interest rate for savings in the institutional cooperative segment",
+      "Tailored for day-to-day liquidity reserves and operational expenses",
+      "Digital solution for fund transfers and automated payroll payments"
+    ],
+    benefits: [
+      "Optimises daily operating float with maximum yield accrual"
+    ],
+    digitalAccess: "CEFTS, SLIPS, and UPay connectivity",
+    logo: "/assets/products/logo_coop_saver.png",
+    sourcePage: 17
+  },
 
-  // 9. Bancassurance & Refinance (Page 19)
+  // 9. Bancassurance (Page 18)
   {
     id: "bancassurance",
     category: "bancassurance",
     name: "SDB Bancassurance Solutions",
     tagline: "Holistic Family and Business Protection",
-    targetMarket: "All retail, loan, and corporate customers",
+    targetMarket: "All retail, loan, leasing, and corporate customers",
     features: [
-      "Credit life protection covering all loan and leasing liabilities",
-      "Tailored retirement, health, and child education endowment policies",
+      "Delivery of comprehensive life and asset insurance protection policies",
+      "Credit life protection covering all loan, microfinance, and leasing liabilities",
+      "Tailored retirement, critical illness, and child education endowment packages",
       "Partnership with top-tier Sri Lankan life and general insurance underwriters"
     ],
     benefits: [
-      "Protects families from inheriting loan obligations in unfortunate events"
+      "Protects families from inheriting debt obligations during unexpected hardships"
     ],
     digitalAccess: "Automated premium deductions from SDB savings accounts",
-    sourcePage: 19
+    logo: "/assets/products/logo_bancassurance.png",
+    sourcePage: 18
   },
+
+  // 10. Refinance Loans (Page 18)
   {
     id: "refinance-loans",
     category: "refinance",
@@ -400,14 +607,17 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     tagline: "Low-Cost Concessionary Capital for National Priorities",
     targetMarket: "Export SMEs, green energy investors, and tea/agri smallholders",
     features: [
-      "Subsidised interest rate schemes funded by ADB, Central Bank of Sri Lanka, and Ministry of Finance",
-      "Dedicated funding lines for solar rooftop installations and energy efficiency retrofits",
-      "Concessionary grace periods up to 2 years with extended tenors up to 10 years"
+      "Providing low-cost loans for income-generating projects and national priorities",
+      "Financing working capital requirements to strengthen viable businesses",
+      "Attractive concessionary interest rates with grace periods and flexible repayment periods",
+      "Comprehensive financial literacy and capacity development of beneficiaries",
+      "Close cooperation and collaboration with ADB, Central Bank of Sri Lanka, and Ministry of Finance"
     ],
     benefits: [
       "Lowest cost of capital in Sri Lanka supporting sustainable and climate-resilient enterprise"
     ],
-    digitalAccess: "Direct compliance reporting and documentation handling",
-    sourcePage: 19
+    digitalAccess: "Direct statutory reporting and expedited document verification",
+    logo: "/assets/products/logo_refinance.png",
+    sourcePage: 18
   }
 ];

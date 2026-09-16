@@ -56,7 +56,7 @@ const INITIAL_BOOKMARKS: BookmarkedSection[] = [
   { id: "overview", title: "Financial Progress & 2025 Audited KPIs", category: "Overview", pageHint: "Pages 14–15", savedAt: "Default" },
   { id: "leadership", title: "Chairperson's Review (Ms. Dinithi Ratnayake)", category: "Leadership", pageHint: "Pages 16–19", savedAt: "Default" },
   { id: "strategy", title: "Strategic Roadmap 2026–2029 & Rabo Partnerships", category: "Strategy", pageHint: "Pages 24–25", savedAt: "Default" },
-  { id: "sustainability", title: "8 Sustainability Pillars & UN SDGs Tracker", category: "Sustainability", pageHint: "Pages 34–39", savedAt: "Default" }
+  { id: "sustainability", title: "8 Sustainability Pillars & UN SDGs", category: "Sustainability", pageHint: "Pages 34–40", savedAt: "Default" }
 ];
 
 function AppContent() {
@@ -142,6 +142,8 @@ function AppContent() {
           window.dispatchEvent(new CustomEvent("set-governance-tab", { detail: subtab }));
         } else if (section === "financials") {
           window.dispatchEvent(new CustomEvent("set-financials-tab", { detail: subtab }));
+        } else if (section === "products") {
+          window.dispatchEvent(new CustomEvent("set-products-tab", { detail: subtab }));
         }
       }, 100);
     }

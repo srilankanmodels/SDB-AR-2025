@@ -918,39 +918,122 @@ export default function LeadershipSection() {
                 })}
               </div>
 
-              {/* Quick Navigation to Chief & Senior Management */}
-              <div className="pt-8 border-t border-slate-200/80 text-left">
-                <div className="bg-gradient-to-r from-sdb-purple/5 via-slate-50 to-white p-6 rounded-3xl border border-sdb-purple/15 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-                  <div className="space-y-1 max-w-xl">
+              {/* Item 3: Chief Managers Included Directly After Corporate Management Team */}
+              <div id="corporate-chief-managers" className="pt-10 border-t border-sdb-purple/15 space-y-6 text-left">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-sdb-purple/5 via-slate-50 to-white p-6 rounded-3xl border border-sdb-purple/15 shadow-sm">
+                  <div className="space-y-1">
                     <div className="inline-flex items-center gap-1.5 text-sdb-coral font-mono text-xs font-bold uppercase tracking-wider">
-                      <Users className="w-3.5 h-3.5" />
-                      <span>Extended Leadership Cadre</span>
+                      <Building2 className="w-3.5 h-3.5" />
+                      <span>Annual Report Pages 59–60</span>
                     </div>
-                    <h3 className="font-serif font-bold text-xl text-sdb-purple">
-                      Chief Managers &amp; Senior Management Team
+                    <h3 className="font-serif font-bold text-xl md:text-2xl text-sdb-purple">
+                      Chief Managers Roster
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      SDB bank's executive hierarchy extends across 13 Chief Managers and 50 Senior Management leaders directing operations, credit risk, retail recoveries, and provincial banking island-wide.
+                    <p className="text-xs text-slate-600 max-w-2xl">
+                      Official Chief Managers leading administration, branch banking units, recoveries, regional supervision, internal audit, and IT systems directly following the Corporate Management team.
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-3">
-                    <button
-                      onClick={() => setActiveTab("chief-managers")}
-                      className="px-4 py-2.5 bg-sdb-purple hover:bg-sdb-purple/90 text-white rounded-xl text-xs font-mono font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
-                    >
-                      <Building2 className="w-3.5 h-3.5 text-amber-300" />
-                      <span>Chief Managers ({CHIEF_MANAGERS.length})</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("senior")}
-                      className="px-4 py-2.5 bg-white hover:bg-sdb-purple/5 text-sdb-purple border border-sdb-purple/20 rounded-xl text-xs font-mono font-bold transition-all shadow-xs hover:border-sdb-purple/40 flex items-center gap-2 cursor-pointer"
-                    >
-                      <Users className="w-3.5 h-3.5 text-sdb-coral" />
-                      <span>Senior Management ({SENIOR_MANAGEMENT.length})</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
+
+                  <div className="w-full md:w-72 relative shrink-0">
+                    <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <input
+                      type="text"
+                      value={chiefSearch}
+                      onChange={(e) => setChiefSearch(e.target.value)}
+                      placeholder="Search chief managers..."
+                      className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 focus:border-sdb-purple/50 rounded-xl text-xs font-sans focus:outline-none shadow-xs"
+                    />
+                    {chiefSearch && (
+                      <button
+                        onClick={() => setChiefSearch("")}
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 text-xs cursor-pointer"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    )}
                   </div>
+                </div>
+
+                <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1">
+                  <span>Showing {filteredChiefManagers.length} of {CHIEF_MANAGERS.length} Chief Managers</span>
+                  <span className="text-[11px] text-slate-500 font-medium">Pages 59–60 • Official Publication Order</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {filteredChiefManagers.map((cm, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white border border-sdb-purple/10 hover:border-sdb-purple/30 rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                    >
+                      <div>
+                        <div className="relative w-full aspect-[4/5] bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 overflow-hidden">
+                          {cm.imageUrl ? (
+                            <img
+                              src={cm.imageUrl}
+                              alt={cm.name}
+                              loading="lazy"
+                              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex flex-col items-center justify-center text-sdb-purple/50 bg-sdb-purple/5">
+                              <UserCheck className="w-12 h-12 mb-2 text-sdb-purple/40" />
+                              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sdb-purple/70">Chief Manager</span>
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#140C24]/90 via-[#140C24]/20 to-transparent pointer-events-none" />
+
+                          {cm.category && (
+                            <div className="absolute top-3 left-3">
+                              <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-white bg-sdb-purple/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
+                                {cm.category}
+                              </span>
+                            </div>
+                          )}
+
+                          <div className="absolute bottom-3 left-3 right-3 text-left">
+                            <h4 className="font-serif font-bold text-base text-white leading-tight drop-shadow-sm">
+                              {cm.name}
+                            </h4>
+                            <p className="text-[11px] text-sdb-coral font-mono uppercase tracking-wider font-semibold mt-0.5 line-clamp-2">
+                              {cm.designation}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="p-4 space-y-2.5 text-left">
+                          {cm.qualifications && (
+                            <div className="text-[10.5px] font-mono text-slate-600 leading-snug">
+                              <span className="text-slate-400 font-semibold uppercase tracking-wider block text-[9px] mb-0.5">Credentials</span>
+                              <p className="line-clamp-3">{cm.qualifications}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="px-4 pb-3 pt-1 text-[10px] font-mono text-slate-400 flex items-center justify-between border-t border-slate-50">
+                        <span className="truncate max-w-[170px]">{cm.department || "Head Office Unit"}</span>
+                        <span className="text-sdb-green font-bold flex items-center gap-1 shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-sdb-green inline-block" /> Active Cadre
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Transition to Senior Management */}
+                <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-50/70 p-5 rounded-2xl">
+                  <div>
+                    <h5 className="font-serif font-bold text-sm text-sdb-purple">Senior Management Team</h5>
+                    <p className="text-xs text-slate-500">50 Senior Management leaders across regional and operational divisions (Pages 61–66).</p>
+                  </div>
+                  <button
+                    onClick={() => setActiveTab("senior")}
+                    className="px-4 py-2 bg-sdb-purple hover:bg-sdb-purple/90 text-white rounded-xl text-xs font-mono font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer shrink-0"
+                  >
+                    <Users className="w-3.5 h-3.5 text-amber-300" />
+                    <span>View Senior Management (50)</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
             </motion.div>

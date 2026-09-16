@@ -1,7 +1,7 @@
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
- * SDB Bank Integrated Annual Report 2025 - Sustainability & UN SDG Explorer Data
+ * SDB Bank Integrated Annual Report 2025 - Sustainability & UN SDGs Data
  * Source: Official Published Annual Report 2025 (Pages 34-41)
  */
 
@@ -15,15 +15,14 @@ export interface SustainabilityPillar {
   sourcePage: number;
 }
 
-export interface SDGContribution {
+export interface SDGRecord {
   sdgNumber: number;
   sdgName: string;
+  badgePath: string;
   color: string;
-  iconUrl?: string;
-  isPrimary: boolean;
-  sdbCommitment: string;
-  actions2025: string[];
-  kpis: { label: string; value: string }[];
+  leadCommitment: string;
+  contributions: string[];
+  kpis?: { label: string; value: string }[];
   sourcePage: number;
 }
 
@@ -212,7 +211,7 @@ export const KEY_SUSTAINABILITY_STATS: SustainabilityMetric[] = [
     value: "68,900+",
     category: "agri",
     detail: "Accounting for 54% of all new credit facilities to bolster national food security.",
-    sourcePage: 39
+    sourcePage: 38
   },
   {
     id: "women-loans",
@@ -256,162 +255,292 @@ export const KEY_SUSTAINABILITY_STATS: SustainabilityMetric[] = [
   }
 ];
 
-export const UN_SDGS_DATA: SDGContribution[] = [
+/**
+ * TAB 1: CONTRIBUTION TO SDGS IN 2025 (Annual Report Page 38)
+ * Core focus area limited to 5 primary UN SDGs
+ */
+export const CONTRIBUTION_TO_SDGS_2025_INTRO = {
+  title: "CONTRIBUTION TO SDGS IN 2025",
+  subTitle: "SDB bank's Primary Focus Areas (Annual Report Page 38)",
+  description:
+    "While SDB bank's core focus area is limited to 5 UNSDGs, the Bank's widespread social and environmental impacts have influenced other SDGs during the year. Also refer to the Financial, Social, Human and Natural Capital chapters for more details regarding the Bank's activities pertaining to SDGs.",
+  sourcePage: 38
+};
+
+export const CONTRIBUTION_TO_SDGS_2025_DATA: SDGRecord[] = [
   {
     sdgNumber: 2,
     sdgName: "Zero Hunger",
+    badgePath: "/assets/sdgs/sdg_2.png",
     color: "#DDA63A",
-    isPrimary: true,
-    sdbCommitment: "Promoting food security and sustainable agricultural production by delivering tailored credit to smallholders.",
-    actions2025: [
-      "Disbursed 68,900+ agricultural loans across paddy, tea, rubber, and spice cultivators",
-      "Agricultural credit comprised 54% of all new loan disbursements in 2025",
-      "Formulated comprehensive Agri-Financing Strategy with Rabo Partnerships",
-      "Established 45-member regional Agri Task Force and published standard Agri Manual"
+    leadCommitment: "Promoting sustainable agriculture, resilient food systems, and targeted financial support for smallholder farming communities across Sri Lanka.",
+    contributions: [
+      "The Bank has a special focus on food and agriculture, enhancing financial and non-financial support for this sector.",
+      "Going beyond the Bank's customer segment, the Bank supported food and agriculture through various means to strengthen food security.",
+      "Partnered with Rabo Partnerships Netherlands to develop a comprehensive Agri-Financing Strategy, establishing a 45-member Agri Task Force and introducing a standard Agri Manual."
     ],
     kpis: [
-      { label: "Agri Loans Disbursed", value: "68,900+" },
-      { label: "Share of Total Disbursements", value: "54%" }
+      { label: "New agriculture loans as % of total disbursement", value: "54%" }
     ],
     sourcePage: 38
   },
   {
     sdgNumber: 5,
     sdgName: "Gender Equality",
-    color: "#FF3A21",
-    isPrimary: true,
-    sdbCommitment: "Empowering women entrepreneurs and maintaining gender equity across employment and governance.",
-    actions2025: [
-      "Achieved 48% female workforce representation and 31% female Corporate Management",
-      "Disbursed 27,200+ new credit facilities to women entrepreneurs",
-      "Conducted institutional Gender Gap Assessment to expand female financial inclusion",
-      "65% female attendance across all cooperative capacity-building programmes"
+    badgePath: "/assets/sdgs/sdg_5.png",
+    color: "#EF402B",
+    leadCommitment: "Fostering an inclusive workplace, advancing women in corporate leadership, and extending targeted micro-financing for female entrepreneurs.",
+    contributions: [
+      "The Bank is an equal opportunity employer with strong female representation across all tiers.",
+      "A Gender Gap Assessment was conducted to enhance women's financing.",
+      "The gender mix is maintained in the lending portfolio.",
+      "The Bank initiated a number of programmes specifically designed to empower women entrepreneurs. These include the Rural Upliftment programme and the Women Mean coalition.",
+      "Laid the groundwork to incorporate a gender lens into all business strategies of the Bank and conduct a comprehensive study within the country to understand the needs and status of women."
     ],
     kpis: [
-      { label: "Female Workforce", value: "48%" },
-      { label: "Loans to Women", value: "27,200+" }
+      { label: "Female representation in the total workforce", value: "48%" },
+      { label: "Female representation in corporate management", value: "31%" },
+      { label: "Share of women attendees at cooperative trainings", value: "65%" }
     ],
     sourcePage: 38
   },
   {
     sdgNumber: 8,
     sdgName: "Decent Work & Economic Growth",
+    badgePath: "/assets/sdgs/sdg_8.png",
     color: "#A21942",
-    isPrimary: true,
-    sdbCommitment: "Fostering inclusive economic development, grassroots job creation, and productive micro-enterprise growth.",
-    actions2025: [
-      "Supported grassroot-level enterprises creating resilient rural employment across 94 branches",
-      "Maintained strict Exclusion List prohibiting financing of harmful or unethical activities",
-      "Delivered 32,000+ training hours to employees with robust collective agreement protections",
-      "Invested LKR 23.91 Mn in talent development and capability building"
+    leadCommitment: "Driving productive employment, fair workplace conditions, ethical credit screening, and grassroot economic empowerment across the nation.",
+    contributions: [
+      "The Bank follows an 'Exclusion List' that prohibits financing harmful, unethical or illegal activities.",
+      "The Bank continued to support grassroots-level entrepreneurs/businesses through its activities for the creation of decent employment and inclusive growth.",
+      "The Bank supports community-level entrepreneurs, which in turn contributes to economic growth.",
+      "Creation of employment opportunities across the island, supported by an extensive branch network, performance-driven work culture benefits, work-life balance, health and safety, engagement opportunities and grievance handling mechanisms for employees.",
+      "Better insurance cover, collective agreements."
     ],
     kpis: [
-      { label: "Training Hours Delivered", value: "32,000+ Hrs" },
-      { label: "Employee Cadre", value: "1,263 Staff" }
+      { label: "Total Workforce Cadre", value: "1,263" },
+      { label: "Employee Retention Rate", value: "92.06%" }
     ],
     sourcePage: 38
   },
   {
     sdgNumber: 13,
     sdgName: "Climate Action",
+    badgePath: "/assets/sdgs/sdg_13.png",
     color: "#3F7E44",
-    isPrimary: true,
-    sdbCommitment: "Integrating climate risk resilience, supporting clean energy transition, and shrinking operational footprints.",
-    actions2025: [
-      "Delivered LKR 50 Mn+ in dedicated rooftop solar and renewable energy loans",
-      "Registered with Sustainable Energy Authority (SEA) and appointed certified Energy Manager",
-      "Employee volunteering in environmental restoration including Project BLUE and Nature Walk",
-      "Conducted Scope 1 and Scope 2 GHG carbon footprint baseline quantification"
+    leadCommitment: "Integrating climate risk resilience, supporting clean energy transition, promoting green mobility, and shrinking internal carbon emissions.",
+    contributions: [
+      "The Bank carried out agricultural initiatives that are not directly linked to blue projects, alongside awareness programmes for both the community and staff, including Project BLUE and the Nature Walk initiative.",
+      "The Bank supported both climate mitigation and adaptation through its finances.",
+      "Energy-efficient measures were implemented to reduce fossil fuel consumption.",
+      "Loans are provided for solar installations."
     ],
     kpis: [
-      { label: "Solar Financing", value: "LKR 50 Mn+" },
-      { label: "E&S Loan Screening", value: "100% > 500k" }
+      { label: "E&S Risk Loan Screening", value: "100% > LKR 500k" },
+      { label: "Renewable Energy Financing", value: "LKR 50 Mn+" }
     ],
     sourcePage: 38
   },
   {
     sdgNumber: 17,
     sdgName: "Partnerships for the Goals",
+    badgePath: "/assets/sdgs/sdg_17.png",
     color: "#19486A",
-    isPrimary: true,
-    sdbCommitment: "Forging global, cooperative, and institutional alliances to amplify sustainable development outcomes.",
-    actions2025: [
-      "Formalised 2026–2029 Strategy Blueprint with Rabo Partnerships Netherlands",
-      "Admitted into European Sustainability Standards & Certification Initiative (SSCI)",
-      "Collaborated with Asian Development Bank (ADB) on tea smallholder credit lines",
-      "Maintained active development banking ties with ~4,000 primary SANASA cooperatives"
+    leadCommitment: "Forging strategic national, international, and cooperative alliances to scale sustainable finance and community prosperity.",
+    contributions: [
+      "The Bank entered into many partnerships during the year, with external institutions.",
+      "Formalised long-term strategic blueprint with Rabo Partnerships Netherlands to modernise agricultural and MSME finance.",
+      "Admitted into the European Organization for Sustainable Development (EOSD) Sustainability Standards & Certification Initiative (SSCI).",
+      "The Bank also conducts collaborations with universities, including the Ocean University of Sri Lanka for marine ecosystem preservation."
     ],
     kpis: [
-      { label: "Active Cooperatives", value: "4,000+" },
-      { label: "Refinance Mobilised", value: "LKR 1.7 Bn+" }
+      { label: "SANASA Primary Cooperatives", value: "4,000+" },
+      { label: "Refinance Capital Mobilised", value: "LKR 1.7 Bn+" }
     ],
     sourcePage: 38
-  },
-  // Additional SDGs Supported
+  }
+];
+
+/**
+ * TAB 2: ADDITIONAL SDGS SUPPORTED DURING 2025 (Annual Report Pages 39-40)
+ * 10 Additional SDGs Championed through wider banking operations
+ */
+export const ADDITIONAL_SDGS_SUPPORTED_2025_INTRO = {
+  title: "ADDITIONAL SDGS SUPPORTED DURING 2025",
+  subTitle: "Sustainable Banking Model & Broader Contributions (Annual Report Pages 39–40)",
+  description:
+    "Through its sustainable banking model and core business activities, the Bank actively contributed towards the UN SDGs listed below.",
+  sourcePage: 39
+};
+
+export const ADDITIONAL_SDGS_SUPPORTED_2025_DATA: SDGRecord[] = [
   {
     sdgNumber: 1,
     sdgName: "No Poverty",
+    badgePath: "/assets/sdgs/sdg_1.png",
     color: "#E5243B",
-    isPrimary: false,
-    sdbCommitment: "Uplifting underserved rural populations from poverty through affordable credit and micro-savings.",
-    actions2025: [
-      "Rural Upliftment Programme reached 3,991 beneficiaries with sustainable income generation",
-      "Provided low-cost financial security mechanisms for vulnerable low-income households"
+    leadCommitment: "Empowering low-income earning customer segments by providing access to financial security and sustainable income generation.",
+    contributions: [
+      "Empowering low-income earning customer segments by providing access to financial security.",
+      "Supporting the income generation of communities through the Rural Upliftment initiatives and other financial activities.",
+      "Extended collateral-free financial products and concessionary credit lines to vulnerable households."
     ],
-    kpis: [{ label: "Upliftment Beneficiaries", value: "3,991" }],
+    kpis: [
+      { label: "Rural Upliftment Beneficiaries", value: "3,991" }
+    ],
+    sourcePage: 39
+  },
+  {
+    sdgNumber: 3,
+    sdgName: "Good Health and Well-being",
+    badgePath: "/assets/sdgs/sdg_3.png",
+    color: "#4C9F38",
+    leadCommitment: "Safeguarding employee health, providing comprehensive medical insurance, and fostering community well-being through inclusive finance.",
+    contributions: [
+      "Ensure the health and safety of employees.",
+      "Insurance Scheme with a reputed Insurance Company for each staff member.",
+      "Uplift communities through financial inclusion, thereby supporting their health and well-being."
+    ],
+    kpis: [
+      { label: "Medical Insurance Cadre", value: "100% of Staff" }
+    ],
+    sourcePage: 39
+  },
+  {
+    sdgNumber: 4,
+    sdgName: "Quality Education",
+    badgePath: "/assets/sdgs/sdg_4.png",
+    color: "#C5192D",
+    leadCommitment: "Investing in continuous staff capacity building, overseas specialized training, and sponsoring schools in project localities.",
+    contributions: [
+      "Continuous professional development of employees.",
+      "Provided over 32,000+ hours of training for internal employees.",
+      "Granted special leave for overseas training.",
+      "Supported schools in areas where the Bank's projects are being conducted."
+    ],
+    kpis: [
+      { label: "Internal Employee Training Hours", value: "32,000+ Hours" },
+      { label: "Average Training Hours per Employee", value: "25.3 Hours" }
+    ],
     sourcePage: 39
   },
   {
     sdgNumber: 7,
     sdgName: "Affordable & Clean Energy",
+    badgePath: "/assets/sdgs/sdg_7.png",
     color: "#FCC30B",
-    isPrimary: false,
-    sdbCommitment: "Financing clean domestic solar installations and energy-efficient retrofits.",
-    actions2025: [
-      "Extended concessionary lending packages for residential and commercial solar rooftops",
-      "Internal LED conversions and high-efficiency inverter air conditioning across 94 branches"
+    leadCommitment: "Financing clean domestic solar installations, supporting national decarbonisation, and implementing internal bank energy conservation.",
+    contributions: [
+      "Energy conservation measures within the Bank.",
+      "Provided financing for solar power projects and also for energy conservation efforts.",
+      "Installation of inverter air-conditioning and 100% LED lighting across branch premises."
     ],
-    kpis: [{ label: "Clean Energy Funding", value: "LKR 50 Mn+" }],
+    kpis: [
+      { label: "Amount of renewable energy financing disbursements", value: "LKR 50 Mn+" },
+      { label: "Amount of refinance funds obtained", value: "LKR 1.7 Bn+" }
+    ],
     sourcePage: 39
   },
   {
     sdgNumber: 9,
     sdgName: "Industry, Innovation & Infrastructure",
+    badgePath: "/assets/sdgs/sdg_9.png",
     color: "#FD6925",
-    isPrimary: false,
-    sdbCommitment: "Modernising digital financial infrastructure to connect small enterprises to formal markets.",
-    actions2025: [
-      "Expanded UPay payment gateway, CEFTS, and LankaPay QR integration nationwide",
-      "IT infrastructure investments reached LKR 4.05 Bn+ to future-proof bank systems"
+    leadCommitment: "Delivering affordable credit to smallholders, expanding digital infrastructure (UPay), and modernising agricultural value chains.",
+    contributions: [
+      "Provision of financial services and affordable credit to smallholder enterprises.",
+      "Accelerated digital banking accessibility with LankaPay GovPay and LankaPay LPOPP integration.",
+      "Invested in robust IT infrastructure to provide seamless, resilient banking services."
     ],
-    kpis: [{ label: "Digital Transactions", value: "37% of Total" }],
+    kpis: [
+      { label: "Number of agricultural loans disbursed", value: "68,900+" }
+    ],
     sourcePage: 39
   },
   {
     sdgNumber: 10,
     sdgName: "Reduced Inequalities",
+    badgePath: "/assets/sdgs/sdg_10.png",
     color: "#DD1367",
-    isPrimary: false,
-    sdbCommitment: "Bridging the geographic and socio-economic wealth divide across Sri Lanka's provinces.",
-    actions2025: [
-      "Over 75% of branch network deployed in peri-urban and rural provincial centres",
-      "Targeted credit and financial literacy extended to historically marginalized communities"
+    leadCommitment: "Closing geographic and socio-economic divides through widespread rural banking, female financial inclusion, and digital equity.",
+    contributions: [
+      "Facilitated financial inclusion and digital inclusion for communities across the country.",
+      "Empowered female entrepreneurs through financial assistance.",
+      "Delivered tailored financial literacy clinics for rural and peri-urban smallholders."
     ],
-    kpis: [{ label: "Provincial Branches", value: "94 Locations" }],
+    kpis: [
+      { label: "Number of new loans to women", value: "27,200+" }
+    ],
+    sourcePage: 39
+  },
+  {
+    sdgNumber: 11,
+    sdgName: "Sustainable Cities and Communities",
+    badgePath: "/assets/sdgs/sdg_11.png",
+    color: "#FD9D24",
+    leadCommitment: "Empowering rural and urban micro-entrepreneurs, strengthening local cooperative hubs, and driving regional economic resilience.",
+    contributions: [
+      "Empowered rural and urban entrepreneurs, as well as women entrepreneurs.",
+      "Supported regional development across all 9 provinces through a 94-branch footprint.",
+      "Strengthened local economic ecosystems through capacity-building workshops."
+    ],
+    kpis: [
+      { label: "Number benefited from training programmes", value: "7,500+" }
+    ],
     sourcePage: 39
   },
   {
     sdgNumber: 12,
-    sdgName: "Responsible Consumption & Production",
+    sdgName: "Responsible Consumption and Production",
+    badgePath: "/assets/sdgs/sdg_12.png",
     color: "#BF8B2E",
-    isPrimary: false,
-    sdbCommitment: "Promoting green procurement criteria, circular economy linkages, and internal resource conservation.",
-    actions2025: [
-      "Commenced green procurement standards for all bank vendor tenders",
-      "Aggressively curbed paper and electricity consumption across operational departments"
+    leadCommitment: "Embedding green procurement standards, reducing paper and water footprints, and calculating greenhouse gas emissions.",
+    contributions: [
+      "Compliance related to product development and meeting customer information requirements.",
+      "Effective management of environmental impacts and promoting resource conservation and waste reduction, including the commencement of work stream setting green procurement criteria.",
+      "Reduced the consumption of electricity, water and paper, by identifying the highest consumption branches.",
+      "Introduction of digital applications (such as customer onboarding).",
+      "Calculated the carbon footprint to identify emissions of the Bank."
     ],
-    kpis: [{ label: "Procurement Suppliers", value: "400+ Local" }],
+    kpis: [
+      { label: "Carbon Footprint Tracking", value: "Scope 1 & 2 Baseline" }
+    ],
     sourcePage: 39
+  },
+  {
+    sdgNumber: 14,
+    sdgName: "Life Below Water",
+    badgePath: "/assets/sdgs/sdg_14.png",
+    color: "#0A97D9",
+    leadCommitment: "Conserving marine ecosystems, reducing coastal plastic pollution, and conducting underwater debris clearance missions.",
+    contributions: [
+      "The Bank contributed to the reduction of marine pollution and marine ecosystems conservation by conducting underwater cleaning operations and coastal beach clean-up programmes.",
+      "Mobilized staff volunteers and divers under 'Project BLUE' in partnership with the Ocean University of Sri Lanka.",
+      "Recovered plastic debris and ghost nets to protect marine wildlife and coastal habitats."
+    ],
+    kpis: [
+      { label: "Coastal Plastic Waste Removed", value: "686.3 kg" },
+      { label: "Underwater Debris Cleared", value: "20.0 kg" }
+    ],
+    sourcePage: 40
+  },
+  {
+    sdgNumber: 15,
+    sdgName: "Life on Land",
+    badgePath: "/assets/sdgs/sdg_15.png",
+    color: "#56C02B",
+    leadCommitment: "Promoting agroforestry, forest habitat restoration, and conserving terrestrial biodiversity through community action.",
+    contributions: [
+      "The Bank promoted sustainable agriculture.",
+      "Contributed towards environmental and biodiversity conservation through staff participation in green projects and blue projects.",
+      "Partnered with Dewahandiya Farmers' Association to restore 25 hectares of forest land with 10,000 indigenous saplings.",
+      "Conducted staff Nature Walk & Bird Race at Diyasaru Wetland Park."
+    ],
+    kpis: [
+      { label: "Forest Land Restored", value: "25 Hectares" },
+      { label: "Trees Planted", value: "10,000 Saplings" }
+    ],
+    sourcePage: 40
   }
 ];
 

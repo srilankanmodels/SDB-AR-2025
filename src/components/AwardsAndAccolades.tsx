@@ -2,14 +2,18 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  * SDB Bank Integrated Annual Report 2025 - Awards & Accolades
- * Addresses Point 08 (Source: Official Published Annual Report Page 9)
+ * Addresses Item 2: Images included as per Annual Report Page 9
  */
 
-import { motion } from "motion/react";
-import { Award, Trophy, Star, ExternalLink, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Trophy, Star, ExternalLink, CheckCircle2, Maximize2, X, FileText, Sparkles } from "lucide-react";
 import { AWARDS_DATA } from "../data/overviewAndStrategyData";
 
 export default function AwardsAndAccolades() {
+  const [selectedAward, setSelectedAward] = useState<typeof AWARDS_DATA[0] | null>(null);
+  const [showFullPageModal, setShowFullPageModal] = useState<boolean>(false);
+
   return (
     <section id="awards-accolades-section" className="space-y-10 text-left">
       {/* Editorial Header */}
@@ -17,25 +21,35 @@ export default function AwardsAndAccolades() {
         <div>
           <div className="inline-flex items-center space-x-2 text-xs font-mono font-bold text-sdb-coral uppercase tracking-wider mb-2">
             <span className="w-2 h-2 rounded-full bg-sdb-coral" />
-            <span>Point 08 • Corporate Recognition • Page 9</span>
+            <span>Official Recognition • Annual Report Page 9</span>
           </div>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-sdb-purple tracking-tight">
             Awards & Accolades
           </h2>
           <p className="text-slate-600 mt-2 max-w-2xl text-sm md:text-base">
-            Honouring SDB bank's operational turnaround, governance excellence, innovative digital branding, and exemplary credit compliance during 2025.
+            Honouring SDB bank's operational turnaround, governance excellence, innovative digital branding, customer convenience, and exemplary credit compliance during 2025.
           </p>
         </div>
 
-        <a
-          href="https://cdn.cse.lk/cmt/upload_report_file/1182_1777891461840.pdf#page=9"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-sdb-purple text-white text-xs font-bold font-mono hover:bg-sdb-purple/90 transition-all cursor-pointer shadow-xs"
-        >
-          <span>View Page 9 in PDF</span>
-          <ExternalLink className="w-3.5 h-3.5" />
-        </a>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowFullPageModal(true)}
+            className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-sdb-purple/10 text-sdb-purple text-xs font-bold font-mono hover:bg-sdb-purple/20 transition-all cursor-pointer border border-sdb-purple/20"
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>View Page 9 Layout</span>
+          </button>
+
+          <a
+            href="https://cdn.cse.lk/cmt/upload_report_file/1182_1777891461840.pdf#page=9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-sdb-purple text-white text-xs font-bold font-mono hover:bg-sdb-purple/90 transition-all cursor-pointer shadow-xs"
+          >
+            <span>CSE Report PDF</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
       </div>
 
       {/* Awards Showcase Grid */}
@@ -51,13 +65,27 @@ export default function AwardsAndAccolades() {
                 <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider bg-sdb-coral/10 px-2.5 py-0.5 rounded-full">
                   {award.category || "Excellence"}
                 </span>
-                <span className="text-[10px] font-mono text-slate-400">
-                  Page {award.sourcePage}
+                <span className="text-[10px] font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
+                  Page {award.sourcePage} • #{award.id}
                 </span>
               </div>
 
-              <div className="w-12 h-12 rounded-2xl bg-sdb-purple/5 text-sdb-purple flex items-center justify-center group-hover:bg-sdb-purple group-hover:text-white transition-colors duration-300">
-                <Trophy className="w-6 h-6" />
+              {/* Authentic Award Image with Zoom CTA */}
+              <div
+                onClick={() => setSelectedAward(award)}
+                className="relative rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 aspect-4/3 flex items-center justify-center p-3 cursor-pointer group/img"
+              >
+                <img
+                  src={award.image}
+                  alt={award.title}
+                  className="w-full h-full object-contain group-hover/img:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-sdb-purple/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="bg-white text-sdb-purple text-xs font-mono font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                    <Maximize2 className="w-3.5 h-3.5" /> Enlarge Photo
+                  </span>
+                </div>
               </div>
 
               <h3 className="font-serif font-bold text-lg text-sdb-purple leading-snug">
@@ -74,7 +102,9 @@ export default function AwardsAndAccolades() {
             </div>
 
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span>National Recognition</span>
+              <span className="flex items-center gap-1 text-sdb-purple font-semibold">
+                <Trophy className="w-3.5 h-3.5 text-sdb-amber" /> Verified 2025 Accolade
+              </span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             </div>
           </motion.div>
@@ -100,6 +130,102 @@ export default function AwardsAndAccolades() {
           <p className="text-[10px] font-mono text-white/70">CRIB Statutory Bureau</p>
         </div>
       </div>
+
+      {/* Single Award Lightbox Modal */}
+      <AnimatePresence>
+        {selectedAward && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            onClick={() => setSelectedAward(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-3xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto space-y-4 shadow-2xl relative text-left"
+            >
+              <button
+                onClick={() => setSelectedAward(null)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-500 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-wider bg-sdb-coral/10 px-2.5 py-0.5 rounded-full">
+                  {selectedAward.category}
+                </span>
+                <span className="text-xs font-mono text-slate-400">Page {selectedAward.sourcePage}</span>
+              </div>
+
+              <div className="rounded-2xl bg-slate-50 border border-slate-100 p-4 flex items-center justify-center">
+                <img
+                  src={selectedAward.image}
+                  alt={selectedAward.title}
+                  className="max-h-72 object-contain"
+                />
+              </div>
+
+              <h3 className="font-serif font-bold text-xl text-sdb-purple">
+                {selectedAward.title}
+              </h3>
+              <p className="text-xs font-mono font-bold text-sdb-coral">
+                {selectedAward.organization}
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                {selectedAward.description}
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Full Page 9 Layout Modal */}
+      <AnimatePresence>
+        {showFullPageModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            onClick={() => setShowFullPageModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-3xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto space-y-4 shadow-2xl relative text-left"
+            >
+              <button
+                onClick={() => setShowFullPageModal(false)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-500 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-sdb-coral" />
+                <h3 className="font-serif font-bold text-xl text-sdb-purple">
+                  Annual Report Page 9 • Original Layout
+                </h3>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50">
+                <img
+                  src="/assets/awards/page_9_full.png"
+                  alt="Annual Report Page 9 Full"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
