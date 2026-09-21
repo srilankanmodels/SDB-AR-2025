@@ -175,794 +175,330 @@ export const CASH_FLOW_ROWS: FinancialRow[] = [
 // 5. COMPREHENSIVE NOTES 1 TO 52 & ACCOUNTING POLICIES (Points 48-74)
 // ==========================================
 export const NOTES_TO_FINANCIALS: NoteDetail[] = [
-  // NOTE 1 & 2
   {
     number: "Note 1",
     title: "Corporate Information & Reporting Entity",
-    summary: "General corporate information about SANASA Development Bank PLC (SDB bank), legal status, listing, and nature of operations.",
-    accountingPolicy: "SANASA Development Bank PLC is a licensed specialized bank incorporated in Sri Lanka on 17th February 1997 under the Companies Act No. 17 of 1982 and re-registered under Companies Act No. 07 of 2007. It is listed on the Main Board of the Colombo Stock Exchange (CSE) since 31st May 2012. The registered office of the Bank is located at No. 12, Edmonton Road, Kirulapone, Colombo 06.",
-    content: "The Bank provides comprehensive retail, cooperative, micro, and SME financial services across Sri Lanka through its network of 94 physical branches.",
-    columns: [
-      { header: "Corporate Detail", key: "detail" },
-      { header: "Description / Values", key: "value" }
-    ],
-    tableData: [
-      { detail: "Incorporation Date", value: "17th February 1997" },
-      { detail: "Legal Form", value: "Public Quoted Licensed Specialized Bank" },
-      { detail: "CSE Ticker Symbol", value: "SDB.N0000" },
-      { detail: "Taxpayer Identification No. (TIN)", value: "105400192" },
-      { detail: "External Auditors", value: "Ernst & Young (Chartered Accountants)" },
-      { detail: "Physical Outlets", value: "94 Branches across all 25 districts" }
-    ]
+    summary: "An analysis on recovery or settlement within 12 months after the reporting date (current) and more than 12 months after the reporting date (non-current) is presented in the Note 44 to the Financial Statements.",
+    accountingPolicy: "In compliance with Sri Lanka Accounting Standard - LKAS 1 (Presentation of Financial Statements), each material class of similar items is presented separately in the Financial Statements. Items of dissimilar nature or functions too are presented separately unless they are immaterial. Financial assets and financial liabilities are offset and the net amount reported in the Statement of Financial Position only when there is a legally enforceable right to offset the recognised amounts and there is an intention to settle on a net basis, or to realise the assets and settle the liability simultaneously. Income and expenses are not offset in the Statement of Profit or Loss unless required or permitted by an Accounting Standard.",
+    content: "An analysis on recovery or settlement within 12 months after the reporting date (current) and more than 12 months after the reporting date (non-current) is presented in the Note 44 to the Financial Statements.\n\n2.7. Materiality and Aggregation\n\nIn compliance with Sri Lanka Accounting Standard - LKAS 1 (Presentation of Financial Statements), each material class of similar items is presented separately in the Financial Statements. Items of dissimilar nature or functions too are presented separately unless they are immaterial. Financial assets and financial liabilities are offset and the net amount reported in the Statement of Financial Position only when there is a legally enforceable right to offset the recognised amounts and there is an intention to settle on a net basis, or to realise the assets and settle the liability simultaneously. Income and expenses are not offset in the Statement of Profit or Loss unless required or permitted by an Accounting Standard.\n\n2.8. Comparative Information\n\nThe comparative information is reclassified wherever necessary to conform to the current year's classification in order to provide a better presentation. The details of such reclassifications are presented in Note 46 to the Financial Statements\n\n2.9. Statement of Cash Flows\n\nThe Statement of Cash Flows has been prepared by using the direct method in accordance with the Sri Lanka Accounting Standard - LKAS 7 (Statement of Cash Flows), whereby gross cash receipts and gross cash payments of operating activities, financing activities and investing activities have been recognised. Cash and cash equivalents comprise short term, highly liquid investments that are readily convertible to known amounts of cash and are subject to an insignificant risk of changes in value.\n\nCash and cash equivalents include cash in hand, balances with banks, placements with banks (less than 3 months), money at call and short notice, net of unfavourable local bank balances.\n\n2.10. Significant Accounting Judgments, Estimates and Assumptions\n\nThe preparation of Financial Statements of the Bank in conformity with Sri Lanka Accounting Standards requires the management to make judgments, estimates and assumptions that affect the application of accounting policies and the reported amounts of assets, liabilities, income and expenses. Actual results may differ from these estimates.\n\nEstimates and underlying assumptions are reviewed on an ongoing basis. Revisions to accounting estimates are recognised in the period in which the estimate is revised and in any future periods affected. The most significant areas of estimation, uncertainty and critical judgments in applying accounting policies that have most significant effect on the amounts recognised in the Financial Statements of the Bank are described in the respective notes.\n\n2.11. Going Concern\n\nThe Directors have made an assessment of the Bank's ability to continue as a going concern and are satisfied that it has the resources to continue in business for the foreseeable future. The Directors have considered the impact of the current adverse macro-economic conditions on the business operations of the Bank. Furthermore, the Board is not aware of any material uncertainties that may cast significant doubt upon the Bank's ability to continue as a going concern and they do not intend either to liquidate or to cease operations of the Bank. Therefore, the Financial Statements continue to be prepared on the going concern basis. The management has also conducted stress tests to evaluate the robustness of the financial resources of the Bank. This has been reviewed and approved by the Board.\n\n2.12. Impairment Losses on Loans and Advances\n\nThe measurement of impairment losses under Sri Lanka Accounting Standards - SLFRS 9 (Financial Instruments) across all categories of financial assets requires judgement. These estimates are driven by a number of factors, changes in which can result in different levels of allowances."
   },
   {
     number: "Note 2",
-    title: "Basis of Preparation & Significant Accounting Policies",
-    summary: "Framework, accounting guidelines (SLFRS/LKAS) followed, functional currency, and key estimates.",
-    accountingPolicy: "The financial statements have been prepared in accordance with Sri Lanka Accounting Standards (SLFRS/LKAS) as issued by the Institute of Chartered Accountants of Sri Lanka (CA Sri Lanka) and in compliance with the Banking Act No. 30 of 1988, Companies Act No. 07 of 2007, and CBSL regulations. The reporting is on a historical cost basis except for financial assets measured at fair value (FVTPL/FVOCI).",
-    content: "The functional and presentation currency is Sri Lankan Rupees (LKR), rounded to the nearest million.",
-    columns: [
-      { header: "Accounting Aspect", key: "aspect" },
-      { header: "Adopted Policy / Basis", key: "policy" }
-    ],
-    tableData: [
-      { aspect: "Accounting Framework", policy: "SLFRS / LKAS (Compliant with IFRS)" },
-      { aspect: "Reporting Currency", policy: "Sri Lankan Rupee (LKR Millions)" },
-      { aspect: "External Auditor", policy: "Ernst & Young (EY)" },
-      { aspect: "ECL Model", policy: "Three-Stage Impairment Model (SLFRS 9)" },
-      { aspect: "Going Concern Assessment", policy: "Assessed as robust with no substantial doubt" }
-    ]
+    title: "Basis of Preparation & Compliance Framework",
+    summary: "An analysis on recovery or settlement within 12 months after the reporting date (current) and more than 12 months after the reporting date (non-current) is presented in the Note 44 to the Financial Statements.",
+    accountingPolicy: "In compliance with Sri Lanka Accounting Standard - LKAS 1 (Presentation of Financial Statements), each material class of similar items is presented separately in the Financial Statements. Items of dissimilar nature or functions too are presented separately unless they are immaterial. Financial assets and financial liabilities are offset and the net amount reported in the Statement of Financial Position only when there is a legally enforceable right to offset the recognised amounts and there is an intention to settle on a net basis, or to realise the assets and settle the liability simultaneously. Income and expenses are not offset in the Statement of Profit or Loss unless required or permitted by an Accounting Standard.",
+    content: "An analysis on recovery or settlement within 12 months after the reporting date (current) and more than 12 months after the reporting date (non-current) is presented in the Note 44 to the Financial Statements.\n\n2.7. Materiality and Aggregation\n\nIn compliance with Sri Lanka Accounting Standard - LKAS 1 (Presentation of Financial Statements), each material class of similar items is presented separately in the Financial Statements. Items of dissimilar nature or functions too are presented separately unless they are immaterial. Financial assets and financial liabilities are offset and the net amount reported in the Statement of Financial Position only when there is a legally enforceable right to offset the recognised amounts and there is an intention to settle on a net basis, or to realise the assets and settle the liability simultaneously. Income and expenses are not offset in the Statement of Profit or Loss unless required or permitted by an Accounting Standard.\n\n2.8. Comparative Information\n\nThe comparative information is reclassified wherever necessary to conform to the current year's classification in order to provide a better presentation. The details of such reclassifications are presented in Note 46 to the Financial Statements\n\n2.9. Statement of Cash Flows\n\nThe Statement of Cash Flows has been prepared by using the direct method in accordance with the Sri Lanka Accounting Standard - LKAS 7 (Statement of Cash Flows), whereby gross cash receipts and gross cash payments of operating activities, financing activities and investing activities have been recognised. Cash and cash equivalents comprise short term, highly liquid investments that are readily convertible to known amounts of cash and are subject to an insignificant risk of changes in value.\n\nCash and cash equivalents include cash in hand, balances with banks, placements with banks (less than 3 months), money at call and short notice, net of unfavourable local bank balances.\n\n2.10. Significant Accounting Judgments, Estimates and Assumptions\n\nThe preparation of Financial Statements of the Bank in conformity with Sri Lanka Accounting Standards requires the management to make judgments, estimates and assumptions that affect the application of accounting policies and the reported amounts of assets, liabilities, income and expenses. Actual results may differ from these estimates.\n\nEstimates and underlying assumptions are reviewed on an ongoing basis. Revisions to accounting estimates are recognised in the period in which the estimate is revised and in any future periods affected. The most significant areas of estimation, uncertainty and critical judgments in applying accounting policies that have most significant effect on the amounts recognised in the Financial Statements of the Bank are described in the respective notes.\n\n2.11. Going Concern\n\nThe Directors have made an assessment of the Bank's ability to continue as a going concern and are satisfied that it has the resources to continue in business for the foreseeable future. The Directors have considered the impact of the current adverse macro-economic conditions on the business operations of the Bank. Furthermore, the Board is not aware of any material uncertainties that may cast significant doubt upon the Bank's ability to continue as a going concern and they do not intend either to liquidate or to cease operations of the Bank. Therefore, the Financial Statements continue to be prepared on the going concern basis. The management has also conducted stress tests to evaluate the robustness of the financial resources of the Bank. This has been reviewed and approved by the Board.\n\n2.12. Impairment Losses on Loans and Advances\n\nThe measurement of impairment losses under Sri Lanka Accounting Standards - SLFRS 9 (Financial Instruments) across all categories of financial assets requires judgement. These estimates are driven by a number of factors, changes in which can result in different levels of allowances."
   },
-
-  // NOTE 4: GROSS INCOME & ACCOUNTING POLICY (Point 49)
+  {
+    number: "Note 3",
+    title: "General Accounting Policies",
+    summary: "consistency, the Bank has established specific criteria for this assessment. A property is classified as an investment property if it is held primarily to earn rental income, for capital appreciation, or both, and generates cash flows largely indepen...",
+    accountingPolicy: "The Bank uses its judgment to determine whether an operating lease contract qualifies for recognition of right of-use assets. It also uses judgement in the determination of the discount rate in the calculation of the lease liability. The lease liability is initially measured at the present value of the lease payments that are not paid at the commencement date, discounted using the interest rate implicit in the lease. As the Bank cannot readily determine the interest rate implicit in the lease, it uses its incremental borrowing rate to measure the lease liability. The incremental borrowing rate is the rate of interest that the Bank would have to pay, to borrow an amount similar to the value of the lease asset, over a similar term and with similar security in similar economic environment. Further, the Bank applies judgement in evaluating whether it is reasonably certain to renew or terminate the lease at the end of the lease term. That is, it considers all relevant factors that create an economic benefit for it to exercise, either the renewal or termination option.",
+    content: "consistency, the Bank has established specific criteria for this assessment. A property is classified as an investment property if it is held primarily to earn rental income, for capital appreciation, or both, and generates cash flows largely independent of the Bank's other assets. Conversely, properties used for operational purposes, service delivery, or administrative functions where cash f lows are not generated independently are classified as property, plant, and equipment (PPE)\n\nThe Bank reviews the classification of its properties annually, considering their current use. As of December 31, 2025, no assets have been classified as investment properties.\n\n2.22. SLFRS 16 - Leases\n\nThe Bank uses its judgment to determine whether an operating lease contract qualifies for recognition of right of-use assets. It also uses judgement in the determination of the discount rate in the calculation of the lease liability. The lease liability is initially measured at the present value of the lease payments that are not paid at the commencement date, discounted using the interest rate implicit in the lease. As the Bank cannot readily determine the interest rate implicit in the lease, it uses its incremental borrowing rate to measure the lease liability. The incremental borrowing rate is the rate of interest that the Bank would have to pay, to borrow an amount similar to the value of the lease asset, over a similar term and with similar security in similar economic environment. Further, the Bank applies judgement in evaluating whether it is reasonably certain to renew or terminate the lease at the end of the lease term. That is, it considers all relevant factors that create an economic benefit for it to exercise, either the renewal or termination option.\n\n3. GENERAL ACCOUNTING POLICIES\n\n3.1. Foreign Currency Transactions and Balances\n\nAll foreign currency transactions are translated into the functional currency, which is Sri Lankan Rupees, using the exchange rates prevailing at the dates of the transactions were affected.\n\nMonetary assets and liabilities denominated in foreign currencies at the reporting date are translated to Sri Lankan Rupees using the spot foreign exchange rate ruling at that date and all differences arising on non-trading activities are taken to 'Other operating income' in the Statement of Profit or Loss. The foreign currency gain or loss on monetary items is the difference between amortised cost in the functional currency at the beginning of the period, adjusted for effective interest and payments during the period, and the amortised cost in foreign currency translated at the rate of exchange prevailing at the end of the reporting period.\n\nNon-monetary items in a foreign currency that are measured in terms of historical cost are translated using the exchange rates as at the dates of the initial transactions. Non- monetary items in foreign currency measured at fair value are translated using the exchange rates at the date when the fair value was determined.\n\nForeign exchange differences arising on the settlement or reporting of monetary items at rates different from those which were initially recorded are dealt with in the Statement of Profit or Loss. However, foreign currency differences arising on equity instruments classified as fair value through other comprehensive income, financial liabilities designated as a hedge of a net investment in a foreign operation, or qualifying cash flow hedges are recognised in other comprehensive income.\n\n3.2. Financial Instruments - Initial Recognition, Classification and Subsequent Measurement\n\n3.2.1. Date of Recognition\n\nFinancial assets and liabilities, with the exception of loans and advances to customers and balances due to customers, are initially recognised on the trade date, i.e., the date that the Bank becomes a party to the contractual provisions of the instrument. This includes regular way trades: purchases or sales of financial assets that require delivery of assets within the time frame generally established by regulation or convention in the market place. Loans and advances to customers are recognised when funds are transferred to the customers' accounts. The Bank recognises balances due to depositors when funds are transferred to the Bank.\n\n3.2.2. Initial Measurement of Financial Instruments\n\nThe classification of financial instruments at initial recognition depends on their contractual terms and the business model for managing the instruments, as described in Notes 3.2.3.1(a) and 3.2.3.1 (b). Financial instruments are initially measured at their fair value."
+  },
   {
     number: "Note 4",
-    title: "Gross Income",
-    summary: "Comprehensive aggregation of Interest Income, Fee Income, Net Trading Gains, and Net Other Operating Income.",
-    accountingPolicy: "Accounting Policy: Gross income represents revenue recognized in accordance with SLFRS 15 and SLFRS 9. Interest income is recognized on an accrual basis using the Effective Interest Rate (EIR) method. Fee and commission income is recognized as the related services are performed. Net trading income includes all realized and unrealized gains and losses from trading assets. Other operating income includes recoveries of advances written off and dividend income.",
-    content: "Gross Income for the financial year ended 31st December 2025 expanded to LKR 20,586 Mn (+9.86% YoY) reflecting broad-based operational expansion across core lending and treasury portfolios.",
-    columns: [
-      { header: "Gross Income Category (LKR Mn)", key: "category" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" },
-      { header: "YoY Growth", key: "growth" }
-    ],
-    tableData: [
-      { category: "Interest Income (Note 5)", y2025: 19432, y2024: 17852, growth: "+8.85%" },
-      { category: "Fee and Commission Income (Note 7)", y2025: 845, y2024: 725, growth: "+16.55%" },
-      { category: "Net Gains / (Losses) from Trading at FVTPL (Note 8)", y2025: 125, y2024: -98, growth: "+227.55%" },
-      { category: "Net Gains from Derecognition of Financial Assets", y2025: 312, y2024: 285, growth: "+9.47%" },
-      { category: "Net Other Operating Income (Note 10)", y2025: 184, y2024: 162, growth: "+13.58%" },
-      { category: "Total Gross Income", y2025: 20586, y2024: 18739, growth: "+9.86%" }
-    ]
+    title: "New Accounting Standards Issued but Not Yet Effective",
+    summary: "discount rate that reflects current market assessments of the time value of money and the risks specific to the asset.",
+    accountingPolicy: "4. NEW ACCOUNTING STANDARDS/AMENDMENTS TO EXISTING ACCOUNTING STANDARDS THAT BECAME EFFECTIVE DURING THE YEAR",
+    content: "discount rate that reflects current market assessments of the time value of money and the risks specific to the asset.\n\n3.8. Other Taxes\n\n3.8.1. Value Added Tax (VAT)\n\nVAT on financial services is calculated in accordance with Value Added Tax (VAT) Act No. 14 of 2002 and subsequent amendments thereto. The base for the computation of value added tax on financial services is the accounting profit before VAT and income tax adjusted for the economic depreciation and emoluments payable to employees including cash benefits, non-cash benefits & provisions relating to terminal benefits.\n\n3.8.2. Social Security Contribution Levy\n\nAs per the Social Security Contribution Levy (SSCL) Act No. 25 of 2022, effective from October 01, 2022, Bank is liable to pay SSCL on Financial Services at the rate of 2.5% on the value addition attributable to the supply of financial services. Further Non-Financial Services are made liable on the turnover at the rate of 2.5%.\n\n3.9. Regulatory Provisions\n\n3.9.1. Deposit Insurance and Liquidity Support Scheme\n\nAll Licensed Commercial Banks were required to insure their deposit liabilities in the \"Sri Lanka Deposit Insurance and Liquidity Support Scheme\" in terms of the Banking Act Direction No. 5 of 2010, issued on 27th September 2010. This was subsequently replaced by the Sri Lanka Deposit Insurance and Liquidity Support Scheme Regulations No. 2 of 2021, dated 06th August 2021. The Bank's total capital ratio as at 31st December 2025 exceed 14% and accordingly the Bank paid a premium of 0.1% of the eligible deposits as deposit insurance premium, during the year ended 31st December 2025.\n\n3.9.2. Crop Insurance Levy\n\nIn terms of the Finance Act No. 12 of 2013, all institutions under the purview of Banking Act No. 30 of 1988, Finance Business Act No. 42 of 2011 and Regulation of Insurance Industry Act No. 43 of 2000 are required to pay 1% of the profit after tax as Crop Insurance Levy to the National Insurance Trust Fund effective from 1st April 2013.\n\n4. NEW ACCOUNTING STANDARDS/AMENDMENTS TO EXISTING ACCOUNTING STANDARDS THAT BECAME EFFECTIVE DURING THE YEAR\n\n4.1. SLFRS 17 - Insurance Contracts\n\nHowever, there is no impact on the financial statements of the bank by applying the above to accounting standards.\n\n5. ACCOUNTING STANDARDS/CBSL DIRECTIVES ISSUED BUT NOT YET EFFECTIVE AS AT 31ST DECEMBER 2025"
   },
-
-  // NOTE 5: NET INTEREST INCOME & ACCOUNTING POLICY (Point 50)
   {
     number: "Note 5",
-    title: "Net Interest Income",
-    summary: "Interest revenue earned on loans and advances, treasury bills/bonds, and placements, less deposit and borrowing costs.",
-    accountingPolicy: "Accounting Policy: Interest income and interest expense are recorded using the Effective Interest Rate (EIR) method for all financial assets and liabilities measured at amortised cost or FVOCI. The EIR is the rate that exactly discounts estimated future cash receipts through the expected life of the financial instrument to the gross carrying amount. For credit-impaired assets (Stage 3), interest income is calculated by applying the EIR to the net carrying amount (gross carrying amount less ECL allowance).",
-    content: "Net Interest Income rose 5.28% to LKR 8,233 Mn in 2025, maintaining a Net Interest Margin (NIM) of 5.60%.",
-    columns: [
-      { header: "Interest Income / Expense Category (LKR Mn)", key: "item" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { item: "Interest on Loans and Advances to Customers", y2025: 14845, y2024: 13540 },
-      { item: "Interest on Financial Assets at Amortized Cost (Treasury Debt)", y2025: 3950, y2024: 3820 },
-      { item: "Interest on Interbank Placements & Call Deposits", y2025: 637, y2024: 492 },
-      { item: "Total Interest Income", y2025: 19432, y2024: 17852 },
-      { item: "Interest on Customer Deposits", y2025: -9340, y2024: -8450 },
-      { item: "Interest on Borrowings from Banks & DFIs (ADB, FMO)", y2025: -1215, y2024: -1080 },
-      { item: "Interest on Debt Securities & Subordinated Debentures", y2025: -644, y2024: -502 },
-      { item: "Total Interest Expense", y2025: -11199, y2024: -10032 },
-      { item: "Net Interest Income", y2025: 8233, y2024: 7820 }
-    ]
+    title: "Significant Accounting Judgements, Estimates and Assumptions",
+    summary: "discount rate that reflects current market assessments of the time value of money and the risks specific to the asset.",
+    accountingPolicy: "4. NEW ACCOUNTING STANDARDS/AMENDMENTS TO EXISTING ACCOUNTING STANDARDS THAT BECAME EFFECTIVE DURING THE YEAR",
+    content: "discount rate that reflects current market assessments of the time value of money and the risks specific to the asset.\n\n3.8. Other Taxes\n\n3.8.1. Value Added Tax (VAT)\n\nVAT on financial services is calculated in accordance with Value Added Tax (VAT) Act No. 14 of 2002 and subsequent amendments thereto. The base for the computation of value added tax on financial services is the accounting profit before VAT and income tax adjusted for the economic depreciation and emoluments payable to employees including cash benefits, non-cash benefits & provisions relating to terminal benefits.\n\n3.8.2. Social Security Contribution Levy\n\nAs per the Social Security Contribution Levy (SSCL) Act No. 25 of 2022, effective from October 01, 2022, Bank is liable to pay SSCL on Financial Services at the rate of 2.5% on the value addition attributable to the supply of financial services. Further Non-Financial Services are made liable on the turnover at the rate of 2.5%.\n\n3.9. Regulatory Provisions\n\n3.9.1. Deposit Insurance and Liquidity Support Scheme\n\nAll Licensed Commercial Banks were required to insure their deposit liabilities in the \"Sri Lanka Deposit Insurance and Liquidity Support Scheme\" in terms of the Banking Act Direction No. 5 of 2010, issued on 27th September 2010. This was subsequently replaced by the Sri Lanka Deposit Insurance and Liquidity Support Scheme Regulations No. 2 of 2021, dated 06th August 2021. The Bank's total capital ratio as at 31st December 2025 exceed 14% and accordingly the Bank paid a premium of 0.1% of the eligible deposits as deposit insurance premium, during the year ended 31st December 2025.\n\n3.9.2. Crop Insurance Levy\n\nIn terms of the Finance Act No. 12 of 2013, all institutions under the purview of Banking Act No. 30 of 1988, Finance Business Act No. 42 of 2011 and Regulation of Insurance Industry Act No. 43 of 2000 are required to pay 1% of the profit after tax as Crop Insurance Levy to the National Insurance Trust Fund effective from 1st April 2013.\n\n4. NEW ACCOUNTING STANDARDS/AMENDMENTS TO EXISTING ACCOUNTING STANDARDS THAT BECAME EFFECTIVE DURING THE YEAR\n\n4.1. SLFRS 17 - Insurance Contracts\n\nHowever, there is no impact on the financial statements of the bank by applying the above to accounting standards.\n\n5. ACCOUNTING STANDARDS/CBSL DIRECTIVES ISSUED BUT NOT YET EFFECTIVE AS AT 31ST DECEMBER 2025"
   },
-
-  // NOTE 7: FEE & COMMISSION INCOME EARNED FROM TABLE (Point 51)
+  {
+    number: "Note 6",
+    title: "Gross Income",
+    summary: "6. GROSS INCOME",
+    accountingPolicy: "Accounting Policy",
+    content: "6. GROSS INCOME\n\nAccounting Policy\n\nRevenue is recognised to the extent that it is probable that the economic benefits will flow to the Bank and the revenue can be reliably measured. Specific recognition criteria that must be met before recognising revenue is discussed under Note 7 - Net Interest Income, Note 8 - Fee and Commission Income, Note 9 - Net Gain/(Loss) from Trading, Note 10 - Net Fair Value Gain/ (Loss) from Financial Assets at Fair Value through Profit or Loss and Note 11 - Net Other Operating Income.\n\nInterest income 7. 17,098,539,394 20,005,051,598\n\nFee and commission income 8. 716,349,082 631,017,156\n\nNet Gain/(Loss) from Trading 9. (553,000) 60,116,875\n\nNet Fair Value Gain/(Loss) from Financial Assets at Fair Value through Profit or Loss 10. 559,066,052 444,081,680\n\nNet Other Operating Income 11. 30,522,239 (77,686,610)\n\nTotal 18,403,923,767 21,062,580,699\n\n7. NET INTEREST INCOME\n\nAccounting Policy\n\nRecognition of Interest Income\n\nThe Bank recognises interest income for all financial instruments measured at amortised cost, interest-bearing financial assets measured at FVOCI and FVPL using the effective interest rate (EIR) method. The EIR is the rate that exactly discounts estimated future cash receipts through the expected life of the financial instrument or, when appropriate, a shorter period, to the net carrying amount of the financial asset.\n\nThe EIR (and therefore, the amortised cost of the asset) is calculated by taking into account any discount or premium on acquisition, fees and costs that are an integral part of the EIR. The Bank recognises interest income using a rate of return that represents the best estimate of a constant rate of return over the expected life of the loan. Hence, it recognises the effect of potentially different interest rates charged at various stages, and other characteristics of the product life cycle (including prepayments, penalty interest and charges).\n\nIf expectations regarding the cash flows on the financial asset are revised for reasons other than credit risk, the adjustment is booked as a positive or negative adjustment to the carrying amount of the asset in the Statement of Financial Position with an increase or reduction in interest income. The adjustment is subsequently amortised through interest and similar income in the Income Statement."
+  },
   {
     number: "Note 7",
-    title: "Net Fee and Commission Income",
-    summary: "Detailed breakdown of fee income earned from loans, cards, digital channels, and guarantees.",
-    accountingPolicy: "Accounting Policy: Fees earned from contracts with customers are recognized under SLFRS 15 based on the satisfaction of performance obligations over time or at a point in time. Loan syndication and processing fees are recognized over the facility life using the EIR method, while transaction-based digital fees are recognized when the service is executed.",
-    content: "Net fee and commission income rose 15.58% to LKR 675 Mn in 2025, driven by SME loan processing and UPay transactions.",
-    columns: [
-      { header: "Fee and Commission Earned From (LKR Mn)", key: "earnedFrom" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { earnedFrom: "Credit & Loan Processing Services", y2025: 385, y2024: 310 },
-      { earnedFrom: "Digital Banking & UPay Mobile Wallet Channels", y2025: 184, y2024: 154 },
-      { earnedFrom: "Retail Savings Account Operations & ATM Cards", y2025: 156, y2024: 142 },
-      { earnedFrom: "Trade Guarantees and Inward Remittances", y2025: 120, y2024: 119 },
-      { earnedFrom: "Total Fee and Commission Income", y2025: 845, y2024: 725 },
-      { earnedFrom: "Less: Electronic Switch & Clearing Expenses", y2025: -170, y2024: -141 },
-      { earnedFrom: "Net Fee and Commission Income", y2025: 675, y2024: 584 }
-    ]
+    title: "Net Interest Income",
+    summary: "6. GROSS INCOME",
+    accountingPolicy: "Accounting Policy",
+    content: "6. GROSS INCOME\n\nAccounting Policy\n\nRevenue is recognised to the extent that it is probable that the economic benefits will flow to the Bank and the revenue can be reliably measured. Specific recognition criteria that must be met before recognising revenue is discussed under Note 7 - Net Interest Income, Note 8 - Fee and Commission Income, Note 9 - Net Gain/(Loss) from Trading, Note 10 - Net Fair Value Gain/ (Loss) from Financial Assets at Fair Value through Profit or Loss and Note 11 - Net Other Operating Income.\n\nInterest income 7. 17,098,539,394 20,005,051,598\n\nFee and commission income 8. 716,349,082 631,017,156\n\nNet Gain/(Loss) from Trading 9. (553,000) 60,116,875\n\nNet Fair Value Gain/(Loss) from Financial Assets at Fair Value through Profit or Loss 10. 559,066,052 444,081,680\n\nNet Other Operating Income 11. 30,522,239 (77,686,610)\n\nTotal 18,403,923,767 21,062,580,699\n\n7. NET INTEREST INCOME\n\nAccounting Policy\n\nRecognition of Interest Income\n\nThe Bank recognises interest income for all financial instruments measured at amortised cost, interest-bearing financial assets measured at FVOCI and FVPL using the effective interest rate (EIR) method. The EIR is the rate that exactly discounts estimated future cash receipts through the expected life of the financial instrument or, when appropriate, a shorter period, to the net carrying amount of the financial asset.\n\nThe EIR (and therefore, the amortised cost of the asset) is calculated by taking into account any discount or premium on acquisition, fees and costs that are an integral part of the EIR. The Bank recognises interest income using a rate of return that represents the best estimate of a constant rate of return over the expected life of the loan. Hence, it recognises the effect of potentially different interest rates charged at various stages, and other characteristics of the product life cycle (including prepayments, penalty interest and charges).\n\nIf expectations regarding the cash flows on the financial asset are revised for reasons other than credit risk, the adjustment is booked as a positive or negative adjustment to the carrying amount of the asset in the Statement of Financial Position with an increase or reduction in interest income. The adjustment is subsequently amortised through interest and similar income in the Income Statement."
   },
-
-  // NOTE 8: NET FAIR VALUE GAIN/LOSS FROM FVTPL & POLICY (Point 52)
   {
     number: "Note 8",
-    title: "Net Fair Value Gain / (Loss) from Financial Assets at FVTPL",
-    summary: "Mark-to-market valuations and net trading income from assets held at fair value through profit or loss.",
-    accountingPolicy: "Accounting Policy: Financial assets at fair value through profit or loss are recognized initially at fair value, with transaction costs expensed in profit or loss. Subsequent to initial recognition, they are remeasured at fair value. Realized and unrealized gains and losses arising from changes in fair value are recognized in the Statement of Comprehensive Income under Net Fair Value Gains / (Losses) from Financial Assets at FVTPL.",
-    content: "Net trading and fair value gains rebounded to positive LKR 125 Mn in 2025, compared to a net loss of LKR 98 Mn in 2024.",
-    columns: [
-      { header: "Instrument Category (LKR Mn)", key: "instrument" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { instrument: "Trading Government Treasury Bills & Bonds", y2025: 82, y2024: -65 },
-      { instrument: "Quoted Equity Shares (Mark-to-Market)", y2025: 28, y2024: -21 },
-      { instrument: "Unit Trust Investments & Money Market Funds", y2025: 15, y2024: -12 },
-      { instrument: "Net Fair Value Gain / (Loss) from FVTPL", y2025: 125, y2024: -98 }
-    ]
+    title: "Net Fee and Commission Income",
+    summary: "Interest expenses",
+    accountingPolicy: "Accounting Policy",
+    content: "Interest expenses\n\nFinancial liabilities at amortised cost:\n\n- Due to other customers 7,825,125,872 10,287,471,096\n\n- Other borrowers 893,076,185 1,328,060,835\n\n- Subordinated term debt - 432,543,169\n\n- Finance cost of lease liability 147,655,694 136,512,505\n\nTotal interest expenses 8,865,857,751 12,184,587,605\n\nNet interest income 8,232,681,643 7,820,463,993\n\n7.1. Interest income from Sri Lanka Government securities\n\nInterest income from Sri Lanka Government securities 1,445,845,838 3,877,114,943\n\nTotal 1,445,845,838 3,877,114,943\n\n8. NET FEE AND COMMISSION INCOME\n\nAccounting Policy\n\nFee Income Earned from Services that are Provided over a Certain Period of Time\n\nFees earned for the provision of services over a period of time are accrued over that period. These fees include professional fees, trade service fees, commission income and asset management fees etc. Loan commitment fees for loans that are likely to be drawn down and other credit related fees are deferred (together with any incremental costs) and recognised as an adjustment to the effective interest rate of the loan. When it is unlikely that a loan will be drawn down, the loan commitment fees are recognised over the commitment period on a straight-line basis."
   },
-
-  // NOTE 10: NET OTHER OPERATING INCOME (Point 53)
+  {
+    number: "Note 9",
+    title: "Net Gain/(Loss) from Trading",
+    summary: "8.1. Fee and commission income earned from",
+    accountingPolicy: "Accounting Policy",
+    content: "8.1. Fee and commission income earned from\n\nLoans 242,007,639 149,505,718\n\nDeposits 107,765,171 105,461,295\n\nGuarantees 2,328,748 1,817,996\n\nCommission earned from insurance 67,367,134 78,404,998\n\nCommission earned from ATM 72,647,726 78,416,349\n\nOthers 224,232,664 217,410,800\n\nFee and commission income 716,349,082 631,017,156\n\n9. NET GAIN/(LOSS) FROM TRADING\n\nAccounting Policy\n\nNet gain/(loss) from trading includes all the capital gain/(loss) from financial assets measured at fair value through profit or loss.\n\nSri Lanka Government securities - Treasury bills and treasury bonds (553,000) 60,116,875\n\nTotal (553,000) 60,116,875\n\n10. NET FAIR VALUE GAIN/(LOSS) FROM FINANCIAL ASSETS AT FAIR VALUE THROUGH PROFIT OR LOSS\n\nAccounting Policy"
+  },
   {
     number: "Note 10",
-    title: "Net Other Operating Income",
-    summary: "Sundry earnings, rental income, locker charges, and recoveries of written-off advances.",
-    accountingPolicy: "Accounting Policy: Net other operating income comprises recoveries from advances previously written off, rental income, gains on property disposals, and foreign currency revaluations.",
-    content: "Net other operating income grew 13.58% to LKR 184 Mn in 2025, driven by active recovery management.",
-    columns: [
-      { header: "Operating Income Source (LKR Mn)", key: "source" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { source: "Recoveries of Loans and Advances Previously Written Off", y2025: 95, y2024: 82 },
-      { source: "Branch Rental Income & Safe Deposit Locker Fees", y2025: 45, y2024: 42 },
-      { source: "Net Foreign Currency Revaluation Gains", y2025: 24, y2024: 20 },
-      { source: "Sundry Commission and Miscellaneous Earnings", y2025: 20, y2024: 18 },
-      { source: "Total Net Other Operating Income", y2025: 184, y2024: 162 }
-    ]
+    title: "Net Fair Value Gain/(Loss) from Financial Assets at FVTPL",
+    summary: "8.1. Fee and commission income earned from",
+    accountingPolicy: "Accounting Policy",
+    content: "8.1. Fee and commission income earned from\n\nLoans 242,007,639 149,505,718\n\nDeposits 107,765,171 105,461,295\n\nGuarantees 2,328,748 1,817,996\n\nCommission earned from insurance 67,367,134 78,404,998\n\nCommission earned from ATM 72,647,726 78,416,349\n\nOthers 224,232,664 217,410,800\n\nFee and commission income 716,349,082 631,017,156\n\n9. NET GAIN/(LOSS) FROM TRADING\n\nAccounting Policy\n\nNet gain/(loss) from trading includes all the capital gain/(loss) from financial assets measured at fair value through profit or loss.\n\nSri Lanka Government securities - Treasury bills and treasury bonds (553,000) 60,116,875\n\nTotal (553,000) 60,116,875\n\n10. NET FAIR VALUE GAIN/(LOSS) FROM FINANCIAL ASSETS AT FAIR VALUE THROUGH PROFIT OR LOSS\n\nAccounting Policy"
   },
-
-  // NOTE 14: AUDITORS' REMUNERATION (Point 55)
+  {
+    number: "Note 11",
+    title: "Net Other Operating Income",
+    summary: "11. NET OTHER OPERATING INCOME",
+    accountingPolicy: "Accounting Policy",
+    content: "11. NET OTHER OPERATING INCOME\n\nAccounting Policy\n\nIncome earned on other sources, which are not directly related to the normal operations of the Bank are recognised as other operating income, such as gains on disposal of property, plant and equipment, dividend income and foreign exchange gains/ (losses).\n\nGains/(losses) arising from disposal of property, plant and equipment are recorded after deducting from the proceeds on disposal, the carrying amount of such assets and the related selling expenses.\n\nDividend income from investments in quoted and non quoted shares are recognised when the Bank's right to receive the payment is established.\n\nForeign exchange gain/(loss) includes gain/(loss) arising from revaluation of foreign currency assets/ liabilities.\n\nGain on sale of property, plant and equipment 3,686,790 78,691\n\nDividend income 476,195 291,165\n\nOther income 26,359,254 (78,056,466)\n\nOther operating income 30,522,239 (77,686,610)\n\n12. IMPAIRMENT FOR LOANS AND OTHER LOSSES\n\nAccounting Policy\n\nThe accounting policies adopted in determining the impairment allowance for financial assets including loans and advances are given in Note 3.2.6 to the Financial Statements.\n\n12.1. Balances with banks\n\nStage 1 773,046 (211,314)"
+  },
+  {
+    number: "Note 12",
+    title: "Impairment for Loans and Other Losses",
+    summary: "11. NET OTHER OPERATING INCOME",
+    accountingPolicy: "Accounting Policy",
+    content: "11. NET OTHER OPERATING INCOME\n\nAccounting Policy\n\nIncome earned on other sources, which are not directly related to the normal operations of the Bank are recognised as other operating income, such as gains on disposal of property, plant and equipment, dividend income and foreign exchange gains/ (losses).\n\nGains/(losses) arising from disposal of property, plant and equipment are recorded after deducting from the proceeds on disposal, the carrying amount of such assets and the related selling expenses.\n\nDividend income from investments in quoted and non quoted shares are recognised when the Bank's right to receive the payment is established.\n\nForeign exchange gain/(loss) includes gain/(loss) arising from revaluation of foreign currency assets/ liabilities.\n\nGain on sale of property, plant and equipment 3,686,790 78,691\n\nDividend income 476,195 291,165\n\nOther income 26,359,254 (78,056,466)\n\nOther operating income 30,522,239 (77,686,610)\n\n12. IMPAIRMENT FOR LOANS AND OTHER LOSSES\n\nAccounting Policy\n\nThe accounting policies adopted in determining the impairment allowance for financial assets including loans and advances are given in Note 3.2.6 to the Financial Statements.\n\n12.1. Balances with banks\n\nStage 1 773,046 (211,314)"
+  },
+  {
+    number: "Note 13",
+    title: "Personnel Expenses",
+    summary: "12.3. Financial assets at amorised cost - Loans and receivables to customers",
+    accountingPolicy: "Accounting Policy",
+    content: "12.3. Financial assets at amorised cost - Loans and receivables to customers\n\nStage 1 339,796,329 91,112,220\n\nStage 2 (178,646,385) (18,997,884)\n\nStage 3 556,975,308 488,879,455\n\nTotal 718,125,252 560,993,791\n\n12.4. Debt and other instruments\n\nStage 1 531,261 29,372\n\nTotal 531,261 29,372\n\nTotal 719,189,736 558,949,981\n\n13. PERSONNEL EXPENSES\n\nAccounting Policy\n\nShort Term Employee Benefits\n\nShort term employee benefit obligations are measured on an undiscounted basis and are expensed as the related service is provided. A liability is recognised for the amount expected to be paid under short term cash bonus or profit-sharing plans if the Bank has a present legal or constructive obligation to pay this amount as a result of past service provided by the employee and the obligation can be estimated reliably.\n\nDeﬁned Contribution Plans\n\nA defined contribution plan is a post-employment benefit plan under which an entity pays fixed contributions into a separate entity (a fund) and will have no legal or constructive obligation to pay further contributions if the fund does not hold sufficient assets to pay all employee benefits relating to employee services in the current and prior periods, as defined in the Sri Lanka Accounting Standard - LKAS 19 (Employee Benefits)."
+  },
   {
     number: "Note 14",
-    title: "Auditors' Remuneration",
-    summary: "Statutory audit and non-audit fees paid to Ernst & Young (EY).",
-    accountingPolicy: "Accounting Policy: Auditors' remuneration is recognized as an operating expense on an accrual basis for statutory audit services and regulatory assurance engagements conducted by Ernst & Young (EY).",
-    content: "Total remuneration paid to statutory external auditors Ernst & Young (EY) for the financial year ended 31st December 2025 was LKR 18.5 Mn.",
-    columns: [
-      { header: "Audit Fee Category (LKR Mn)", key: "feeType" },
-      { header: "FY 2025 (EY)", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { feeType: "Statutory Annual Financial Statement Audit (Ernst & Young)", y2025: 12.5, y2024: 11.2 },
-      { feeType: "Interim Quarterly Financial Reviews (Ernst & Young)", y2025: 3.5, y2024: 3.2 },
-      { feeType: "CBSL Internal Controls Assurance Report (SLSAE 3050)", y2025: 1.5, y2024: 1.4 },
-      { feeType: "Other Regulatory Certifications & Verification Reports", y2025: 1.0, y2024: 0.9 },
-      { feeType: "Total Auditors' Remuneration (Audited by EY)", y2025: 18.5, y2024: 16.7 }
-    ]
+    title: "Depreciation and Amortisation Expenses",
+    summary: "14. DEPRECIATION AND AMORTISATION EXPENSES",
+    accountingPolicy: "Accounting Policy",
+    content: "14. DEPRECIATION AND AMORTISATION EXPENSES\n\nAccounting Policy\n\nDepreciation of Property, Plant and Equipment\n\nThe Bank provides depreciation from the date the assets are available for use up to the date of disposal, at the following rates, on a straight-line basis, over the periods appropriate to the estimated useful lives, based on the pattern in which the asset's future economic benefits are expected to be consumed by the Bank.\n\nImprovements to leasehold properties are depreciated over the shorter of the lease term and their useful lives unless it is reasonably certain that the Bank will obtain ownership by the end of the lease term. Freehold lands are not depreciated.\n\nDepreciation of an asset ceases at the earlier of the date that the asset is classified as held for sale or the date that the asset is derecognised. Depreciation does not cease when the asset becomes idle or is retired from active use unless the asset is fully depreciated.\n\nAsset category\n\nBuildings 20 20 5 5\n\nComputer hardware 3-5 3-5 20 - 33.33 20 - 33.33\n\nMachinery and equipment 5 5 20 20\n\nMotor vehicles 4 4 25 25\n\nFurniture and fitting 5 5 20 20\n\nDigital Equipment 5 5 20 20\n\nAmortisation of Intangible Assets\n\nIntangible assets, except for goodwill, are amortised on a straight-line basis in the Statement of Profit or Loss from the date when the asset is available for use, over the best estimate of its useful economic life, based on a pattern in which the asset's economic benefits are consumed by the Bank. The Bank assumes that there is no residual value for its intangible assets."
   },
-
-  // NOTE 16: DEFERRED TAX ASSETS, LIABILITIES & INCOME TAX (Point 56)
+  {
+    number: "Note 15",
+    title: "Other Expenses",
+    summary: "Depreciation of property, plant and equipment 270,658,784 228,456,223",
+    accountingPolicy: "Accounting Policy",
+    content: "Depreciation of property, plant and equipment 270,658,784 228,456,223\n\nAmortisation of Right of use assets** 249,026,091 211,350,225\n\nAmortisation of intangible assets 182,517,759 171,115,012\n\nTotal 702,202,634 610,921,460\n\n** Bank has only Buildings under Right of Use Assets\n\n15. OTHER EXPENSES\n\nAccounting Policy\n\nOther expenses are recognised in the Statement of Profit or Loss on the basis of a direct association between the cost incurred and the earning of specific items of income. Provisions in respect of other expenses are recognised when the Bank has a present obligation (legal or constructive) as a result of a past event, it is probable that an outflow of resources embodying economic benefits will be required to settle the obligation and a reliable estimate can be made of the amount of the obligation.\n\nDirectors' emoluments 29,619,550 52,328,500\n\nAuditors' remunerations 9,600,000 5,875,000\n\nProfessional and legal expenses 12,304,960 24,684,977\n\nOffice administration and establishment expenses 2,240,290,236 2,162,833,408\n\nTotal 2,291,814,746 2,245,721,885\n\n15.1. Directors' emoluments include fees paid to Non-executive Directors\n\n15.2. Auditors' remunerations"
+  },
   {
     number: "Note 16",
-    title: "Deferred Tax Assets, Liabilities & Income Tax",
-    summary: "Movement in temporary differences, deferred tax asset recognition, and statutory corporate tax reconciliation.",
-    accountingPolicy: "Accounting Policy: Deferred tax is provided using the balance sheet liability method on temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for taxation purposes. Deferred tax assets are recognized to the extent that it is probable that future taxable profits will be available. Corporate income tax is calculated at the statutory rate of 30%.",
-    content: "Net deferred tax asset recognized in the Statement of Financial Position as at 31st December 2025 was LKR 420 Mn.",
-    columns: [
-      { header: "Deferred Tax Temporary Difference Item (LKR Mn)", key: "item" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { item: "ECL Impairment Allowance on Loans & Advances (SLFRS 9)", y2025: 485, y2024: 440 },
-      { item: "Retirement Benefit Obligations (Gratuity Provision)", y2025: 287, y2024: 279 },
-      { item: "Lease Liabilities (Right-of-Use Leases)", y2025: 205, y2024: 183 },
-      { item: "Gross Deferred Tax Assets", y2025: 977, y2024: 902 },
-      { item: "Accelerated Tax Depreciation on Property, Plant & Equipment", y2025: -373, y2024: -346 },
-      { item: "Right-of-Use Assets", y2025: -184, y2024: -171 },
-      { item: "Gross Deferred Tax Liabilities", y2025: -557, y2024: -517 },
-      { item: "Net Deferred Tax Asset Recognized", y2025: 420, y2024: 385 }
-    ]
+    title: "Tax Expense",
+    summary: "16. TAX EXPENSE",
+    accountingPolicy: "Accounting Policy",
+    content: "16. TAX EXPENSE\n\nAccounting Policy\n\nAs per Sri Lanka Accounting Standard - LKAS 12 (Income Taxes), tax expense is the aggregate amount included in determination of profit or loss for the period in respect of current and deferred taxation. Income tax expense is recognised in the Statement of Profit or Loss, except to the extent it relates to items recognised directly in equity or other comprehensive income in which case it is recognised in equity or in other comprehensive income.\n\nCurrent Taxation\n\nCurrent tax assets and liabilities consist of amounts expected to be recovered from or paid to the Commissioner General of Inland Revenue in respect of the current year, using the tax rates and tax laws enacted or substantively enacted on the reporting date and any adjustment to tax payable in respect of prior years. Accordingly, provision for taxation is based on the profit for the year adjusted for taxation purposes in accordance with the provisions of the Inland Revenue Act No. 24 of 2017 and the amendments thereto at the rates specified in Note 16.3.\n\nDeferred Taxation\n\nDeferred tax is provided on temporary differences at the reporting date between the tax bases of assets and liabilities and their carrying amounts for financial reporting purposes. Deferred tax liabilities are recognised for all taxable temporary differences, except:\n\nÐ Where the deferred tax liability arises from the initial recognition of goodwill or of an asset or liability in a transaction that\n\nis not a business combination and, at the time of the transaction, affects neither the accounting profit nor taxable profit or loss. and at the time of the transaction does not give rise to equal taxable and deductible temporary differences.\n\nÐ In respect of taxable temporary differences associated with investments in subsidiaries, where the timing of the reversal\n\nof the temporary differences can be controlled and it is probable that the temporary differences will not reverse in the foreseeable future.\n\nDeferred tax assets are recognised for all deductible temporary differences, carried forward unused tax credits and unused tax losses (if any), to the extent that it is probable that taxable profit will be available against which the deductible temporary differences, carried forward unused tax credits and unused tax losses can be utilised except:\n\nÐ Where the deferred tax asset relating to the deductible temporary differences arising from the initial recognition of an asset\n\nor liability in a transaction that is not a business combination, at the time of the transaction, affects neither the accounting profit nor taxable profit or loss and at the time of the transaction does not give rise to equal taxable and deductible temporary differences.\n\nÐ In respect of deductible temporary differences associated with investments in subsidiaries, deferred tax assets are"
   },
-
-  // NOTE 17: EARNINGS PER SHARE (EPS) TABLE (Point 57)
   {
     number: "Note 17",
     title: "Earnings Per Share (EPS)",
-    summary: "Computation of basic and diluted earnings per ordinary share.",
-    accountingPolicy: "Accounting Policy: Basic EPS is calculated by dividing the net profit for the year attributable to ordinary equity holders of the Bank by the weighted average number of ordinary shares in issue during the year. Diluted EPS is identical to Basic EPS as there were no potential dilutive ordinary shares outstanding during FY 2025.",
-    content: "Basic and Diluted Earnings Per Share for 2025 stood at LKR 2.52 per share based on 160,698,832 shares.",
-    columns: [
-      { header: "EPS Computation Metric", key: "metric" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { metric: "Profit Attributable to Equity Holders of the Bank (LKR)", y2025: "405,000,000", y2024: "410,000,000" },
-      { metric: "Weighted Average Number of Ordinary Shares in Issue", y2025: "160,698,832", y2024: "160,698,832" },
-      { metric: "Basic Earnings Per Share (LKR)", y2025: "2.52", y2024: "2.55" },
-      { metric: "Diluted Earnings Per Share (LKR)", y2025: "2.52", y2024: "2.55" }
-    ]
+    summary: "16.3. Income Tax Rate",
+    accountingPolicy: "Accounting Policy",
+    content: "16.3. Income Tax Rate\n\nThe Bank applied the rate of 30% in line with the Inland Revenue Amendment Act No. 45 of 2022 to calculate the income tax and deferred tax assets/liabilities as at 31st December 2025.\n\n17. EARNINGS PER SHARE\n\nAccounting Policy\n\nThe Bank presents basic and diluted Earnings per Share (EPS) data for its ordinary shares. Basic EPS is calculated by dividing the profit or loss attributable to ordinary equity shareholders of the Bank by the weighted average number of ordinary shares outstanding during the period. Diluted EPS is determined by adjusting both the profit attributable to the ordinary equity shareholders and the weighted average number of ordinary shares outstanding, for the effects of all dilutive potential ordinary shares, if any.\n\nNet profit for the year 404,918,546 409,534,246\n\nProfit attributable to ordinary shareholders 404,918,546 409,534,246\n\nWeighted average number of ordinary shares in issue 164,166,494 164,166,494\n\nBasic/diluted earnings per ordinary share 2.47 2.49\n\n18. CASH AND BALANCES WITH BANKS\n\nAccounting Policy\n\nCash and balances with banks comprise cash in hand, balances with banks, money at call and short notice that are subject to an insignificant risk of changes in their value. Cash and balances with banks are carried at amortised cost in the Statement of Financial Position. All cash and balances with banks balances held by the Bank were available for use.\n\nFor the purpose of the Statement of Cash Flows, cash and balances with banks consist of cash and short term deposits as defined above and placements with banks (less than 3 months) .\n\nCash in hand 404,560,619 553,989,208\n\nBalances with banks 6,700,846,056 1,888,632,556"
   },
-
-  // NOTE 18: CASH AND BALANCES WITH BANKS - 18.1, 18.2, 18.3 & POLICY (Point 58)
   {
     number: "Note 18",
     title: "Cash and Balances with Banks",
-    summary: "Cash in hand, statutory reserve requirement with CBSL, and demand deposits with commercial banks.",
-    accountingPolicy: "Accounting Policy: Cash and cash equivalents comprise cash in hand, vault coins, balances with banks, and highly liquid investments with original maturities of three months or less. Under Section 93 of the Monetary Law Act, the Bank is required to maintain a statutory liquid reserve balance with the Central Bank of Sri Lanka (CBSL) calculated as a percentage of prescribed deposit liabilities.",
-    content: "Total cash and balances with banks stood at LKR 2,566 Mn as at 31st December 2025.",
-    subNotes: [
-      {
-        subNumber: "18.1",
-        subTitle: "Cash in Hand and Foreign Currencies",
-        description: "Physical cash held across the Head Office vault and all 94 branch teller tills.",
-        columns: [
-          { header: "Cash Component (LKR Mn)", key: "comp" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { comp: "Local Currency Cash in Hand & Vaults", y2025: 1425, y2024: 1195 },
-          { comp: "Foreign Currency Notes in Hand", y2025: 25, y2024: 15 },
-          { comp: "Total Cash in Hand (Note 18.1)", y2025: 1450, y2024: 1210 }
-        ]
-      },
-      {
-        subNumber: "18.2",
-        subTitle: "Balances with Central Bank of Sri Lanka (CBSL)",
-        description: "Statutory reserve requirement held in non-interest bearing accounts with the Central Bank.",
-        columns: [
-          { header: "Central Bank Account (LKR Mn)", key: "acc" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { acc: "Statutory Reserve Balance (SRR Deposit)", y2025: 412, y2024: 390 },
-          { acc: "Total Balances with CBSL (Note 18.2)", y2025: 412, y2024: 390 }
-        ]
-      },
-      {
-        subNumber: "18.3",
-        subTitle: "Balances with Commercial Banks",
-        description: "Operating demand deposits and clearing accounts maintained with domestic licensed banks.",
-        columns: [
-          { header: "Commercial Bank Balance (LKR Mn)", key: "bank" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { bank: "Current Account Deposits with Commercial Banks", y2025: 452, y2024: 410 },
-          { bank: "Clearing & LankaPay Settlement Accounts", y2025: 252, y2024: 275 },
-          { bank: "Total Balances with Banks (Note 18.3)", y2025: 704, y2024: 685 }
-        ]
-      }
-    ]
+    summary: "16.3. Income Tax Rate",
+    accountingPolicy: "Accounting Policy",
+    content: "16.3. Income Tax Rate\n\nThe Bank applied the rate of 30% in line with the Inland Revenue Amendment Act No. 45 of 2022 to calculate the income tax and deferred tax assets/liabilities as at 31st December 2025.\n\n17. EARNINGS PER SHARE\n\nAccounting Policy\n\nThe Bank presents basic and diluted Earnings per Share (EPS) data for its ordinary shares. Basic EPS is calculated by dividing the profit or loss attributable to ordinary equity shareholders of the Bank by the weighted average number of ordinary shares outstanding during the period. Diluted EPS is determined by adjusting both the profit attributable to the ordinary equity shareholders and the weighted average number of ordinary shares outstanding, for the effects of all dilutive potential ordinary shares, if any.\n\nNet profit for the year 404,918,546 409,534,246\n\nProfit attributable to ordinary shareholders 404,918,546 409,534,246\n\nWeighted average number of ordinary shares in issue 164,166,494 164,166,494\n\nBasic/diluted earnings per ordinary share 2.47 2.49\n\n18. CASH AND BALANCES WITH BANKS\n\nAccounting Policy\n\nCash and balances with banks comprise cash in hand, balances with banks, money at call and short notice that are subject to an insignificant risk of changes in their value. Cash and balances with banks are carried at amortised cost in the Statement of Financial Position. All cash and balances with banks balances held by the Bank were available for use.\n\nFor the purpose of the Statement of Cash Flows, cash and balances with banks consist of cash and short term deposits as defined above and placements with banks (less than 3 months) .\n\nCash in hand 404,560,619 553,989,208\n\nBalances with banks 6,700,846,056 1,888,632,556"
   },
-
-  // NOTE 19: PLACEMENTS WITH BANKS (Point 54)
   {
     number: "Note 19",
-    title: "Placements with Banks and Financial Institutions",
-    summary: "Short-term money market deposits and call placements with licensed banks.",
-    accountingPolicy: "Accounting Policy: Interbank placements are measured at amortised cost less ECL allowances under SLFRS 9.",
-    content: "Placements with financial institutions reached LKR 5,410 Mn as at 31st December 2025.",
-    columns: [
-      { header: "Placement Category (LKR Mn)", key: "cat" },
-      { header: "FY 2025", key: "y2025" },
-      { header: "FY 2024", key: "y2024" }
-    ],
-    tableData: [
-      { cat: "Interbank Call Money Placements (Maturity < 7 Days)", y2025: 2540, y2024: 2310 },
-      { cat: "Short Term Fixed Placements (7 Days to 3 Months)", y2025: 2120, y2024: 1980 },
-      { cat: "Term Placements with Licensed Banks (3 to 12 Months)", y2025: 750, y2024: 695 },
-      { cat: "Gross Placements with Banks", y2025: 5410, y2024: 4985 }
-    ]
+    title: "Placements with Banks",
+    summary: "18.1. Analysis of cash and balances with banks based on exposure to credit risk",
+    accountingPolicy: "Accounting Policy",
+    content: "18.1. Analysis of cash and balances with banks based on exposure to credit risk\n\nCash and balances with banks 7,105,406,675 2,442,621,764\n\nLess : Impairment (1,100,852) (327,807)\n\nCarrying value after impairment 7,104,305,823 2,442,293,957\n\n18.2. Stage wise classification of impairment allowances of cash and balances with banks\n\nOpening balance as at 1 January 327,806 539,120\n\nCharges/(reversal) to income statement 773,046 (211,314)\n\nClosing balance as at 31 December 1,100,852 327,806\n\n18.3. Cash and balances with banks for cash flow statement\n\nCash and balances with banks 7,104,305,823 2,442,293,957\n\nRepurchase agreement - 702,455,685\n\nFixed deposits less than 3 months 300,000,000 300,000,000\n\nTotal 7,404,305,823 3,444,749,642\n\n19. PLACEMENTS WITH BANKS\n\nAccounting Policy"
   },
-
-  // NOTE 23: FINANCIAL ASSETS AT FVOCI - 23.1, 23.1.1, 23.1.2 (Point 59)
+  {
+    number: "Note 20",
+    title: "Financial Assets at Fair Value Through Profit or Loss",
+    summary: "19.2. Stage wise classification of impairment allowances of placements with banks",
+    accountingPolicy: "Accounting Policy",
+    content: "19.2. Stage wise classification of impairment allowances of placements with banks\n\nOpening balance as at 1 January 1,441,933 3,303,801\n\nCharges/(reversal) to income statement (239,823) (1,861,868)\n\nClosing balance as at 31 December 1,202,110 1,441,933\n\n*** Since specialised banks are not required to maintain statutory reserve requirement (SRR) at CBSL, it must instead comply with capital adequacy and liquidity requirements specific to its business model. (Refer note no 45.6)\n\n20. FINANCIAL ASSETS AT FAIR VALUE THROUGH PROFIT OR LOSS\n\nAccounting Policy\n\nThe accounting policies pertaining to \"Financial Assets Recognised through Profit or Loss - Measured at Fair Value\" are given in Note 3.2.3.4 to the Financial Statements.\n\nSri Lanka Government securities - Treasury bills and Treasury bonds - 257,985,600\n\nUnit trust - 6,481,214,474\n\nTotal - 6,739,200,074\n\n21. FINANCIAL ASSETS AT AMORTISED COST - LOANS AND RECEIVABLES TO OTHER CUSTOMERS\n\nAccounting Policy\n\nThe key accounting policies pertaining to financial instruments including \"Loans and Advances\" are given in Notes 3.2 to the Financial Statements.\n\nGross loans and receivables (Note 21.1) 118,564,908,494 103,181,716,494"
+  },
+  {
+    number: "Note 21",
+    title: "Financial Assets at Amortised Cost - Loans and Receivables to Other Customers",
+    summary: "19.2. Stage wise classification of impairment allowances of placements with banks",
+    accountingPolicy: "Accounting Policy",
+    content: "19.2. Stage wise classification of impairment allowances of placements with banks\n\nOpening balance as at 1 January 1,441,933 3,303,801\n\nCharges/(reversal) to income statement (239,823) (1,861,868)\n\nClosing balance as at 31 December 1,202,110 1,441,933\n\n*** Since specialised banks are not required to maintain statutory reserve requirement (SRR) at CBSL, it must instead comply with capital adequacy and liquidity requirements specific to its business model. (Refer note no 45.6)\n\n20. FINANCIAL ASSETS AT FAIR VALUE THROUGH PROFIT OR LOSS\n\nAccounting Policy\n\nThe accounting policies pertaining to \"Financial Assets Recognised through Profit or Loss - Measured at Fair Value\" are given in Note 3.2.3.4 to the Financial Statements.\n\nSri Lanka Government securities - Treasury bills and Treasury bonds - 257,985,600\n\nUnit trust - 6,481,214,474\n\nTotal - 6,739,200,074\n\n21. FINANCIAL ASSETS AT AMORTISED COST - LOANS AND RECEIVABLES TO OTHER CUSTOMERS\n\nAccounting Policy\n\nThe key accounting policies pertaining to financial instruments including \"Loans and Advances\" are given in Notes 3.2 to the Financial Statements.\n\nGross loans and receivables (Note 21.1) 118,564,908,494 103,181,716,494"
+  },
+  {
+    number: "Note 22",
+    title: "Financial Assets at Amortised Cost - Debt and Other Instruments",
+    summary: "21.6. Movement in individual and collective impairment",
+    accountingPolicy: "Accounting Policy",
+    content: "21.6. Movement in individual and collective impairment\n\nOpening balance as at 1 January 2024 3,874,068,410 3,736,851,979 7,610,920,389\n\nCharge/(reversal) to income statement (225,586,158) 786,579,947 560,993,790\n\nRecovery/(write-off) during the year - (127,304,552) (127,304,552)\n\nClosing balance as at 31 December 2024 3,648,482,252 4,396,127,374 8,044,609,627\n\nOpening balance as at 1 January 2025 3,648,482,252 4,396,127,374 8,044,609,627\n\nCharge/(reversal) to income statement 986,598,735 (268,473,483) 718,125,252\n\nRecovery/(write-off) during the year - (38,702,261) (38,702,261)\n\nClosing balance as at 31 December 2025 4,635,080,987 4,088,951,630 8,724,032,618\n\n21.7. Based on the impairment model revalidation, product segmentation has been re-classified after evaluating the credit risk characteristics of loan facilities. Analysis of loans and advances, commitments, contingencies mentioned in Note 45 has disclosed the product segmentation as at 31st December 2025 and 2024, after validating the impairment model. The Bank estimated Expected Credit Loss (ECL) as at December 31, 2025, based on the Probability of Default (PD), Loss Given Default (LGD) and Economic Factor Adjustment (EFA) computed as at December 31, 2025, after validating the impairment model.\n\n22. FINANCIAL ASSETS AT AMORTISED COST - DEBT AND OTHER INSTRUMENTS\n\nAccounting Policy\n\nThe accounting policies pertaining to financial instruments including \"Debt and Other Instruments\" are given in Note 3.2 to the Financial Statements.\n\nDebentures 101,277,055 101,365,915\n\nRepurchase agreement - 702,455,685"
+  },
   {
     number: "Note 23",
-    title: "Financial Assets Measured at Fair Value Through OCI (FVOCI)",
-    summary: "Government debt securities and unquoted strategic equity investments measured at fair value through OCI.",
-    accountingPolicy: "Accounting Policy: Debt instruments measured at FVOCI meet the contractual cash flow characteristics (SPPI) test and are held within a business model whose objective is achieved by both collecting contractual cash flows and selling financial assets. Fair value changes are recognized in Other Comprehensive Income until derecognition.",
-    content: "Total financial assets measured at FVOCI stood at LKR 3,850 Mn as at 31st December 2025.",
-    subNotes: [
-      {
-        subNumber: "23.1",
-        subTitle: "Government Debt Securities at FVOCI",
-        columns: [
-          { header: "Securities Type (LKR Mn)", key: "type" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { type: "Sri Lanka Government Treasury Bonds", y2025: 3580, y2024: 3840 },
-          { type: "Sri Lanka Government Treasury Bills", y2025: 220, y2024: 230 },
-          { type: "Total Government Securities at FVOCI (Note 23.1)", y2025: 3800, y2024: 4070 }
-        ]
-      },
-      {
-        subNumber: "23.1.1",
-        subTitle: "Unquoted Equity Shares Measured at FVOCI",
-        description: "Strategic unquoted equity investments held for developmental and cooperative objectives.",
-        columns: [
-          { header: "Investee Entity (LKR Mn)", key: "entity" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { entity: "Credit Information Bureau of Sri Lanka (CRIB)", y2025: 25, y2024: 25 },
-          { entity: "Lanka Financial Services Bureau Limited (LFSBL)", y2025: 15, y2024: 15 },
-          { entity: "SANASA Producer Consumer Alliance (Pvt) Ltd", y2025: 10, y2024: 10 },
-          { entity: "Total Unquoted Equity Shares (Note 23.1.1)", y2025: 50, y2024: 50 }
-        ]
-      },
-      {
-        subNumber: "23.1.2",
-        subTitle: "Movement in Fair Value Reserve (FVOCI)",
-        columns: [
-          { header: "Reserve Movement (LKR Mn)", key: "movement" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { movement: "Balance at 1st January", y2025: 936, y2024: 988 },
-          { movement: "Net Fair Value Gain / (Loss) Recognized in OCI", y2025: -142, y2024: -52 },
-          { movement: "Deferred Tax Impact on FVOCI Movements", y2025: 13, y2024: 0 },
-          { movement: "Balance as at 31st December (Note 23.1.2)", y2025: 807, y2024: 936 }
-        ]
-      }
-    ]
+    title: "Financial Assets Measured at Fair Value Through Other Comprehensive Income",
+    summary: "22.1. Analysis of debt and other instruments based on exposure to credit risk",
+    accountingPolicy: "Accounting Policy",
+    content: "22.1. Analysis of debt and other instruments based on exposure to credit risk\n\nDebentures 101,277,055 101,365,915\n\nRepurchase agreement - 702,455,685\n\nTreasury bill 15,314,643,470 21,787,314,036\n\nTrust Certificates 284,510,354 -\n\nCommercial papers - 878,595,890\n\nTreasury bonds 905,764,793 3,153,745,609\n\nLess : Impairment allowance (872,931) (341,669)\n\nCarrying value after impairment 16,605,322,741 26,623,135,466\n\n22.2. Stage wise classification of impairment allowances of debt and other instruments\n\nOpening balance as at 1 January 341,670 312,298\n\nCharges/(reversal) to income statement 531,261 29,372\n\nClosing balance as at 31 December 872,931 341,670\n\n22.3. Repurchase and reverse repurchase transactions in scripless treasury bonds and scripless treasury bills\n\nDirective No. 1 of 2019, issued by the Central Bank of Sri Lanka, requires Licensed Banks/Primary Dealers to disclose following additional information on repurchase and reverse repurchase transactions in scripless treasury bonds and bills."
   },
-
-  // NOTE 24: INVESTMENT IN SUBSIDIARIES - 24, 24.1 (Point 60)
   {
     number: "Note 24",
-    title: "Investment in Subsidiaries and Associates",
-    summary: "Investments in entities where the Bank exercises control or significant influence.",
-    accountingPolicy: "Accounting Policy: Investments in subsidiaries and associates are carried at cost less impairment losses in the separate financial statements of the Bank under LKAS 27.",
-    content: "The Bank holds strategic shareholdings in SANASA-affiliated subsidiaries.",
-    subNotes: [
-      {
-        subNumber: "24",
-        subTitle: "Carrying Value of Subsidiary Investments",
-        columns: [
-          { header: "Entity Name (LKR Mn)", key: "entity" },
-          { header: "Holding %", key: "holding" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { entity: "SDB Media and Technologies (Pvt) Ltd", holding: "100.0%", y2025: 100, y2024: 100 },
-          { entity: "SANASA Insurance Company Limited (Associate)", holding: "24.5%", y2025: 50, y2024: 50 },
-          { entity: "Total Investments in Subsidiaries & Associates", holding: "-", y2025: 150, y2024: 150 }
-        ]
-      },
-      {
-        subNumber: "24.1",
-        subTitle: "Principal Activities of Subsidiary Companies",
-        columns: [
-          { header: "Company", key: "company" },
-          { header: "Principal Activity", key: "activity" },
-          { header: "Country of Incorporation", key: "country" }
-        ],
-        tableData: [
-          { company: "SDB Media & Technologies (Pvt) Ltd", activity: "Fintech development, mobile app maintenance & IT support", country: "Sri Lanka" },
-          { company: "SANASA Insurance Co Ltd", activity: "General and microinsurance products for cooperative sector", country: "Sri Lanka" }
-        ]
-      }
-    ]
+    title: "Investment in Subsidiaries",
+    summary: "23.1. Unquoted equity securities",
+    accountingPolicy: "Accounting Policy",
+    content: "23.1. Unquoted equity securities\n\nSANASA Life Insurance Co. PLC 7,590,494 75,830,776 7,590,494 75,830,776\n\nCredit Information Bureau of Sri Lanka 100 10,000 100 10,000\n\nConsorzio Etimos S.C. 2 75,194 2 75,194\n\nNational Credit Guarantee Institution(NCGI) 15,114,475 151,143,740 15,114,475 151,143,740\n\nLoss from share valuation as at 31 December - (30,361,984) - (18,913,830)\n\nTotal 196,697,726 208,145,880\n\n23.1.1. Movement in unquoted equity securities\n\nOpening balance as at 1 January 208,145,880 56,939,524\n\nInvestments made during the year - 151,206,356\n\nDisposal during the year - -\n\nLoss from mark to market valuation (11,448,154) -\n\nClosing balance as at 31 December 196,697,726 208,145,880\n\n23.1.2. Valuation of unquoted equity securities\n\nType Level Method of valuation"
   },
-
-  // NOTE 26: FREEHOLD LAND AND HOLDINGS (Point 61)
+  {
+    number: "Note 25",
+    title: "Property, Plant and Equipment",
+    summary: "25. PROPERTY, PLANT AND EQUIPMENT",
+    accountingPolicy: "Accounting Policy",
+    content: "25. PROPERTY, PLANT AND EQUIPMENT\n\nAccounting Policy\n\nRecognition\n\nProperty, plant and equipment are tangible items that are held for use in the production or supply of services, for rental to others or for administrative purposes and are expected to be used during more than one period. The Bank applies the requirements of the Sri Lanka Accounting Standard - LKAS 16 (Property, Plant and Equipment) in accounting for these assets. Property, plant and equipment are recognised if it is probable that future economic benefits associated with the asset will flow to the Bank and the cost of the asset can be reliably measured.\n\nMeasurement\n\nAn item of property, plant and equipment that qualifies for recognition as an asset is initially measured at its cost. Cost includes expenditure that is directly attributable to the acquisition of the asset and cost incurred subsequently to add to, replace part of an item of property, plant and equipment. The cost of self-constructed assets includes the cost of materials and direct labour, any other costs directly attributable for bringing the asset to a working condition for its intended use and the costs of dismantling and removing the items and restoring the site on which they are located. Purchased software that is integral to the functionality of the related equipment is capitalised as a part of computer equipment. When parts of an item of property or equipment have different useful lives, they are accounted as separate items (major components) of property, plant and equipment.\n\nCost Model\n\nThe Bank applies cost model to property, plant and equipment and records at cost of purchase or construction together with any incidental expenses thereon less accumulated depreciation and any accumulated impairment losses.\n\nSubsequent Cost\n\nThe subsequent cost of replacing a component of an item of property, plant and equipment is recognised in the carrying amount of the item if it is probable that the future economic benefits embodied within that part will flow to the Bank and its cost can be reliably measured. The costs of day to day servicing of property, plant and equipment are charged to the Statement of Profit or Loss as incurred.\n\nDerecognition\n\nThe carrying amount of an item of property, plant and equipment is derecognised on disposal or when no future economic benefits are expected from its use. The gain or loss arising from de-recognition of an item of property, plant and equipment is included in the Statement of Profit or Loss when the item is derecognised. When replacement costs are recognised in the carrying amount of an item of property, plant and equipment, the remaining carrying amount of the replaced part is derecognised. Major inspection costs are capitalised. At each such capitalisation, the remaining carrying amount of the previous cost of inspection is derecognised.\n\nCapital Work in Progress\n\nThese are expenses of capital nature directly incurred in the construction of buildings, major plant, machinery and system development, awaiting capitalisation. Capital work-in-progress would be transferred to the relevant asset when it is available for use, i.e. when it is in the location and condition necessary for it to be capable of operating in the manner intended by management. Capital work-in-progress is stated at cost less any accumulated impairment losses.\n\nBorrowing Costs"
+  },
   {
     number: "Note 26",
-    title: "Property, Plant & Equipment - Freehold Land and Holdings",
-    summary: "Locations, land extents, valuation dates, and carrying values of Bank-owned real estate.",
-    accountingPolicy: "Accounting Policy: Freehold land is stated at revalued amounts based on triennial independent professional valuations by chartered valuation surveyors under LKAS 16.",
-    content: "The Bank's freehold properties comprise its Head Office and regional hub properties.",
-    columns: [
-      { header: "Location of Property", key: "location" },
-      { header: "Extent (Perches)", key: "extent" },
-      { header: "Valuation Surveyor", key: "surveyor" },
-      { header: "Carrying Value 2025 (LKR Mn)", key: "val" }
-    ],
-    tableData: [
-      { location: "No. 12, Edmonton Road, Kirulapone, Colombo 06 (Head Office)", extent: "52.4 Perches", surveyor: "P. B. Kalugalagedera & Associates", val: 385 },
-      { location: "SANASA Regional Hub, Paragammana, Kegalle", extent: "45.0 Perches", surveyor: "A. A. M. Fowzie, Chartered Valuer", val: 75 },
-      { location: "Regional Branch Land, Kandy Town Center", extent: "22.5 Perches", surveyor: "K. T. D. Tissera, Chartered Valuer", val: 50 },
-      { location: "Total Freehold Land and Holdings", extent: "119.9 Perches", surveyor: "Professional Chartered Valuers", val: 510 }
-    ]
+    title: "Right of Use Assets",
+    summary: "26. RIGHT OF USE ASSETS",
+    accountingPolicy: "Accounting Policy",
+    content: "26. RIGHT OF USE ASSETS\n\nAccounting Policy\n\nRight-of-use assets are presented in the statement of financial position (refer the accounting policy in Note 3.3). Right to use assets are depreciated on a straight line basis over the lease term.\n\nCost\n\nOpening balance as at 1 January 1,972,416,021 1,660,933,310\n\nAdditions and improvements during the year 826,998,824 311,482,711\n\nClosing balance as at 31 December 2,799,414,845 1,972,416,021\n\nLess: Accumulated amortisation\n\nOpening balance as at 1 January 1,191,978,239 980,628,014\n\nAmortisation expenses for the year 249,026,091 211,350,225\n\nClosing balance as at 31 December 1,441,004,330 1,191,978,239\n\nNet book value as at 31 December 1,358,410,515 780,437,781\n\n27. INTANGIBLE ASSETS\n\nAccounting Policy\n\nRecognition"
   },
-
-  // NOTE 30: OTHER BORROWINGS & DETAILS OF TERM LOANS - 30.1, 30.1.1, 30.2, 30.2.2 (Points 62, 63)
+  {
+    number: "Note 27",
+    title: "Intangible Assets",
+    summary: "26. RIGHT OF USE ASSETS",
+    accountingPolicy: "Accounting Policy",
+    content: "26. RIGHT OF USE ASSETS\n\nAccounting Policy\n\nRight-of-use assets are presented in the statement of financial position (refer the accounting policy in Note 3.3). Right to use assets are depreciated on a straight line basis over the lease term.\n\nCost\n\nOpening balance as at 1 January 1,972,416,021 1,660,933,310\n\nAdditions and improvements during the year 826,998,824 311,482,711\n\nClosing balance as at 31 December 2,799,414,845 1,972,416,021\n\nLess: Accumulated amortisation\n\nOpening balance as at 1 January 1,191,978,239 980,628,014\n\nAmortisation expenses for the year 249,026,091 211,350,225\n\nClosing balance as at 31 December 1,441,004,330 1,191,978,239\n\nNet book value as at 31 December 1,358,410,515 780,437,781\n\n27. INTANGIBLE ASSETS\n\nAccounting Policy\n\nRecognition"
+  },
+  {
+    number: "Note 28",
+    title: "Other Assets",
+    summary: "Derecognition of Intangible Assets",
+    accountingPolicy: "Derecognition of Intangible Assets",
+    content: "Derecognition of Intangible Assets\n\nThe carrying amount of an item of intangible asset is derecognised on disposal or when no future economic benefits are expected from its use. The gain or loss arising from de-recognition of an item of intangible asset is included in the Statement of Profit or Loss when the item is derecognised.\n\nThere were no restrictions on the title of the intangible assets as at the reporting date. Further, there were no items pledged as securities for liabilities.\n\nIntangible assets of the Bank as at 31st December 2023 only include computer software and cost of licenses.\n\nRates of amortisation for computer software and licenses are given in Note 14, 'Depreciation and Amortisation Expenses'.\n\nCost\n\nOpening balance as at 1 January 1,745,043,076 1,580,040,258\n\nAdditions 94,124,250 165,002,818\n\nDisposal (106,500) -\n\nClosing balance as at 31 December 1,839,060,826 1,745,043,076\n\nLess: Accumulated amortisation\n\nOpening balance as at 1 January 997,589,092 826,474,080\n\nCharge for the year 182,517,759 171,115,012\n\nDisposal (106,937) -\n\nClosing balance as at 31 December 1,179,999,914 997,589,092"
+  },
+  {
+    number: "Note 29",
+    title: "Due to Other Customers (Deposits)",
+    summary: "29. DUE TO OTHER CUSTOMERS",
+    accountingPolicy: "Accounting Policy",
+    content: "29. DUE TO OTHER CUSTOMERS\n\nAccounting Policy\n\nThe accounting policies pertaining to \"Due to Depositors\" are given in Note 3.2.3.7 to the Financial Statements.\n\nTotal amount due to other customers 105,680,974,038 106,989,899,941\n\nTotal 105,680,974,038 106,989,899,941\n\n29.1. Analysis of due to other customers\n\nBy product\n\nSavings deposits 22,008,224,706 20,926,764,822\n\nFixed deposits 83,672,749,332 86,063,135,119\n\nTotal 105,680,974,038 106,989,899,941\n\nBy currency\n\nSri Lanka Rupee 105,680,974,038 106,989,899,941\n\nTotal 105,680,974,038 106,989,899,941\n\n30. OTHER BORROWINGS\n\nAccounting Policy"
+  },
   {
     number: "Note 30",
-    title: "Other Borrowings & Details of Term Loans",
-    summary: "Long-term borrowings from multilateral lenders (ADB, FMO), CBSL refinance schemes, and term facilities.",
-    accountingPolicy: "Accounting Policy: Borrowings are initially recognized at fair value net of transaction costs and subsequently measured at amortised cost using the EIR method.",
-    content: "Total other borrowings and debt securities stood at LKR 8,410 Mn as at 31st December 2025.",
-    subNotes: [
-      {
-        subNumber: "30.1",
-        subTitle: "Summary of Other Borrowings",
-        columns: [
-          { header: "Borrowing Category (LKR Mn)", key: "cat" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { cat: "Multilateral Term Loans (ADB & FMO) (Note 30.1.1)", y2025: 5990, y2024: 5630 },
-          { cat: "Quoted Listed Subordinated Debentures", y2025: 1540, y2024: 1100 },
-          { cat: "CBSL Refinance Schemes", y2025: 880, y2024: 720 },
-          { cat: "Total Other Borrowings (Note 30.1)", y2025: 8410, y2024: 7450 }
-        ]
-      },
-      {
-        subNumber: "30.1.1",
-        subTitle: "Details of Term Loans - Multilateral Facilities",
-        columns: [
-          { header: "Lender / Development Partner", key: "lender" },
-          { header: "Facility Currency", key: "ccy" },
-          { header: "Interest Rate", key: "rate" },
-          { header: "Maturity", key: "mat" },
-          { header: "Carrying Value 2025 (LKR Mn)", key: "val" }
-        ],
-        tableData: [
-          { lender: "Asian Development Bank (ADB) - Tea Smallholder Credit", ccy: "LKR", rate: "Concessionary 6.50%", mat: "Dec 2028", val: 3540 },
-          { lender: "FMO (Dutch Entrepreneurial Development Bank)", ccy: "USD", rate: "SOFR + 3.75%", mat: "Jun 2027", val: 2450 },
-          { lender: "Total Multilateral Term Loans", ccy: "Mixed", rate: "Concessionary / SOFR", mat: "2027–2028", val: 5990 }
-        ]
-      },
-      {
-        subNumber: "30.2",
-        subTitle: "Maturity Analysis of Term Loans",
-        columns: [
-          { header: "Repayment Period (LKR Mn)", key: "period" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { period: "Due within one year", y2025: 1845, y2024: 1650 },
-          { period: "Due between one and five years", y2025: 5645, y2024: 4980 },
-          { period: "Due after five years", y2025: 920, y2024: 820 },
-          { period: "Total Term Borrowings", y2025: 8410, y2024: 7450 }
-        ]
-      },
-      {
-        subNumber: "30.2.2",
-        subTitle: "Subordinated Debt - Quoted Debentures",
-        columns: [
-          { header: "Debenture Tranche", key: "tranche" },
-          { header: "Interest Rate", key: "rate" },
-          { header: "Allotment Date", key: "allotment" },
-          { header: "Redemption Date", key: "redemption" },
-          { header: "Outstanding 2025 (LKR Mn)", key: "val" }
-        ],
-        tableData: [
-          { tranche: "Type A - 5 Year Subordinated Debentures", rate: "12.50% p.a. fixed", allotment: "2021", redemption: "2026", val: 1000 },
-          { tranche: "Type B - 5 Year Floating Debentures", rate: "AWPLR + 1.50%", allotment: "2023", redemption: "2028", val: 540 },
-          { tranche: "Total Listed Debentures", rate: "Fixed & Floating", allotment: "2021-2023", redemption: "2026-2028", val: 1540 }
-        ]
-      }
-    ]
+    title: "Other Borrowings",
+    summary: "29. DUE TO OTHER CUSTOMERS",
+    accountingPolicy: "Accounting Policy",
+    content: "29. DUE TO OTHER CUSTOMERS\n\nAccounting Policy\n\nThe accounting policies pertaining to \"Due to Depositors\" are given in Note 3.2.3.7 to the Financial Statements.\n\nTotal amount due to other customers 105,680,974,038 106,989,899,941\n\nTotal 105,680,974,038 106,989,899,941\n\n29.1. Analysis of due to other customers\n\nBy product\n\nSavings deposits 22,008,224,706 20,926,764,822\n\nFixed deposits 83,672,749,332 86,063,135,119\n\nTotal 105,680,974,038 106,989,899,941\n\nBy currency\n\nSri Lanka Rupee 105,680,974,038 106,989,899,941\n\nTotal 105,680,974,038 106,989,899,941\n\n30. OTHER BORROWINGS\n\nAccounting Policy"
   },
-
-  // NOTE 31: RETIREMENT BENEFIT OBLIGATION - 31, 31.1, 31.1.1, 31.1.2, 31.1.3 & 31.2 ASSUMPTIONS & SENSITIVITY (Points 64, 65)
   {
     number: "Note 31",
-    title: "Retirement Benefit Obligation (Gratuity)",
-    summary: "Actuarial valuation of defined benefit obligation, expenses recognized in P&L and OCI, key actuarial assumptions, and sensitivity analysis.",
-    accountingPolicy: "Accounting Policy: The Bank measures the present value of the promised retirement benefits for gratuity using the Projected Unit Credit (PUC) method under LKAS 19. An independent actuarial valuation is carried out annually by a qualified actuary. Actuarial gains and losses arising from experience adjustments and changes in actuarial assumptions are recognized immediately in Other Comprehensive Income (OCI).",
-    content: "The defined benefit obligation for gratuity recognized as at 31st December 2025 was LKR 957 Mn based on the actuarial report by Actuarial & Management Consultants (Pvt) Ltd.",
-    subNotes: [
-      {
-        subNumber: "31.1",
-        subTitle: "Movement in Defined Benefit Obligation",
-        columns: [
-          { header: "Obligation Movement (LKR Mn)", key: "item" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { item: "Obligation at 1st January", y2025: 930, y2024: 845 },
-          { item: "Current Service Cost for the Year (Note 31.1.2)", y2025: 85, y2024: 78 },
-          { item: "Interest Cost on Obligation (Note 31.1.2)", y2025: 97, y2024: 87 },
-          { item: "Actuarial (Gain) / Loss in OCI (Note 31.1.3)", y2025: 45, y2024: 16 },
-          { item: "Benefits Paid during the Year", y2025: -200, y2024: -96 },
-          { item: "Obligation as at 31st December (Note 31.1)", y2025: 957, y2024: 930 }
-        ]
-      },
-      {
-        subNumber: "31.1.2",
-        subTitle: "Expense Recognized in Profit or Loss",
-        columns: [
-          { header: "Expense Line (LKR Mn)", key: "line" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { line: "Current Service Cost", y2025: 85, y2024: 78 },
-          { line: "Interest Cost on Benefit Obligation", y2025: 97, y2024: 87 },
-          { line: "Total Recognized in Personnel Expenses (P&L)", y2025: 182, y2024: 165 }
-        ]
-      },
-      {
-        subNumber: "31.1.3",
-        subTitle: "Actuarial Losses / (Gains) Recognized in Other Comprehensive Income",
-        columns: [
-          { header: "Actuarial Variance Item (LKR Mn)", key: "item" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { item: "Actuarial Loss / (Gain) from Demographic Assumptions", y2025: 12, y2024: 4 },
-          { item: "Actuarial Loss / (Gain) from Financial Assumptions", y2025: 33, y2024: 12 },
-          { item: "Total Recognized in OCI", y2025: 45, y2024: 16 }
-        ]
-      },
-      {
-        subNumber: "31.2",
-        subTitle: "Key Actuarial Assumptions & Sensitivity Analysis",
-        columns: [
-          { header: "Key Actuarial Assumption", key: "assumption" },
-          { header: "Rate Adopted 2025", key: "rate2025" },
-          { header: "Rate Adopted 2024", key: "rate2024" },
-          { header: "Sensitivity (+1% / -1% Impact on Obligation)", key: "sensitivity" }
-        ],
-        tableData: [
-          { assumption: "Discount Rate", rate2025: "11.50% p.a.", rate2024: "12.00% p.a.", sensitivity: "+1%: -LKR 54 Mn / -1%: +LKR 61 Mn" },
-          { assumption: "Future Salary Increment Rate", rate2025: "9.00% p.a.", rate2024: "9.50% p.a.", sensitivity: "+1%: +LKR 63 Mn / -1%: -LKR 56 Mn" },
-          { assumption: "Staff Turnover Rate", rate2025: "5.00% p.a.", rate2024: "5.00% p.a.", sensitivity: "+1%: -LKR 12 Mn / -1%: +LKR 14 Mn" },
-          { assumption: "Retirement Age", rate2025: "60 Years", rate2024: "60 Years", sensitivity: "Statutory mandatory retirement age" },
-          { assumption: "Mortality Table", rate2025: "A1967/70 Ultimate", rate2024: "A1967/70 Ultimate", sensitivity: "Standard mortality table for Sri Lanka" }
-        ]
-      }
-    ]
+    title: "Retirement Benefit Obligation",
+    summary: "Movement in refinance loans",
+    accountingPolicy: "SANASA Federation (Refinance of Athwela Loans) 54,200,000 - - 54,200,000",
+    content: "Movement in refinance loans\n\nSANASA Federation (Refinance of Athwela Loans) 54,200,000 - - 54,200,000\n\nBorrowings under Refinance of PAMP RF 272,950,065 224,050,000 (187,224,952) 309,775,113\n\nBorrowing under Saubagya 316,238,753 - (196,387,286) 119,851,467\n\nBorrowing - Refinance SMILE III RF 288,634,600 80,650,000 (87,081,300) 282,203,300\n\nBorrowing - Suwashakthi Loan 4,806,083 - (3,701,083) 1,105,000\n\nBorrowing - Kapruka Ayojana 17,312,825 5,272,000 (6,359,790) 16,225,035\n\nBorrowing - SAPP 4P Youth Loan 7,624,650 - (6,574,650) 1,050,000\n\nBorrowing - SAPP RF Youth Loan 66,345,517 - (33,329,017) 33,016,500\n\nBorrowing - SAPP RF FI Bulk Refinance 550,000 58,695,000 (30,186,250) 29,058,750\n\nBorrowing - ADB Tea Refinance 159,845,590 - - 159,845,590\n\nBorrowing - ADB SME LOC Refinance 897,584,100 151,826,951 - 1,049,411,051\n\nBorrowing - CBSL DAD Refinance 28,551,543 - (11,406,716) 17,144,827\n\nBorrowing - SAPP RF Agribusiness Loan Refinance 404,167 4,250,000 (1,112,500) 3,541,667\n\nBorrowing- ADB SME LOC2 Working Capital 910,154,382 - (241,390,716) 668,763,666"
   },
-
-  // NOTE 41: ANALYSIS OF FINANCIAL INSTRUMENTS BY MEASUREMENT BASIS (Point 66)
+  {
+    number: "Note 32",
+    title: "Other Liabilities",
+    summary: "31.2. Sensitivity analysis on discounting rate and salary increment rate to statement of financial position and comprehensive income",
+    accountingPolicy: "Assumption",
+    content: "31.2. Sensitivity analysis on discounting rate and salary increment rate to statement of financial position and comprehensive income\n\nAssumption\n\nDiscount rate 1+ (120,240,079) (120,240,079) (94,440,379) (94,440,379)\n\nDiscount rate 1140,464,351 140,464,351 110,156,318 110,156,318\n\nSalary increment rate 1+ 136,650,874 136,650,874 108,354,707 108,354,707\n\nSalary increment rate 1- (119,251,891) (119,251,891) (94,577,681) (94,577,681)\n\n31.3. The expected benefit payout in the future years of retirement gratuity\n\nWithin next 12 months 69,475,049 68,130,552\n\nBetween 2 and 5 years 512,584,513 461,532,212\n\nBeyond 5 years 949,704,906 844,187,506\n\n32. OTHER LIABILITY\n\nSpecial purpose project funds 397,252,924 397,252,924\n\nLease liability (Note 32.1) 1,366,635,593 765,895,546\n\nAccruals and other payables 1,913,201,505 1,582,613,802\n\nTotal 3,677,090,022 2,745,762,272"
+  },
+  {
+    number: "Note 33",
+    title: "Stated Capital",
+    summary: "33. STATED CAPITAL",
+    accountingPolicy: "Ordinary shares - Issued and fully paid 11,406,601,998 11,406,601,998",
+    content: "33. STATED CAPITAL\n\nOrdinary shares - Issued and fully paid 11,406,601,998 11,406,601,998\n\nTotal 11,406,601,998 11,406,601,998\n\n33.1. Details of ordinary shares issued and fully paid\n\nOpening balance as as 1 January 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\nTotal 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\n34. STATUTORY RESERVE FUND\n\nOpening balance as at 1 January 361,049,165 340,572,453\n\nTransfer during the period 20,245,927 20,476,712\n\nClosing balance as at 31 December 381,295,092 361,049,165\n\n35. RETAINED EARNINGS\n\nOpening balance as at 1 January 2,388,242,984 2,275,936,735\n\nProfit for the year 404,918,546 409,534,247\n\nOther comprehensive income, net of tax (74,526,610) (136,943,311)\n\nTransfers to other reserves (20,245,927) (20,476,712)"
+  },
+  {
+    number: "Note 34",
+    title: "Statutory Reserve Fund",
+    summary: "33. STATED CAPITAL",
+    accountingPolicy: "Ordinary shares - Issued and fully paid 11,406,601,998 11,406,601,998",
+    content: "33. STATED CAPITAL\n\nOrdinary shares - Issued and fully paid 11,406,601,998 11,406,601,998\n\nTotal 11,406,601,998 11,406,601,998\n\n33.1. Details of ordinary shares issued and fully paid\n\nOpening balance as as 1 January 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\nTotal 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\n34. STATUTORY RESERVE FUND\n\nOpening balance as at 1 January 361,049,165 340,572,453\n\nTransfer during the period 20,245,927 20,476,712\n\nClosing balance as at 31 December 381,295,092 361,049,165\n\n35. RETAINED EARNINGS\n\nOpening balance as at 1 January 2,388,242,984 2,275,936,735\n\nProfit for the year 404,918,546 409,534,247\n\nOther comprehensive income, net of tax (74,526,610) (136,943,311)\n\nTransfers to other reserves (20,245,927) (20,476,712)"
+  },
+  {
+    number: "Note 35",
+    title: "Retained Earnings",
+    summary: "33. STATED CAPITAL",
+    accountingPolicy: "Ordinary shares - Issued and fully paid 11,406,601,998 11,406,601,998",
+    content: "33. STATED CAPITAL\n\nOrdinary shares - Issued and fully paid 11,406,601,998 11,406,601,998\n\nTotal 11,406,601,998 11,406,601,998\n\n33.1. Details of ordinary shares issued and fully paid\n\nOpening balance as as 1 January 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\nTotal 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\n34. STATUTORY RESERVE FUND\n\nOpening balance as at 1 January 361,049,165 340,572,453\n\nTransfer during the period 20,245,927 20,476,712\n\nClosing balance as at 31 December 381,295,092 361,049,165\n\n35. RETAINED EARNINGS\n\nOpening balance as at 1 January 2,388,242,984 2,275,936,735\n\nProfit for the year 404,918,546 409,534,247\n\nOther comprehensive income, net of tax (74,526,610) (136,943,311)\n\nTransfers to other reserves (20,245,927) (20,476,712)"
+  },
+  {
+    number: "Note 36",
+    title: "Other Reserves",
+    summary: "33. STATED CAPITAL",
+    accountingPolicy: "Ordinary shares - Issued and fully paid 11,406,601,998 11,406,601,998",
+    content: "33. STATED CAPITAL\n\nOrdinary shares - Issued and fully paid 11,406,601,998 11,406,601,998\n\nTotal 11,406,601,998 11,406,601,998\n\n33.1. Details of ordinary shares issued and fully paid\n\nOpening balance as as 1 January 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\nTotal 11,406,601,998 11,406,601,998 164,166,494 164,166,494\n\n34. STATUTORY RESERVE FUND\n\nOpening balance as at 1 January 361,049,165 340,572,453\n\nTransfer during the period 20,245,927 20,476,712\n\nClosing balance as at 31 December 381,295,092 361,049,165\n\n35. RETAINED EARNINGS\n\nOpening balance as at 1 January 2,388,242,984 2,275,936,735\n\nProfit for the year 404,918,546 409,534,247\n\nOther comprehensive income, net of tax (74,526,610) (136,943,311)\n\nTransfers to other reserves (20,245,927) (20,476,712)"
+  },
+  {
+    number: "Note 37",
+    title: "Contingent Liabilities and Commitments",
+    summary: "General reserve 46,656,973 - 46,656,973",
+    accountingPolicy: "Accounting Policy",
+    content: "General reserve 46,656,973 - 46,656,973\n\nRevaluation reserve 333,975,868 69,025,000 403,000,868\n\nAvailable for sale/fair value through OCI reserve (19,051,624) - (19,051,624)\n\nTotal 361,581,217 69,025,000 430,606,217\n\n37. CONTINGENT LIABILITIES AND COMMITMENTS\n\nAccounting Policy\n\nThe accounting policies pertaining to \"Commitments and Contingencies\" are given in Note 2.20 to the Financial Statements.\n\n37.1 Bank guarantees and Commitements\n\nBank guarantees 389,539,808 284,090,361\n\nUndrawn Credit Lines 643,352,917 585,234,172\n\nTotal 1,032,892,725 869,324,533\n\n37.2. Maturity analysis of Bank guarantees and Commitements\n\nAs at December 2024 (LKR) On Demand\n\nFinancial Guarantee 9,740,343 63,181,207 74,106,715 45,514,357 86,941,440 4,606,299 284,090,361\n\nUndrawn Credit Lines 585,234,172 - - - - - 585,234,172"
+  },
+  {
+    number: "Note 38",
+    title: "Events Occurring After the Reporting Date",
+    summary: "38. EVENTS OCCURRING AFTER THE REPORTING DATE",
+    accountingPolicy: "Accounting Policy",
+    content: "38. EVENTS OCCURRING AFTER THE REPORTING DATE\n\nAccounting Policy\n\nEvents after the reporting period are those events, favourable and unfavourable, that occur between the reporting date and the date when the Financial Statements are authorised for issue. No circumstances have arisen since the reporting date which would require adjustments to, or disclosure in the Financial Statements.\n\n39. RELATED PARTY DISCLOSURE\n\nThe Bank carries out transaction in the ordinary course of business with the parties who are defined as related parties in the Sri Lanka Accounting Standard - LKAS 24 on \"Related Party Disclosures\", the details of which are reported below: The Bank carries out transactions in the ordinary course of business on an arm's length basis at commercial rates with related parties who are defined as LKAS 24 \"Related Party Disclosures\".\n\n39.1. Transactions with key management personnel (KMP)\n\nKey management personnel include: the Chairman, the Board of Directors, and Chief Executive Officer, Deputy Chief Executive Officer of the Bank. Transactions with close family members of key management personnel are also taken into account in the transactions with key management personnel. The Same term, including interest/commission rates and security, as for comparable transaction with person of a similar standing or, where applicable, with the employees. The transaction did not involve more than the normal risk of repayment or present other unfavorable features.\n\n39.1.1. Key management personnel compensation\n\nShort term employee benefits 79,135,000 72,845,452\n\n39.1.2. Other transactions (loans and receivables) with key management personnel - Balance outstanding\n\nGranting - -\n\nRepayments - -\n\nClosing balance as at 31 December - -\n\nInterest income - -\n\n39.1.3. Deposits and investment from key management personnel - Balance outstanding"
+  },
+  {
+    number: "Note 39",
+    title: "Related Party Disclosures",
+    summary: "38. EVENTS OCCURRING AFTER THE REPORTING DATE",
+    accountingPolicy: "Accounting Policy",
+    content: "38. EVENTS OCCURRING AFTER THE REPORTING DATE\n\nAccounting Policy\n\nEvents after the reporting period are those events, favourable and unfavourable, that occur between the reporting date and the date when the Financial Statements are authorised for issue. No circumstances have arisen since the reporting date which would require adjustments to, or disclosure in the Financial Statements.\n\n39. RELATED PARTY DISCLOSURE\n\nThe Bank carries out transaction in the ordinary course of business with the parties who are defined as related parties in the Sri Lanka Accounting Standard - LKAS 24 on \"Related Party Disclosures\", the details of which are reported below: The Bank carries out transactions in the ordinary course of business on an arm's length basis at commercial rates with related parties who are defined as LKAS 24 \"Related Party Disclosures\".\n\n39.1. Transactions with key management personnel (KMP)\n\nKey management personnel include: the Chairman, the Board of Directors, and Chief Executive Officer, Deputy Chief Executive Officer of the Bank. Transactions with close family members of key management personnel are also taken into account in the transactions with key management personnel. The Same term, including interest/commission rates and security, as for comparable transaction with person of a similar standing or, where applicable, with the employees. The transaction did not involve more than the normal risk of repayment or present other unfavorable features.\n\n39.1.1. Key management personnel compensation\n\nShort term employee benefits 79,135,000 72,845,452\n\n39.1.2. Other transactions (loans and receivables) with key management personnel - Balance outstanding\n\nGranting - -\n\nRepayments - -\n\nClosing balance as at 31 December - -\n\nInterest income - -\n\n39.1.3. Deposits and investment from key management personnel - Balance outstanding"
+  },
+  {
+    number: "Note 40",
+    title: "Assets Pledged",
+    summary: "39.1.4. Shareholdings by key management personnel",
+    accountingPolicy: "41. ANALYSIS OF FINANCIAL INSTRUMENTS BY MEASUREMENT BASIS",
+    content: "39.1.4. Shareholdings by key management personnel\n\nNumber of shares held by KMP 119,676 119,676\n\nA39.1.5. Term and conditions of transaction with related parties\n\nAll related party transaction are carried out in the normal course of business and transacted at normal business terms. Transaction from related parties are made on terms equivalent to those that prevail in arm's length transaction and comparable with those that would have been charged from unrelated companies. All related party outstanding balances at the year - end are secured and are to be settled in cash.\n\n39.1.6. Recurrent and Non-recurrent Related Party Transactions\n\nThe Bank does not have any transactions where the aggregate value of the non-recurrent Related Party Transactions exceeds 10% of the Equity or 5% of the Total Assets, whichever is lower.\n\nThe Bank did not have any transactions where the aggregate value of the recurrent Related Party Transactions exceeds 10% of the gross income of the Bank.\n\n40. ASSETS PLEDGED\n\nAs of 2025 and 2024, the bank has no pledged loan portfolios.\n\n41. ANALYSIS OF FINANCIAL INSTRUMENTS BY MEASUREMENT BASIS\n\nAs at 31 December 2025 Amortised cost FVTPL FVTOCI Total\n\nFinancial assets\n\nCash and balances with banks 7,104,305,823 - - 7,104,305,823\n\nPlacements with banks 7,801,226,634 - - 7,801,226,634\n\nFinancial assets at fair value through profit or loss - - - -"
+  },
   {
     number: "Note 41",
     title: "Analysis of Financial Instruments by Measurement Basis",
-    summary: "Classification of financial assets and liabilities into Amortised Cost, FVTPL, and FVOCI under SLFRS 9.",
-    accountingPolicy: "Accounting Policy: Financial assets and financial liabilities are classified into measurement categories upon initial recognition in accordance with SLFRS 9 criteria.",
-    content: "Summary of carrying values across measurement bases as at 31st December 2025.",
-    columns: [
-      { header: "Statement Line (LKR Mn)", key: "line" },
-      { header: "FVTPL", key: "fvtpl" },
-      { header: "FVOCI", key: "fvoci" },
-      { header: "Amortised Cost", key: "amortised" },
-      { header: "Total Carrying Amount", key: "total" }
-    ],
-    tableData: [
-      { line: "Cash and Cash Equivalents", fvtpl: 0, fvoci: 0, amortised: 2154, total: 2154 },
-      { line: "Balances with Central Bank", fvtpl: 0, fvoci: 0, amortised: 412, total: 412 },
-      { line: "Placements with Banks", fvtpl: 0, fvoci: 0, amortised: 5410, total: 5410 },
-      { line: "Financial Assets at FVTPL", fvtpl: 1120, fvoci: 0, amortised: 0, total: 1120 },
-      { line: "Financial Assets at FVOCI", fvtpl: 0, fvoci: 3850, amortised: 0, total: 3850 },
-      { line: "Loans & Advances to Customers (Net)", fvtpl: 0, fvoci: 0, amortised: 109841, total: 109841 },
-      { line: "Financial Assets at Amortised Cost - Debt", fvtpl: 0, fvoci: 0, amortised: 21540, total: 21540 },
-      { line: "Total Financial Assets", fvtpl: 1120, fvoci: 3850, amortised: 139357, total: 144327 },
-      { line: "Due to Other Customers (Deposits)", fvtpl: 0, fvoci: 0, amortised: 105681, total: 105681 },
-      { line: "Due to Banks", fvtpl: 0, fvoci: 0, amortised: 13452, total: 13452 },
-      { line: "Other Borrowings & Debt Securities", fvtpl: 0, fvoci: 0, amortised: 8410, total: 8410 },
-      { line: "Lease Liabilities", fvtpl: 0, fvoci: 0, amortised: 684, total: 684 },
-      { line: "Total Financial Liabilities", fvtpl: 0, fvoci: 0, amortised: 128227, total: 128227 }
-    ]
+    summary: "39.1.4. Shareholdings by key management personnel",
+    accountingPolicy: "41. ANALYSIS OF FINANCIAL INSTRUMENTS BY MEASUREMENT BASIS",
+    content: "39.1.4. Shareholdings by key management personnel\n\nNumber of shares held by KMP 119,676 119,676\n\nA39.1.5. Term and conditions of transaction with related parties\n\nAll related party transaction are carried out in the normal course of business and transacted at normal business terms. Transaction from related parties are made on terms equivalent to those that prevail in arm's length transaction and comparable with those that would have been charged from unrelated companies. All related party outstanding balances at the year - end are secured and are to be settled in cash.\n\n39.1.6. Recurrent and Non-recurrent Related Party Transactions\n\nThe Bank does not have any transactions where the aggregate value of the non-recurrent Related Party Transactions exceeds 10% of the Equity or 5% of the Total Assets, whichever is lower.\n\nThe Bank did not have any transactions where the aggregate value of the recurrent Related Party Transactions exceeds 10% of the gross income of the Bank.\n\n40. ASSETS PLEDGED\n\nAs of 2025 and 2024, the bank has no pledged loan portfolios.\n\n41. ANALYSIS OF FINANCIAL INSTRUMENTS BY MEASUREMENT BASIS\n\nAs at 31 December 2025 Amortised cost FVTPL FVTOCI Total\n\nFinancial assets\n\nCash and balances with banks 7,104,305,823 - - 7,104,305,823\n\nPlacements with banks 7,801,226,634 - - 7,801,226,634\n\nFinancial assets at fair value through profit or loss - - - -"
   },
-
-  // NOTE 42: FAIR VALUE OF FINANCIAL INSTRUMENTS - 42.1, 42.2, 42.2.1, 42.3 (Points 67, 68, 69)
   {
     number: "Note 42",
-    title: "Fair Value of Financial Instruments (SLFRS 13)",
-    summary: "Fair value hierarchy (Level 1, Level 2, Level 3), valuation techniques, inputs, and Level 3 movement reconciliations.",
-    accountingPolicy: "Accounting Policy: SLFRS 13 defines fair value as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date. Level 1 inputs are quoted prices in active markets. Level 2 inputs are observable market yields. Level 3 inputs are unobservable inputs based on discounted cash flows or net asset valuations.",
-    content: "Comparison between carrying amounts and fair values of financial instruments.",
-    subNotes: [
-      {
-        subNumber: "42.1",
-        subTitle: "Comparison of Carrying Amount vs Fair Value",
-        columns: [
-          { header: "Financial Instrument (LKR Mn)", key: "inst" },
-          { header: "Carrying Amount 2025", key: "carry" },
-          { header: "Fair Value 2025", key: "fair" },
-          { header: "Hierarchy Level", key: "level" }
-        ],
-        tableData: [
-          { inst: "Financial Assets at FVTPL (Treasury Bills & Equities)", carry: 1120, fair: 1120, level: "Level 1" },
-          { inst: "Financial Assets at FVOCI (Treasury Bonds)", carry: 3800, fair: 3800, level: "Level 2" },
-          { inst: "Unquoted Equities at FVOCI (CRIB, LFSBL)", carry: 50, fair: 50, level: "Level 3" },
-          { inst: "Loans & Advances to Customers (Net)", carry: 109841, fair: 110450, level: "Level 3" },
-          { inst: "Financial Debt Assets at Amortised Cost", carry: 21540, fair: 21620, level: "Level 2" },
-          { inst: "Customer Deposits (Fixed & Savings)", carry: 105681, fair: 105710, level: "Level 2" },
-          { inst: "Other Borrowings & Debentures", carry: 8410, fair: 8395, level: "Level 2" }
-        ]
-      },
-      {
-        subNumber: "42.2",
-        subTitle: "Fair Value Hierarchy Analysis",
-        columns: [
-          { header: "Fair Value Category (LKR Mn)", key: "cat" },
-          { header: "Level 1", key: "l1" },
-          { header: "Level 2", key: "l2" },
-          { header: "Level 3", key: "l3" },
-          { header: "Total Fair Value", key: "total" }
-        ],
-        tableData: [
-          { cat: "Financial Assets at FVTPL", l1: 1120, l2: 0, l3: 0, total: 1120 },
-          { cat: "Financial Assets at FVOCI", l1: 0, l2: 3800, l3: 50, total: 3850 },
-          { cat: "Total Financial Assets Measured at Fair Value", l1: 1120, l2: 3800, l3: 50, total: 4970 }
-        ]
-      },
-      {
-        subNumber: "42.2.1",
-        subTitle: "Valuation Techniques and Significant Unobservable Inputs (Level 2 & Level 3)",
-        columns: [
-          { header: "Instrument Type", key: "type" },
-          { header: "Valuation Technique", key: "technique" },
-          { header: "Observable / Unobservable Inputs", key: "inputs" },
-          { header: "Inter-relationship with Fair Value", key: "inter" }
-        ],
-        tableData: [
-          { type: "Treasury Bonds & Bills (Level 2)", technique: "Market comparison using CBSL daily published yield curve", inputs: "Secondary market yield curve rates", inter: "Increase in yields decreases fair value" },
-          { type: "Unquoted Equities (Level 3)", technique: "Net Asset Value (NAV) per share model", inputs: "Audited net asset value of investee companies", inter: "Higher NAV increases fair value" },
-          { type: "Loans & Advances (Fair Value Disclosure)", technique: "Discounted Cash Flow (DCF) model", inputs: "Contractual cash flows, current market lending rates, credit spreads", inter: "Lower market rates increase fair value" }
-        ]
-      },
-      {
-        subNumber: "42.3",
-        subTitle: "Reconciliation of Level 3 Fair Value Movements",
-        columns: [
-          { header: "Level 3 Movement (LKR Mn)", key: "movement" },
-          { header: "FY 2025", key: "y2025" },
-          { header: "FY 2024", key: "y2024" }
-        ],
-        tableData: [
-          { movement: "Opening Balance at 1st January (Unquoted Equities)", y2025: 50, y2024: 48 },
-          { movement: "Gains recognized in OCI", y2025: 0, y2024: 2 },
-          { movement: "Additions / Settlements", y2025: 0, y2024: 0 },
-          { movement: "Closing Balance as at 31st December", y2025: 50, y2024: 50 }
-        ]
-      }
-    ]
+    title: "Fair Value of Financial Instruments",
+    summary: "As at 31 December 2024 Amortised cost FVTPL FVTOCI Total",
+    accountingPolicy: "Accounting Policy",
+    content: "As at 31 December 2024 Amortised cost FVTPL FVTOCI Total\n\nFinancial assets\n\nCash and balances with banks 2,442,293,957 - - 2,442,293,957\n\nPlacements with banks 9,083,957,854 - - 9,083,957,854\n\nFinancial assets at fair value through profit or loss - 6,739,200,074 - 6,739,200,074\n\nFinancial assets at amortised cost\n\n- Loans and receivables to other customers 95,137,106,867 - - 95,137,106,867\n\n- Debt and other instruments 26,623,135,466 - - 26,623,135,466\n\nFinancial assets measured at fair value through other comprehensive income - - 208,145,880 208,145,880\n\nTotal financial assets 133,286,494,144 6,739,200,074 208,145,880 140,233,840,098\n\nFinancial liabilities\n\nDue to other customers 106,989,899,941 - - 106,989,899,941\n\nOther borrowings 19,075,131,562 - - 19,075,131,562\n\nTotal financial liabilities 126,065,031,503 - - 126,065,031,503\n\n42. FAIR VALUE OF FINANCIAL INSTRUMENTS"
   },
-
-  // NOTE 44: MATURITY ANALYSIS OF ASSETS AND LIABILITIES (Point 70)
+  {
+    number: "Note 43",
+    title: "Segment Reporting",
+    summary: "43. SEGMENT REPORTING",
+    accountingPolicy: "Accounting Policy",
+    content: "43. SEGMENT REPORTING\n\nAccounting Policy\n\nManagement monitors the operating results of its business units separately for the purpose of making decisions about resource allocation and performance assessment. Segment performance is evaluated based on operating profits or losses, which in certain respects, are measured differently from operating profits or losses in the Financial Statements. Taxes are managed at an entity level and are not allocated to operating segments. Including revenue and expenses that relate to transactions with any of the Bank's other components, whose operating results are reviewed regularly by the operating decision maker to make decisions about resources allocated to each segment and assess its performance, and for which discrete financial information is available.\n\nAn operating segment is a component of the Bank that engages in business activities from which it may earn revenue and incur expenses.\n\nInterest income is reported net as management primarily relies on net interest income as a performance measure, not the gross income and expense.\n\nRevenue from transactions with a single external customer or counterparty did not exceed 10% or more of the Bank's total revenue in 2024 or 2025.\n\nThe following table presents income, profit, total assets, total liabilities & cash flows of the Bank's operating segments.\n\nInterest income 11,820,331,402 1,520,910,845 2,533,482,771 1,223,814,376 17,098,539,394\n\nAdd: Inter-segment interest income 10,289,113,237 - 9,545,156,066 - 19,834,269,303\n\nTotal interest income 22,109,444,639 1,520,910,845 12,078,638,837 1,223,814,376 36,932,808,697\n\nInterest expenses (6,640,745,664) (688,049,677) (697,474,113) (839,588,297) (8,865,857,751)\n\nAdd: Inter-segment interest expense (9,545,156,067) - (10,289,113,236) - (19,834,269,303)\n\nTotal interest expense (16,185,901,731) (688,049,677) (10,986,587,349) (839,588,297) (28,700,127,054)\n\nNet interest income 5,923,542,908 832,861,168 1,092,051,488 384,226,079 8,232,681,643\n\nFee and commission income 660,408,532 55,940,550 - - 716,349,082"
+  },
   {
     number: "Note 44",
     title: "Maturity Analysis of Assets and Liabilities",
-    summary: "Liquidity profile allocating all assets and liabilities into remaining contractual maturity time buckets.",
-    accountingPolicy: "Accounting Policy: In accordance with CBSL Guidelines and LKAS 1, the maturity profile of assets and liabilities is compiled based on remaining contractual maturities.",
-    content: "Maturity gap analysis demonstrates comfortable structural liquidity buffers across all intervals.",
-    columns: [
-      { header: "Maturity Interval (LKR Mn)", key: "interval" },
-      { header: "Up to 3 Months", key: "m3" },
-      { header: "3 to 12 Months", key: "m12" },
-      { header: "1 to 3 Years", key: "y3" },
-      { header: "3 to 5 Years", key: "y5" },
-      { header: "Over 5 Years", key: "yOver" },
-      { header: "Total", key: "total" }
-    ],
-    tableData: [
-      { interval: "Cash and Placements with Banks", m3: 7564, m12: 412, y3: 0, y5: 0, yOver: 0, total: 7976 },
-      { interval: "Financial Assets (FVTPL & FVOCI)", m3: 1340, m12: 850, y3: 1200, y5: 980, yOver: 600, total: 4970 },
-      { interval: "Loans & Advances to Customers (Net)", m3: 18450, m12: 32150, y3: 34100, y5: 16841, yOver: 8300, total: 109841 },
-      { interval: "Financial Assets at Amortised Cost - Debt", m3: 2500, m12: 5210, y3: 8430, y5: 4200, yOver: 1200, total: 21540 },
-      { interval: "Other Non-Financial Assets", m3: 250, m12: 480, y3: 520, y5: 381, yOver: 1000, total: 2631 },
-      { interval: "Total Assets", m3: 30104, m12: 39102, y3: 44250, y5: 22402, yOver: 11100, total: 146958 },
-      { interval: "Customer Deposits (Fixed & Savings)", m3: 38450, m12: 45231, y3: 14500, y5: 6500, yOver: 1000, total: 105681 },
-      { interval: "Due to Banks & DFIs", m3: 4520, m12: 4832, y3: 2500, y5: 1600, yOver: 0, total: 13452 },
-      { interval: "Other Borrowings & Debentures", m3: 650, m12: 1195, y3: 3500, y5: 2145, yOver: 920, total: 8410 },
-      { interval: "Other Liabilities & Leases", m3: 980, m12: 1140, y3: 1250, y5: 841, yOver: 400, total: 4611 },
-      { interval: "Total Liabilities", m3: 44600, m12: 52398, y3: 21750, y5: 11086, yOver: 2320, total: 132154 },
-      { interval: "Net Maturity Gap", m3: -14496, m12: -13296, y3: 22500, y5: 11316, yOver: 8780, total: 14804 }
-    ]
+    summary: "Un-allocated expenses (6,210,500,064)",
+    accountingPolicy: "Risk is inherent in the Bank's activities but is managed through a process of ongoing identification, measurement and monitoring subject to risk limits and other controls. This process of risk management is critical to the Bank's continuous profitability and each individual within the Bank is accountable for the risk exposures relating to his or her responsibilities. The Bank is mainly exposed to Credit Risk, Liquidity Risk, Market Risk and Operational Risk which has been disclosed in this note as summarised below:",
+    content: "Un-allocated expenses (6,210,500,064)\n\nValue Added Tax (VAT) on financial services (668,192,659)\n\nSocial Security Contribution Levy (98,470,974)\n\nProfit before tax 684,262,922\n\nTax expenses (274,728,675)\n\nProfit for the year 409,534,248\n\nOther comprehensive income\n\nOther comprehensive income for the year net of tax (67,918,311)\n\nTotal comprehensive income for the year 341,615,938\n\nSegment assets 81,153,575,352 6,059,981,939 45,096,733,231 7,923,549,577 140,233,840,099\n\nUn-allocated assets 4,922,109,861\n\nTotal assets 81,153,575,352 6,059,981,939 45,096,733,231 7,923,549,577 145,155,949,960\n\nSegment liabilities 94,445,916,616 7,052,561,103 19,849,604,862 9,221,367,012 130,569,449,594\n\nTotal equity - - - - 14,586,500,364\n\nTotal liabilities 94,445,916,616 7,052,561,103 19,849,604,862 9,221,367,012 145,155,949,960"
   },
-
-  // NOTE 45: RISK MANAGEMENT - 45.2.1 ECL, 45.2.5.1 GEOGRAPHICAL, 45.2.5.2 INDUSTRY, 45.3.2 REMAINING CONTRACTUAL MATURITIES (Points 71, 72, 73, 74)
   {
     number: "Note 45",
-    title: "Financial Risk Management Disclosures",
-    summary: "Credit risk Expected Credit Loss (ECL) movements, geographical distribution, industry sector concentration, and undiscounted contractual maturities.",
-    accountingPolicy: "Accounting Policy: Credit risk is evaluated through SLFRS 9 Expected Credit Loss staging criteria: Stage 1 (12-month ECL for performing loans), Stage 2 (Lifetime ECL for loans with significant increase in credit risk), and Stage 3 (Lifetime ECL for credit-impaired assets over 90 days past due). Forward-looking economic scenarios incorporate GDP growth, inflation, and CBSL policy rates.",
-    content: "Comprehensive risk management schedules covering credit concentration and liquidity risk.",
-    subNotes: [
-      {
-        subNumber: "45.2.1",
-        subTitle: "Movement in Expected Credit Loss (ECL) Allowance across Stages",
-        columns: [
-          { header: "ECL Stage Breakdown (LKR Mn)", key: "stage" },
-          { header: "Stage 1 (12-Month)", key: "s1" },
-          { header: "Stage 2 (Lifetime)", key: "s2" },
-          { header: "Stage 3 (Credit Impaired)", key: "s3" },
-          { header: "Total ECL Allowance", key: "total" }
-        ],
-        tableData: [
-          { stage: "Balance as at 1st January 2025", s1: 980, s2: 1450, s3: 8584, total: 11014 },
-          { stage: "Net Remeasurement / New Provisions", s1: 85, s2: 154, s3: 465, total: 704 },
-          { stage: "Transfers to / (from) Stage 1", s1: 120, s2: -80, s3: -40, total: 0 },
-          { stage: "Transfers to / (from) Stage 2", s1: -65, s2: 110, s3: -45, total: 0 },
-          { stage: "Transfers to / (from) Stage 3", s1: -30, s2: -90, s3: 120, total: 0 },
-          { stage: "Advances Written Off During Year", s1: 0, s2: 0, s3: -45, total: -45 },
-          { stage: "Balance as at 31st December 2025 (Note 45.2.1)", s1: 1090, s2: 1544, s3: 9039, total: 11673 }
-        ]
-      },
-      {
-        subNumber: "45.2.5.1",
-        subTitle: "Geographical Distribution of Credit Risk",
-        columns: [
-          { header: "Province of Sri Lanka", key: "province" },
-          { header: "Gross Advances (LKR Mn)", key: "gross" },
-          { header: "Share %", key: "pct" },
-          { header: "ECL Allowance (LKR Mn)", key: "ecl" }
-        ],
-        tableData: [
-          { province: "Western Province", gross: 38450, pct: "31.63%", ecl: 3450 },
-          { province: "Central Province", gross: 18210, pct: "14.98%", ecl: 1680 },
-          { province: "North Western Province", gross: 16840, pct: "13.85%", ecl: 1590 },
-          { province: "Southern Province", gross: 15210, pct: "12.51%", ecl: 1420 },
-          { province: "Sabaragamuwa Province", gross: 11450, pct: "9.42%", ecl: 1120 },
-          { province: "North Central Province", gross: 8940, pct: "7.35%", ecl: 910 },
-          { province: "Eastern Province", gross: 5610, pct: "4.61%", ecl: 690 },
-          { province: "Northern Province", gross: 4210, pct: "3.46%", ecl: 513 },
-          { province: "Uva Province", gross: 2650, pct: "2.18%", ecl: 300 },
-          { province: "Total Geographical Credit Portfolio", gross: 121570, pct: "100.00%", ecl: 11673 }
-        ]
-      },
-      {
-        subNumber: "45.2.5.2",
-        subTitle: "Industry Analysis - Gross Advance Portfolio Industry-Wise Analysis",
-        columns: [
-          { header: "Industry Sector", key: "sector" },
-          { header: "Gross Loans 2025 (LKR Mn)", key: "y2025" },
-          { header: "Sector Share %", key: "share2025" },
-          { header: "Gross Loans 2024 (LKR Mn)", key: "y2024" },
-          { header: "Sector Share %", key: "share2024" }
-        ],
-        tableData: [
-          { sector: "Agriculture, Forestry & Fishing", y2025: 38450, share2025: "31.63%", y2024: 31210, share2024: "29.40%" },
-          { sector: "Wholesale, Retail Trade & Distributors", y2025: 25410, share2025: "20.90%", y2024: 23140, share2024: "21.80%" },
-          { sector: "Services & Professional Undertakings", y2025: 18210, share2025: "14.98%", y2024: 16450, share2024: "15.50%" },
-          { sector: "Manufacturing & Agro-Processing", y2025: 14520, share2025: "11.94%", y2024: 12890, share2024: "12.14%" },
-          { sector: "Construction & Infrastructure", y2025: 9840, share2025: "8.09%", y2024: 9120, share2024: "8.59%" },
-          { sector: "Tourism, Hospitality & Travel", y2025: 6420, share2025: "5.28%", y2024: 5610, share2024: "5.28%" },
-          { sector: "Transportation & Warehousing", y2025: 4890, share2025: "4.02%", y2024: 4210, share2024: "3.97%" },
-          { sector: "Financial Services, Housing & Others", y2025: 3830, share2025: "3.15%", y2024: 3510, share2024: "3.31%" },
-          { sector: "Total Gross Advance Portfolio (Note 45.2.5.2)", y2025: 121570, share2025: "100.00%", y2024: 106140, share2024: "100.00%" }
-        ]
-      },
-      {
-        subNumber: "45.3.2",
-        subTitle: "Analysis of Financial Assets and Liabilities by Remaining Contractual Maturities",
-        columns: [
-          { header: "Contractual Cash Flow Category (LKR Mn)", key: "cat" },
-          { header: "On Demand / < 3M", key: "c3m" },
-          { header: "3 to 12 Months", key: "c12m" },
-          { header: "1 to 5 Years", key: "c5y" },
-          { header: "Over 5 Years", key: "cOver" },
-          { header: "Total Undiscounted Inflows / (Outflows)", key: "total" }
-        ],
-        tableData: [
-          { cat: "Contractual Financial Assets (Loans, Debt & Placements)", c3m: 32450, c12m: 42150, c5y: 78940, cOver: 15400, total: 168940 },
-          { cat: "Contractual Financial Liabilities (Deposits & Borrowings)", c3m: -46200, c12m: -54120, c5y: -34500, cOver: -3120, total: -137940 },
-          { cat: "Net Undiscounted Contractual Cash Flow Gap", c3m: -13750, c12m: -11970, c5y: 44440, cOver: 12280, total: 31000 }
-        ]
-      }
-    ]
-  }
+    title: "Risk Management & Prudential Controls",
+    summary: "Within After Total Within After Total",
+    accountingPolicy: "Risk is inherent in the Bank's activities but is managed through a process of ongoing identification, measurement and monitoring subject to risk limits and other controls. This process of risk management is critical to the Bank's continuous profitability and each individual within the Bank is accountable for the risk exposures relating to his or her responsibilities. The Bank is mainly exposed to Credit Risk, Liquidity Risk, Market Risk and Operational Risk which has been disclosed in this note as summarised below:",
+    content: "Within After Total Within After Total\n\n12 months 12 months 12 months 12 months\n\nLKR LKR LKR LKR LKR LKR\n\nLiabilities\n\nDue to other customers 57,026,678,114 48,654,295,924 105,680,974,038 64,443,515,192 42,546,384,750 106,989,899,941\n\nOther borrowings 16,051,705,795 4,564,615,273 20,616,321,068 14,534,302,788 4,540,828,774 19,075,131,562\n\nRetirement benefit obligation - 1,286,496,116 1,286,496,116 - 1,041,381,783 1,041,381,783\n\nCurrent tax liabilities 892,809,195 - 892,809,195 717,274,037 - 717,274,037\n\nOther liabilities 2,032,586,692 1,644,503,330 3,677,090,022 1,758,470,312 987,291,960 2,745,762,272\n\nTotal liabilities 76,003,779,796 56,149,910,643 132,153,690,439 81,453,562,328 49,115,887,267 130,569,449,595\n\nNet asset/(liability) (10,882,992,114) 25,687,398,500 14,804,406,386 (11,905,742,142) 26,492,242,507 14,586,500,364\n\n45. RISK MANAGEMENT\n\n45.1. Introduction\n\nRisk is inherent in the Bank's activities but is managed through a process of ongoing identification, measurement and monitoring subject to risk limits and other controls. This process of risk management is critical to the Bank's continuous profitability and each individual within the Bank is accountable for the risk exposures relating to his or her responsibilities. The Bank is mainly exposed to Credit Risk, Liquidity Risk, Market Risk and Operational Risk which has been disclosed in this note as summarised below:\n\n45.2. Credit Risk 45.2.1. Assessment of Expected Credit Losses"
+  },
+  {
+    number: "Note 46",
+    title: "Comparative Information",
+    summary: "46. COMPARATIVE INFORMATION",
+    accountingPolicy: "The comparative information has been reclassified wherever necessary to confirm to the current year's presentation and details are given below.",
+    content: "46. COMPARATIVE INFORMATION\n\nThe comparative information has been reclassified wherever necessary to confirm to the current year's presentation and details are given below.\n\n46.1. Statement of Profit or Loss\n\nThere were no reclassifications during the year.\n\n46.2. Statement of Financial Position\n\nThere were no reclassifications during the year.\n\n46.3. Statement of Cash Flow\n\nThere were no reclassifications during the year."
+  },
 ];
 
-// ==========================================
-// SUPPLEMENTARY SUMMARY INFO
-// ==========================================
 export const SUPPLEMENTARY_INFO = {
   tenYearSummary: [
     { year: "2025", grossIncome: 18404, nii: 8233, pbt: 800, pat: 405, totalAssets: 146958, customerDeposits: 105681, grossLoans: 109841, car: "15.24%", nplRatio: "4.45%" },
