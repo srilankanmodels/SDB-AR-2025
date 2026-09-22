@@ -119,7 +119,8 @@ const CHAPTERS: ChapterItem[] = [
     icon: Package,
     colorClass: "bg-sdb-purple/10 text-sdb-purple border-sdb-purple/20",
     subsections: [
-      { id: "products-section", title: "18 Tailored Banking Products & UPay Portal", type: "scroll" }
+      { id: "product-portfolio", title: "Product Portfolio & What We Offer", type: "tab", tabValue: "catalog", icon: Package },
+      { id: "upay-portal", title: "SDB UPay Mobile Banking & Lifestyle Platform", type: "tab", tabValue: "upay", icon: Sparkles }
     ]
   },
   {
@@ -246,6 +247,8 @@ export default function TableOfContents({ activeSection, onNavigate }: TableOfCo
           window.dispatchEvent(new CustomEvent("set-governance-tab", { detail: item.tabValue }));
         } else if (chapterId === "financials") {
           window.dispatchEvent(new CustomEvent("set-financials-tab", { detail: item.tabValue }));
+        } else if (chapterId === "products") {
+          window.dispatchEvent(new CustomEvent("set-products-tab", { detail: item.tabValue }));
         }
       } else if (item.type === "index" && item.indexValue !== undefined) {
         if (chapterId === "capitals") {

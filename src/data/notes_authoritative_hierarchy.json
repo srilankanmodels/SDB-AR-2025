@@ -6,7 +6,7 @@
     "pages": "Page 224",
     "startPage": 224,
     "endPage": 224,
-    "summary": "Official statutory disclosures and notes for Note 1: CORPORATE INFORMATION.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -44,7 +44,7 @@
     "pages": "Pages 224–227",
     "startPage": 224,
     "endPage": 227,
-    "summary": "Official statutory disclosures and notes for Note 2: BASIS OF PREPARATION.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -198,7 +198,7 @@
     "pages": "Pages 227–238",
     "startPage": 227,
     "endPage": 238,
-    "summary": "Official statutory disclosures and notes for Note 3: GENERAL ACCOUNTING POLICIES.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -639,7 +639,7 @@
     "pages": "Pages 238–240",
     "startPage": 238,
     "endPage": 240,
-    "summary": "Official statutory disclosures and notes for Note 4: NEW ACCOUNTING STANDARDS ISSUED BUT NOT YET EFFECTIVE.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -659,7 +659,7 @@
     "pages": "Pages 224–296",
     "startPage": null,
     "endPage": null,
-    "summary": "Official statutory disclosures and notes for Note 5: ACCOUNTING JUDGEMENTS, ESTIMATES AND ASSUMPTIONS.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [],
@@ -672,54 +672,54 @@
     "pages": "Page 240",
     "startPage": 240,
     "endPage": 240,
-    "summary": "Official statutory disclosures and notes for Note 6: GROSS INCOME.",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "Revenue is recognised to the extent that it is probable that the economic benefits will flow to the Bank and the revenue can be reliably measured. Specific recognition criteria that must be met before recognising revenue is discussed under Note 7 - Net Interest Income, Note 8 - Fee and Commission Income, Note 9 - Net Gain/(Loss) from Trading, Note 10 - Net Fair Value Gain/(Loss) from Financial Assets at Fair Value through Profit or Loss and Note 11 - Net Other Operating Income.",
     "content": "",
     "subNotes": [],
     "tables": [
       {
         "headers": [
           "Description",
-          "",
-          "2025",
-          "2024"
+          "Note",
+          "2025 LKR",
+          "2024 LKR"
         ],
         "rows": [
           [
-            "Interest income 7.",
+            "Interest income",
+            "7.",
             "17,098,539,394",
-            "20,005,051,598",
-            ""
+            "20,005,051,598"
           ],
           [
-            "Fee and commission income 8.",
+            "Fee and commission income",
+            "8.",
             "716,349,082",
-            "631,017,156",
-            ""
+            "631,017,156"
           ],
           [
-            "Net Gain/(Loss) from Trading 9.",
+            "Net Gain/(Loss) from Trading",
+            "9.",
             "(553,000)",
-            "60,116,875",
-            ""
+            "60,116,875"
           ],
           [
-            "Net Fair Value Gain/(Loss) from Financial Assets at Fair Value through Profit or Loss 10.",
+            "Net Fair Value Gain/(Loss) from Financial Assets at Fair Value through Profit or Loss",
+            "10.",
             "559,066,052",
-            "444,081,680",
-            ""
+            "444,081,680"
           ],
           [
-            "Net Other Operating Income 11.",
+            "Net Other Operating Income",
+            "11.",
             "30,522,239",
-            "(77,686,610)",
-            ""
+            "(77,686,610)"
           ],
           [
             "Total",
+            "",
             "18,403,923,767",
-            "21,062,580,699",
-            ""
+            "21,062,580,699"
           ]
         ]
       }
@@ -732,9 +732,9 @@
     "pages": "Pages 240–241",
     "startPage": 240,
     "endPage": 241,
-    "summary": "Financial assets at amortised cost:",
-    "accountingPolicy": "Accounting Policy",
-    "content": "\n\nRecognition of Interest Income Interest income Financial assets at amortised cost: 2025 2024 Note LKR LKR 2025 2024 LKR LKR - Due to other customers 7,825,125,872 10,287,471,096 - Other borrowers 893,076,185 1,328,060,835 - Subordinated term debt - 432,543,169 - Finance cost of lease liability 147,655,694 136,512,505 Total interest expenses 8,865,857,751 12,184,587,605 Net interest income 8,232,681,643 7,820,463,993 Interest income from Sri Lanka Government securities 1,445,845,838 3,877,114,943 Total 1,445,845,838 3,877,114,943 Fees earned for the provision of services over a period of time are accrued over that period. These fees include professional fees, trade service fees, commission income and asset management fees etc. Loan commitment fees for loans that are likely to be drawn down and other credit related fees are deferred (together with any incremental costs) and recognised as an adjustment to the effective interest rate of the loan. When it is unlikely that a loan will be drawn down, the loan commitment fees are recognised over the commitment period on a straight-line basis. Other fee and commission expense relate mainly to transactions and services fees which are expensed as the services are received. Fee and commission expenses are recognised on an accrual basis. Fee and commission income 716,349,082 631,017,156 Fee and commission expenses (41,620,128) (46,695,036) Net fee and commission income 674,728,954 584,322,120 Interest expenses Financial liabilities at amortised cost:",
+    "summary": "",
+    "accountingPolicy": "Recognition of Interest Income The Bank recognises interest income for all financial instruments measured at amortised cost, interest-bearing financial assets measured at FVOCI and FVPL using the effective interest rate (EIR) method. The EIR is the rate that exactly discounts estimated future cash receipts through the expected life of the financial instrument or, when appropriate, a shorter period, to the net carrying amount of the financial asset. The EIR (and therefore, the amortised cost of the asset) is calculated by taking into account any discount or premium on acquisition, fees and costs that are an integral part of the EIR. The Bank recognises interest income using a rate of return that represents the best estimate of a constant rate of return over the expected life of the loan. Hence, it recognises the effect of potentially different interest rates charged at various stages, and other characteristics of the product life cycle (including prepayments, penalty interest and charges). If expectations regarding the cash flows on the financial asset are revised for reasons other than credit risk, the adjustment is booked as a positive or negative adjustment to the carrying amount of the asset in the Statement of Financial Position with an increase or reduction in interest income. The adjustment is subsequently amortised through interest and similar income in the Income Statement.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "7.1",
@@ -870,9 +870,9 @@
     "pages": "Pages 241–242",
     "startPage": 241,
     "endPage": 242,
-    "summary": "Fee Income Earned from Services that are Provided over a Certain Period of Time",
-    "accountingPolicy": "Accounting Policy",
-    "content": "Fee Income Earned from Services that are Provided over a Certain Period of Time Other Fee and Commission Expense 2025 2024 LKR LKR 2025 2024 LKR LKR 2025 2024 LKR LKR Loans 242,007,639 149,505,718 Deposits 107,765,171 105,461,295 Guarantees 2,328,748 1,817,996 Commission earned from insurance 67,367,134 78,404,998 Commission earned from ATM 72,647,726 78,416,349 Others 224,232,664 217,410,800 Fee and commission income 716,349,082 631,017,156 Net gain/(loss) from trading includes all the capital gain/(loss) from financial assets measured at fair value through profit or loss. Sri Lanka Government securities - Treasury bills and treasury bonds (553,000) 60,116,875 Total (553,000) 60,116,875",
+    "summary": "",
+    "accountingPolicy": "Fee Income Earned from Services that are Provided over a Certain Period of Time Fees earned for the provision of services over a period of time are accrued over that period. These fees include professional fees, trade service fees, commission income and asset management fees etc. Loan commitment fees for loans that are likely to be drawn down and other credit related fees are deferred (together with any incremental costs) and recognised as an adjustment to the effective interest rate of the loan. When it is unlikely that a loan will be drawn down, the loan commitment fees are recognised over the commitment period on a straight-line basis. Other Fee and Commission Expense Other fee and commission expense relate mainly to transactions and services fees which are expensed as the services are received. Fee and commission expenses are recognised on an accrual basis.",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -949,25 +949,30 @@
     "number": "Note 9",
     "noteNum": 9,
     "title": "NET GAIN/(LOSS) FROM TRADING",
-    "pages": "Pages 242–243",
+    "pages": "Page 242",
     "startPage": 242,
-    "endPage": 243,
-    "summary": "Income earned on other sources, which are not directly related to the normal operations of the Bank are recognised as other operating income, such as gains on disposal of property, plant and equipment, dividend income and foreign exchange gains/ (losses).",
-    "accountingPolicy": "Accounting Policy",
-    "content": "\n\nAccounting Policy 2025 2024 LKR LKR 2025 2024 LKR LKR 2025 2024 LKR LKR Income earned on other sources, which are not directly related to the normal operations of the Bank are recognised as other operating income, such as gains on disposal of property, plant and equipment, dividend income and foreign exchange gains/ (losses). Gains/(losses) arising from disposal of property, plant and equipment are recorded after deducting from the proceeds on disposal, the carrying amount of such assets and the related selling expenses. Dividend income from investments in quoted and non quoted shares are recognised when the Bank's right to receive the payment is established. Foreign exchange gain/(loss) includes gain/(loss) arising from revaluation of foreign currency assets/ liabilities. Gain on sale of property, plant and equipment 3,686,790 78,691 Dividend income 476,195 291,165 Other income 26,359,254 (78,056,466) Other operating income 30,522,239 (77,686,610) The accounting policies adopted in determining the impairment allowance for financial assets including loans and advances are given in Note 3.2.6 to the Financial Statements. Stage 1 773,046 (211,314) Total 773,046 (211,314) Stage 1 (239,823) (1,861,868) Total (239,823) (1,861,868)",
+    "endPage": 242,
+    "summary": "",
+    "accountingPolicy": "Net gain/(loss) from trading includes all the capital gain/(loss) from financial assets measured at fair value through profit or loss.",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
         "headers": [
           "Description",
-          "2025",
-          "2024"
+          "2025 LKR",
+          "2024 LKR"
         ],
         "rows": [
           [
-            "",
-            "2025",
-            "2024"
+            "Sri Lanka Government securities - Treasury bills and treasury bonds",
+            "(553,000)",
+            "60,116,875"
+          ],
+          [
+            "Total",
+            "(553,000)",
+            "60,116,875"
           ]
         ]
       }
@@ -980,18 +985,23 @@
     "pages": "Page 242",
     "startPage": 242,
     "endPage": 242,
-    "summary": "Net fair value gain/(loss) from financial assets measured at fair value through profit or loss includes all the gains and losses from changes in fair value from financial assets measured at fair value through profit or loss.",
-    "accountingPolicy": "",
-    "content": "Net fair value gain/(loss) from financial assets measured at fair value through profit or loss includes all the gains and losses from changes in fair value from financial assets measured at fair value through profit or loss. Sri Lanka Government securities - Treasury bills and treasury bonds (1,398,600) (2,506,265) Unit trust 560,464,652 446,587,945 Total 559,066,052 444,081,680 8.1. Fee and commission income earned from",
+    "summary": "",
+    "accountingPolicy": "Net fair value gain/(loss) from financial assets measured at fair value through profit or loss includes all the gains and losses from changes in fair value from financial assets measured at fair value through profit or loss.",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
         "headers": [
-          "Sri Lanka Government securities - Treasury bills and treasury bonds",
-          "(1,398,600)",
-          "(2,506,265)"
+          "Description",
+          "2025 LKR",
+          "2024 LKR"
         ],
         "rows": [
+          [
+            "Sri Lanka Government securities - Treasury bills and treasury bonds",
+            "(1,398,600)",
+            "(2,506,265)"
+          ],
           [
             "Unit trust",
             "560,464,652",
@@ -1013,8 +1023,8 @@
     "pages": "Page 243",
     "startPage": 243,
     "endPage": 243,
-    "summary": "Official statutory disclosures and notes for Note 11: NET OTHER OPERATING INCOME.",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "Income earned on other sources, which are not directly related to the normal operations of the Bank are recognised as other operating income, such as gains on disposal of property, plant and equipment, dividend income and foreign exchange gains/(losses). Gains/(losses) arising from disposal of property, plant and equipment are recorded after deducting from the proceeds on disposal, the carrying amount of such assets and the related selling expenses. Dividend income from investments in quoted and non-quoted shares are recognised when the Bank's right to receive the payment is established. Foreign exchange gain/(loss) includes gain/(loss) arising from revaluation of foreign currency assets/liabilities.",
     "content": "",
     "subNotes": [],
     "tables": [
@@ -1056,8 +1066,8 @@
     "pages": "Pages 243–244",
     "startPage": 243,
     "endPage": 244,
-    "summary": "Official statutory disclosures and notes for Note 12: IMPAIRMENT FOR LOANS AND OTHER LOSSES.",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "The accounting policies adopted in determining the impairment allowance for financial assets including loans and advances are given in Note 3.2.6 to the Financial Statements.",
     "content": "",
     "subNotes": [
       {
@@ -1186,9 +1196,9 @@
     "pages": "Pages 244–246",
     "startPage": 244,
     "endPage": 246,
-    "summary": "In compliance with the Gratuity Act No. 12 of 1983, provision is made in the accounts from the first year of service, for gratuity payable to employees.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "Short Term Employee Benefits Deﬁned Contribution Plans Deﬁned Beneﬁt Plans 2025 2024 LKR LKR 2025 2024 LKR LKR In compliance with the Gratuity Act No. 12 of 1983, provision is made in the accounts from the first year of service, for gratuity payable to employees. An actuarial valuation is carried out at every year end to ascertain the full liability under gratuity. The Bank determines the interest expense on this defined benefit liability by applying the discount rate used to measure the defined benefit liability at the beginning of the annual period.The discount rate is the yield at the reporting date on government bonds that have maturity dates approximating to the terms of the Bank's obligations. The increase in gratuity liabilities attributable to the services provided by employees during the year ended 31st December 2025 (current service cost) has been recognised in the Statement of Profit or Loss under 'Personnel expenses' together with the net interest expense. The Bank recognises the total actuarial gain/loss that arise in calculating the Bank's obligation in respect of gratuity in other comprehensive income during the period in which it occurs. The demographic assumptions underlying the valuation are retirement age (60 years), early withdrawals from service and retirement on medical grounds etc. Employees' Provident Fund is an approved private provident fund which has been set up to meet the provident fund liabilities of the Bank to which the Bank and employees contribute 14% and 8% respectively on the salary of each employee. Salary and bonus 2,868,563,912 2,738,795,383 Contributions to defined contribution plans\t- EPF 361,598,352 335,829,118 - ETF 77,477,670 71,963,383 Contributions to defined benefit plans 210,968,464 168,751,769 Overtime 8,906,500 8,953,429 Staff welfare 34,268,746 39,395,375 Staff allowances 404,162,064 374,296,359 Others 203,050,278 226,793,363 Total 4,168,995,986 3,964,778,179 Gratuity The gratuity liability is not externally funded. Employees' Provident Fund 2025 2024 LKR LKR The Bank provides depreciation from the date the assets are available for use up to the date of disposal, at the following rates, on a straight-line basis, over the periods appropriate to the estimated useful lives, based on the pattern in which the asset's future economic benefits are expected to be consumed by the Bank. Improvements to leasehold properties are depreciated over the shorter of the lease term and their useful lives unless it is reasonably certain that the Bank will obtain ownership by the end of the lease term. Freehold lands are not depreciated. Depreciation of an asset ceases at the earlier of the date that the asset is classified as held for sale or the date that the asset is derecognised. Depreciation does not cease when the asset becomes idle or is retired from active use unless the asset is fully depreciated. Buildings 20 20 5 5 Computer hardware 3-5 3-5 20 - 33.33 20 - 33.33 Machinery and equipment 5 5 20 20 Motor vehicles 4 4 25 25 Furniture and fitting 5 5 20 20 Digital Equipment 5 5 20 20 Intangible assets, except for goodwill, are amortised on a straight-line basis in the Statement of Profit or Loss from the date when the asset is available for use, over the best estimate of its useful economic life, based on a pattern in which the asset's economic benefits are consumed by the Bank. The Bank assumes that there is no residual value for its intangible assets. Computer software 3-7 3-7 14 - 33.33 14 - 33.33 Core Banking System 10 10 10 10 The right of use assets are depreciated using a straight-line method from the commencement date to the earlier of the end of the useful life of the right of use assets or the end of the lease term. The estimated useful lives of right of use assets are determined on the same basis as renewal of rent agreements. Depreciation/amortisation methods, useful lives and residual values are reassessed at each reporting date and adjusted if appropriate. During the year ended 31st December 2025, the Bank conducted an operational efficiency review and estimates were not changed accordingly.",
+    "summary": "",
+    "accountingPolicy": "Short Term Employee Benefits Short term employee benefit obligations are measured on an undiscounted basis and are expensed as the related service is provided. A liability is recognised for the amount expected to be paid under short term cash bonus or profit-sharing plans if the Bank has a present legal or constructive obligation to pay this amount as a result of past service provided by the employee and the obligation can be estimated reliably. Defined Contribution Plans A defined contribution plan is a post-employment benefit plan under which an entity pays fixed contributions into a separate entity (a fund) and will have no legal or constructive obligation to pay further contributions if the fund does not hold sufficient assets to pay all employee benefits relating to employee services in the current and prior periods, as defined in the Sri Lanka Accounting Standard - LKAS 19 (Employee Benefits). The contribution payable by the employer to a defined contribution plan is in proportion to the services rendered to the Bank by the employees and is recorded as an expense under 'Personnel expenses' as and when they become due. Unpaid contributions are recorded as a liability under 'Other liabilities' in Note 32. The Bank contributes 3% of the salary of each employee to the Employees' Trust Fund and 14% on the salary of each employee to the Employees' Provident Fund. The above expenses are identified as contributions to \"Defined Contribution Plans\" as defined in the Sri Lanka Accounting Standard - LKAS 19 (Employee Benefits). Defined Benefit Plans A defined benefit plan is a post-employment benefit plan other than a defined contribution plan. Accordingly, staff gratuity and Employees' Provident Fund of the Bank was considered as the defined benefit plan as per Sri Lanka Accounting Standard - LKAS 19 (Employee Benefits).",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -1254,9 +1264,9 @@
     "pages": "Pages 246–247",
     "startPage": 246,
     "endPage": 247,
-    "summary": "Depreciation of Property, Plant and Equipment",
-    "accountingPolicy": "Accounting Policy",
-    "content": "Depreciation of Property, Plant and Equipment Asset category Amortisation of Intangible Assets Asset category Amortisation of Right-of-Use Assets Changes in Estimates Useful life (Years) 2025 2024 2025 2024 Useful life (Years) 2025 2024 2025 2024 Depreciation Rate per Annum (%) Amortization Rate per Annum (%) Depreciation of property, plant and equipment 270,658,784 228,456,223 Amortisation of Right of use assets** 249,026,091 211,350,225 Amortisation of intangible assets 182,517,759 171,115,012 Total 702,202,634 610,921,460 Other expenses are recognised in the Statement of Profit or Loss on the basis of a direct association between the cost incurred and the earning of specific items of income. Provisions in respect of other expenses are recognised when the Bank has a present obligation (legal or constructive) as a result of a past event, it is probable that an outflow of resources embodying economic benefits will be required to settle the obligation and a reliable estimate can be made of the amount of the obligation. Directors' emoluments 29,619,550 52,328,500 Auditors' remunerations 9,600,000 5,875,000 Professional and legal expenses 12,304,960 24,684,977 Office administration and establishment expenses 2,240,290,236 2,162,833,408 Total 2,291,814,746 2,245,721,885 15.1. Directors' emoluments include fees paid to Non-executive Directors Audit fees 4,600,000 3,900,000 Audit related fees & expenses 1,700,000 1,050,000 Non-audit expenses 3,300,000 925,000 Total 9,600,000 5,875,000 ** Bank has only Buildings under Right of Use Assets",
+    "summary": "",
+    "accountingPolicy": "Depreciation of Property, Plant and Equipment The Bank provides depreciation from the date the assets are available for use up to the date of disposal, at the following rates, on a straight-line basis, over the periods appropriate to the estimated useful lives, based on the pattern in which the asset's future economic benefits are expected to be consumed by the Bank. Improvements to leasehold properties are depreciated over the shorter of the lease term and their useful lives unless it is reasonably certain that the Bank will obtain ownership by the end of the lease term. Freehold lands are not depreciated. Depreciation of an asset ceases at the earlier of the date that the asset is classified as held for sale or the date that the asset is derecognised. Depreciation does not cease when the asset becomes idle or is retired from active use unless the asset is fully depreciated. Asset category Useful life (Years) Depreciation Rate per Annum (%)",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -1374,8 +1384,8 @@
     "pages": "Page 247",
     "startPage": 247,
     "endPage": 247,
-    "summary": "Official statutory disclosures and notes for Note 15: OTHER EXPENSES.",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "Other expenses are recognised in the Statement of Profit or Loss on the basis of a direct association between the cost incurred and the earning of specific items of income. Provisions in respect of other expenses are recognised when the Bank has a present obligation (legal or constructive) as a result of a past event, it is probable that an outflow of resources embodying economic benefits will be required to settle the obligation and a reliable estimate can be made of the amount of the obligation.",
     "content": "",
     "subNotes": [
       {
@@ -1453,9 +1463,9 @@
     "pages": "Pages 248–250",
     "startPage": 248,
     "endPage": 250,
-    "summary": "As per Sri Lanka Accounting Standard - LKAS 12 (Income Taxes), tax expense is the aggregate amount included in determination of profit or loss for the period in respect of current and deferred taxation. Income tax expense is recognised in the Statement of Profit or Loss, except to the extent it relates to items recognised directly in equity or other comprehensive income in which case it is recognised in equity or in other comprehensive income.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "As per Sri Lanka Accounting Standard - LKAS 12 (Income Taxes), tax expense is the aggregate amount included in determination of profit or loss for the period in respect of current and deferred taxation. Income tax expense is recognised in the Statement of Profit or Loss, except to the extent it relates to items recognised directly in equity or other comprehensive income in which case it is recognised in equity or in other comprehensive income. Current Taxation Current tax assets and liabilities consist of amounts expected to be recovered from or paid to the Commissioner General of Inland Revenue in respect of the current year, using the tax rates and tax laws enacted or substantively enacted on the reporting date and any adjustment to tax payable in respect of prior years. Accordingly, provision for taxation is based on the profit for the year adjusted for taxation purposes in accordance with the provisions of the Inland Revenue Act No. 24 of 2017 and the amendments thereto at the rates specified in Note 16.3. Deferred Taxation Deferred tax is provided on temporary differences at the reporting date between the tax bases of assets and liabilities and their carrying amounts for financial reporting purposes. Deferred tax liabilities are recognised for all taxable temporary differences, except:\n\n•  Where the deferred tax liability arises from the initial recognition of goodwill or of an asset or liability in a transaction that is not a business combination and, at the time of the transaction, affects neither the accounting profit nor taxable profit or loss. and at the time of the transaction does not give rise to equal taxable and deductible temporary differences. •  In respect of taxable temporary differences associated with investments in subsidiaries, where the timing of the reversal of the temporary differences can be controlled and it is probable that the temporary differences will not reverse in the foreseeable future. Deferred tax assets are recognised for all deductible temporary differences, carried forward unused tax credits and unused tax losses (if any), to the extent that it is probable that taxable profit will be available against which the deductible temporary differences, carried forward unused tax credits and unused tax losses can be utilised except:\n\n•  Where the deferred tax asset relating to the deductible temporary differences arising from the initial recognition of an asset or liability in a transaction that is not a business combination, at the time of the transaction, affects neither the accounting profit nor taxable profit or loss and at the time of the transaction does not give rise to equal taxable and deductible temporary differences. •  In respect of deductible temporary differences associated with investments in subsidiaries, deferred tax assets are recognised only to the extent that it is probable that the temporary differences will reverse in the foreseeable future and taxable profit will be available against which the temporary differences can be utilised. The carrying amount of deferred tax assets is reviewed at each reporting date and reduced to the extent that it is probable that sufficient taxable profit will be available to allow the deferred tax asset to be utilised. Unrecognised deferred tax assets are reassessed at each reporting date and are recognised to the extent that it has become probable that future taxable profit will allow the deferred tax asset to be recovered. Deferred tax assets and liabilities are measured at the tax rates that are expected to apply in the year when the asset is realised or the liability is settled, based on tax rates (and tax laws) that have been enacted or substantively enacted at the reporting date. Current and deferred tax assets and liabilities are offset only to the extent that they relate to income taxes imposed by the same taxation authority, there is a legal right and intentions to settle on a net basis and it is allowed under the tax law of the relevant jurisdiction. Details of deferred tax liabilities/(assets) is given in Note 16.2 to the Financial Statements respectively. Income tax for the year 469,986,712 461,140,565 Deferred taxation charge /(reversal) (74,732,680) (186,411,890) Total 395,254,032 274,728,675 Profit before tax 800,172,578 684,262,920 Income tax for the period (Accounting profit at 30%) 240,051,773 205,278,876 Income exempt from tax /or not taxable (189,811,316) (329,336,844) Add: Tax effect of expenses that are not deductible for tax purposes 715,990,988 870,705,936 Less: Tax effect of expenses that are deductible for tax purposes (323,501,219) (285,507,405) Add: Provision for assessments 27,256,486 Tax expense for the year 469,986,712 461,140,564 Deferred taxation charge (74,732,680) (245,101,880) Amount of Deferred Tax Expense /(Income) - 58,689,990 At the effective income tax rate of 49.40% (2024 : 40.15%) 395,254,032 274,728,674",
+    "summary": "",
+    "accountingPolicy": "As per Sri Lanka Accounting Standard - LKAS 12 (Income Taxes), tax expense is the aggregate amount included in determination of profit or loss for the period in respect of current and deferred taxation. Income tax expense is recognised in the Statement of Profit or Loss, except to the extent it relates to items recognised directly in equity or other comprehensive income in which case it is recognised in equity or in other comprehensive income. Current Taxation Current tax assets and liabilities consist of amounts expected to be recovered from or paid to the Commissioner General of Inland Revenue in respect of the current year, using the tax rates and tax laws enacted or substantively enacted on the reporting date and any adjustment to tax payable in respect of prior years. Accordingly, provision for taxation is based on the profit for the year adjusted for taxation purposes in accordance with the provisions of the Inland Revenue Act No. 24 of 2017 and the amendments thereto at the rates specified in Note 16.3. Deferred Taxation Deferred tax is provided on temporary differences at the reporting date between the tax bases of assets and liabilities and their carrying amounts for financial reporting purposes. Deferred tax liabilities are recognised for all taxable temporary differences, except: Ð Where the deferred tax liability arises from the initial recognition of goodwill or of an asset or liability in a transaction that is not a business combination and, at the time of the transaction, affects neither the accounting profit nor taxable profit or loss. and at the time of the transaction does not give rise to equal taxable and deductible temporary differences. Ð In respect of taxable temporary differences associated with investments in subsidiaries, where the timing of the reversal of the temporary differences can be controlled and it is probable that the temporary differences will not reverse in the foreseeable future. Deferred tax assets are recognised for all deductible temporary differences, carried forward unused tax credits and unused tax losses (if any), to the extent that it is probable that taxable profit will be available against which the deductible temporary differences, carried forward unused tax credits and unused tax losses can be utilised except: Ð Where the deferred tax asset relating to the deductible temporary differences arising from the initial recognition of an asset or liability in a transaction that is not a business combination, at the time of the transaction, affects neither the accounting profit nor taxable profit or loss and at the time of the transaction does not give rise to equal taxable and deductible temporary differences. Ð In respect of deductible temporary differences associated with investments in subsidiaries, deferred tax assets are recognised only to the extent that it is probable that the temporary differences will reverse in the foreseeable future and taxable profit will be available against which the temporary differences can be utilised. The carrying amount of deferred tax assets is reviewed at each reporting date and reduced to the extent that it is probable that sufficient taxable profit will be available to allow the deferred tax asset to be utilised. Unrecognised deferred tax assets are reassessed at each reporting date and are recognised to the extent that it has become probable that future taxable profit will allow the deferred tax asset to be recovered.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "16.2",
@@ -1687,8 +1697,8 @@
     "pages": "Page 250",
     "startPage": 250,
     "endPage": 250,
-    "summary": "Official statutory disclosures and notes for Note 17: EARNINGS PER SHARE (EPS).",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "The Bank presents basic and diluted Earnings per Share (EPS) data for its ordinary shares. Basic EPS is calculated by dividing the profit or loss attributable to ordinary equity shareholders of the Bank by the weighted average number of ordinary shares outstanding during the period. Diluted EPS is determined by adjusting both the profit attributable to the ordinary equity shareholders and the weighted average number of ordinary shares outstanding, for the effects of all dilutive potential ordinary shares, if any.",
     "content": "",
     "subNotes": [],
     "tables": [
@@ -1734,9 +1744,9 @@
     "pages": "Pages 250–251",
     "startPage": 250,
     "endPage": 251,
-    "summary": "Official statutory disclosures and notes for Note 18: CASH AND BALANCES WITH BANKS.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "2025 2024 LKR LKR 2025 2024 Number Number 164,166,494 164,166,494 2025 2024 LKR LKR",
+    "summary": "",
+    "accountingPolicy": "Cash and balances with banks comprise cash in hand, balances with banks, money at call and short notice that are subject to an insignificant risk of changes in their value. Cash and balances with banks are carried at amortised cost in the Statement of Financial Position. All cash and balances with banks balances held by the Bank were available for use. For the purpose of the Statement of Cash Flows, cash and balances with banks consist of cash and short term deposits as defined above and placements with banks (less than 3 months) .",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "18.1",
@@ -1891,9 +1901,9 @@
     "pages": "Pages 251–252",
     "startPage": 251,
     "endPage": 252,
-    "summary": "Official statutory disclosures and notes for Note 19: PLACEMENTS WITH BANKS.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "Stage 1 2025 2024 LKR LKR Stage 1 2025 2024 LKR LKR 2025 2024 LKR LKR 2025 2024 LKR LKR Stage 1 2025 2024 LKR LKR",
+    "summary": "",
+    "accountingPolicy": "Placements with Banks net of impairment allowance includes money at call and short term investments that are subject to an insignificant risk of changes in the fair value, and are used by the Bank in the management of its short term commitments.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "19.2",
@@ -1983,9 +1993,9 @@
     "pages": "Page 252",
     "startPage": 252,
     "endPage": 252,
-    "summary": "The accounting policies pertaining to \"Financial Assets Recognised through Profit or Loss - Measured at Fair Value\" are given in Note 3.2.3.4 to the Financial Statements.",
-    "accountingPolicy": "",
-    "content": "The accounting policies pertaining to \"Financial Assets Recognised through Profit or Loss - Measured at Fair Value\" are given in Note 3.2.3.4 to the Financial Statements. Sri Lanka Government securities - Treasury bills and Treasury bonds - 257,985,600 Unit trust - 6,481,214,474 Total - 6,739,200,074",
+    "summary": "",
+    "accountingPolicy": "The accounting policies pertaining to \"Financial Assets Recognised through Profit or Loss - Measured at Fair Value\" are given in",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -2021,9 +2031,9 @@
     "pages": "Pages 252–256",
     "startPage": 252,
     "endPage": 256,
-    "summary": "The key accounting policies pertaining to financial instruments including \"Loans and Advances\" are given in Notes 3.2 to the Financial Statements.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "The key accounting policies pertaining to financial instruments including \"Loans and Advances\" are given in Notes 3.2 to the Financial Statements. Gross loans and receivables (Note 21.1) 118,564,908,494 103,181,716,494 Less:\tIndividual impairment (4,635,080,987) (3,648,482,252) Collective impairment (4,088,951,630) (4,396,127,375) Net loans and receivables 109,840,875,877 95,137,106,867\n\nAccounting Policy Stage 1 2025 2024 LKR LKR 2025 2024 LKR LKR 2025 2024 LKR LKR",
+    "summary": "",
+    "accountingPolicy": "The key accounting policies pertaining to financial instruments including \"Loans and Advances\" are given in Notes 3.2 to the Financial Statements.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "21.1",
@@ -2630,9 +2640,9 @@
     "pages": "Pages 256–257",
     "startPage": 256,
     "endPage": 257,
-    "summary": "The accounting policies pertaining to financial instruments including \"Debt and Other Instruments\" are given in Note 3.2 to the Financial Statements.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "The accounting policies pertaining to financial instruments including \"Debt and Other Instruments\" are given in Note 3.2 to the Financial Statements. Debentures 101,277,055 101,365,915 Repurchase agreement - 702,455,685 Treasury bill 15,314,643,470 21,787,314,036 Trust Certificates 284,510,354 - Commercial papers - 878,595,890 Treasury bonds 905,764,793 3,153,745,609 Less: Impairment (872,931) (341,669) Carrying value after impairment 16,605,322,741 26,623,135,466 21.6. Movement in individual and collective impairment Individual impairment Collective impairment Total impairment LKR LKR LKR 2025 2024 LKR LKR",
+    "summary": "",
+    "accountingPolicy": "The accounting policies pertaining to financial instruments including \"Debt and Other Instruments\" are given in Note 3.2 to the Financial Statements.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "22.1",
@@ -2835,9 +2845,9 @@
     "pages": "Pages 257–258",
     "startPage": 257,
     "endPage": 258,
-    "summary": "The accounting policies pertaining to \"Financial Assets - Fair Value Through Other Comprehensive Income\" are given in Notes 3.2.3.5 & 3.2.3.6 to the Financial Statements.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "The accounting policies pertaining to \"Financial Assets - Fair Value Through Other Comprehensive Income\" are given in Notes 3.2.3.5 & 3.2.3.6 to the Financial Statements. Unquoted equity securities ( Note 23.1) 196,697,726 208,145,880 Financial assets measured at fair value through other comprehensive income 196,697,726 208,145,880 2025 2024 Amortised Cost Stage 1 2025 2024 LKR LKR Stage 1 2025 2024 LKR LKR Fair Value of Fair Value of Securities Securities Received Amortised Cost Received 2025 2024 LKR LKR SANASA Life Insurance Co. PLC 7,590,494 75,830,776 7,590,494 75,830,776 Credit Information Bureau of Sri Lanka 100 10,000 100 10,000 Consorzio Etimos S.C. 2 75,194 2 75,194 National Credit Guarantee Institution(NCGI) 15,114,475 151,143,740 15,114,475 151,143,740 Loss from share valuation as at 31 December - (30,361,984) - (18,913,830) Total 196,697,726 208,145,880 Opening balance as at 1 January 208,145,880 56,939,524 Investments made during the year - 151,206,356 Disposal during the year - - Loss from mark to market valuation (11,448,154) - Closing balance as at 31 December 196,697,726 208,145,880 The accounting policies for \" Investment in Subsidiaries\" are given in Notes 1.3 to the Financial Statements. Unquoted equity investments 6,163,100 6,163,100 Total 6,163,100 6,163,100 24.1. Investment in Subsidiary includes the investment made by the Bank in Payment Services (Private) Limited, amounting to Rs.6,163,100/- . Payment Services (Private) Limited was the operator of Upay digital solution App prior to purchase of this App by Sanasa Development Bank PLC on 10th June 2019. With this acquisition, Payment Services (Private) Limited has become a fully owned subsidiary of Sanasa Development Bank PLC, with effect from 26th May 2020. Since this investment is immaterial, The Bank do not prepare consolidated Financial Statements.",
+    "summary": "",
+    "accountingPolicy": "The accounting policies pertaining to \"Financial Assets - Fair Value Through Other Comprehensive Income\" are given in Notes",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "23.1",
@@ -2986,9 +2996,9 @@
     "pages": "Page 258",
     "startPage": 258,
     "endPage": 258,
-    "summary": "Significant unobservable inputs",
-    "accountingPolicy": "Accounting Policy",
-    "content": "2025 2024 Number of shares Amount Number of shares Amount LKR LKR 2025 2024 LKR LKR Significant unobservable inputs Sensitivity of fair value to unobservable inputs Medium price to book value - liquidity discount Positively correlated sensitivity Regulatory noncompliance adjustment Positively correlated sensitivity 2025 2024 LKR LKR",
+    "summary": "",
+    "accountingPolicy": "The accounting policies for \" Investment in Subsidiaries\" are given in Notes 1.3 to the Financial Statements.",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -3014,9 +3024,9 @@
     "pages": "Pages 259–262",
     "startPage": 259,
     "endPage": 262,
-    "summary": "Property, plant and equipment are tangible items that are held for use in the production or supply of services, for rental to others or for administrative purposes and are expected to be used during more than one period. The Bank applies the requirements of the Sri Lanka Accounting Standard - LKAS 16 (Property, Plant and Equipment) in accounting for these assets. Property, plant and equipment are recognised if it is probable that future economic benefits associated with the asset will flow to the Bank and the cost of the asset can be reliably measured.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "\n\nRecognition Property, plant and equipment are tangible items that are held for use in the production or supply of services, for rental to others or for administrative purposes and are expected to be used during more than one period. The Bank applies the requirements of the Sri Lanka Accounting Standard - LKAS 16 (Property, Plant and Equipment) in accounting for these assets. Property, plant and equipment are recognised if it is probable that future economic benefits associated with the asset will flow to the Bank and the cost of the asset can be reliably measured. Measurement\n\nAn item of property, plant and equipment that qualifies for recognition as an asset is initially measured at its cost. Cost includes expenditure that is directly attributable to the acquisition of the asset and cost incurred subsequently to add to, replace part of an item of property, plant and equipment. The cost of self-constructed assets includes the cost of materials and direct labour, any other costs directly attributable for bringing the asset to a working condition for its intended use and the costs of dismantling and removing the items and restoring the site on which they are located. Purchased software that is integral to the functionality of the related equipment is capitalised as a part of computer equipment. When parts of an item of property or equipment have different useful lives, they are accounted as separate items (major components) of property, plant and equipment. Cost Model The Bank applies cost model to property, plant and equipment and records at cost of purchase or construction together with any incidental expenses thereon less accumulated depreciation and any accumulated impairment losses. Subsequent Cost The subsequent cost of replacing a component of an item of property, plant and equipment is recognised in the carrying amount of the item if it is probable that the future economic benefits embodied within that part will flow to the Bank and its cost can be reliably measured. The costs of day to day servicing of property, plant and equipment are charged to the Statement of Profit or Loss as incurred.\n\nDerecognition\n\nThe carrying amount of an item of property, plant and equipment is derecognised on disposal or when no future economic benefits are expected from its use. The gain or loss arising from de-recognition of an item of property, plant and equipment is included in the Statement of Profit or Loss when the item is derecognised. When replacement costs are recognised in the carrying amount of an item of property, plant and equipment, the remaining carrying amount of the replaced part is derecognised. Major inspection costs are capitalised. At each such capitalisation, the remaining carrying amount of the previous cost of inspection is derecognised. Capital Work in Progress These are expenses of capital nature directly incurred in the construction of buildings, major plant, machinery and system development, awaiting capitalisation. Capital work-in-progress would be transferred to the relevant asset when it is available for use, i.e. when it is in the location and condition necessary for it to be capable of operating in the manner intended by management. Capital work-in-progress is stated at cost less any accumulated impairment losses. Borrowing Costs Borrowing costs that are directly attributable to the acquisition, construction or production of a qualifying asset have been capitalised as part of the cost of the asset in accordance with Sri Lanka Accounting Standard - LKAS 23 (Borrowing Costs). A qualifying asset is an asset which takes substantial period of time to get ready for its intended use or sale. Capitalisation of borrowing costs ceases when substantially all the activities necessary to prepare the qualifying asset for its intended use are completed. Other borrowing costs are recognised in profit or loss in the period in which they are incurred. Rates of depreciation for each category of property, plant and equipment are given in Note 14, 'Depreciation and Amortisation Expenses'. Opening balance as at 1 January 628,691,082 933,786,798 585,604,828 501,113,400 136,771,987 328,008,505 3,113,976,600 Additions 1,198,559 57,510,869 14,896,523 17,530,022 - - 91,135,973 Surplus on revaluation of property 28,375,000 - - - - - 28,375,000 Disposals - (36,490,251) (7,632,854) (2,129,829) (1,963,327) (31,311,509) (79,527,770) Closing balance as at 31 December 658,264,641 954,807,416 592,868,497 516,513,593 134,808,660 296,696,996 3,153,959,803 Opening balance as at 1 January 48,669,965 612,601,570 543,750,195 435,697,060 135,559,216 222,611,993 1,998,889,999 Charge for the year 2,671,589 160,548,314 18,472,103 28,785,303 353,965 59,827,511 270,658,785 Disposals - (48,646,958) (9,296,761) (1,519,587) (1,935,325) (24,741,332) (86,139,963) Closing balance as at 31 December 51,341,554 724,502,926 552,925,537 462,962,776 133,977,856 257,698,172 2,183,408,821 Opening balance as at 1 January 559,666,082 552,170,317 578,388,974 487,868,435 136,033,057 328,008,505 2,642,135,370 Additions - 404,639,532 10,817,209 13,392,489 738,930 - 429,588,160 Surplus on revaluation of property 69,025,000 - - - - - 69,025,000 Disposals - (23,023,051) (3,601,355) (147,524) - - (26,771,930) Closing balance as at 31 December 628,691,082 933,786,798 585,604,828 501,113,400 136,771,987 328,008,505 3,113,976,600 Opening balance as at 1 January 45,644,016 531,549,789 526,014,527 401,357,330 135,230,148 157,010,292 1,796,806,102 Charge for the year 3,025,949 103,757,146 21,255,106 34,487,254 329,068 65,601,701 228,456,224 Disposals - (22,705,365) (3,519,438) (147,524) - - (26,372,327) Closing balance as at 31 December 48,669,965 612,601,570 543,750,195 435,697,060 135,559,216 222,611,993 1,998,889,999 Net book value as at 31 December 2025 606,923,087 230,304,490 39,942,960 53,550,817 830,804 38,998,824 970,550,982 Net book value as at 31 December 2024 580,021,117 321,185,228 41,854,633 65,416,340 1,212,771 105,396,512 1,115,086,601 2025 Land and Buildings Cost Less: Accumulated depreciation 2024 Land and Buildings Cost Less: Accumulated depreciation Machinery and Equipment Furniture and Fittings Computer Hardware LKR LKR LKR LKR LKR LKR LKR Machinery and Equipment Furniture and Fittings Computer Hardware LKR LKR LKR LKR LKR LKR LKR Machinery and Equipment Furniture and Fittings Land and Buildings Computer Hardware LKR LKR LKR LKR LKR LKR LKR Motor Vehicles Digital Equipment Total Motor Vehicles Digital Equipment Total Motor Vehicles Digital Equipment Total Building Carrying value feet) LKR LKR LKR LKR LKR LKR LKR Road, Kirulapone Mr. K.T. Nihal 2025-12-29 17.85 - - 133,800,000 38,999,000 - - 125,000,000 38,999,000 - - value Land Cost Building Cost As at 31 December 2025 As at 31 December 2024 Valuation information Extent Cost/ Fair Value Cost/ Fair Value value Land Fair Building Carrying value Land Cost Building Cost buildings Land Fair valuation Land Building No of (Perches) (Square The details of the land and buildings owned by the Bank are as follows: Location/Address Name of the Valuer Date of",
+    "summary": "",
+    "accountingPolicy": "Recognition Property, plant and equipment are tangible items that are held for use in the production or supply of services, for rental to others or for administrative purposes and are expected to be used during more than one period. The Bank applies the requirements of the Sri Lanka Accounting Standard - LKAS 16 (Property, Plant and Equipment) in accounting for these assets. Property, plant and equipment are recognised if it is probable that future economic benefits associated with the asset will flow to the Bank and the cost of the asset can be reliably measured. Measurement An item of property, plant and equipment that qualifies for recognition as an asset is initially measured at its cost. Cost includes expenditure that is directly attributable to the acquisition of the asset and cost incurred subsequently to add to, replace part of an item of property, plant and equipment. The cost of self-constructed assets includes the cost of materials and direct labour, any other costs directly attributable for bringing the asset to a working condition for its intended use and the costs of dismantling and removing the items and restoring the site on which they are located. Purchased software that is integral to the functionality of the related equipment is capitalised as a part of computer equipment. When parts of an item of property or equipment have different useful lives, they are accounted as separate items (major components) of property, plant and equipment. Cost Model The Bank applies cost model to property, plant and equipment and records at cost of purchase or construction together with any incidental expenses thereon less accumulated depreciation and any accumulated impairment losses. Subsequent Cost The subsequent cost of replacing a component of an item of property, plant and equipment is recognised in the carrying amount of the item if it is probable that the future economic benefits embodied within that part will flow to the Bank and its cost can be reliably measured. The costs of day to day servicing of property, plant and equipment are charged to the Statement of Profit or Loss as incurred. Derecognition The carrying amount of an item of property, plant and equipment is derecognised on disposal or when no future economic benefits are expected from its use. The gain or loss arising from de-recognition of an item of property, plant and equipment is included in the Statement of Profit or Loss when the item is derecognised. When replacement costs are recognised in the carrying amount of an item of property, plant and equipment, the remaining carrying amount of the replaced part is derecognised. Major inspection costs are capitalised. At each such capitalisation, the remaining carrying amount of the previous cost of inspection is derecognised. Capital Work in Progress These are expenses of capital nature directly incurred in the construction of buildings, major plant, machinery and system development, awaiting capitalisation. Capital work-in-progress would be transferred to the relevant asset when it is available for use, i.e. when it is in the location and condition necessary for it to be capable of operating in the manner intended by management. Capital work-in-progress is stated at cost less any accumulated impairment losses.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "25.1",
@@ -3448,9 +3458,9 @@
     "pages": "Page 262",
     "startPage": 262,
     "endPage": 262,
-    "summary": "Official statutory disclosures and notes for Note 26: RIGHT OF USE ASSETS.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "Cost Less: Accumulated amortisation",
+    "summary": "",
+    "accountingPolicy": "Right-of-use assets are presented in the statement of financial position (refer the accounting policy in Note 3.3). Right to use assets are depreciated on a straight line basis over the lease term.",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -3516,9 +3526,9 @@
     "pages": "Pages 262–263",
     "startPage": 262,
     "endPage": 263,
-    "summary": "There were no restrictions on the title of the intangible assets as at the reporting date. Further, there were no items pledged as securities for liabilities.",
-    "accountingPolicy": "Accounting Policy",
-    "content": "\n\nRecognition Computer Software Goodwill Subsequent Expenditure 2025 2024 LKR LKR\n\nThe carrying amount of an item of intangible asset is derecognised on disposal or when no future economic benefits are expected from its use. The gain or loss arising from de-recognition of an item of intangible asset is included in the Statement of Profit or Loss when the item is derecognised. There were no restrictions on the title of the intangible assets as at the reporting date. Further, there were no items pledged as securities for liabilities. Intangible assets of the Bank as at 31st December 2023 only include computer software and cost of licenses. Rates of amortisation for computer software and licenses are given in Note 14, 'Depreciation and Amortisation Expenses'. Opening balance as at 1 January 1,745,043,076 1,580,040,258 Additions 94,124,250 165,002,818 Disposal (106,500) - Closing balance as at 31 December 1,839,060,826 1,745,043,076 Opening balance as at 1 January 997,589,092 826,474,080 Charge for the year 182,517,759 171,115,012 Disposal (106,937) - Closing balance as at 31 December 1,179,999,914 997,589,092 Net book value as at 31 December 659,060,912 747,453,984",
+    "summary": "",
+    "accountingPolicy": "Recognition An intangible asset is an identifiable non-monetary asset without physical substance, held for use in the production or supply of goods or services, for rental to others or for administrative purposes. An intangible asset is recognised if it is probable that the future economic benefits that are attributable to the asset will flow to the entity and the cost of the asset can be measured reliably. An intangible asset is initially measured at cost. Expenditure incurred on an intangible item that was initially recognised as an expense by the Bank in previous annual Financial Statements or interim Financial Statements are not recognised as part of the cost of an intangible asset at a later date. Computer Software Cost of purchased licenses and all computer software costs incurred, licensed for use by the Bank which are not integrally related to associated hardware, which can be clearly identified, reliably measured and it's probable that they will lead to future economic benefits, are included in the Statement of Financial Position under the category 'Intangible assets' and carried at cost less accumulated amortisation and any accumulated impairment losses. Goodwill Goodwill, if any that arises upon the acquisition of subsidiaries is included in intangible assets. Subsequent Expenditure Expenditure incurred on software is capitalised only when it is probable that this expenditure will enable the asset to generate future economic benefits in excess of its originally assessed standard of performance and this expenditure can be measured and attributed to the asset reliably. All other expenditure is expensed as incurred. Goodwill is measured at cost less accumulated impairment losses.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "27.2",
@@ -3607,9 +3617,9 @@
     "pages": "Pages 263–264",
     "startPage": 263,
     "endPage": 264,
-    "summary": "The accounting policies pertaining to \"Due to Depositors\" are given in Note 3.2.3.7 to the Financial Statements.",
+    "summary": "",
     "accountingPolicy": "",
-    "content": "2025 2024 LKR LKR 2025 2024 LKR LKR The accounting policies pertaining to \"Due to Depositors\" are given in Note 3.2.3.7 to the Financial Statements. Total amount due to other customers 105,680,974,038 106,989,899,941 Total 105,680,974,038 106,989,899,941 Savings deposits 22,008,224,706 20,926,764,822 Fixed deposits 83,672,749,332 86,063,135,119 Total 105,680,974,038 106,989,899,941 Sri Lanka Rupee 105,680,974,038 106,989,899,941 Total 105,680,974,038 106,989,899,941 The accounting policies pertaining to \"Other Borrowings\" are given in Note 3.2.3.7 to the Financial Statements. Term loans (Note 30.1) 16,023,420,565 15,324,827,866 Refinance borrowing (Note 30.2) 4,592,900,504 3,750,303,696 Total 20,616,321,069 19,075,131,562",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -3655,8 +3665,8 @@
     "pages": "Page 264",
     "startPage": 264,
     "endPage": 264,
-    "summary": "Official statutory disclosures and notes for Note 29: DUE TO OTHER CUSTOMERS (DEPOSITS).",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "The accounting policies pertaining to \"Due to Depositors\" are given in Note 3.2.3.7 to the Financial Statements.",
     "content": "",
     "subNotes": [
       {
@@ -3748,9 +3758,9 @@
     "pages": "Pages 264–267",
     "startPage": 264,
     "endPage": 267,
-    "summary": "Seylan Bank PLC Floating 12 - 502,686,475",
-    "accountingPolicy": "Accounting Policy",
-    "content": "2025 2024 LKR LKR 2025 2024 LKR LKR 2025 2024 LKR LKR 2025 2024 LKR LKR Seylan Bank PLC Floating 12 - 502,686,475 Seylan Bank PLC Floating 1 - 1,001,868,852 HNB Bank PLC Floating 60 37,538,014 187,653,689 HNB Bank PLC Floating 48 - 125,274,440 HNB Bank PLC Fixed 2 1,001,553,425 - HNB Bank PLC Floating 4 - 500,817,623 HNB Bank PLC Floating 4 - 502,686,475 Bank of Ceylon Floating 14-63 1,736,167,547 3,711,492,713 Bank of Ceylon Fixed 1 3,001,356,164 - Peoples Bank Fixed 1 1,001,469,589 - Peoples Bank Fixed 12 1,498,814,532 - Peoples Bank - MM Fixed 12 501,082,466 - United States International Development Finance Corporation (DFC) Fixed 81 7,245,438,828 8,792,347,598 Total 16,023,420,565 15,324,827,865 Seylan Bank PLC 1,500,000,000 - (1,500,000,000) - HNB Bank PLC 1,312,640,000 2,000,000,000 (2,275,140,000) 1,037,500,000 Bank of Ceylon 3,695,849,445 3,000,000,000 (1,968,536,000) 4,727,313,445 People's Bank - 3,710,000,000 (713,750,000) 2,996,250,000 DFC 8,777,498,995 532,339,333 (2,076,635,666) 7,233,202,662 Interest payable 38,839,425 448,862,137 (458,547,104) 29,154,458 Total 15,324,827,865 9,691,201,470 (8,992,608,770) 16,023,420,565 The Bank complied with all borrowing covenants reported under Note 30.1 as at 31st December 2025, other than the following covenant breaches. Covenant Description Limit Frequency within sixty (60) days after the end of each fiscal quarter Gross Non-Performing Loan Ratio \"Gross Non-Performing Loan Ratio\" means, as of any date of determination, the ratio of Gross Non-Performing Loans to the aggregate amount of customer loans and advances (excluding deposits with other banks)",
+    "summary": "",
+    "accountingPolicy": "The accounting policies pertaining to \"Other Borrowings\" are given in Note 3.2.3.7 to the Financial Statements.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "30.1",
@@ -4097,7 +4107,7 @@
     "pages": "Pages 267–269",
     "startPage": 267,
     "endPage": 269,
-    "summary": "Official statutory disclosures and notes for Note 31: RETIREMENT BENEFIT OBLIGATION.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -4324,7 +4334,7 @@
     "pages": "Pages 269–270",
     "startPage": 269,
     "endPage": 270,
-    "summary": "Official statutory disclosures and notes for Note 32: OTHER LIABILITIES.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -4443,7 +4453,7 @@
     "pages": "Page 270",
     "startPage": 270,
     "endPage": 270,
-    "summary": "Official statutory disclosures and notes for Note 33: STATED CAPITAL.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -4519,7 +4529,7 @@
     "pages": "Page 270",
     "startPage": 270,
     "endPage": 270,
-    "summary": "Official statutory disclosures and notes for Note 34: STATUTORY RESERVE FUND.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [],
@@ -4557,7 +4567,7 @@
     "pages": "Page 270",
     "startPage": 270,
     "endPage": 270,
-    "summary": "Official statutory disclosures and notes for Note 35: RETAINED EARNINGS.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [],
@@ -4615,9 +4625,9 @@
     "pages": "Pages 270–271",
     "startPage": 270,
     "endPage": 271,
-    "summary": "Opening balance as at 1 January 2025 Movement/",
+    "summary": "",
     "accountingPolicy": "",
-    "content": "Value Number of shares 2025 2024 2025 2024 LKR LKR LKR LKR Opening balance as at 1 January 2025 Movement/ 2025 2024 LKR LKR 2025 2024 LKR LKR 2025 2024 LKR LKR Closing balance as at 31 December 2025 transfers LKR LKR LKR General reserve 46,656,973 - 46,656,973 Revaluation reserve 333,975,868 69,025,000 403,000,868 Available for sale/fair value through OCI reserve (19,051,624) - (19,051,624) Total 361,581,217 69,025,000 430,606,217 The accounting policies pertaining to \"Commitments and Contingencies\" are given in Note 2.20 to the Financial Statements. Bank guarantees 389,539,808 284,090,361 Undrawn Credit Lines 643,352,917 585,234,172 Total 1,032,892,725 869,324,533 Financial Guarantee 9,740,343 63,181,207 74,106,715 45,514,357 86,941,440 4,606,299 284,090,361 Undrawn Credit Lines 585,234,172 - - - - - 585,234,172 Total Commitment and Guarantees 594,974,515 63,181,207 74,106,715 45,514,357 86,941,440 4,606,299 869,324,534 Financial Guarantee 138,762,930 55,913,614 55,701,360 90,723,000 47,662,000 776,904 389,539,808 Undrawn Credit Lines 643,352,917 - - - - - 643,352,917 Total Commitment and Guarantees 782,115,847 55,913,614 55,701,360 90,723,000 47,662,000 776,904 1,032,892,725",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -4679,8 +4689,8 @@
     "pages": "Pages 271–273",
     "startPage": 271,
     "endPage": 273,
-    "summary": "Official statutory disclosures and notes for Note 37: CONTINGENT LIABILITIES AND COMMITMENTS.",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "The accounting policies pertaining to \"Commitments and Contingencies\" are given in Note 2.20 to the Financial Statements.",
     "content": "",
     "subNotes": [
       {
@@ -4800,8 +4810,8 @@
     "pages": "Page 273",
     "startPage": 273,
     "endPage": 273,
-    "summary": "Official statutory disclosures and notes for Note 38: EVENTS OCCURRING AFTER THE REPORTING DATE.",
-    "accountingPolicy": "Accounting Policy",
+    "summary": "",
+    "accountingPolicy": "Events after the reporting period are those events, favourable and unfavourable, that occur between the reporting date and the date when the Financial Statements are authorised for issue. No circumstances have arisen since the reporting date which would require adjustments to, or disclosure in the Financial Statements.",
     "content": "",
     "subNotes": [],
     "tables": []
@@ -4813,7 +4823,7 @@
     "pages": "Pages 273–274",
     "startPage": 273,
     "endPage": 274,
-    "summary": "Official statutory disclosures and notes for Note 39: RELATED PARTY DISCLOSURES.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -4925,9 +4935,9 @@
     "pages": "Pages 274–275",
     "startPage": 274,
     "endPage": 275,
-    "summary": "As of 2025 and 2024, the bank has no pledged loan portfolios.",
+    "summary": "",
     "accountingPolicy": "",
-    "content": "As of 2025 and 2024, the bank has no pledged loan portfolios. Financial assets Financial assets at amortised cost Financial liabilities LKR LKR LKR LKR 2025 2024 Number Number As at 31 December 2024 Amortised cost FVTPL FVTOCI Total Cash and balances with banks 2,442,293,957 - - 2,442,293,957 Placements with banks 9,083,957,854 - - 9,083,957,854 Financial assets at fair value through profit or loss - 6,739,200,074 - 6,739,200,074 - Loans and receivables to other customers 95,137,106,867 - - 95,137,106,867 - Debt and other instruments 26,623,135,466 - - 26,623,135,466 Financial assets measured at fair value through other comprehensive income - - 208,145,880 208,145,880 Total financial assets 133,286,494,144 6,739,200,074 208,145,880 140,233,840,098 Due to other customers 106,989,899,941 - - 106,989,899,941 Other borrowings 19,075,131,562 - - 19,075,131,562 Total financial liabilities 126,065,031,503 - - 126,065,031,503 The following is a description of how fair values are determined for financial instrument that are recorded at fair value using valuation techniques. These incorporate the Bank's estimate of assumption that a market participant would make when valuing the instrument. Fair value through OCI valued using valuation techniques or pricing models primary consist of unquoted. Quoted equities, Sri Lanka Government securities (Treasury bills and bonds) and unit trust are included in financial assets fair value through profit or loss. Government securities are measured using average yield published by Central Bank of Sri Lanka. Quoted equities are valued using market price in active markets as at the reporting date. Unit trusts are measured using market price in markets that are not active. The Bank uses the following hierarchy for determining and disclosing the fair value of financial instruments by valuation technique. Level 2: Other techniques for which all inputs which have a significant effect on the recorded fair value are observable, either directly or indirectly Level 3: Techniques which use inputs that have a significant effect on the recorded fair value that are not based on observable market data Financial assets Financial assets at amortised cost Financial liabilities",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -4949,9 +4959,9 @@
     "pages": "Page 274",
     "startPage": 274,
     "endPage": 274,
-    "summary": "As at 31 December 2025 Amortised cost FVTPL FVTOCI Total",
+    "summary": "",
     "accountingPolicy": "",
-    "content": "As at 31 December 2025 Amortised cost FVTPL FVTOCI Total Cash and balances with banks 7,104,305,823 - - 7,104,305,823 Placements with banks 7,801,226,634 - - 7,801,226,634 Financial assets at fair value through profit or loss - - - - - Loans and receivables to other customers 109,840,875,877 - - 109,840,875,877 - Debt and other instruments 16,605,322,741 - - 16,605,322,741 Financial assets measured at fair value through other comprehensive income - - 196,697,726 196,697,726 Total financial assets 141,351,731,075 - 196,697,726 141,548,428,801 Due to other customers 105,680,974,038 - - 105,680,974,038 Other borrowings 20,616,321,069 - - 20,616,321,069 Total financial liabilities 126,297,295,107 - - 126,297,295,107 39.1.4. Shareholdings by key management personnel A39.1.5. Term and conditions of transaction with related parties 39.1.6. Recurrent and Non-recurrent Related Party Transactions",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -5058,7 +5068,7 @@
     "pages": "Pages 275–278",
     "startPage": 275,
     "endPage": 278,
-    "summary": "Official statutory disclosures and notes for Note 42: FAIR VALUE OF FINANCIAL INSTRUMENTS.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -5286,9 +5296,9 @@
     "pages": "Pages 278–280",
     "startPage": 278,
     "endPage": 280,
-    "summary": "Banking Leasing Treasury Pawning Total",
-    "accountingPolicy": "Accounting Policy",
-    "content": "As at 31 December 2025 Banking Leasing Treasury Pawning Total LKR LKR LKR LKR LKR Un-allocated expenses (6,460,810,732) Value Added Tax (VAT) on financial services (714,793,353) Social Security Contribution Levy (99,276,855) Profit before tax 800,172,578 Tax expenses (395,254,032) Profit for the year 404,918,546 Other comprehensive income for the year net of tax (187,012,524) Total comprehensive income for the year 217,906,022 Segment assets 89,298,611,878 9,252,256,328 31,707,552,925 11,290,007,667 141,548,428,798 Un-allocated assets 5,409,668,027 Total assets 89,298,611,878 9,252,256,328 31,707,552,925 11,290,007,667 146,958,096,825 Segment liabilities 90,048,197,344 9,329,921,105 21,390,794,367 11,384,777,624 132,153,690,440 Total equity - - - - 14,804,406,386 Total liabilities 90,048,197,344 9,329,921,105 21,390,794,367 11,384,777,624 146,958,096,825 Addition to non-current assets 150,613,154 15,605,075 - 19,041,994 185,260,223 Interest income 12,668,940,334 985,224,393 5,210,018,248 1,140,868,623 20,005,051,598 Add: Inter-segment interest income 12,718,214,047 - 10,157,292,684 - 22,875,506,731 Total interest income 25,387,154,381 985,224,393 15,367,310,932 1,140,868,623 42,880,558,329 Interest expenses (8,988,885,884) (671,227,187) (1,646,831,341) (877,643,192) (12,184,587,605) Add: Inter-segment interest expense (10,157,292,684) - (12,718,214,047) - (22,875,506,731) Total interest expense (19,146,178,568) (671,227,187) (14,365,045,388) (877,643,192) (35,060,094,336) Net interest income 6,240,975,813 313,997,206 1,002,265,543 263,225,431 7,820,463,994 Fee and commission income 588,662,495 42,354,662 - - 631,017,157 Fee and commission expenses (43,450,460) (3,244,577) - - (46,695,036) Net fee and commission income 545,212,035 39,110,085 - - 584,322,119 Net gain/(loss) from trading - - 60,116,875 - 60,116,875 Net fair value gain/(loss) of financial assets at fair value through profit or loss - - 444,081,680 - 444,081,680 Net other operating income (77,977,775) - 291,165 - (77,686,610) Total operating income 6,708,210,073 353,107,291 1,506,755,263 263,225,431 8,831,298,059 Impairment for loans and other losses (489,984,931) (74,124,769) 2,043,811 3,115,911 (558,949,979) Net operating income 6,218,225,142 278,982,522 1,508,799,074 266,341,342 8,272,348,080 Depreciation and amortisation expenses (520,866,959) (38,894,705) (304,179) (50,855,617) (610,921,460) Segment result 5,697,358,182 240,087,817 1,508,494,896 215,485,724 7,661,426,620 Other comprehensive income As at 31 December 2025 Banking Leasing Treasury Pawning Total LKR LKR LKR LKR LKR As at 31 December 2024 Banking Leasing Treasury Pawning Total LKR LKR LKR LKR LKR Un-allocated expenses (6,210,500,064) Value Added Tax (VAT) on financial services (668,192,659) Social Security Contribution Levy (98,470,974) Profit before tax 684,262,922 Tax expenses (274,728,675) Profit for the year 409,534,248 Other comprehensive income for the year net of tax (67,918,311) Total comprehensive income for the year 341,615,938 Segment assets 81,153,575,352 6,059,981,939 45,096,733,231 7,923,549,577 140,233,840,099 Un-allocated assets 4,922,109,861 Total assets 81,153,575,352 6,059,981,939 45,096,733,231 7,923,549,577 145,155,949,960 Segment liabilities 94,445,916,616 7,052,561,103 19,849,604,862 9,221,367,012 130,569,449,594 Total equity - - - - 14,586,500,364 Total liabilities 94,445,916,616 7,052,561,103 19,849,604,862 9,221,367,012 145,155,949,960 Addition to non-current assets 507,196,248 37,873,872 - 49,520,858 594,590,978 * Inter segment interest income and interest expense have been adjusted to net interest income in Treasury and Banking segments and comparative figure in this Financial Statements is amended. The following table shows an analysis of assets and liabilities according to when they are expected to be recovered or settled: Cash and balances with banks 7,104,305,824 - 7,104,305,824 2,442,293,957 - 2,442,293,957 Placements with banks 7,801,226,635 - 7,801,226,635 9,083,957,854 - 9,083,957,854 Financial assets fair value through profit or loss - - - 6,739,200,074 - 6,739,200,074 - Loans and receivables to other customers 33,358,243,425 76,482,632,448 109,840,875,873 24,960,637,386 70,176,469,482 95,137,106,868 - Debt and other instruments 16,363,343,807 241,978,934 16,605,322,741 25,679,512,421 943,623,046 26,623,135,466 Financial assets measured at fair value through other comprehensive income - 196,697,726 196,697,726 - 208,145,880 208,145,880 Investment in subsidiary - 6,163,100 6,163,100 - 6,163,100 6,163,100 Property, plant and equipment - 970,550,981 970,550,981 - 1,115,086,601 1,115,086,601 Right of use assets 170,758,095 1,187,652,421 1,358,410,516 103,097,637 677,340,145 780,437,782 Intangible assets - 659,060,911 659,060,911 - 747,453,984 747,453,984 Deferred tax assets - 756,172,119 756,172,119 - 778,912,222 778,912,222 Other assets 322,909,896 1,336,400,503 1,659,310,399 539,120,857 954,935,314 1,494,056,171 Total assets 65,120,787,682 81,837,309,142 146,958,096,824 69,547,820,186 75,608,129,774 145,155,949,959 Other comprehensive income",
+    "summary": "",
+    "accountingPolicy": "Management monitors the operating results of its business units separately for the purpose of making decisions about resource allocation and performance assessment. Segment performance is evaluated based on operating profits or losses, which in certain respects, are measured differently from operating profits or losses in the Financial Statements. Taxes are managed at an entity level and are not allocated to operating segments. Including revenue and expenses that relate to transactions with any of the Bank's other components, whose operating results are reviewed regularly by the operating decision maker to make decisions about resources allocated to each segment and assess its performance, and for which discrete financial information is available. An operating segment is a component of the Bank that engages in business activities from which it may earn revenue and incur expenses. Interest income is reported net as management primarily relies on net interest income as a performance measure, not the gross income and expense. Revenue from transactions with a single external customer or counterparty did not exceed 10% or more of the Bank's total revenue in 2024 or 2025. The following table presents income, profit, total assets, total liabilities & cash flows of the Bank's operating segments. As at 31 December 2025 Banking Leasing Treasury Pawning",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -5660,9 +5670,9 @@
     "pages": "Pages 280–281",
     "startPage": 280,
     "endPage": 281,
-    "summary": "Financial assets at amortised cost",
+    "summary": "",
     "accountingPolicy": "",
-    "content": "Assets Financial assets at amortised cost As at 31 December 2024 Banking Leasing Treasury Pawning Total LKR LKR LKR LKR LKR As at 31 December 2025 As at 31 December 2024 Within After Total Within After Total 12 months 12 months 12 months 12 months LKR LKR LKR LKR LKR LKR As at 31 December 2025 As at 31 December 2024 Within After Total Within After Total 12 months 12 months 12 months 12 months LKR LKR LKR LKR LKR LKR Liabilities Due to other customers 57,026,678,114 48,654,295,924 105,680,974,038 64,443,515,192 42,546,384,750 106,989,899,941 Other borrowings 16,051,705,795 4,564,615,273 20,616,321,068 14,534,302,788 4,540,828,774 19,075,131,562 Retirement benefit obligation - 1,286,496,116 1,286,496,116 - 1,041,381,783 1,041,381,783 Current tax liabilities 892,809,195 - 892,809,195 717,274,037 - 717,274,037 Other liabilities 2,032,586,692 1,644,503,330 3,677,090,022 1,758,470,312 987,291,960 2,745,762,272 Total liabilities 76,003,779,796 56,149,910,643 132,153,690,439 81,453,562,328 49,115,887,267 130,569,449,595 Net asset/(liability) (10,882,992,114) 25,687,398,500 14,804,406,386 (11,905,742,142) 26,492,242,507 14,586,500,364",
+    "content": "",
     "subNotes": [],
     "tables": [
       {
@@ -5905,7 +5915,7 @@
     "pages": "Pages 281–295",
     "startPage": 281,
     "endPage": 295,
-    "summary": "Official statutory disclosures and notes for Note 45: RISK MANAGEMENT.",
+    "summary": "",
     "accountingPolicy": "",
     "content": "",
     "subNotes": [
@@ -7508,9 +7518,9 @@
     "pages": "Page 296",
     "startPage": 296,
     "endPage": 296,
-    "summary": "The comparative information has been reclassified wherever necessary to confirm to the current year's presentation and details are given below.",
-    "accountingPolicy": "",
-    "content": "The comparative information has been reclassified wherever necessary to confirm to the current year's presentation and details are given below.",
+    "summary": "",
+    "accountingPolicy": "The comparative information has been reclassified wherever necessary to confirm to the current year's presentation and details are given below.",
+    "content": "",
     "subNotes": [
       {
         "subNumber": "46.1",

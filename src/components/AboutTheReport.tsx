@@ -19,7 +19,7 @@ export default function AboutTheReport() {
         <div>
           <div className="inline-flex items-center space-x-2 text-xs font-mono font-bold text-sdb-coral uppercase tracking-wider mb-2">
             <span className="w-2 h-2 rounded-full bg-sdb-coral" />
-            <span>Point 07 • Official Report Overview • Pages 5 & 10</span>
+            <span>Official Report Overview • Pages 5 & 10</span>
           </div>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-sdb-purple tracking-tight">
             About This Report

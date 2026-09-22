@@ -209,7 +209,7 @@ export default function GovernanceAndRisk() {
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4 border-b border-sdb-purple/10 pb-4">
                   <div>
                     <span className="text-[10px] font-mono font-bold text-sdb-coral uppercase tracking-widest bg-sdb-coral/10 px-2.5 py-1 rounded-full">
-                      Point 17 • Annual Report Pages 124–126
+                      Annual Report Pages 124–126
                     </span>
                     <h3 className="font-serif text-2xl font-bold text-sdb-purple mt-2">
                       {CHAIRPERSON_GOVERNANCE_MESSAGE.title}
@@ -242,13 +242,13 @@ export default function GovernanceAndRisk() {
                 </div>
               </div>
 
-              {/* Point 18: Governance Structure & Board Composition */}
+              {/* Governance Structure & Board Composition */}
               <div className="space-y-4">
                 <h3 className="font-serif text-2xl font-bold text-sdb-purple">
                   Governance Structure & Board Composition
                 </h3>
                 <p className="text-xs text-slate-500 font-mono">
-                  Point 18: High-level corporate governance architecture balancing executive execution and non-executive independent scrutiny.
+                  High-level corporate governance architecture balancing executive execution and non-executive independent scrutiny.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

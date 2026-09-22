@@ -46,12 +46,19 @@ export default function ProductsSection() {
 
   // Item 7: Ensure category bar smoothly auto-scrolls to center active button (e.g. VCF)
   useEffect(() => {
-    if (activeView === "catalog" && categoryRefs.current[selectedCategory]) {
-      categoryRefs.current[selectedCategory]?.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest"
-      });
+    if (activeView === "catalog" && categoryScrollRef.current && categoryRefs.current[selectedCategory]) {
+      const container = categoryScrollRef.current;
+      const button = categoryRefs.current[selectedCategory];
+      if (container && button) {
+        const cRect = container.getBoundingClientRect();
+        const bRect = button.getBoundingClientRect();
+        const currentScroll = container.scrollLeft;
+        const targetScroll = (bRect.left - cRect.left) + currentScroll - (cRect.width / 2) + (bRect.width / 2);
+        container.scrollTo({
+          left: Math.max(0, targetScroll),
+          behavior: "smooth"
+        });
+      }
     }
   }, [selectedCategory, activeView]);
 

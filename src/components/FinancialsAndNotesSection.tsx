@@ -280,16 +280,19 @@ export default function FinancialsAndNotesSection() {
 
       if (note.number.toLowerCase().includes(query) || note.title.toLowerCase().includes(query)) {
         isMatch = true;
-        matchExcerpt = `Note Title: "${note.title}". ${note.summary}`;
-      } else if (note.content.toLowerCase().includes(query)) {
+        matchExcerpt = `Note ${note.number}: ${note.title}${note.pages ? ` (${note.pages})` : ""}`;
+      } else if (note.content && note.content.toLowerCase().includes(query)) {
         isMatch = true;
         const idx = note.content.toLowerCase().indexOf(query);
         const start = Math.max(0, idx - 40);
         const end = Math.min(note.content.length, idx + query.length + 80);
         matchExcerpt = `...${note.content.substring(start, end)}...`;
-      } else if (note.summary.toLowerCase().includes(query)) {
+      } else if (note.accountingPolicy && note.accountingPolicy.toLowerCase().includes(query)) {
         isMatch = true;
-        matchExcerpt = note.summary;
+        const idx = note.accountingPolicy.toLowerCase().indexOf(query);
+        const start = Math.max(0, idx - 40);
+        const end = Math.min(note.accountingPolicy.length, idx + query.length + 80);
+        matchExcerpt = `...${note.accountingPolicy.substring(start, end)}...`;
       } else if (note.tableData) {
         // Search table cells
         for (const row of note.tableData) {
@@ -730,9 +733,6 @@ export default function FinancialsAndNotesSection() {
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-500 font-medium line-clamp-1 mt-0.5">
-                        {note.summary}
-                      </p>
                     </div>
                   </div>
                   
@@ -775,23 +775,8 @@ export default function FinancialsAndNotesSection() {
                       transition={{ duration: 0.3 }}
                       className="border-t border-sdb-purple/10 bg-sdb-cream/30 p-6 space-y-6"
                     >
-                      {/* Explanatory Narrative text */}
-                      {note.content && (
-                        <div className="space-y-3">
-                          {note.content.split("\n\n").map((para, pIdx) => {
-                            const p = para.trim();
-                            if (!p) return null;
-                            return (
-                              <p key={pIdx} className="text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed">
-                                {highlightText(p, searchQuery)}
-                              </p>
-                            );
-                          })}
-                        </div>
-                      )}
-
                       {/* Accounting Policy Callout (Points 48, 49, 50, 52, 58) */}
-                      {note.accountingPolicy && (
+                      {note.accountingPolicy && note.accountingPolicy.trim().toLowerCase() !== "accounting policy" && (
                         <div className="bg-[#FAF2EB] border-l-4 border-[#8B1D2C] p-4 rounded-r-xl text-xs space-y-1.5 shadow-xs">
                           <div className="flex items-center space-x-1.5 text-[#8B1D2C] font-bold uppercase tracking-wider font-mono text-[10px]">
                             <Scale className="w-3.5 h-3.5" />

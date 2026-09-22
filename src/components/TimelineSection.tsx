@@ -10,13 +10,18 @@ export default function TimelineSection() {
 
   const activeMilestone = TIMELINE_MILESTONES[activeYearIndex];
 
-  // Auto-scroll the timeline bar to keep the active year centered, ensuring years after 2016 remain visible
+  // Auto-scroll the timeline bar container to keep the active year centered, ensuring years after 2016 remain visible across all browsers
   useEffect(() => {
-    if (activeYearButtonRef.current) {
-      activeYearButtonRef.current.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest"
+    const container = scrollContainerRef.current;
+    const button = activeYearButtonRef.current;
+    if (container && button) {
+      const cRect = container.getBoundingClientRect();
+      const bRect = button.getBoundingClientRect();
+      const currentScroll = container.scrollLeft;
+      const targetScroll = (bRect.left - cRect.left) + currentScroll - (cRect.width / 2) + (bRect.width / 2);
+      container.scrollTo({
+        left: Math.max(0, targetScroll),
+        behavior: "smooth"
       });
     }
   }, [activeYearIndex]);

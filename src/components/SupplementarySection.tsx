@@ -296,11 +296,11 @@ export default function SupplementarySection() {
               ))}
             </div>
 
-            {/* Template 1: Key Regulatory Ratios (Point 75) */}
+            {/* Template 1: Key Regulatory Ratios */}
             {activeBaselTemplate === 1 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 1: Key Regulatory Ratios - Capital and Liquidity (Point 75)
+                  Template 1: Key Regulatory Ratios - Capital and Liquidity
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -329,11 +329,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 2: Capital Computation (Point 76) */}
+            {/* Template 2: Capital Computation */}
             {activeBaselTemplate === 2 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 2: Basel III Computation of Capital Ratio (Point 76)
+                  Template 2: Basel III Computation of Capital Ratio
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -365,11 +365,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 3: Leverage Ratio (Point 77) */}
+            {/* Template 3: Leverage Ratio */}
             {activeBaselTemplate === 3 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 3: Computation of Leverage Ratio (Point 77)
+                  Template 3: Computation of Leverage Ratio
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -394,11 +394,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 4: Liquidity Coverage Ratio (Point 78) */}
+            {/* Template 4: Liquidity Coverage Ratio */}
             {activeBaselTemplate === 4 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 4: Basel III Computation of Liquidity Coverage Ratio (Point 78)
+                  Template 4: Basel III Computation of Liquidity Coverage Ratio
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -423,11 +423,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 5: Capital Instruments (Point 79) */}
+            {/* Template 5: Capital Instruments */}
             {activeBaselTemplate === 5 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 5: Main Features of Regulatory Capital Instruments (Point 79)
+                  Template 5: Main Features of Regulatory Capital Instruments
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -444,11 +444,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 6: Adequacy Discussion (Point 80) */}
+            {/* Template 6: Adequacy Discussion */}
             {activeBaselTemplate === 6 && (
               <div className="space-y-4 bg-slate-50 p-6 rounded-2xl border border-slate-200">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 6: Summary Discussion on Capital Adequacy (Point 80)
+                  Template 6: Summary Discussion on Capital Adequacy
                 </h4>
                 <div className="space-y-3">
                   {BASEL_TEMPLATE_6_ADEQUACY_DISCUSSION.keyPoints.map((pt, idx) => (
@@ -461,11 +461,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 8: Credit Risk Exposures (Point 81) */}
+            {/* Template 8: Credit Risk Exposures */}
             {activeBaselTemplate === 8 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 8: Credit Risk Under Standardised Approach - Exposures & Risk Weights (Point 81)
+                  Template 8: Credit Risk Under Standardised Approach - Exposures & Risk Weights
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -498,11 +498,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 9: Market Risk (Point 82) */}
+            {/* Template 9: Market Risk */}
             {activeBaselTemplate === 9 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 9: Market Risk Under Standardised Measurement Method (Point 82)
+                  Template 9: Market Risk Under Standardised Measurement Method
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -527,11 +527,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 10: Operational Risk (Point 83) */}
+            {/* Template 10: Operational Risk */}
             {activeBaselTemplate === 10 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 10: Operational Risk Under Basic Indicator Approach (Point 83)
+                  Template 10: Operational Risk Under Basic Indicator Approach
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -554,11 +554,11 @@ export default function SupplementarySection() {
               </div>
             )}
 
-            {/* Template 11: Scope Mapping (Point 84) */}
+            {/* Template 11: Scope Mapping */}
             {activeBaselTemplate === 11 && (
               <div className="space-y-4">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple">
-                  Template 11: Differences Between Accounting & Regulatory Scopes (Point 84)
+                  Template 11: Differences Between Accounting & Regulatory Scopes
                 </h4>
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-left text-xs font-mono">
@@ -632,10 +632,10 @@ export default function SupplementarySection() {
             {/* Sub-View: Tables 1-4 */}
             {activeShareholderView === "tables-1-4" && (
               <div className="space-y-6">
-                {/* Table 1: Share Ownership Composition (Point 87) */}
+                {/* Table 1: Share Ownership Composition */}
                 <div className="space-y-3">
                   <h4 className="font-serif font-bold text-base text-sdb-purple">
-                    Table 1: Share Ownership Composition (Point 87)
+                    Table 1: Share Ownership Composition
                   </h4>
                   <div className="overflow-x-auto rounded-xl border border-slate-200">
                     <table className="w-full text-left text-xs font-mono">
@@ -666,7 +666,7 @@ export default function SupplementarySection() {
                   {/* Table 2 */}
                   <div className="space-y-3">
                     <h4 className="font-serif font-bold text-base text-sdb-purple">
-                      Table 2: Resident / Non-Resident Analysis (Point 88)
+                      Table 2: Resident / Non-Resident Analysis
                     </h4>
                     <div className="overflow-x-auto rounded-xl border border-slate-200">
                       <table className="w-full text-left text-xs font-mono">
@@ -695,7 +695,7 @@ export default function SupplementarySection() {
                   {/* Table 3 */}
                   <div className="space-y-3">
                     <h4 className="font-serif font-bold text-base text-sdb-purple">
-                      Table 3: Individual / Institutional Analysis (Point 89)
+                      Table 3: Individual / Institutional Analysis
                     </h4>
                     <div className="overflow-x-auto rounded-xl border border-slate-200">
                       <table className="w-full text-left text-xs font-mono">
@@ -722,10 +722,10 @@ export default function SupplementarySection() {
                   </div>
                 </div>
 
-                {/* Table 4: Institutional Sub-Analysis (Point 90) */}
+                {/* Table 4: Institutional Sub-Analysis */}
                 <div className="space-y-3">
                   <h4 className="font-serif font-bold text-base text-sdb-purple">
-                    Table 4: Institutional Sub Analysis (Point 90)
+                    Table 4: Institutional Sub Analysis
                   </h4>
                   <div className="overflow-x-auto rounded-xl border border-slate-200">
                     <table className="w-full text-left text-xs font-mono">
@@ -787,10 +787,10 @@ export default function SupplementarySection() {
                   </div>
                 </div>
 
-                {/* Substantial Shareholdings - Top 20 (Point 30) */}
+                {/* Substantial Shareholdings - Top 20 */}
                 <div className="space-y-3">
                   <h4 className="font-serif font-bold text-base text-sdb-purple">
-                    Substantial Shareholdings - Top 20 Shareholders as at 31st December 2025 (Point 30)
+                    Substantial Shareholdings - Top 20 Shareholders as at 31st December 2025
                   </h4>
                   <div className="overflow-x-auto rounded-xl border border-slate-200">
                     <table className="w-full text-left text-xs font-mono">
@@ -861,10 +861,10 @@ export default function SupplementarySection() {
             {/* Sub-View: Market Trading & Cap (Points 91–97) */}
             {activeShareholderView === "market-trading" && (
               <div className="space-y-6">
-                {/* Point 91: Market Cap and Minimum Public Holding */}
+                {/* Market Cap and Minimum Public Holding */}
                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
                   <h4 className="font-serif font-bold text-base text-sdb-purple">
-                    Market Capitalisation and Minimum Public Holding Compliance (Point 91)
+                    Market Capitalisation and Minimum Public Holding Compliance
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono">
                     <div className="bg-white p-3 rounded-xl border border-slate-200">
@@ -919,7 +919,7 @@ export default function SupplementarySection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
                     <h4 className="font-serif font-bold text-base text-sdb-purple">
-                      CSE and Banking Industry Capitalisation (Point 95)
+                      CSE and Banking Industry Capitalisation
                     </h4>
                     <div className="overflow-x-auto rounded-xl border border-slate-200">
                       <table className="w-full text-left text-xs font-mono">
@@ -938,7 +938,7 @@ export default function SupplementarySection() {
 
                   <div className="space-y-3">
                     <h4 className="font-serif font-bold text-base text-sdb-purple">
-                      SDB Bank Capitalisation Details (Point 96)
+                      SDB Bank Capitalisation Details
                     </h4>
                     <div className="overflow-x-auto rounded-xl border border-slate-200">
                       <table className="w-full text-left text-xs font-mono">
@@ -955,10 +955,10 @@ export default function SupplementarySection() {
                   </div>
                 </div>
 
-                {/* SDB Bank Share Price Movement (Point 97) */}
+                {/* SDB Bank Share Price Movement */}
                 <div className="space-y-3">
                   <h4 className="font-serif font-bold text-base text-sdb-purple">
-                    SDB Bank Share Price Movement During 2025 (Point 97)
+                    SDB Bank Share Price Movement During 2025
                   </h4>
                   <div className="overflow-x-auto rounded-xl border border-slate-200">
                     <table className="w-full text-left text-xs font-mono">
@@ -991,10 +991,10 @@ export default function SupplementarySection() {
             {/* Sub-View: Dividends & Value Creation (Points 98 to 100) */}
             {activeShareholderView === "dividends-value" && (
               <div className="space-y-6">
-                {/* Dividends Record (Point 98) */}
+                {/* Dividends Record */}
                 <div className="space-y-3">
                   <h4 className="font-serif font-bold text-base text-sdb-purple">
-                    Historical Dividends Record (Point 98)
+                    Historical Dividends Record
                   </h4>
                   <div className="overflow-x-auto rounded-xl border border-slate-200">
                     <table className="w-full text-left text-xs font-mono">
@@ -1069,12 +1069,12 @@ export default function SupplementarySection() {
               </h3>
             </div>
 
-            {/* Income Sources & Utilisation (Point 85) */}
+            {/* Income Sources & Utilisation */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Sources */}
               <div className="space-y-3 bg-slate-50 p-5 rounded-2xl border border-slate-200">
                 <h4 className="font-serif font-bold text-base text-sdb-purple">
-                  Sources of Income (Point 85)
+                  Sources of Income
                 </h4>
                 <div className="space-y-2 font-mono text-xs">
                   {SOURCES_AND_UTILISATION_OF_INCOME.sources.map((s, idx) => (
@@ -1089,7 +1089,7 @@ export default function SupplementarySection() {
               {/* Utilisation */}
               <div className="space-y-3 bg-slate-50 p-5 rounded-2xl border border-slate-200">
                 <h4 className="font-serif font-bold text-base text-sdb-purple">
-                  Utilisation of Income (Point 85)
+                  Utilisation of Income
                 </h4>
                 <div className="space-y-2 font-mono text-xs">
                   {SOURCES_AND_UTILISATION_OF_INCOME.utilisation.map((u, idx) => (
@@ -1102,10 +1102,10 @@ export default function SupplementarySection() {
               </div>
             </div>
 
-            {/* Quarterly Performance (Point 86) */}
+            {/* Quarterly Performance */}
             <div className="space-y-3 pt-4 border-t border-slate-200">
               <h4 className="font-serif font-bold text-base text-sdb-purple">
-                Quarterly Performance of the Bank - FY 2025 (Point 86)
+                Quarterly Performance of the Bank - FY 2025
               </h4>
               <div className="overflow-x-auto rounded-xl border border-slate-200">
                 <table className="w-full text-left text-xs font-mono">
@@ -1212,7 +1212,7 @@ export default function SupplementarySection() {
                 <p className="text-slate-500">Tel: {CORPORATE_INFORMATION_DATA.contactPhone}</p>
               </div>
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-                <span className="text-slate-400 uppercase text-[10px]">Statutory External Auditor (Point 43)</span>
+                <span className="text-slate-400 uppercase text-[10px]">Statutory External Auditor</span>
                 <p className="font-bold text-[#8B1D2C] text-sm font-sans">{CORPORATE_INFORMATION_DATA.auditors}</p>
                 <p className="text-slate-500">{CORPORATE_INFORMATION_DATA.auditorsAddress}</p>
               </div>

@@ -281,26 +281,34 @@ You can ask me anything regarding:
 How can I assist you with the 2025 Annual Report today?`;
   }
 
-  // 13. Dynamic Fallback Search across all 35 Notes and Financial Statements
+  // 13. Dynamic Fallback Search across all Notes and Financial Statements
   for (const note of NOTES_TO_FINANCIALS) {
     const titleNorm = normalizeQuery(note.title);
-    const summaryNorm = normalizeQuery(note.summary);
-    const contentNorm = normalizeQuery(note.content);
+    const policyNorm = normalizeQuery(note.accountingPolicy || "");
+    const contentNorm = normalizeQuery(note.content || "");
 
     const queryWords = norm.split(" ").filter(w => w.length > 3);
     const hasMatch = queryWords.some(w => 
-      titleNorm.includes(w) || summaryNorm.includes(w) || contentNorm.includes(w)
+      titleNorm.includes(w) || policyNorm.includes(w) || contentNorm.includes(w)
     );
 
     if (hasMatch) {
       let resp = `### **${note.number}: ${note.title}**\n\n`;
-      resp += `* **Overview:** ${note.summary}\n`;
-      resp += `* **Key Disclosures:** ${note.content}\n\n`;
-      if (note.columns && note.tableData && note.tableData.length > 0) {
-        resp += `| ` + note.columns.map(c => c.header).join(" | ") + ` |\n`;
-        resp += `| ` + note.columns.map(() => ":---").join(" | ") + ` |\n`;
-        note.tableData.slice(0, 8).forEach(row => {
-          resp += `| ` + note.columns!.map(c => row[c.key] ?? "").join(" | ") + ` |\n`;
+      if (note.pages) {
+        resp += `* **Reference:** ${note.pages}\n`;
+      }
+      if (note.accountingPolicy) {
+        resp += `* **Significant Accounting Policy:** ${note.accountingPolicy}\n\n`;
+      }
+      if (note.content) {
+        resp += `* **Key Disclosures:** ${note.content}\n\n`;
+      }
+      if (note.tables && note.tables.length > 0) {
+        const tbl = note.tables[0];
+        resp += `| ` + tbl.headers.join(" | ") + ` |\n`;
+        resp += `| ` + tbl.headers.map(() => ":---").join(" | ") + ` |\n`;
+        tbl.rows.slice(0, 8).forEach(row => {
+          resp += `| ` + row.join(" | ") + ` |\n`;
         });
         resp += `\n`;
       }
