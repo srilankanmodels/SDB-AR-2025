@@ -304,6 +304,32 @@ export default function FinancialsAndNotesSection() {
         }
       }
 
+      // Also search subNotes
+      if (!isMatch && note.subNotes) {
+        for (const sub of note.subNotes) {
+          if (sub.title.toLowerCase().includes(query) || (sub.content && sub.content.toLowerCase().includes(query))) {
+            isMatch = true;
+            matchExcerpt = `Sub-note ${sub.subNumber} (${sub.title}): ${sub.content?.substring(0, 100)}...`;
+            break;
+          }
+        }
+      }
+
+      // Also search tables
+      if (!isMatch && note.tables) {
+        for (const tbl of note.tables) {
+          for (const row of tbl.rows) {
+            const hit = row.find(c => c.toLowerCase().includes(query));
+            if (hit) {
+              isMatch = true;
+              matchExcerpt = `Matches note table: "${hit}"`;
+              break;
+            }
+          }
+          if (isMatch) break;
+        }
+      }
+
       if (isMatch) {
         results.push({
           type: "note",
@@ -319,6 +345,17 @@ export default function FinancialsAndNotesSection() {
   }, [searchQuery]);
 
   // Jump to Note or Statement Row
+  const scrollToNote = (noteNumber: string) => {
+    setExpandedNotes(prev => ({ ...prev, [noteNumber]: true }));
+    setHighlightedNoteId(noteNumber);
+    setTimeout(() => {
+      const element = notesRefs.current[noteNumber];
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 150);
+  };
+
   const handleJumpToResult = (result: SearchResult) => {
     if (result.type === "statement" && result.tab) {
       setActiveStatementTab(result.tab);
@@ -327,15 +364,7 @@ export default function FinancialsAndNotesSection() {
       const element = document.getElementById("financial-statements-card");
       element?.scrollIntoView({ behavior: "smooth", block: "center" });
     } else if (result.type === "note") {
-      setExpandedNotes(prev => ({ ...prev, [result.linkId]: true }));
-      setHighlightedNoteId(result.linkId);
-      
-      setTimeout(() => {
-        const element = notesRefs.current[result.linkId];
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 150);
+      scrollToNote(result.linkId);
     }
   };
 
@@ -377,7 +406,7 @@ export default function FinancialsAndNotesSection() {
             Financial Statements & Notes
           </h2>
           <p className="text-slate-600 max-w-2xl text-sm md:text-base">
-            SDB bank's fully audited accounts for the Financial Year ended 31st December 2025. Explore detailed Balance Sheets, Income Statements, and browse or search through all 20 Notes to the Accounts.
+            SDB bank's fully audited accounts for the Financial Year ended 31st December 2025. Explore detailed Balance Sheets, Income Statements, and browse or search through all 46 Notes to the Accounts.
           </p>
         </div>
         
@@ -385,7 +414,7 @@ export default function FinancialsAndNotesSection() {
         <div className="flex flex-wrap gap-2">
           <span className="inline-flex items-center space-x-1.5 bg-sdb-green/10 border border-sdb-green/20 text-sdb-green px-2.5 py-1 rounded-full text-xs font-semibold">
             <span className="w-1.5 h-1.5 rounded-full bg-sdb-green" />
-            <span>Audited by KPMG</span>
+            <span>Audited by Ernst & Young (EY)</span>
           </span>
           <span className="inline-flex items-center space-x-1.5 bg-sdb-purple/10 border border-sdb-purple/20 text-sdb-purple px-2.5 py-1 rounded-full text-xs font-semibold">
             <Layers className="w-3.5 h-3.5" />
@@ -401,7 +430,7 @@ export default function FinancialsAndNotesSection() {
           <h3 className="font-serif text-lg font-bold">Annual Report Full-Text Search Engine</h3>
         </div>
         <p className="text-slate-600 text-xs md:text-sm mb-4">
-          Type any financial keyword, row name, figure, note title, or statutory policy below. Our engine instantly queries every single number, statement row, and all 20 detailed notes of SDB's 2025 Annual Report.
+          Type any financial keyword, row name, figure, note title, or statutory policy below. Our engine instantly queries every single number, statement row, and all 46 detailed notes of SDB's 2025 Annual Report.
         </p>
         
         {/* Search bar input */}
@@ -618,7 +647,27 @@ export default function FinancialsAndNotesSection() {
             </h3>
           </div>
           
-          <div className="flex space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Quick Note Jump Selector */}
+            <div className="relative">
+              <select
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val) {
+                    scrollToNote(val);
+                  }
+                }}
+                className="text-xs bg-white border border-sdb-purple/20 text-sdb-purple font-semibold rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-sdb-purple/30 cursor-pointer shadow-xs"
+                defaultValue=""
+              >
+                <option value="" disabled>Jump to Note (1–46)...</option>
+                {NOTES_TO_FINANCIALS.map((n) => (
+                  <option key={n.number} value={n.number}>
+                    {n.number}: {n.title}
+                  </option>
+                ))}
+              </select>
+            </div>
             <button
               onClick={expandAllNotes}
               className="text-xs bg-sdb-purple/10 text-sdb-purple font-semibold hover:bg-sdb-purple/15 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
@@ -671,9 +720,16 @@ export default function FinancialsAndNotesSection() {
                       {note.number.split(" ")[1]}
                     </div>
                     <div>
-                      <h4 className="font-serif font-bold text-base md:text-lg text-sdb-purple leading-snug">
-                        {highlightText(note.title, searchQuery)}
-                      </h4>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="font-serif font-bold text-base md:text-lg text-sdb-purple leading-snug">
+                          {highlightText(note.title, searchQuery)}
+                        </h4>
+                        {note.pages && (
+                          <span className="text-[10px] font-mono text-sdb-coral bg-sdb-coral/10 px-2 py-0.5 rounded font-bold">
+                            {note.pages}
+                          </span>
+                        )}
+                      </div>
                       <p className="text-xs text-slate-500 font-medium line-clamp-1 mt-0.5">
                         {note.summary}
                       </p>
@@ -720,9 +776,19 @@ export default function FinancialsAndNotesSection() {
                       className="border-t border-sdb-purple/10 bg-sdb-cream/30 p-6 space-y-6"
                     >
                       {/* Explanatory Narrative text */}
-                      <p className="text-slate-700 text-sm md:text-base leading-relaxed">
-                        {highlightText(note.content, searchQuery)}
-                      </p>
+                      {note.content && (
+                        <div className="space-y-3">
+                          {note.content.split("\n\n").map((para, pIdx) => {
+                            const p = para.trim();
+                            if (!p) return null;
+                            return (
+                              <p key={pIdx} className="text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed">
+                                {highlightText(p, searchQuery)}
+                              </p>
+                            );
+                          })}
+                        </div>
+                      )}
 
                       {/* Accounting Policy Callout (Points 48, 49, 50, 52, 58) */}
                       {note.accountingPolicy && (
@@ -779,65 +845,69 @@ export default function FinancialsAndNotesSection() {
                       )}
 
                       {/* Structured Tabular Data inside Note */}
-                      {note.columns && note.tableData && (
-                        <div className="overflow-x-auto border border-sdb-purple/10 rounded-xl bg-white shadow-sm">
-                          <table className="w-full text-left border-collapse text-xs">
-                            <thead>
-                              <tr className="bg-sdb-purple/[0.03] text-sdb-purple font-mono uppercase text-[9px] tracking-wider border-b border-sdb-purple/10">
-                                {note.columns.map((col, idx) => (
-                                  <th 
-                                    key={idx} 
-                                    className={`py-3 px-4 font-semibold ${
-                                      col.align === "right" || col.key.includes("y20") ? "text-right" : "text-left"
-                                    }`}
-                                  >
-                                    {col.header}
-                                  </th>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {note.tableData.map((tRow, rIdx) => (
-                                <tr 
-                                  key={rIdx} 
-                                  className="border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors"
-                                >
-                                  {note.columns!.map((col, cIdx) => {
-                                    const cellVal = tRow[col.key];
-                                    const isNum = typeof cellVal === "number";
-                                    const isMatch = searchQuery && cellVal !== undefined && cellVal.toString().toLowerCase().includes(searchQuery.toLowerCase());
-                                    
-                                    return (
-                                      <td 
+                      {note.tables && note.tables.length > 0 && (
+                        <div className="space-y-4">
+                          {note.tables.map((tbl, tIdx) => (
+                            <div key={tIdx} className="overflow-x-auto border border-sdb-purple/15 rounded-xl bg-white shadow-xs">
+                              <table className="w-full text-left border-collapse text-xs">
+                                <thead>
+                                  <tr className="bg-sdb-purple/[0.04] text-sdb-purple font-mono uppercase text-[9px] tracking-wider border-b border-sdb-purple/10">
+                                    {tbl.headers.map((h, cIdx) => (
+                                      <th 
                                         key={cIdx} 
-                                        className={`py-2.5 px-4 text-slate-700 ${
-                                          isNum || col.key.includes("y20") ? "text-right font-semibold text-sdb-purple" : "text-left font-light"
-                                        } ${isMatch ? "bg-sdb-amber/20 font-semibold" : ""}`}
+                                        className={`py-2.5 px-3 font-semibold ${
+                                          cIdx > 0 ? "text-right" : "text-left"
+                                        }`}
                                       >
-                                        {isNum && cellVal < 0 
-                                          ? `(${Math.abs(cellVal)})` 
-                                          : cellVal !== undefined
-                                          ? highlightText(cellVal.toString(), searchQuery)
-                                          : ""
-                                        }
-                                      </td>
+                                        {h}
+                                      </th>
+                                    ))}
+                                  </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                  {tbl.rows.map((row, rIdx) => {
+                                    const isTotal = row[0] && (
+                                      row[0].toLowerCase().includes("total") || 
+                                      row[0].toLowerCase().startsWith("net ")
+                                    );
+                                    return (
+                                      <tr 
+                                        key={rIdx} 
+                                        className={`hover:bg-slate-50 transition-colors ${
+                                          isTotal ? "bg-sdb-purple/[0.03] font-bold text-sdb-purple" : ""
+                                        }`}
+                                      >
+                                        {row.map((cell, cIdx) => {
+                                          const isMatch = searchQuery && cell && cell.toLowerCase().includes(searchQuery.toLowerCase());
+                                          return (
+                                            <td 
+                                              key={cIdx} 
+                                              className={`py-2 px-3 text-slate-700 ${
+                                                cIdx > 0 ? "text-right font-mono font-medium text-sdb-purple" : "text-left font-sans"
+                                              } ${isMatch ? "bg-sdb-amber/20 font-semibold" : ""}`}
+                                            >
+                                              {highlightText(cell, searchQuery)}
+                                            </td>
+                                          );
+                                        })}
+                                      </tr>
                                     );
                                   })}
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                                </tbody>
+                              </table>
+                            </div>
+                          ))}
                         </div>
                       )}
 
-                      {/* Sub-Notes & Sub-Schedules (Points 51, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74) */}
+                      {/* Sub-Notes & Sub-Schedules */}
                       {note.subNotes && note.subNotes.length > 0 && (
                         <div className="space-y-4 pt-3 border-t border-sdb-purple/10">
                           <h5 className="font-serif font-bold text-xs uppercase tracking-wider text-sdb-purple">
-                            Sub-Schedules & Detailed Breakdowns:
+                            Sub-Schedules &amp; Detailed Breakdowns ({note.subNotes.length}):
                           </h5>
                           {note.subNotes.map((sub, sIdx) => (
-                            <div key={sIdx} className="bg-white rounded-xl p-4 border border-slate-200/80 shadow-2xs space-y-3">
+                            <div key={sIdx} className="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs space-y-3">
                               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
                                 <div className="flex items-center space-x-2">
                                   <span className="font-mono font-bold text-xs bg-sdb-purple/10 text-sdb-purple px-2 py-0.5 rounded">
@@ -856,50 +926,20 @@ export default function FinancialsAndNotesSection() {
                               )}
 
                               {sub.content && (
-                                <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                                  {sub.content}
+                                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                                  {highlightText(sub.content, searchQuery)}
                                 </p>
                               )}
 
-                              {sub.columns && sub.tableData && (
-                                <div className="overflow-x-auto border border-slate-100 rounded-lg">
-                                  <table className="w-full text-left text-xs font-mono">
-                                    <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
-                                      <tr>
-                                        {sub.columns.map((col, cIdx) => (
-                                          <th 
-                                            key={cIdx} 
-                                            className={`py-2 px-3 font-semibold ${
-                                              col.align === "right" || col.key.includes("y20") ? "text-right" : "text-left"
-                                            }`}
-                                          >
-                                            {col.header}
-                                          </th>
-                                        ))}
-                                      </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-slate-100">
-                                      {sub.tableData.map((row, rIdx) => (
-                                        <tr key={rIdx} className="hover:bg-slate-50">
-                                          {sub.columns!.map((col, cIdx) => {
-                                            const cellVal = row[col.key];
-                                            const isNum = typeof cellVal === "number";
-                                            return (
-                                              <td 
-                                                key={cIdx}
-                                                className={`py-2 px-3 ${
-                                                  isNum || col.key.includes("y20") ? "text-right font-bold text-sdb-purple" : "text-left text-slate-700 font-sans"
-                                                }`}
-                                              >
-                                                {isNum && cellVal < 0 ? `(${Math.abs(cellVal)})` : cellVal ?? ""}
-                                              </td>
-                                            );
-                                          })}
-                                        </tr>
-                                      ))}
-                                    </tbody>
-                                  </table>
-                                </div>
+                              {sub.bullets && sub.bullets.length > 0 && (
+                                <ul className="space-y-2 pt-1">
+                                  {sub.bullets.map((b, bIdx) => (
+                                    <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                                      <span className="w-1.5 h-1.5 rounded-full bg-sdb-coral mt-2 shrink-0" />
+                                      <span className="flex-1">{highlightText(b, searchQuery)}</span>
+                                    </li>
+                                  ))}
+                                </ul>
                               )}
                             </div>
                           ))}

@@ -24,10 +24,101 @@ const ICON_MAP: Record<string, any> = {
   Leaf: Leaf
 };
 
+interface SectionItem {
+  type: string;
+  content: string;
+}
+
+interface SectionData {
+  title: string;
+  items?: SectionItem[];
+  paragraphs: string[];
+}
+
+function renderSectionContent(sec: SectionData) {
+  if (sec.items && sec.items.length > 0) {
+    const groups: Array<{ type: "paragraph"; content: string } | { type: "bullets"; items: string[] }> = [];
+    for (const item of sec.items) {
+      if (item.type === "bullet") {
+        if (groups.length > 0 && groups[groups.length - 1].type === "bullets") {
+          (groups[groups.length - 1] as { type: "bullets"; items: string[] }).items.push(item.content);
+        } else {
+          groups.push({ type: "bullets", items: [item.content] });
+        }
+      } else {
+        groups.push({ type: "paragraph", content: item.content });
+      }
+    }
+
+    return (
+      <div className="space-y-4 pt-1">
+        {groups.map((grp, gIdx) => {
+          if (grp.type === "paragraph") {
+            return (
+              <p key={gIdx} className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed">
+                {grp.content}
+              </p>
+            );
+          }
+          return (
+            <ul key={gIdx} className="space-y-2.5 my-2">
+              {grp.items.map((bulletText, bIdx) => (
+                <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sdb-coral mt-2 shrink-0" />
+                  <span className="flex-1">{bulletText}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // Fallback if sec.items is not present
+  const groups: Array<{ type: "paragraph"; content: string } | { type: "bullets"; items: string[] }> = [];
+  for (const para of sec.paragraphs) {
+    const isBullet = para.startsWith("•");
+    const cleanText = isBullet ? para.replace(/^•\s*/, "") : para;
+    if (isBullet) {
+      if (groups.length > 0 && groups[groups.length - 1].type === "bullets") {
+        (groups[groups.length - 1] as { type: "bullets"; items: string[] }).items.push(cleanText);
+      } else {
+        groups.push({ type: "bullets", items: [cleanText] });
+      }
+    } else {
+      groups.push({ type: "paragraph", content: cleanText });
+    }
+  }
+
+  return (
+    <div className="space-y-4 pt-1">
+      {groups.map((grp, gIdx) => {
+        if (grp.type === "paragraph") {
+          return (
+            <p key={gIdx} className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed">
+              {grp.content}
+            </p>
+          );
+        }
+        return (
+          <ul key={gIdx} className="space-y-2.5 my-2">
+            {grp.items.map((bulletText, bIdx) => (
+              <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed">
+                <span className="w-1.5 h-1.5 rounded-full bg-sdb-coral mt-2 shrink-0" />
+                <span className="flex-1">{bulletText}</span>
+              </li>
+            ))}
+          </ul>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function CapitalsHub() {
   const [selectedCapitalIndex, setSelectedCapitalIndex] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedSectionIdx, setSelectedSectionIdx] = useState<number | null>(null);
   const [showFullSectionModal, setShowFullSectionModal] = useState<boolean>(false);
   const [modalCapitalIndex, setModalCapitalIndex] = useState<number>(0);
 
@@ -36,7 +127,6 @@ export default function CapitalsHub() {
       const detail = (e as CustomEvent).detail;
       if (typeof detail === "number" && detail >= 0 && detail < capitalsData.length) {
         setSelectedCapitalIndex(detail);
-        setSelectedSectionIdx(null);
       }
     };
     window.addEventListener("set-capitals-index", handleSetIndex);
@@ -63,10 +153,10 @@ export default function CapitalsHub() {
 
   return (
     <section id="capitals-section" className="space-y-8 text-left">
-      {/* Editorial Header */}
-      <div className="border-b border-sdb-purple/10 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      {/* Editorial Section Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-sdb-purple/10 pb-6">
         <div>
-          <div className="inline-flex items-center space-x-2 text-xs font-mono font-bold text-sdb-coral uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center space-x-2 bg-sdb-coral/10 text-sdb-coral px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
             <span className="w-2 h-2 rounded-full bg-sdb-coral" />
             <span>Management Discussion &amp; Analysis • Pages 68–106</span>
           </div>
@@ -99,7 +189,6 @@ export default function CapitalsHub() {
               key={capital.id}
               onClick={() => {
                 setSelectedCapitalIndex(index);
-                setSelectedSectionIdx(null);
                 setSearchQuery("");
               }}
               className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all duration-300 text-center cursor-pointer ${
@@ -160,59 +249,15 @@ export default function CapitalsHub() {
             </div>
           </div>
 
-          {/* Quick Section Navigator Chips */}
-          <div className="flex flex-wrap gap-1.5 pb-2">
-            <button
-              onClick={() => setSelectedSectionIdx(null)}
-              className={`text-xs px-3 py-1 rounded-xl font-mono font-medium transition-all cursor-pointer ${
-                selectedSectionIdx === null
-                  ? "bg-sdb-purple text-white font-bold"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              All Sections ({activeCapital.sections.length})
-            </button>
-            {activeCapital.sections.map((sec, idx) => (
-              <button
-                key={idx}
-                onClick={() => setSelectedSectionIdx(idx)}
-                className={`text-xs px-3 py-1 rounded-xl font-mono font-medium transition-all cursor-pointer truncate max-w-xs ${
-                  selectedSectionIdx === idx
-                    ? "bg-sdb-purple text-white font-bold"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                }`}
-              >
-                {sec.title}
-              </button>
-            ))}
-          </div>
-
-          {/* Sections & Paragraphs List */}
-          <div className="space-y-6 pt-2">
-            {(selectedSectionIdx !== null 
-              ? [activeCapital.sections[selectedSectionIdx]] 
-              : filteredSections
-            ).map((sec, sidx) => (
+          {/* Sections & Paragraphs List - Pulled naturally upward without tag chips */}
+          <div className="space-y-6 pt-1">
+            {filteredSections.map((sec, sidx) => (
               <div key={sidx} className="bg-slate-50/70 p-6 rounded-2xl border border-slate-200 space-y-3">
                 <h4 className="font-serif font-bold text-lg text-sdb-purple flex items-center space-x-2 border-b border-slate-200/60 pb-2">
                   <span className="w-2 h-2 rounded-full bg-sdb-coral shrink-0" />
                   <span>{sec.title}</span>
                 </h4>
-                <div className="space-y-2.5 pt-1">
-                  {sec.paragraphs.map((para, pidx) => {
-                    const isBullet = para.startsWith("•");
-                    return (
-                      <p 
-                        key={pidx} 
-                        className={`text-xs sm:text-sm text-slate-700 leading-relaxed ${
-                          isBullet ? "pl-3 border-l-2 border-sdb-purple/30 italic" : ""
-                        }`}
-                      >
-                        {para}
-                      </p>
-                    );
-                  })}
-                </div>
+                {renderSectionContent(sec)}
               </div>
             ))}
           </div>
@@ -281,21 +326,7 @@ export default function CapitalsHub() {
                     <span className="w-2 h-2 rounded-full bg-sdb-coral shrink-0" />
                     <span>{sec.title}</span>
                   </h4>
-                  <div className="space-y-2">
-                    {sec.paragraphs.map((p, pidx) => {
-                      const isBullet = p.startsWith("•");
-                      return (
-                        <p 
-                          key={pidx} 
-                          className={`text-xs sm:text-sm text-slate-700 leading-relaxed ${
-                            isBullet ? "pl-3 border-l-2 border-sdb-purple/30 italic" : ""
-                          }`}
-                        >
-                          {p}
-                        </p>
-                      );
-                    })}
-                  </div>
+                  {renderSectionContent(sec)}
                 </div>
               ))}
             </div>
