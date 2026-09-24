@@ -679,12 +679,6 @@ export default function LeadershipSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#120B24] via-[#120B24]/40 to-transparent pointer-events-none" />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#120B24]/60 via-transparent to-[#120B24]/60 pointer-events-none" />
 
-                  {/* Top Floating Badge */}
-                  <div className="absolute top-4 right-4 z-10 hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A1230]/80 backdrop-blur-md border border-white/20 text-white shadow-lg text-xs font-mono font-semibold">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                    <span>The Board of Directors</span>
-                  </div>
-
                   {/* Banner Typography & Caption */}
                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 z-10 text-left">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sdb-coral/90 text-white text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase mb-2 shadow-md">

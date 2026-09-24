@@ -5,13 +5,13 @@
  * Addresses Points 29, 30, 35, 36, 75 to 100
  */
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   FileSpreadsheet, ShieldAlert, PieChart, BookMarked,
   HelpCircle, Building2, Calendar, Search, ArrowUpRight,
   Download, ExternalLink, Filter, CheckCircle, Info,
-  TrendingUp, Users, DollarSign, Layers, ChevronRight, Award, Stamp
+  TrendingUp, Users, DollarSign, Layers, ChevronRight, ChevronLeft, Award, Stamp
 } from "lucide-react";
 import {
   TEN_YEARS_AT_A_GLANCE_DATA,
@@ -53,6 +53,37 @@ export default function SupplementarySection() {
   const [activeSubTab, setActiveSubTab] = useState<MainSubTab>("ten-years");
   const [activeBaselTemplate, setActiveBaselTemplate] = useState<number>(1);
   const [activeShareholderView, setActiveShareholderView] = useState<string>("tables-1-4");
+
+  // Tab horizontal scroller controls
+  const tabsContainerRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollability = useCallback(() => {
+    const el = tabsContainerRef.current;
+    if (el) {
+      setCanScrollLeft(el.scrollLeft > 10);
+      setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 10);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkScrollability();
+    window.addEventListener("resize", checkScrollability);
+    return () => window.removeEventListener("resize", checkScrollability);
+  }, [checkScrollability]);
+
+  const handleScrollTabs = (direction: "left" | "right") => {
+    const el = tabsContainerRef.current;
+    if (el) {
+      const scrollAmount = 280;
+      el.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      });
+      setTimeout(checkScrollability, 350);
+    }
+  };
 
   // Glossary search & filter
   const [glossarySearch, setGlossarySearch] = useState("");
@@ -113,33 +144,72 @@ export default function SupplementarySection() {
         </div>
       </div>
 
-      {/* Navigation Sub-tabs */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-2 border-b border-slate-200 scrollbar-none">
-        {[
-          { id: "ten-years", label: "Ten Years at a Glance", icon: FileSpreadsheet },
-          { id: "basel", label: "Basel III Pillar III (Templates 1–11)", icon: ShieldAlert },
-          { id: "shareholders", label: "Shareholder Analysis & Trading", icon: Users },
-          { id: "income-dist", label: "Income Sources & Quarterly", icon: PieChart },
-          { id: "glossary", label: "Glossary & Abbreviations", icon: HelpCircle },
-          { id: "corporate", label: "Corporate Directory", icon: Building2 }
-        ].map((tab) => {
-          const TabIcon = tab.icon;
-          const isActive = activeSubTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveSubTab(tab.id as MainSubTab)}
-              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                isActive
-                  ? "bg-sdb-purple text-white shadow-md shadow-sdb-purple/20 font-bold"
-                  : "bg-white/80 hover:bg-sdb-purple/5 text-slate-700 border border-slate-200"
-              }`}
-            >
-              <TabIcon className="w-3.5 h-3.5" />
-              <span>{tab.label}</span>
-            </button>
-          );
-        })}
+      {/* Navigation Sub-tabs with Interactive Scroller & Visible Scrollbar */}
+      <div className="relative flex items-center group">
+        {/* Left Scroller Arrow */}
+        <button
+          type="button"
+          onClick={() => handleScrollTabs("left")}
+          disabled={!canScrollLeft}
+          title="Scroll Left"
+          aria-label="Scroll tabs left"
+          className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-xl bg-white border border-sdb-purple/20 text-sdb-purple shadow-md hover:bg-sdb-purple hover:text-white transition-all cursor-pointer -ml-2 sm:-ml-3 disabled:opacity-0 disabled:pointer-events-none ${
+            canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+
+        {/* Tab List with Styled Visible Scrollbar */}
+        <div
+          ref={tabsContainerRef}
+          onScroll={checkScrollability}
+          className="flex items-center space-x-2 overflow-x-auto pb-3 pt-1 px-1 scroll-smooth w-full border-b border-slate-200"
+          style={{
+            scrollbarWidth: "thin",
+            scrollbarColor: "rgba(47, 27, 104, 0.35) rgba(250, 247, 242, 0.8)"
+          }}
+        >
+          {[
+            { id: "ten-years", label: "Ten Years at a Glance", icon: FileSpreadsheet },
+            { id: "basel", label: "Basel III Pillar III (Templates 1–11)", icon: ShieldAlert },
+            { id: "shareholders", label: "Shareholder Analysis & Trading", icon: Users },
+            { id: "income-dist", label: "Income Sources & Quarterly", icon: PieChart },
+            { id: "glossary", label: "Glossary & Abbreviations", icon: HelpCircle },
+            { id: "corporate", label: "Corporate Directory", icon: Building2 }
+          ].map((tab) => {
+            const TabIcon = tab.icon;
+            const isActive = activeSubTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveSubTab(tab.id as MainSubTab)}
+                className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                  isActive
+                    ? "bg-sdb-purple text-white shadow-md shadow-sdb-purple/20 font-bold"
+                    : "bg-white/80 hover:bg-sdb-purple/5 text-slate-700 border border-slate-200 hover:border-sdb-purple/30"
+                }`}
+              >
+                <TabIcon className="w-3.5 h-3.5" />
+                <span>{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Right Scroller Arrow */}
+        <button
+          type="button"
+          onClick={() => handleScrollTabs("right")}
+          disabled={!canScrollRight}
+          title="Scroll Right"
+          aria-label="Scroll tabs right"
+          className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-xl bg-white border border-sdb-purple/20 text-sdb-purple shadow-md hover:bg-sdb-purple hover:text-white transition-all cursor-pointer -mr-2 sm:-mr-3 disabled:opacity-0 disabled:pointer-events-none ${
+            canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
       </div>
 
       {/* TAB 1: Ten Years at a Glance */}
