@@ -46,6 +46,8 @@ export interface SubNoteItem {
   content?: string;
   bullets?: string[];
   tables?: NoteTable[];
+  footnotes?: string[];
+  footerContent?: string;
   columns?: NoteTableColumn[];
   tableData?: NoteTableRow[];
 }
@@ -58,6 +60,7 @@ export interface NoteDetail {
   summary: string;
   accountingPolicy?: string;
   content: string;
+  bullets?: string[];
   subNotes?: SubNoteItem[];
   tables?: NoteTable[];
   columns?: NoteTableColumn[];

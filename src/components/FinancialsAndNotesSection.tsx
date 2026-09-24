@@ -810,7 +810,24 @@ export default function FinancialsAndNotesSection() {
                         </div>
                       )}
 
+                      {/* Note Narrative / Content */}
+                      {note.content && (
+                        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans whitespace-pre-line">
+                          {highlightText(note.content, searchQuery)}
+                        </p>
+                      )}
 
+                      {/* Note Bullets */}
+                      {note.bullets && note.bullets.length > 0 && (
+                        <ul className="space-y-2 pt-1">
+                          {note.bullets.map((b, bIdx) => (
+                            <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                              <span className="w-1.5 h-1.5 rounded-full bg-sdb-coral mt-2 shrink-0" />
+                              <span className="flex-1">{highlightText(b, searchQuery)}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
                       {/* Structured Tabular Data inside Note */}
                       {note.tables && note.tables.length > 0 && (
@@ -868,6 +885,15 @@ export default function FinancialsAndNotesSection() {
                                   })}
                                 </tbody>
                               </table>
+                              {tbl.footnotes && tbl.footnotes.length > 0 && (
+                                <div className="p-3 bg-slate-50 border-t border-slate-100 space-y-1">
+                                  {tbl.footnotes.map((fn, fIdx) => (
+                                    <p key={fIdx} className="text-xs text-slate-700 leading-relaxed font-sans">
+                                      {highlightText(fn, searchQuery)}
+                                    </p>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           ))}
                         </div>
@@ -896,9 +922,44 @@ export default function FinancialsAndNotesSection() {
                               )}
 
                               {sub.content && (
-                                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
-                                  {highlightText(sub.content, searchQuery)}
-                                </p>
+                                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans space-y-3">
+                                  {sub.content.split(/\n\s*\n/).map((block, bIdx) => {
+                                    const lines = block.trim().split("\n");
+                                    return (
+                                      <div key={bIdx} className="space-y-1.5">
+                                        {lines.map((line, lIdx) => {
+                                          const trimmed = line.trim();
+                                          if (!trimmed) return null;
+
+                                          if (trimmed.startsWith("### ") || trimmed.startsWith("#### ")) {
+                                            const headingText = trimmed.replace(/^#{3,4}\s*/, "");
+                                            return (
+                                              <h6 key={lIdx} className="font-sans font-bold text-xs sm:text-sm text-sdb-purple pt-1.5">
+                                                {highlightText(headingText, searchQuery)}
+                                              </h6>
+                                            );
+                                          }
+
+                                          const levelMatch = trimmed.match(/^(Level \d+:)\s*(.*)/s);
+                                          if (levelMatch) {
+                                            return (
+                                              <p key={lIdx} className="text-slate-700">
+                                                <strong className="font-bold text-slate-800">{highlightText(levelMatch[1], searchQuery)}</strong>{" "}
+                                                {highlightText(levelMatch[2], searchQuery)}
+                                              </p>
+                                            );
+                                          }
+
+                                          return (
+                                            <p key={lIdx} className="text-slate-700 leading-relaxed">
+                                              {highlightText(trimmed, searchQuery)}
+                                            </p>
+                                          );
+                                        })}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
                               )}
 
                               {sub.bullets && sub.bullets.length > 0 && (
@@ -967,7 +1028,34 @@ export default function FinancialsAndNotesSection() {
                                           })}
                                         </tbody>
                                       </table>
+                                      {tbl.footnotes && tbl.footnotes.length > 0 && (
+                                        <div className="p-3 bg-slate-50 border-t border-slate-100 space-y-1">
+                                          {tbl.footnotes.map((fn, fIdx) => (
+                                            <p key={fIdx} className="text-xs text-slate-700 leading-relaxed font-sans">
+                                              {highlightText(fn, searchQuery)}
+                                            </p>
+                                          ))}
+                                        </div>
+                                      )}
                                     </div>
+                                  ))}
+                                </div>
+                              )}
+
+                              {sub.footerContent && (
+                                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans space-y-2 pt-1">
+                                  {sub.footerContent.split("\n\n").map((para, pIdx) => (
+                                    <p key={pIdx}>{highlightText(para, searchQuery)}</p>
+                                  ))}
+                                </div>
+                              )}
+
+                              {sub.footnotes && sub.footnotes.length > 0 && (
+                                <div className="space-y-2 pt-1">
+                                  {sub.footnotes.map((fn, fIdx) => (
+                                    <p key={fIdx} className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
+                                      {highlightText(fn, searchQuery)}
+                                    </p>
                                   ))}
                                 </div>
                               )}

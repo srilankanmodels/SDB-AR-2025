@@ -4698,40 +4698,40 @@
       },
       {
         "subNumber": "31.1.3",
-        "title": "Principal financial assumptions",
-        "content": "Messrs. Piyal S Goonetilleke Actuaries, carried out an actuarial valuation of the defined benefit plan gratuity on 31 December 2025. Appropriate and compatible assumptions were used in determining the cost of retirement benefits.\n\n• The weighted average duration of the defined benefit plan obligation at the end of the reporting period is 11.4 years (2024: 11.2 years).\n• The discount rate was revised to 10.9% (vs 11.9% last year) to reflect the yield rates of the treasury Bond.",
+        "title": "The principal financial assumptions used are as follows:",
+        "content": "Messrs. Piyal S Goonetilleke Actuaries, carried out an actuarial valuation of the defined benefit plan gratuity on 31 December 2025. Appropriate and compatible assumptions were used in determining the cost of retirement benefits. The principal assumptions used are as follows:",
         "bullets": [],
         "tables": [
           {
-            "tableName": "31.1.3. Principal Actuarial Assumptions",
+            "tableName": "",
             "headers": [
-              "Assumption",
+              "",
               "2025",
               "2024"
             ],
             "rows": [
               [
                 "Long term interest rate (%)",
-                "10.90%",
-                "11.90%"
+                "10.90",
+                "11.90"
               ],
               [
                 "Future salary increase rate (%)",
-                "10.00%",
-                "10.00%"
+                "10.00",
+                "10.00"
               ],
               [
                 "Retirement age (years)",
                 "60",
                 "60"
-              ],
-              [
-                "Mortality Table",
-                "GA 1983 Mortality table",
-                "GA 1983 Mortality table"
               ]
             ]
           }
+        ],
+        "footnotes": [
+          "Mortality - GA 1983 Mortality table issued by the Institute of Actuaries London",
+          "The weighted average duration of the defined benefit plan obligation at the end of the reporting period is 11.4 years (2024: 11.2 years)",
+          "The discount rate was revised to 10.9% (vs 11.9% last year) to reflect the yield rates of the treasury Bond."
         ]
       },
       {
@@ -5597,13 +5597,13 @@
       {
         "subNumber": "42.1",
         "title": "Financial instruments recorded at fair value",
-        "content": "The following is a description of how fair values are determined for financial instruments that are recorded at fair value using valuation techniques. These incorporate the Bank’s estimate of assumptions that a market participant would make when valuing the instrument.\n\n• Fair value through other comprehensive income (OCI):\nFair value through OCI valued using valuation techniques or pricing models primarily consist of unquoted equity securities.\n\n• Fair value through profit and loss (FVTPL):\nQuoted equities, Sri Lanka Government securities (Treasury bills and bonds) and unit trusts are included in financial assets fair value through profit or loss. Government securities are measured using average yield published by Central Bank of Sri Lanka. Quoted equities are valued using market price in active markets as at the reporting date. Unit trusts are measured using market price in markets that are not active.",
+        "content": "The following is a description of how fair values are determined for financial instrument that are recorded at fair value using valuation techniques. These incorporate the Bank's estimate of assumption that a market participant would make when valuing the instrument.\n\n### Fair value through other comprehensive income (OCI)\n\nFair value through OCI valued using valuation techniques or pricing models primary consist of unquoted.\n\n### Fair value through profit and loss (FVTPL)\n\nQuoted equities, Sri Lanka Government securities (Treasury bills and bonds) and unit trust are included in financial assets fair value through profit or loss. Government securities are measured using average yield published by Central Bank of Sri Lanka. Quoted equities are valued using market price in active markets as at the reporting date. Unit trusts are measured using market price in markets that are not active.",
         "bullets": []
       },
       {
         "subNumber": "42.2",
         "title": "Determination of fair value and fair value hierarchy",
-        "content": "The Bank uses the following hierarchy for determining and disclosing the fair value of financial instruments by valuation technique:\n\n• Level 1: Quoted (unadjusted) prices in active markets for identical assets or liabilities.\n• Level 2: Other techniques for which all inputs which have a significant effect on the recorded fair value are observable, either directly or indirectly.\n• Level 3: Techniques which use inputs that have a significant effect on the recorded fair value that are not based on observable market data.",
+        "content": "The Bank uses the following hierarchy for determining and disclosing the fair value of financial instruments by valuation technique.\n\nLevel 1: Quoted (unadjusted) prices in active markets for identical assets or liabilities.\n\nLevel 2: Other techniques for which all inputs which have a significant effect on the recorded fair value are observable, either directly or indirectly\n\nLevel 3: Techniques which use inputs that have a significant effect on the recorded fair value that are not based on observable market data",
         "bullets": []
       },
       {
