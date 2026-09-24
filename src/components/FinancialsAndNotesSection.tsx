@@ -181,6 +181,28 @@ export default function FinancialsAndNotesSection() {
     );
   };
 
+  // Helper to determine if a table column is predominantly numeric
+  const isColumnNumeric = (rows: (string | number)[][], colIdx: number): boolean => {
+    if (colIdx === 0) return false;
+    let numCount = 0;
+    let textCount = 0;
+    for (const r of rows) {
+      const val = r[colIdx];
+      if (val !== undefined && val !== null) {
+        const s = String(val).trim();
+        if (s !== "" && s !== "-" && s !== "–" && s !== "—") {
+          // Check if numeric, currency, ratio, or percentage
+          if (/^[\(\[\-\+]?[\d,]+(\.\d+)?%?[\)\]]?$/.test(s)) {
+            numCount++;
+          } else {
+            textCount++;
+          }
+        }
+      }
+    }
+    return numCount >= textCount && numCount > 0;
+  };
+
   // Toggle note expansion
   const toggleNote = (noteNum: string) => {
     setExpandedNotes(prev => ({
@@ -788,52 +810,18 @@ export default function FinancialsAndNotesSection() {
                         </div>
                       )}
 
-                      {/* Embedded Picture Integration based on Note Topic */}
-                      {note.number === "Note 12" && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center border-y border-sdb-purple/10 py-5">
-                          <div className="rounded-xl overflow-hidden max-h-[160px] shadow-sm">
-                            <img
-                              src={activeImages.cooperativeFarming}
-                              alt="Cooperative Agriculture"
-                              referrerPolicy="no-referrer"
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="space-y-1.5">
-                            <span className="font-mono text-[8px] text-sdb-coral uppercase tracking-widest font-bold">Livelihood & Sector Focus</span>
-                            <h5 className="font-serif font-bold text-sdb-purple text-sm">Agriculture & Micro Loans Supporting Farmers</h5>
-                            <p className="text-slate-500 text-[11px] leading-relaxed">
-                              SDB bank's core loan segment is structured around primary SANASA cooperative networks, dispersing collateral-free agricultural guarantee loans to over 15,000 paddy, rubber, and tea smallholders. This directly supports food security in rural Sri Lanka.
-                            </p>
-                          </div>
-                        </div>
-                      )}
 
-                      {note.number === "Note 14" && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center border-y border-sdb-purple/10 py-5">
-                          <div className="rounded-xl overflow-hidden max-h-[160px] shadow-sm">
-                            <img
-                              src={activeImages.digitalBanking}
-                              alt="Mobile Merchant Payment"
-                              referrerPolicy="no-referrer"
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="space-y-1.5">
-                            <span className="font-mono text-[8px] text-sdb-coral uppercase tracking-widest font-bold">Digital Channels</span>
-                            <h5 className="font-serif font-bold text-sdb-purple text-sm">Expanding Digital Deposits via SDB UPay</h5>
-                            <p className="text-slate-500 text-[11px] leading-relaxed">
-                              The SDB UPay app recorded LKR 105 Mn in local savings, driving digital financial access for rural merchants who use our QR payments to execute daily micro-trade business activities seamlessly.
-                            </p>
-                          </div>
-                        </div>
-                      )}
 
                       {/* Structured Tabular Data inside Note */}
                       {note.tables && note.tables.length > 0 && (
                         <div className="space-y-4">
                           {note.tables.map((tbl, tIdx) => (
                             <div key={tIdx} className="overflow-x-auto border border-sdb-purple/15 rounded-xl bg-white shadow-xs">
+                              {tbl.tableName && (
+                                <div className="bg-sdb-purple/[0.04] px-4 py-2 border-b border-sdb-purple/10 font-serif font-bold text-xs text-sdb-purple">
+                                  {tbl.tableName}
+                                </div>
+                              )}
                               <table className="w-full text-left border-collapse text-xs">
                                 <thead>
                                   <tr className="bg-sdb-purple/[0.04] text-sdb-purple font-mono uppercase text-[9px] tracking-wider border-b border-sdb-purple/10">
@@ -841,7 +829,7 @@ export default function FinancialsAndNotesSection() {
                                       <th 
                                         key={cIdx} 
                                         className={`py-2.5 px-3 font-semibold ${
-                                          cIdx > 0 ? "text-right" : "text-left"
+                                          isColumnNumeric(tbl.rows, cIdx) ? "text-right" : "text-left"
                                         }`}
                                       >
                                         {h}
@@ -868,7 +856,7 @@ export default function FinancialsAndNotesSection() {
                                             <td 
                                               key={cIdx} 
                                               className={`py-2 px-3 text-slate-700 ${
-                                                cIdx > 0 ? "text-right font-mono font-medium text-sdb-purple" : "text-left font-sans"
+                                                isColumnNumeric(tbl.rows, cIdx) ? "text-right font-mono font-medium text-sdb-purple" : "text-left font-sans"
                                               } ${isMatch ? "bg-sdb-amber/20 font-semibold" : ""}`}
                                             >
                                               {highlightText(cell, searchQuery)}
@@ -888,9 +876,6 @@ export default function FinancialsAndNotesSection() {
                       {/* Sub-Notes & Sub-Schedules */}
                       {note.subNotes && note.subNotes.length > 0 && (
                         <div className="space-y-4 pt-3 border-t border-sdb-purple/10">
-                          <h5 className="font-serif font-bold text-xs uppercase tracking-wider text-sdb-purple">
-                            Sub-Schedules &amp; Detailed Breakdowns ({note.subNotes.length}):
-                          </h5>
                           {note.subNotes.map((sub, sIdx) => (
                             <div key={sIdx} className="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs space-y-3">
                               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
@@ -925,6 +910,66 @@ export default function FinancialsAndNotesSection() {
                                     </li>
                                   ))}
                                 </ul>
+                              )}
+
+                              {sub.tables && sub.tables.length > 0 && (
+                                <div className="space-y-4 pt-1">
+                                  {sub.tables.map((tbl, tIdx) => (
+                                    <div key={tIdx} className="overflow-x-auto border border-sdb-purple/15 rounded-xl bg-white shadow-xs">
+                                      {tbl.tableName && (
+                                        <div className="bg-sdb-purple/[0.04] px-4 py-2 border-b border-sdb-purple/10 font-serif font-bold text-xs text-sdb-purple">
+                                          {tbl.tableName}
+                                        </div>
+                                      )}
+                                      <table className="w-full text-left border-collapse text-xs">
+                                        <thead>
+                                          <tr className="bg-sdb-purple/[0.04] text-sdb-purple font-mono uppercase text-[9px] tracking-wider border-b border-sdb-purple/10">
+                                            {tbl.headers.map((h, cIdx) => (
+                                              <th 
+                                                key={cIdx} 
+                                                className={`py-2.5 px-3 font-semibold ${
+                                                  isColumnNumeric(tbl.rows, cIdx) ? "text-right" : "text-left"
+                                                }`}
+                                              >
+                                                {h}
+                                              </th>
+                                            ))}
+                                          </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-100">
+                                          {tbl.rows.map((row, rIdx) => {
+                                            const isTotal = row[0] && (
+                                              row[0].toLowerCase().includes("total") || 
+                                              row[0].toLowerCase().startsWith("net ")
+                                            );
+                                            return (
+                                              <tr 
+                                                key={rIdx} 
+                                                className={`hover:bg-slate-50 transition-colors ${
+                                                  isTotal ? "bg-sdb-purple/[0.03] font-bold text-sdb-purple" : ""
+                                                }`}
+                                              >
+                                                {row.map((cell, cIdx) => {
+                                                  const isMatch = searchQuery && cell && cell.toLowerCase().includes(searchQuery.toLowerCase());
+                                                  return (
+                                                    <td 
+                                                      key={cIdx} 
+                                                      className={`py-2 px-3 text-slate-700 ${
+                                                        isColumnNumeric(tbl.rows, cIdx) ? "text-right font-mono font-medium text-sdb-purple" : "text-left font-sans"
+                                                      } ${isMatch ? "bg-sdb-amber/20 font-semibold" : ""}`}
+                                                    >
+                                                      {highlightText(cell, searchQuery)}
+                                                    </td>
+                                                  );
+                                                })}
+                                              </tr>
+                                            );
+                                          })}
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  ))}
+                                </div>
                               )}
                             </div>
                           ))}
